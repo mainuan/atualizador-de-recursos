@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Verificação de Recursos do Mainuan
+Comment=Mostra uma notificação quando há recursos para atualizar
+Exec=/usr/bin/mainuan-atualizador-recursos --check
+Icon=system-software-update
+Terminal=false
+OnlyShowIn=KDE;
+X-KDE-StartupNotify=false
