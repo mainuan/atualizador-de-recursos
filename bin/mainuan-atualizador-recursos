@@ -1,0 +1,6 @@
+#!/usr/bin/python3
+"""Inicializador instalado pela distribuição (sem dependência de pip)."""
+import sys
+sys.path.insert(0, '/usr/lib/mainuan-atualizador-recursos')
+from mainuan_recursos.gui import main
+raise SystemExit(main())

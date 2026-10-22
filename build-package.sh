@@ -1,45 +1,40 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
 
-[ ! "${EUID}" = "0" ] && {
-  echo "Execute esse script como root:"
-  echo
-  echo "  sudo ${0}"
-  echo
-  exit 1
-}
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+VERSION='0.1.0'
+PACKAGE='mainuan-atualizador-recursos'
+WORKDIR="$(mktemp -d)"
+trap 'rm -rf "${WORKDIR}"' EXIT
+chmod 0755 "${WORKDIR}"
 
-HERE="$(dirname "$(readlink -f "${0}")")"
+mkdir -p \
+  "${WORKDIR}/DEBIAN" \
+  "${WORKDIR}/usr/bin" \
+  "${WORKDIR}/usr/lib/${PACKAGE}/mainuan_recursos" \
+  "${WORKDIR}/usr/share/applications" \
+  "${WORKDIR}/etc/xdg/autostart" \
+  "${WORKDIR}/etc/mainuan" \
+  "${ROOT}/dist"
 
-working_dir=$(mktemp -d)
+install -m 0755 "${ROOT}/bin/mainuan-atualizador-recursos" "${WORKDIR}/usr/bin/"
+install -m 0644 "${ROOT}/src/mainuan_recursos/"*.py "${WORKDIR}/usr/lib/${PACKAGE}/mainuan_recursos/"
+install -m 0644 "${ROOT}/data/mainuan-atualizador-recursos.desktop" "${WORKDIR}/usr/share/applications/"
+install -m 0644 "${ROOT}/data/mainuan-atualizador-recursos-autostart.desktop" \
+  "${WORKDIR}/etc/xdg/autostart/mainuan-atualizador-recursos.desktop"
+install -m 0644 "${ROOT}/data/atualizador-recursos.conf" "${WORKDIR}/etc/mainuan/"
 
-mkdir -p "${working_dir}/usr/bin"
-mkdir -p "${working_dir}/etc/xdg/autostart/"
-mkdir -p "${working_dir}/DEBIAN/"
-mkdir -p "${working_dir}/var/tiger-update/" 
-mkdir -p "${working_dir}/usr/lib/tiger-os/"
-
-cp -v "${HERE}/tiger-update"         "${working_dir}/usr/bin"
-cp -v "${HERE}/tiger-update.desktop" "${working_dir}/etc/xdg/autostart/"
-cp -v "${HERE}/banner.png"           "${working_dir}/usr/lib/tiger-os/"
-cp -v "${HERE}/CURRENT"              "${working_dir}/var/tiger-update/version"
-
-chmod +x "${working_dir}/usr/bin/tiger-update"
-
-(
- echo "Package: feature-update-manager"
- echo "Priority: optional"
- echo "Version: $(date +%y.%m.%d%H%M%S)"
- echo "Architecture: all"
- echo "Maintainer: Natanael Barbosa Santos"
- echo "Depends: "
- echo "Description: Atualizador de recursos do Tiger OS"
- echo
-) > "${working_dir}/DEBIAN/control"
-
-dpkg -b ${working_dir}
-rm -rfv ${working_dir}
-
-mv "${working_dir}.deb" "${HERE}/feature-update-manager.deb"
-
-chmod 777 "${HERE}/feature-update-manager.deb"
-chmod -x  "${HERE}/feature-update-manager.deb"
+cat > "${WORKDIR}/DEBIAN/control" <<EOF
+Package: ${PACKAGE}
+Version: ${VERSION}
+Section: utils
+Priority: optional
+Architecture: all
+Maintainer: Projeto Mainuan
+Depends: python3, python3-apt, python3-pyqt6, apt, pkexec
+Description: Atualizador de recursos do Mainuan com interface Qt6
+ Apresenta e instala atualizações de pacotes da distribuição por APT.
+EOF
+printf '/etc/mainuan/atualizador-recursos.conf\n' > "${WORKDIR}/DEBIAN/conffiles"
+dpkg-deb --build --root-owner-group "${WORKDIR}" "${ROOT}/dist/${PACKAGE}_${VERSION}_all.deb"
+echo "Pacote gerado: ${ROOT}/dist/${PACKAGE}_${VERSION}_all.deb"

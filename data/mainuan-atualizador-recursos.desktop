@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Atualizador de Recursos
+GenericName=Recursos do Mainuan
+Comment=Atualiza os componentes da distribuição usando o APT
+Exec=/usr/bin/mainuan-atualizador-recursos
+Icon=system-software-update
+Terminal=false
+Categories=System;Settings;
+StartupNotify=true
