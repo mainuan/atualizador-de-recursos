@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Exec=/usr/bin/tiger-update
+Name=Atualizador de recursos
+X-KDE-StartupNotify=true
+Icon=system-update
+Terminal=false
+Categories=Education;Network;Utility;
+
