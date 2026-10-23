@@ -24,7 +24,7 @@ from .controller import Controller
 from .github_trial import supports_local_files
 from .packagekit import Transaction
 from .packages import PackageRow, Plan, configured, identity, version_compare
-from .session import SessionKind, session_kind, system_identity
+from .session import SessionKind, session_kind, system_identity, supported_system, system_compatibility
 from .state import atomic_write
 
 API = 'https://api.github.com/repos/mainuan/'
@@ -130,7 +130,10 @@ class GitHubChannel:
         for edition in cache['editions']:
             r = edition['release']
             features = tuple(Feature(f['title'], tuple(Package(**p) for p in f['packages'])) for f in r['features'])
-            releases.append(Release(**{**r, 'features': features}))
+            # Cache 0.2.2: atualizar somente os filtros de plataforma do canal,
+            # preservando bytes aprovados, edição, histórico e arquitetura.
+            compatibility = {**r['compatibility'], **system_compatibility()}
+            releases.append(Release(**{**r, 'features': features, 'compatibility': compatibility}))
         return Catalog(cache['sequence'], expires, tuple(releases), cache['digest'])
 
     def _select(self, name, architecture):
@@ -207,7 +210,7 @@ class GitHubChannel:
 
     def _load_online(self):
         self.system = system_identity()
-        require(self.system['distro_id'] in ('mainuan', 'ubuntu') and self.system['version_id'] in ('26.04', '2026'),
+        require(supported_system(self.system),
                 'Este canal é destinado ao Mainuan baseado no Kubuntu 26.04.')
         commit = api(OFFICIAL + '/commits/main').get('sha', '')
         require(bool(re.fullmatch('[a-f0-9]{40}', commit)), 'Referência oficial inválida.')
@@ -245,8 +248,7 @@ class GitHubChannel:
         sequence = max(1, sequence)
         edition = Release('github', digest[:24], 'O Mainuan tem novidades!', message,
                           assets[0]['article'] if assets else f'https://github.com/mainuan/{OFFICIAL}/releases',
-                          tuple(features), {'distro_id': ['mainuan', 'ubuntu'], 'version_id': ['26.04', '2026'],
-                                            'architecture': [self.system['architecture']]})
+                          tuple(features), system_compatibility((self.system['architecture'],)))
         previous = [e for e in self.cache['editions'] if e['release']['version'] != edition.version]
         editions = ([{'release': asdict(edition), 'assets': assets}] if features else []) + previous
         cache = {'schema': 1, 'sequence': sequence, 'digest': digest, 'editions': editions[:50],

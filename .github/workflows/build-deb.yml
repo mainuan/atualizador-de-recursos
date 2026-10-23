@@ -2,7 +2,7 @@ name: Testar e gerar pacote Debian
 on:
   push:
     branches: [main]
-    tags: [v0.2.0-rc1, v0.2.1, v0.2.2]
+    tags: [v0.2.0-rc1, v0.2.1, v0.2.2, v0.2.3]
   pull_request:
   workflow_dispatch:
 permissions:
@@ -113,9 +113,9 @@ jobs:
             releases/v0.2.1/mainuan-atualizador-recursos_0.2.1_all.deb.sha256 \
             --verify-tag --latest --title 'Atualizador de Recursos 0.2.1' \
             --notes-file docs/v0.2.1.md
-  release-022:
+  release-023:
     needs: build
-    if: github.repository == 'mainuan/atualizador-de-recursos' && github.ref == 'refs/tags/v0.2.2'
+    if: github.repository == 'mainuan/atualizador-de-recursos' && github.ref == 'refs/tags/v0.2.3'
     runs-on: ubuntu-24.04
     permissions:
       contents: write
@@ -134,13 +134,13 @@ jobs:
         run: |
           cd dist
           sha256sum -c SHA256SUMS
-          test "$(dpkg-deb -f mainuan-atualizador-recursos_0.2.2_all.deb Version)" = '0.2.2'
-          test "$(dpkg-deb -f mainuan-atualizador-recursos_0.2.2_all.deb Architecture)" = 'all'
-      - name: Publicar versão estável 0.2.2 autorizada
+          test "$(dpkg-deb -f mainuan-atualizador-recursos_0.2.3_all.deb Version)" = '0.2.3'
+          test "$(dpkg-deb -f mainuan-atualizador-recursos_0.2.3_all.deb Architecture)" = 'all'
+      - name: Publicar versão estável 0.2.3 autorizada
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
         run: |
-          gh release create "$GITHUB_REF_NAME" dist/mainuan-atualizador-recursos_0.2.2_all.deb dist/SHA256SUMS \
-            --verify-tag --latest --title 'Atualizador de Recursos 0.2.2' \
-            --notes-file docs/v0.2.2.md
+          gh release create "$GITHUB_REF_NAME" dist/mainuan-atualizador-recursos_0.2.3_all.deb dist/SHA256SUMS \
+            --verify-tag --latest --title 'Atualizador de Recursos 0.2.3' \
+            --notes-file docs/v0.2.3.md

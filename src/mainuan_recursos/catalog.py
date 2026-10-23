@@ -14,6 +14,8 @@ from urllib.request import HTTPSHandler, HTTPRedirectHandler, Request, build_ope
 
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PublicKey
 
+from .session import supported_system
+
 MAX_BYTES = 1024 * 1024
 NAME = re.compile(r'[a-z0-9][a-z0-9+.-]+\Z')
 TOKEN = re.compile(r'[A-Za-z0-9][A-Za-z0-9._+-]{0,99}\Z')
@@ -146,7 +148,7 @@ class Release:
         return tuple(p for f in self.features for p in f.packages)
 
     def compatible(self, system):
-        return all(system.get(k) in values for k, values in self.compatibility.items())
+        return supported_system(system) and all(system.get(k) in values for k, values in self.compatibility.items())
 
 
 @dataclass(frozen=True)

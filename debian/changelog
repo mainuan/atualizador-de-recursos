@@ -1,3 +1,11 @@
+mainuan-atualizador-recursos (0.2.3) unstable; urgency=medium
+
+  * Centraliza compatibilidade com Mainuan 2027.1 RC1/final e versões legadas.
+  * Separa a versão comercial Mainuan da base Kubuntu 26.04.
+  * Preserva arquitetura, sessão Live e compatibilidade do histórico.
+
+ -- Mainuan Packaging <openwebosbr@gmail.com>  Fri, 23 Oct 2026 10:51:44 -0300
+
 mainuan-atualizador-recursos (0.2.2) unstable; urgency=medium
 
   * Usa releases oficiais do GitHub no modo normal e na verificação da sessão.

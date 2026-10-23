@@ -3,7 +3,7 @@
 Canal oficial de novidades em Python 3/PyQt6 Widgets para Mainuan baseado no
 Kubuntu 26.04, KDE Plasma 6 e Wayland. Não substitui o atualizador geral APT/Flatpak.
 
-## Usar a versão 0.2.2
+## Usar a versão 0.2.3
 
 ```bash
 mainuan-atualizador-recursos
@@ -17,6 +17,12 @@ catálogo, GitHub App, repositório APT próprio ou configuração pelo usuário
 O autostart KDE executa `mainuan-atualizador-recursos --check`: consulta após
 60 segundos e, depois, a cada hora. Não consulta nem instala na sessão Live ou
 quando não consegue confirmar uma sessão instalada. Nada é instalado automaticamente.
+
+A compatibilidade reconhece `ID=mainuan`/`VERSION_ID=2027.1` tanto na apresentação
+RC1 quanto final, com base Kubuntu 26.04, e preserva as identificações legadas
+`ubuntu`/`mainuan` com VERSION_ID `26.04`/`2026`. A política central em session.py
+separa versão comercial e base; não aceita `ubuntu/2027.1` nem outras versões
+Ubuntu incompatíveis. Veja as [notas da versão 0.2.3](docs/v0.2.3.md).
 
 Preserva a interface clássica com o beija-flor e os botões **Instalar novidades**,
 **Conhecer novidades**, **Agora não**. Histórico, informações técnicas e verificação
@@ -81,7 +87,7 @@ comprometimento da própria conta oficial do GitHub ou do usuário local.
 PYTHONPATH=src /usr/bin/python3 -m mainuan_recursos --demo
 QT_QPA_PLATFORM=offscreen PYTHONPATH=src /usr/bin/python3 -m unittest discover -s tests -v
 bash build-package.sh
-lintian dist/mainuan-atualizador-recursos_0.2.2_all.deb
+lintian dist/mainuan-atualizador-recursos_0.2.3_all.deb
 ```
 
 Demo não consulta rede/APT/D-Bus nem altera pacotes. O pacote é `Architecture: all`,
@@ -90,9 +96,13 @@ sem compilação nativa nem requisitos próprios x86-64-v2/v3/v4. O teste do con
 da distribuição em processador v1 real permanece pendente.
 
 O GitHub Actions testa, constrói o Debian, verifica arquitetura e executa Lintian.
-A tag autorizada `v0.2.2` publica o pacote e `SHA256SUMS` como release estável.
+A tag autorizada `v0.2.3` publica o pacote e `SHA256SUMS` como release estável.
 
 ## Histórico
+
+A [proposta de transição Mainuan 2027.1 RC1 → final](docs/transicao-2027.1-rc1-final.md)
+registra os requisitos para a construção da futura ISO. É somente um projeto
+documentado; não implementa nem publica a migração.
 
 O publicador antigo Ed25519/APT/GitHub App está **desativado**, inclusive para
 execução manual, e não é acionado por alterações nos dois arquivos. Documentos e

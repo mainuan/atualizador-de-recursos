@@ -4,6 +4,42 @@ from pathlib import Path
 import subprocess
 
 
+# Pares explícitos: a versão comercial Mainuan não é uma versão do Ubuntu.
+# VERSION/PRETTY_NAME (RC1 ou final) não participam da decisão.
+SUPPORTED_SYSTEMS = {
+    ('ubuntu', '26.04'): ('ubuntu', '26.04'),
+    ('ubuntu', '2026'): ('ubuntu', '26.04'),
+    ('mainuan', '26.04'): ('ubuntu', '26.04'),
+    ('mainuan', '2026'): ('ubuntu', '26.04'),
+    ('mainuan', '2027.1'): ('ubuntu', '26.04'),
+}
+
+
+def base_identity(system):
+    """Base conhecida de uma identificação suportada; indícios contrários bloqueiam."""
+    base = SUPPORTED_SYSTEMS.get((system.get('distro_id'), system.get('version_id')))
+    if base is None:
+        return None
+    if system.get('ubuntu_codename', '') not in ('', 'resolute'):
+        return None
+    if system.get('base_id', base[0]) != base[0] or system.get('base_version_id', base[1]) != base[1]:
+        return None
+    return base
+
+
+def supported_system(system):
+    return base_identity(system) is not None
+
+
+def system_compatibility(architectures=None):
+    """Filtros das novidades; supported_system também valida os pares, sem produto cartesiano."""
+    result = {'distro_id': sorted({pair[0] for pair in SUPPORTED_SYSTEMS}),
+              'version_id': sorted({pair[1] for pair in SUPPORTED_SYSTEMS})}
+    if architectures is not None:
+        result['architecture'] = list(architectures)
+    return result
+
+
 class SessionKind(Enum):
     INSTALLED = 'installed'
     LIVE = 'live'
@@ -49,5 +85,11 @@ def system_identity():
     info = platform.freedesktop_os_release()
     architecture = subprocess.run(['/usr/bin/dpkg', '--print-architecture'], capture_output=True,
                                   text=True, check=True, timeout=5).stdout.strip()
-    return {'distro_id': info.get('ID', ''), 'version_id': info.get('VERSION_ID', ''),
-            'architecture': architecture}
+    system = {'distro_id': info.get('ID', ''), 'version_id': info.get('VERSION_ID', ''),
+              'architecture': architecture}
+    if info.get('UBUNTU_CODENAME'):
+        system['ubuntu_codename'] = info['UBUNTU_CODENAME']
+    base = base_identity(system)
+    if base:
+        system.update(base_id=base[0], base_version_id=base[1])
+    return system

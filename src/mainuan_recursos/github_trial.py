@@ -18,7 +18,7 @@ from .catalog import Catalog, CatalogError, Feature, Package, Release, decode
 from .controller import Controller
 from .packagekit import Transaction, ROOT, SERVICE, PROPERTIES
 from .packages import PackageRow, Plan, PlanningError, configured, identity, version_compare
-from .session import SessionKind, session_kind, system_identity
+from .session import SessionKind, session_kind, system_identity, supported_system, system_compatibility
 
 REPOSITORY = 'mainuan-gestao-drivers'
 NAME = 'mainuan-gestao-drivers'
@@ -42,8 +42,7 @@ def check_vm():
     require(os.geteuid() != 0, 'Abra a homologação como usuário comum, sem sudo.')
     require(session_kind() == SessionKind.INSTALLED, 'A homologação exige uma instalação normal, fora da sessão Live.')
     system = system_identity()
-    require(system['distro_id'] in ('ubuntu', 'mainuan') and system['version_id'] in ('2026', '26.04'),
-            'Este ensaio é destinado ao Mainuan 2026/Kubuntu 26.04.')
+    require(supported_system(system), 'Este ensaio é destinado ao Mainuan baseado no Kubuntu 26.04.')
 
 
 def check_url(url, binary=False):
@@ -145,8 +144,7 @@ class GitHubTrial:
         package = Package(NAME, VERSION, 'all', SHA256)
         self.release = Release('homologacao-github', sha[:12], 'O Mainuan tem novidades!', message,
                                RELEASE_URL, (Feature('Gestão de Drivers 1.0', (package,)),),
-                               {'distro_id': ['ubuntu', 'mainuan'], 'version_id': ['2026', '26.04'],
-                                'architecture': ['amd64', 'arm64']})
+                               system_compatibility(('amd64', 'arm64')))
         content = (sha + '\n' + names + '\n' + message + '\n' + SHA256).encode()
         return Catalog(int(published.timestamp()), now + timedelta(hours=4), (self.release,), hashlib.sha256(content).hexdigest()), True
 
