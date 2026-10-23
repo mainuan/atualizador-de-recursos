@@ -1,0 +1,51 @@
+.TH MAINUAN-ATUALIZADOR-RECURSOS 1 "22 outubro 2026" "Mainuan 0.2.0" "Comandos do usuário"
+.SH NOME
+mainuan-atualizador-recursos \- conheça e receba as novidades oficiais do Mainuan
+.SH SINOPSE
+.B mainuan-atualizador-recursos
+.RI [ opções ]
+.SH DESCRIÇÃO
+Apresenta lançamentos oficiais de um catálogo JSON assinado. Permite conhecer
+os recursos no navegador e confirmar a instalação voluntária por PackageKit e
+PolicyKit. Não realiza atualização geral do APT ou Flatpak.
+.SH OPÇÕES
+.TP
+.B \-\-homologacao-github
+Ensaio manual em VM instalada com snapshot. Lê packages.txt/message.txt da main
+oficial por HTTPS, verifica o SHA-256 aprovado do Gestão de Drivers 1.0 e utiliza
+InstallFiles/PolicyKit. Recusa alterações em outros pacotes. Sem configuração APT
+adicional, sem chaves próprias e com estado separado. Não combina com check/demo.
+.TP
+.B \-\-check
+Verifica após 60 segundos e a cada hora durante a sessão KDE. Mostra novidades
+não apresentadas ou adiadas há 24 horas. Não consulta na sessão Live.
+.TP
+.B \-\-demo
+Usa catálogo fictício, pacotes e autorização em memória. Não consulta APT, rede
+ou D-Bus nem salva o estado real.
+.TP
+.BI \-\-scenario " cenário"
+Cenário de demonstração: novo, visualizado, adiado, instalado, parcial,
+indisponivel, incompativel, erro ou cancelado.
+.TP
+.BI \-\-test-catalog " arquivo"
+Catálogo local assinado de teste. Exige \-\-demo e \-\-test-config.
+.TP
+.BI \-\-test-config " arquivo"
+Configuração com chave e prefixos de teste. Exige \-\-demo e \-\-test-catalog.
+.TP
+.B \-\-version
+Mostra a versão e encerra.
+.SH ARQUIVOS
+.TP
+.I /etc/mainuan/atualizador-recursos.json
+URL do catálogo, prefixos oficiais e chaves públicas administrados pela distribuição.
+.TP
+.I ~/.local/state/mainuan-recursos/
+Estado, cache autenticado e lock por usuário. Respeita XDG_STATE_HOME.
+.SH SEGURANÇA
+A produção exige chave pública oficial provisionada e catálogo assinado válido.
+O manifesto não permite comandos, repositórios ou URLs de pacotes. A instalação
+exige confirmação, simulação, pacotes confiáveis e autorização do sistema.
+.SH DOCUMENTAÇÃO
+/usr/share/doc/mainuan-atualizador-recursos/

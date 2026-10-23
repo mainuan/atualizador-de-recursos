@@ -1,0 +1,13 @@
+# Configuração inicial controlada. A operação cotidiana edita só os dois .txt.
+# Não habilitar sem provisionamento das chaves, APT e homologação em VM.
+enabled = false
+bootstrap = false
+organization = "mainuan"
+architectures = ["amd64"]
+distribution_ids = ["ubuntu", "mainuan"]
+distribution_versions = ["2026", "26.04"]
+catalog_key_id = "mainuan-producao"
+catalog_public_key = ""
+apt_fingerprint = ""
+# Opcional: matéria oficial comum. Vazio usa a página da primeira release.
+article_url = ""

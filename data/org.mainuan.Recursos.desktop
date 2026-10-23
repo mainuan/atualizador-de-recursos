@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Atualizador de Recursos do Mainuan
+Comment=Conheça e receba as novidades oficiais do Mainuan
+Exec=mainuan-atualizador-recursos
+Icon=mainuan-recursos
+Terminal=false
+Categories=System;
+StartupNotify=true

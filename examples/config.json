@@ -1,0 +1,15 @@
+{
+  "manifest_url": "https://mainuan.example/recursos/catalog.json",
+  "official_hosts": [
+    "mainuan.example"
+  ],
+  "keys": {
+    "catalogo-2026": "SUBSTITUIR_PELA_CHAVE_PUBLICA_ED25519_BASE64"
+  },
+  "article_prefixes": [
+    "https://mainuan.example/"
+  ],
+  "manifest_prefixes": [
+    "https://mainuan.example/recursos/"
+  ]
+}

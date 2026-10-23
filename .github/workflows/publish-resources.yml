@@ -1,0 +1,84 @@
+name: Publicar recursos aprovados
+on:
+  push:
+    branches: [main]
+    paths: [packages.txt, message.txt]
+  workflow_dispatch:
+    inputs:
+      atualizar_programas:
+        description: Aprovar seleção de novas releases estáveis dos programas listados
+        type: boolean
+        default: false
+  schedule:
+    # Renova apenas a validade. Não seleciona novas releases nem reapresenta novidades.
+    - cron: '27 8 * * 1'
+permissions:
+  contents: read
+concurrency:
+  group: publicar-recursos-main
+  cancel-in-progress: false
+jobs:
+  publicar:
+    if: >-
+      github.repository == 'mainuan/atualizadorderecursos' &&
+      github.ref == 'refs/heads/main' && vars.RECURSOS_PRODUCAO == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    environment: publicacao-recursos
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+      - name: Preparar ferramentas do publicador
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3-apt python3-cryptography dpkg-dev gnupg
+      - name: Gerar e verificar publicação completa
+        env:
+          CATALOG_PRIVATE_KEY: ${{ secrets.CATALOG_PRIVATE_KEY }}
+          APT_PRIVATE_KEY: ${{ secrets.APT_PRIVATE_KEY }}
+          GITHUB_TOKEN: ${{ github.token }}
+          REFRESH: ${{ github.event_name == 'workflow_dispatch' && inputs.atualizar_programas && 'true' || 'false' }}
+        run: |
+          set -euo pipefail
+          args=()
+          if [ "$REFRESH" = true ]; then args+=(--refresh); fi
+          /usr/bin/python3 tools/publish-catalog.py --output "$RUNNER_TEMP/publicacao" "${args[@]}"
+      - name: Obter credencial restrita para a publicação revisada
+        id: publication-token
+        uses: actions/create-github-app-token@fee1f7d63c2ff003460e3d139729b119787bc349 # v2
+        with:
+          app-id: ${{ vars.PUBLICATION_APP_ID }}
+          private-key: ${{ secrets.PUBLICATION_APP_PRIVATE_KEY }}
+          owner: mainuan
+          repositories: atualizadorderecursos
+          permission-contents: write
+      - name: Publicar todos os arquivos no mesmo commit
+        env:
+          GH_TOKEN: ${{ steps.publication-token.outputs.token }}
+        run: |
+          set -euo pipefail
+          cp -a "$RUNNER_TEMP/publicacao/catalogo/." catalogo/
+          mkdir -p apt
+          cp -a "$RUNNER_TEMP/publicacao/apt/." apt/
+          git config user.name 'Mainuan Recursos (automação)'
+          git config user.email 'recursos@users.noreply.github.com'
+          git add catalogo/novidades.json catalogo/novidades.json.sig catalogo/publicacao.json catalogo/publicacao.json.sig
+          git add -f apt/
+          # A credencial com exceção de revisão só publica os caminhos gerados.
+          /usr/bin/python3 - <<'PY'
+          import subprocess
+          paths = subprocess.check_output(['git', 'diff', '--cached', '--name-only', '-z']).split(b'\0')
+          metadata = {b'catalogo/novidades.json', b'catalogo/novidades.json.sig',
+                      b'catalogo/publicacao.json', b'catalogo/publicacao.json.sig'}
+          if any(p and p not in metadata and not p.startswith(b'apt/') for p in paths):
+              raise SystemExit('A publicação tentou alterar arquivos fora do catálogo/APT.')
+          PY
+          git commit -m 'Publicar catálogo e repositório de recursos autenticados'
+          # Credential helper transitório: nenhum token em argumentos, URL ou git config persistente.
+          git -c 'credential.helper=!f() { if [ "$1" = get ]; then printf "username=x-access-token\npassword=%s\n" "$GH_TOKEN"; fi; }; f' push origin HEAD:main
+          # Sem force: alteração concorrente na main rejeita o push inteiro.

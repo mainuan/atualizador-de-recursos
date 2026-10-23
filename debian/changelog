@@ -1,0 +1,5 @@
+mainuan-atualizador-recursos (0.2.0) unstable; urgency=medium
+
+  * Canal de novidades com catálogo assinado, Widgets e PackageKit por QtDBus.
+
+ -- Mainuan Packaging <openwebosbr@gmail.com>  Thu, 22 Oct 2026 12:00:00 -0300

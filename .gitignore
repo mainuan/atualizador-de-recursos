@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+/dist/
+/build/
+*.deb
+*.buildinfo
+*.changes
+/debian/.debhelper/
+/debian/debhelper-build-stamp
+/debian/files
+/debian/*.substvars
+/debian/mainuan-atualizador-recursos/

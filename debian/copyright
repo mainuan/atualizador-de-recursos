@@ -1,0 +1,10 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: Atualizador de Recursos do Mainuan
+Source: https://github.com/mainuan/atualizadorderecursos
+
+Files: *
+Copyright: 2026 Projeto Mainuan e contribuidores
+           Autores originais do Atualizador de Recursos do TigerOS
+License: GPL-3.0
+ This program is distributed under the GNU General Public License version 3.
+ On Debian systems the full license is in /usr/share/common-licenses/GPL-3.

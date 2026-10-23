@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "sequence": 1,
+  "published_at": "2026-10-22T12:00:00Z",
+  "expires_at": "2026-11-21T12:00:00Z",
+  "releases": [
+    {
+      "id": "mainuan-boas-vindas",
+      "version": "1.0",
+      "title": "Seu Mainuan está evoluindo!",
+      "summary": "Conheça a nova experiência de boas-vindas e as opções para personalizar sua área de trabalho.",
+      "article_url": "https://mainuan.example/novidades/boas-vindas",
+      "compatibility": {
+        "distro_id": ["mainuan"],
+        "version_id": ["26.04"],
+        "architecture": ["amd64", "arm64"]
+      },
+      "features": [
+        {
+          "title": "Nova experiência de boas-vindas",
+          "packages": [{"name": "mainuan-boas-vindas", "min_version": "1.2.0"}]
+        },
+        {
+          "title": "Mais opções de personalização",
+          "packages": [{"name": "mainuan-personalizacao", "min_version": "2.0.0"}]
+        }
+      ]
+    }
+  ]
+}

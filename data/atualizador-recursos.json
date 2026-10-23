@@ -1,0 +1,14 @@
+{
+  "manifest_url": "https://raw.githubusercontent.com/mainuan/atualizadorderecursos/main/catalogo/novidades.json",
+  "official_hosts": [
+    "raw.githubusercontent.com",
+    "github.com"
+  ],
+  "manifest_prefixes": [
+    "https://raw.githubusercontent.com/mainuan/atualizadorderecursos/main/catalogo/"
+  ],
+  "article_prefixes": [
+    "https://github.com/mainuan/"
+  ],
+  "keys": {}
+}

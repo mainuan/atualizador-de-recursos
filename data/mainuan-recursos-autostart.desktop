@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Novidades do Mainuan
+Comment=Verifica novidades durante a sessão
+Exec=mainuan-atualizador-recursos --check
+Icon=mainuan-recursos
+Terminal=false
+OnlyShowIn=KDE;
+X-KDE-StartupNotify=false
