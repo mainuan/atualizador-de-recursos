@@ -188,6 +188,7 @@ class ChannelTests(unittest.TestCase):
         release = self.load()
         for version in ('1.0', '2.0'):
             with patch('apt.Cache', return_value={'pacote-programa-um':package(installed=version)}), \
+                 patch.object(github.os, 'geteuid', return_value=1000), \
                  patch.object(self.channel, '_download') as download, patch.object(self.channel, 'verify_file') as verify:
                 self.assertTrue(self.channel.prepare_plan(release, Mock()).complete)
                 download.assert_not_called(); verify.assert_not_called()
@@ -343,11 +344,12 @@ class OriginTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             channel = github.GitHubChannel(Path(tmp), State())
             channel.online = True
-            with patch.object(github, 'session_kind', return_value=SessionKind.LIVE), \
-                 patch.object(github.os, 'geteuid', return_value=1000), patch.object(channel, 'plan') as plan:
-                with self.assertRaisesRegex(CatalogError, 'Live'):
-                    channel.prepare_plan(object(), Mock())
-                plan.assert_not_called()
+            for session, uid in ((SessionKind.LIVE, 1000), (SessionKind.INSTALLED, 0)):
+                with patch.object(github, 'session_kind', return_value=session), \
+                     patch.object(github.os, 'geteuid', return_value=uid), patch.object(channel, 'plan') as plan:
+                    with self.assertRaisesRegex(CatalogError, 'Live'):
+                        channel.prepare_plan(object(), Mock())
+                    plan.assert_not_called()
 
 
 class NormalEntryTests(unittest.TestCase):
