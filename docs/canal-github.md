@@ -17,7 +17,7 @@ sudo: a autorização administrativa pertence ao agente PolicyKit.
    é gerado e publicado pelo GitHub, não uma assinatura do desenvolvedor. Sem ele,
    o pacote é bloqueado. Anexar SHA256SUMS também permite a verificação humana,
    mas o aplicativo exige e compara o digest da API.
-4. Edite `packages.txt` na main de `mainuan/atualizadorderecursos`: um nome de
+4. Edite `packages.txt` na main de `mainuan/atualizador-de-recursos`: um nome de
    repositório por linha, sem URL, versão ou comando. Linhas vazias e comentários
    iniciados por `#` são aceitos. Repetições são rejeitadas.
 5. Edite `message.txt`: mensagem livre em português, preservando parágrafos e

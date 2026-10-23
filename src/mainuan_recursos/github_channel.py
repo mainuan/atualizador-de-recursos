@@ -28,7 +28,7 @@ from .session import SessionKind, session_kind, system_identity
 from .state import atomic_write
 
 API = 'https://api.github.com/repos/mainuan/'
-OFFICIAL = 'atualizadorderecursos'
+OFFICIAL = 'atualizador-de-recursos'
 REPO = re.compile(r'[A-Za-z0-9][A-Za-z0-9._-]{0,99}\Z')
 DEB = re.compile(r'([a-z0-9][a-z0-9+.-]+)_([^_/]+)_([a-z0-9][a-z0-9-]*)\.deb\Z')
 MAX_PACKAGE = 128 * 1024 * 1024
@@ -58,7 +58,7 @@ def validate_url(url, repository=None, redirect=False):
         allowed = ((parsed.hostname == 'api.github.com' and bool(re.match(
             r'^/repos/mainuan/[A-Za-z0-9][A-Za-z0-9._-]{0,99}(?:/|$)', path)))
             or (parsed.hostname == 'raw.githubusercontent.com'
-                and bool(re.fullmatch(r'/mainuan/atualizadorderecursos/[a-f0-9]{40}/(?:packages|message)\.txt', path))))
+                and bool(re.fullmatch(rf'/mainuan/{OFFICIAL}/[a-f0-9]{{40}}/(?:packages|message)\.txt', path))))
     require(allowed, 'Origem ou redirecionamento fora da organização oficial Mainuan.')
 
 
@@ -244,7 +244,7 @@ class GitHubChannel:
             sequence += 1
         sequence = max(1, sequence)
         edition = Release('github', digest[:24], 'O Mainuan tem novidades!', message,
-                          assets[0]['article'] if assets else 'https://github.com/mainuan/atualizadorderecursos/releases',
+                          assets[0]['article'] if assets else f'https://github.com/mainuan/{OFFICIAL}/releases',
                           tuple(features), {'distro_id': ['mainuan', 'ubuntu'], 'version_id': ['26.04', '2026'],
                                             'architecture': [self.system['architecture']]})
         previous = [e for e in self.cache['editions'] if e['release']['version'] != edition.version]

@@ -327,6 +327,8 @@ class ChannelTests(unittest.TestCase):
 
 class OriginTests(unittest.TestCase):
     def test_https_scope_and_redirect_validation(self):
+        github.validate_url(f'https://raw.githubusercontent.com/mainuan/{github.OFFICIAL}/' + 'a'*40 + '/packages.txt')
+        github.validate_url(f'https://raw.githubusercontent.com/mainuan/{github.OFFICIAL}/' + 'a'*40 + '/message.txt')
         for url in ('http://api.github.com/repos/mainuan/repo', 'https://api.github.com/repos/mainuan-malicioso/repo',
                     'https://github.com/terceiro/repo/releases/download/v1/pkg.deb',
                     'https://github.com/mainuan/repo/releases/download/../v1/pkg.deb',

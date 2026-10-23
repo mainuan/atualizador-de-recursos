@@ -115,7 +115,7 @@ jobs:
             --notes-file docs/v0.2.1.md
   release-022:
     needs: build
-    if: github.repository == 'mainuan/atualizadorderecursos' && github.ref == 'refs/tags/v0.2.2'
+    if: github.repository == 'mainuan/atualizador-de-recursos' && github.ref == 'refs/tags/v0.2.2'
     runs-on: ubuntu-24.04
     permissions:
       contents: write
