@@ -207,7 +207,7 @@ class ExperienceAuditTests(unittest.TestCase):
         self.assertGreater(window.view.scroll.verticalScrollBar().maximum(),0)
         scroll_bottom=window.view.scroll.mapTo(window,window.view.scroll.rect().bottomLeft()).y()
         self.assertLess(scroll_bottom,window.know.mapTo(window,window.know.rect().topLeft()).y())
-        self.assertTrue(window.know.font().bold())
+        self.assertTrue(window.install.font().bold())
         window.close()
 
     def test_apt_failure_preserves_authenticated_catalog_and_disables_install(self):

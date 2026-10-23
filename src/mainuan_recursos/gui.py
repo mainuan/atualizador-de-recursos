@@ -11,7 +11,7 @@ from .catalog import CatalogError, Config
 from .classic import ClassicContent, text_label as label
 from .controller import Controller, Worker
 from .localization import localize_standard_buttons
-from .packages import build_plan
+from .packages import build_plan, identity
 from .repository import Repository
 from .session import system_identity
 
@@ -33,6 +33,7 @@ class Window(QMainWindow):
         self.active_release = None
         self.package_error = ''
         self.load_error = ''
+        self._primary_focus_pending = True
         self.setWindowTitle('Atualizador de Recursos do Mainuan' + (' — Demonstração' if demo else ' — Homologação GitHub' if github_trial else ''))
         self.setWindowIcon(QIcon.fromTheme('mainuan-recursos', QIcon.fromTheme('system-software-update')))
         self.resize(720, 420)
@@ -119,10 +120,17 @@ class Window(QMainWindow):
                     f'  Disponível: {row.candidate or "indisponível" if row else "não verificada"}',
                     f'  Arquitetura: {row.architecture if row else requested.architecture or "não verificada"}',
                     f'  Situação: {row.status if row else "pacotes não verificados"}'))
+                if requested.sha256:
+                    lines.append(f'  SHA-256 aprovado: {requested.sha256}')
             lines.append('')
         lines.append('A operação completa, incluindo dependências, será apresentada na confirmação da instalação.')
         if self.demo:
             lines.append('Demonstração: autorização e instalação simuladas; nenhum pacote será alterado.')
+        elif self.github_trial:
+            lines.extend(('', 'Homologação GitHub: origem oficial e artefato fixados por IDs e SHA-256.',
+                          'O download começa somente após escolher instalar.',
+                          'Arquivo local sem assinatura de repositório APT. O PackageKit/PolicyKit pode solicitar autorização para origem não confiável.',
+                          'O ensaio permite somente o aplicativo Gestão de Drivers; alterações em outros pacotes são bloqueadas.'))
         return '\n'.join(lines)
 
     def _enable(self, _=False):
@@ -137,6 +145,9 @@ class Window(QMainWindow):
         self.install.setEnabled(bool(not busy and compatible and self.online and plan and plan.pending and not plan.blockers))
         self.later.setEnabled(not busy and self.current is not None)
         self.progress.setVisible(bool(self.worker or self.controller.busy))
+        if self._primary_focus_pending and self.install.isEnabled():
+            self.install.setFocus(Qt.FocusReason.OtherFocusReason)
+            self._primary_focus_pending = False
 
     def reload(self):
         if self.worker or self.controller.busy or self.controller.awaiting:
@@ -263,6 +274,8 @@ class Window(QMainWindow):
 
     def showEvent(self, event):
         super().showEvent(event)
+        if self.install.isEnabled():
+            self.install.setFocus(Qt.FocusReason.OtherFocusReason)
         self.mark_viewed()
 
     def open_article(self):
@@ -282,13 +295,33 @@ class Window(QMainWindow):
             self.active_release = self.current
             self.controller.prepare(self.current)
 
+    @staticmethod
+    def _exact_announced_operation(prepared):
+        """Somente os efeitos já validados e anunciados dispensam outro clique."""
+        rows = prepared.plan.pending
+        if prepared.plan.blockers or not rows or {r.name for r in prepared.plan.rows} != {p.name for p in prepared.release.packages}:
+            return False
+        expected = {(r.name, r.candidate, r.architecture, r.installed) for r in rows}
+        try:
+            actual = {(*identity(package_id), installed) for info, package_id, installed in prepared.evidence if info in (11, 12)}
+        except ValueError:
+            return False
+        return (len(expected) == len(rows) == len(prepared.evidence)
+                and all(info in (11, 12) for info, _, _ in prepared.evidence)
+                and actual == expected)
+
     def _confirm(self, prepared):
+        if self._exact_announced_operation(prepared):
+            # O clique inicial já expressou a intenção. confirm() ainda revalida
+            # plano, origens, hashes, simulação e efeitos antes de executar.
+            self.controller.confirm(prepared)
+            return
         self._enable()
         from PyQt6.QtWidgets import QDialog, QDialogButtonBox, QPlainTextEdit
         dialog = QDialog(self)
         dialog.setWindowTitle('Confirmar instalação' + (' — Demonstração' if self.demo else ''))
         layout = QVBoxLayout(dialog)
-        layout.addWidget(label('Deseja receber estas novidades do Mainuan?'))
+        layout.addWidget(label('A instalação precisa alterar outros pacotes ou revisar o plano. Confira a operação antes de continuar.'))
         details = QPlainTextEdit()
         details.setReadOnly(True)
         direct = '\n'.join(f'{r.name}: {r.installed or "não instalado"} → {r.candidate}' for r in prepared.plan.pending)
@@ -298,8 +331,6 @@ class Window(QMainWindow):
         details.setAccessibleName('Pacotes e dependências da operação')
         layout.addWidget(details)
         layout.addWidget(label('Autorização e instalação serão simuladas.' if self.demo else
-                               'Homologação GitHub: arquivo local verificado por SHA-256, sem assinatura de repositório APT. '
-                               'O PolicyKit poderá informar origem não confiável. Instale somente o aplicativo; não execute o gestor neste ensaio.' if self.github_trial else
                                'O sistema solicitará autorização para instalar.'))
         buttons = QDialogButtonBox()
         buttons.addButton('Instalar novidades', QDialogButtonBox.ButtonRole.AcceptRole)

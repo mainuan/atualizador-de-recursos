@@ -133,6 +133,9 @@ class ClassicIntegrationTests(unittest.TestCase):
 
     def test_real_install_button_can_cancel_without_marking_installed(self):
         window, _ = self.create()
+        # Uma alteração adicional relevante continua exigindo confirmação.
+        original = window.controller.effects_validator
+        window.controller.effects_validator = lambda effects, expected: original(effects, expected) + ((12, 'dependencia-extra;1;amd64;demo', ''),)
         def cancel():
             dialog = APP.activeModalWidget()
             if dialog:

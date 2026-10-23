@@ -121,11 +121,13 @@ def execute(app):
             assert close.text().replace('&','')=='Fechar'
             close.click()
             assert window.grab().save(SCREENSHOT)
+            window.demo.scenario='cancelado'
             stage[0]='cancel'
             window.install.click()
-        elif stage[0]=='cancelled':
+        elif stage[0]=='cancel' and not window.controller.busy and not window.controller.awaiting:
             assert not window.demo.installed and window.state.entry(window.current)['packages']=='pending'
             assert 'cancelada' in window.status.text()
+            window.demo.scenario='novo'
             stage[0]='installing'
             window.install.click()
         elif window.controller.busy and window.progress.maximum()==100 and window.progress.value()>0:

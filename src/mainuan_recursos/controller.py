@@ -73,7 +73,7 @@ class Controller(QObject):
         self.release = release
         self.confirmed = None
         self._set_busy(True)
-        self.progress.emit('Verificando os pacotes anunciados…', None)
+        self.progress.emit('Preparando instalação...', None)
         try:
             self.guard()
         except Exception as exc:
@@ -111,7 +111,7 @@ class Controller(QObject):
                 raise PlanningError('A origem ou a versão dos pacotes mudou. Revise uma nova operação.')
         except PlanningError as exc:
             return self._fail(str(exc))
-        self.progress.emit('Simulando a instalação e verificando dependências…', None)
+        self.progress.emit('Preparando instalação...', None)
         self._tx('InstallPackages', self.ids, True, self._simulated)
 
     def _simulated(self, result):
@@ -130,7 +130,7 @@ class Controller(QObject):
                 self.guard()
             except Exception as exc:
                 return self._fail(str(exc))
-            self.progress.emit('Instalando novidades; a autorização será solicitada pelo sistema…', None)
+            self.progress.emit('Instalando novidades...', None)
             self._tx('InstallPackages', self.ids, False, self._installed)
         else:
             self.awaiting = Prepared(self.release, self.plan, self.ids, evidence)
@@ -143,7 +143,7 @@ class Controller(QObject):
         self.awaiting = None
         self.confirmed = prepared
         self._set_busy(True)
-        self.progress.emit('Revalidando a operação confirmada…', None)
+        self.progress.emit('Preparando instalação...', None)
         self._work(lambda: self.plan_provider(self.release), self._planned)
 
     def cancel_preparation(self):
@@ -151,16 +151,19 @@ class Controller(QObject):
             self.awaiting = None
 
     def _installed(self, result):
-        self.progress.emit('Conferindo as versões realmente instaladas…', None)
+        self.progress.emit('Preparando instalação...', None)
         def verified(plan):
             success = result.success and plan.complete
-            message = ('As novidades foram instaladas e verificadas. Aproveite!' if success else
+            message = ('Concluído! Aproveite os novos recursos do Mainuan.' if success else
                        result.error or 'O PackageKit encerrou a operação, mas as versões instaladas ainda não foram confirmadas.')
             if result.restart >= 2:
                 message += '\nO sistema solicitou reinício de aplicativo, sessão ou computador.'
             self._finish(success, message, plan)
         # Mesmo após falhas, observar o estado real para não ocultar resultados parciais.
-        self._work(lambda: self.plan_provider(self.release), verified)
+        self._work(lambda: self.verification_plan(self.release), verified)
+
+    def verification_plan(self, release):
+        return self.plan_provider(release)
 
     def _fail(self, message, plan=None):
         self._finish(False, message, plan)

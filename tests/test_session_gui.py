@@ -113,7 +113,7 @@ class WindowTests(unittest.TestCase):
             window.open_article()
             self.assertEqual(open_url.call_args.args[0].toString(),demo.release.article_url)
 
-    def test_full_demo_flow_through_confirmation_and_verified_status(self):
+    def test_full_demo_flow_without_redundant_confirmation_and_verified_status(self):
         from PyQt6.QtCore import QTimer
         from PyQt6.QtTest import QTest
         from PyQt6.QtWidgets import QApplication, QDialog, QPushButton
@@ -135,10 +135,10 @@ class WindowTests(unittest.TestCase):
         window.prepare()
         wait_until(lambda:demo.installed and not window.controller.busy)
         timer.stop()
-        self.assertTrue(clicked)
+        self.assertFalse(clicked)
         self.assertEqual(state.entry(demo.release)['packages'],'installed')
         self.assertFalse(window.install.isEnabled())
-        self.assertIn('verificadas',window.status.text())
+        self.assertEqual(window.status.text(),'Concluído! Aproveite os novos recursos do Mainuan.')
         window.close()
 
     def test_state_write_failure_shown_without_crashing_widgets(self):

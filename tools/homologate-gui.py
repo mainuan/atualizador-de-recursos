@@ -112,15 +112,13 @@ def main():
             report['catalog_message']=window.summary.text()==window.current.summary
             report['menu_actions']=[action.text() for action in window.view.menu.actions() if not action.isSeparator()]
             save('novidade')
-            stage[0]='confirmation'
-            window.prepare()
-        elif stage[0]=='confirmation':
+            stage[0]='installing'
+            window.install.click()
+        elif stage[0]=='installing' and isinstance(app.activeModalWidget(),QDialog):
             dialog=app.activeModalWidget()
-            if isinstance(dialog,QDialog):
-                save('confirmacao',dialog)
-                approve=next(b for b in dialog.findChildren(QPushButton) if b.text()=='Instalar novidades')
-                stage[0]='installing'
-                approve.click()
+            report['error']='Confirmação redundante em operação idêntica aos recursos anunciados'
+            dialog.reject()
+            finish()
         elif stage[0]=='installing' and window.controller.busy and window.progress.maximum()==100:
             save('progresso');stage[0]='done'
         elif stage[0] in ('installing','done') and demo.installed and not window.controller.busy:

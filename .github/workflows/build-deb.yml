@@ -2,7 +2,7 @@ name: Testar e gerar pacote Debian
 on:
   push:
     branches: [main]
-    tags: [v0.2.0-rc1]
+    tags: [v0.2.0-rc1, v0.2.1]
   pull_request:
   workflow_dispatch:
 permissions:
@@ -26,21 +26,31 @@ jobs:
         run: /usr/bin/python3 -m unittest discover -s tests -v
       - name: Validar entradas desktop
         run: desktop-file-validate data/*.desktop
+      - name: Conferir o artefato final aprovado
+        run: |
+          cd releases/v0.2.1
+          sha256sum -c mainuan-atualizador-recursos_0.2.1_all.deb.sha256
+          printf '%s  %s\n' 'ba6d66c08d53d40d94bfc31da6110bb99fede20426796e68cf07607f0a16b0a2' 'mainuan-atualizador-recursos_0.2.1_all.deb' | sha256sum -c -
+          /usr/bin/python3 ../../tools/audit_python_package.py mainuan-atualizador-recursos_0.2.1_all.deb --expected-version 0.2.1
       - name: Construir com debhelper
         run: dpkg-buildpackage -us -uc -b
       - name: Reunir pacote
         run: |
+          version="$(dpkg-parsechangelog -S Version)"
+          package="mainuan-atualizador-recursos_${version}_all.deb"
           mkdir -p dist
-          cp ../mainuan-atualizador-recursos_*.deb dist/
-          (cd dist && sha256sum *.deb > SHA256SUMS)
-          dpkg-deb --info dist/*.deb
-          dpkg-deb --contents dist/*.deb
+          cp "../$package" "dist/$package"
+          /usr/bin/python3 tools/audit_python_package.py "dist/$package" --expected-version "$version" --output dist/auditoria-pacote.json
+          (cd dist && sha256sum "$package" > SHA256SUMS)
+          dpkg-deb --info "dist/$package"
+          dpkg-deb --contents "dist/$package"
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: mainuan-atualizador-recursos-deb
           path: |
             dist/*.deb
             dist/SHA256SUMS
+            dist/auditoria-pacote.json
           if-no-files-found: error
   prerelease:
     needs: build
@@ -72,3 +82,33 @@ jobs:
           gh release create "$GITHUB_REF_NAME" dist/mainuan-atualizador-recursos_0.2.0_all.deb dist/SHA256SUMS \
             --verify-tag --prerelease --latest=false --title 'Atualizador de Recursos 0.2.0 RC1' \
             --notes-file docs/v0.2.0-rc1.md
+  release:
+    needs: build
+    if: github.repository == 'mainuan/atualizadorderecursos' && github.ref == 'refs/tags/v0.2.1'
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Conferir referência e arquivos aprovados
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor "$GITHUB_SHA" origin/main
+          cd releases/v0.2.1
+          sha256sum -c mainuan-atualizador-recursos_0.2.1_all.deb.sha256
+          printf '%s  %s\n' 'ba6d66c08d53d40d94bfc31da6110bb99fede20426796e68cf07607f0a16b0a2' 'mainuan-atualizador-recursos_0.2.1_all.deb' | sha256sum -c -
+          test "$(dpkg-deb -f mainuan-atualizador-recursos_0.2.1_all.deb Version)" = '0.2.1'
+          test "$(dpkg-deb -f mainuan-atualizador-recursos_0.2.1_all.deb Architecture)" = 'all'
+      - name: Publicar a versão estável autorizada com o pacote homologado
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" \
+            releases/v0.2.1/mainuan-atualizador-recursos_0.2.1_all.deb \
+            releases/v0.2.1/mainuan-atualizador-recursos_0.2.1_all.deb.sha256 \
+            --verify-tag --latest --title 'Atualizador de Recursos 0.2.1' \
+            --notes-file docs/v0.2.1.md

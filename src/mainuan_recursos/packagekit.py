@@ -175,10 +175,9 @@ class Transaction(QObject):
             for key in args[2] if len(args) > 2 else ():
                 self.properties.pop(key, None)
             percentage = self.properties.get('Percentage')
-            status = {1: 'Aguardando', 8: 'Baixando pacotes', 9: 'Instalando', 10: 'Atualizando',
-                      11: 'Finalizando', 13: 'Resolvendo dependências', 14: 'Verificando assinaturas',
-                      29: 'Preparando lista de pacotes', 30: 'Aguardando outro gerenciador de pacotes',
-                      31: 'Aguardando autorização'}.get(self.properties.get('Status'), 'Processando')
+            status = {8: 'Baixando novidades...', 9: 'Instalando novidades...', 10: 'Instalando novidades...',
+                      30: 'Aguardando outro gerenciador de pacotes...',
+                      31: 'Aguardando autorização...'}.get(self.properties.get('Status'), 'Preparando instalação...')
             self.progress.emit(status, percentage if isinstance(percentage, int) and 0 <= percentage <= 100 else None)
             if len(args) > 2 and args[2]:
                 self.transport.call(self.path, PROPERTIES, 'GetAll', [TX], self._properties)

@@ -64,8 +64,8 @@ class DemoTransaction(QObject):
             QTimer.singleShot(50, lambda: self.finished.emit(Result(True, tuple((12, p) for p in values))))
         else:
             assert authorized
-            self.progress.emit('Demonstração: autorização simulada', 0)
-            QTimer.singleShot(250, lambda: self.progress.emit('Demonstração: instalando novidades', 55))
+            self.progress.emit('Preparando instalação...', 0)
+            QTimer.singleShot(250, lambda: self.progress.emit('Instalando novidades...', 55))
             def finish():
                 failed = self.demo.scenario in ('erro', 'cancelado')
                 if not failed:

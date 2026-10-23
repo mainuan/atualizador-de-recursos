@@ -13,6 +13,7 @@ import ssl
 
 from PyQt6 import QtDBus
 
+from . import __version__
 from .catalog import Catalog, CatalogError, Feature, Package, Release, decode
 from .controller import Controller
 from .packagekit import Transaction, ROOT, SERVICE, PROPERTIES
@@ -68,12 +69,22 @@ class Redirects(HTTPRedirectHandler):
         return super().redirect_request(req, fp, code, msg, headers, newurl)
 
 
-def download(url, limit=1024 * 1024, binary=False):
+def download(url, limit=1024 * 1024, binary=False, progress=None):
     check_url(url, binary)
     opener = build_opener(HTTPSHandler(context=ssl.create_default_context()), Redirects(binary))
-    with opener.open(Request(url, headers={'User-Agent': 'Mainuan-Recursos-Homologacao/0.2.0',
+    with opener.open(Request(url, headers={'User-Agent': f'Mainuan-Recursos-Homologacao/{__version__}',
                                          'Accept': 'application/octet-stream' if binary else 'application/json'}), timeout=30) as response:
-        data = response.read(limit + 1)
+        chunks = []
+        received = 0
+        while received <= limit:
+            chunk = response.read(min(65536, limit + 1 - received))
+            if not chunk:
+                break
+            chunks.append(chunk)
+            received += len(chunk)
+            if progress:
+                progress(min(100, received * 100 // limit))
+        data = b''.join(chunks)
     require(len(data) <= limit, 'Resposta GitHub excede o tamanho permitido.')
     return data
 
@@ -126,14 +137,6 @@ class GitHubTrial:
         require(asset.get('name') == self.path.name and asset.get('size') == SIZE
                 and asset.get('digest') == 'sha256:' + SHA256 and asset.get('browser_download_url') == ASSET_URL,
                 'A release foi alterada ou não corresponde ao pacote aprovado para este ensaio.')
-        if self.path.exists():
-            self.verify_file()
-        else:
-            payload = download(ASSET_URL, SIZE, binary=True)
-            require(len(payload) == SIZE and hashlib.sha256(payload).hexdigest() == SHA256, 'Download do pacote com integridade inválida.')
-            self.path.parent.mkdir(mode=0o700, parents=True, exist_ok=True)
-            with os.fdopen(os.open(self.path, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600), 'wb') as stream:
-                stream.write(payload)
         # O SHA aprovado vincula também o payload e os scripts de manutenção
         # já examinados: nenhum módulo, firmware, serviço ou autostart.
         published = datetime.fromisoformat(commit['commit']['committer']['date'].replace('Z', '+00:00'))
@@ -147,11 +150,10 @@ class GitHubTrial:
         content = (sha + '\n' + names + '\n' + message + '\n' + SHA256).encode()
         return Catalog(int(published.timestamp()), now + timedelta(hours=4), (self.release,), hashlib.sha256(content).hexdigest()), True
 
-    def plan(self, release):
+    def plan(self, release, check_dependencies=False):
         import apt
         import apt.debfile
         require(release == self.release, 'Lançamento experimental não aprovado.')
-        self.verify_file()
         cache = apt.Cache()
         pkg = cache[NAME] if NAME in cache else None
         installed = pkg.installed.version if pkg and pkg.installed else ''
@@ -164,7 +166,8 @@ class GitHubTrial:
         if status in ('Instalar', 'Atualizar'):
             if pkg and pkg._pkg.selected_state == 2:
                 status = 'Pacote retido pelo administrador'
-            else:
+            elif check_dependencies:
+                self.verify_file()
                 deb = apt.debfile.DebPackage(str(self.path), cache)
                 require((deb['Package'], deb['Version'], deb['Architecture']) == (NAME, VERSION, 'all'), 'Metadados Debian divergentes.')
                 if not deb.check():
@@ -173,12 +176,43 @@ class GitHubTrial:
                     status = 'Este ensaio não permite alterar dependências: ' + ', '.join(name for group in deb.required_changes for name in group)
         return Plan((PackageRow(NAME, VERSION, installed, VERSION, 'all', status, SHA256),))
 
+    def prepare_plan(self, release, progress):
+        # A consulta inicial usa apenas metadados e o inventário instalado.
+        # O arquivo e suas dependências só são examinados após a ação de instalar.
+        plan = self.plan(release)
+        if plan.complete or plan.blockers:
+            return plan
+        supports_local_files()
+        if self.path.exists() or self.path.is_symlink():
+            self.verify_file()
+        else:
+            progress('Baixando novidades...', 0)
+            payload = download(ASSET_URL, SIZE, binary=True,
+                               progress=lambda percent: progress('Baixando novidades...', percent))
+            require(len(payload) == SIZE and hashlib.sha256(payload).hexdigest() == SHA256, 'Download do pacote com integridade inválida.')
+            self.path.parent.mkdir(mode=0o700, parents=True, exist_ok=True)
+            descriptor = os.open(self.path, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
+            try:
+                with os.fdopen(descriptor, 'wb') as stream:
+                    stream.write(payload)
+            except BaseException:
+                self.path.unlink(missing_ok=True)
+                raise
+        progress('Preparando instalação...', None)
+        return self.plan(release, check_dependencies=True)
+
 
 class GitHubController(Controller):
     def __init__(self, trial, parent=None, guard=lambda: None):
         self.trial = trial
-        super().__init__(parent, plan_provider=trial.plan, guard=guard,
+        super().__init__(parent, plan_provider=self._prepare_plan, guard=guard,
                          transaction_factory=partial(Transaction, allow_local_files=True))
+
+    def _prepare_plan(self, release):
+        return self.trial.prepare_plan(release, self.progress.emit)
+
+    def verification_plan(self, release):
+        return self.trial.plan(release)
 
     def _planned(self, plan):
         if plan.blockers:
@@ -213,5 +247,5 @@ class GitHubController(Controller):
             self.trial.verify_file()
         except Exception as exc:
             return self._fail(str(exc))
-        self.progress.emit('Instalando o aplicativo pelo PackageKit; autorize no diálogo do sistema…', None)
+        self.progress.emit('Instalando novidades...', None)
         self._tx('InstallFiles', self.ids, False, self._installed)

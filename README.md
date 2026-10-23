@@ -1,5 +1,13 @@
 # Atualizador de Recursos do Mainuan
 
+Para a **versão estável 0.2.1**, consulte as [notas de lançamento](docs/v0.2.1.md) e a
+[finalização, origem do aviso nativo e auditoria x86-64-v1](docs/finalizacao-0.2.1.md).
+O pacote permanece Python/PyQt6, `Architecture: all`, com produção desativada.
+
+Para testar o ajuste de instalação da **candidata local 0.2.1~rc1**, consulte
+[o fluxo simplificado, os limites e as instruções para a VM](docs/experiencia-instalacao-rc.md).
+Esta candidata não foi publicada; a produção continua desativada.
+
 Para o primeiro teste prático em VM com snapshot, consulte
 [a versão candidata 0.2.0 RC1 e o modo `--homologacao-github`](docs/v0.2.0-rc1.md).
 Esse modo lê `packages.txt` e `message.txt` do GitHub, instala exclusivamente o

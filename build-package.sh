@@ -15,3 +15,4 @@ printf '/etc/mainuan/atualizador-recursos.json\n/etc/xdg/autostart/mainuan-recur
 install -m644 debian/copyright "$STAGING/usr/share/doc/$PACKAGE/copyright"
 chmod 0755 "$STAGING"
 dpkg-deb --build --root-owner-group "$STAGING" "dist/${PACKAGE}_${VERSION}_all.deb"
+/usr/bin/python3 tools/audit_python_package.py "dist/${PACKAGE}_${VERSION}_all.deb" --expected-version "$VERSION"
