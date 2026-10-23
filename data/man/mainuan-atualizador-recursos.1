@@ -1,11 +1,13 @@
-.TH MAINUAN-ATUALIZADOR-RECURSOS 1 "23 outubro 2026" "Mainuan 0.2.1" "Comandos do usuário"
+.TH MAINUAN-ATUALIZADOR-RECURSOS 1 "23 outubro 2026" "Mainuan 0.2.2" "Comandos do usuário"
 .SH NOME
 mainuan-atualizador-recursos \- conheça e receba as novidades oficiais do Mainuan
 .SH SINOPSE
 .B mainuan-atualizador-recursos
 .RI [ opções ]
 .SH DESCRIÇÃO
-Apresenta lançamentos oficiais de um catálogo JSON assinado. Permite conhecer
+Consulta packages.txt e message.txt do mesmo commit oficial no GitHub e apresenta
+releases estáveis com pacotes Debian compatíveis da organização Mainuan.
+Não exige chaves, VM, GitHub App ou configuração adicional. Permite conhecer
 os recursos no navegador e confirmar a instalação voluntária por PackageKit e
 PolicyKit. Não realiza atualização geral do APT ou Flatpak.
 .SH OPÇÕES
@@ -39,13 +41,15 @@ Mostra a versão e encerra.
 .SH ARQUIVOS
 .TP
 .I /etc/mainuan/atualizador-recursos.json
-URL do catálogo, prefixos oficiais e chaves públicas administrados pela distribuição.
+Configuração histórica de catálogo assinado; não utilizada pelo canal normal GitHub.
 .TP
 .I ~/.local/state/mainuan-recursos/
-Estado, cache autenticado e lock por usuário. Respeita XDG_STATE_HOME.
+Estado, histórico/cache GitHub e lock por usuário. Respeita XDG_STATE_HOME.
 .SH SEGURANÇA
-A produção exige chave pública oficial provisionada e catálogo assinado válido.
-O manifesto não permite comandos, repositórios ou URLs de pacotes. A instalação
-exige confirmação, simulação, pacotes confiáveis e autorização do sistema.
+Downloads HTTPS oficiais, SHA-256 publicado na API do GitHub e metadados internos
+são conferidos antes de instalar. Simulação/revalidação bloqueiam alterações não
+anunciadas. A autorização é nativa do PolicyKit, sem captura de senha.
+HTTPS e SHA-256 não equivalem à assinatura de um repositório APT. Advertências
+nativas de origem não confiável são preservadas. Nenhuma instalação é automática.
 .SH DOCUMENTAÇÃO
 /usr/share/doc/mainuan-atualizador-recursos/

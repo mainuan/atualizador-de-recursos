@@ -14,5 +14,5 @@ Recommends: polkit-kde-agent-1, qt6-wayland, qt6-svg-plugins
 Conflicts: feature-update-manager
 Replaces: feature-update-manager
 Description: Canal de novidades e recursos oficiais do Mainuan
- Apresenta novidades assinadas e instala voluntariamente os recursos
+ Apresenta novidades oficiais do GitHub e instala voluntariamente os recursos
  anunciados usando PackageKit e PolicyKit com interface Qt6.

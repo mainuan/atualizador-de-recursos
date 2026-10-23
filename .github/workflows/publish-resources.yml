@@ -1,17 +1,11 @@
 name: Publicar recursos aprovados
 on:
-  push:
-    branches: [main]
-    paths: [packages.txt, message.txt]
   workflow_dispatch:
     inputs:
       atualizar_programas:
         description: Aprovar seleção de novas releases estáveis dos programas listados
         type: boolean
         default: false
-  schedule:
-    # Renova apenas a validade. Não seleciona novas releases nem reapresenta novidades.
-    - cron: '27 8 * * 1'
 permissions:
   contents: read
 concurrency:
@@ -19,9 +13,9 @@ concurrency:
   cancel-in-progress: false
 jobs:
   publicar:
-    if: >-
-      github.repository == 'mainuan/atualizadorderecursos' &&
-      github.ref == 'refs/heads/main' && vars.RECURSOS_PRODUCAO == 'true'
+    # Arquivo histórico: o canal padrão 0.2.2 consulta o GitHub diretamente.
+    # Nem edição dos .txt, nem execução manual ativam a infraestrutura antiga.
+    if: ${{ false }}
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     environment: publicacao-recursos

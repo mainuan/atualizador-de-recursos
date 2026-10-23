@@ -1,4 +1,13 @@
-# Publicar novidades usando dois arquivos
+# Publicação atual: canal GitHub 0.2.2
+
+**Use [Publicação pelo canal GitHub](canal-github.md).** Basta publicar releases
+estáveis oficiais, editar `packages.txt` e `message.txt`. O modo normal não depende
+de catálogo assinado, chaves, GitHub App ou repositório APT próprio.
+
+O restante deste documento registra a infraestrutura anterior, atualmente
+**desativada**, e não deve ser seguido para publicar novidades na versão 0.2.2.
+
+## Registro histórico: publicação com catálogo/APT
 
 A rotina do administrador passa a usar apenas `packages.txt` e `message.txt`.
 **Não há JSON, versão de catálogo ou assinatura para preencher a cada publicação.**

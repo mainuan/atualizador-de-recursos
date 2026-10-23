@@ -105,10 +105,19 @@ def main(argv=None):
                 QMessageBox.warning(None, 'Não foi possível abrir o histórico', str(exc))
             return 1
         trial = None
+        channel = None
         if opts.homologacao_github:
             from .github_trial import GitHubTrial
             trial = GitHubTrial(directory)
-        window = Window(state, directory, automatic=opts.check, github_trial=trial)
+        else:
+            from .github_channel import GitHubChannel
+            try:
+                channel = GitHubChannel(directory, state)
+            except Exception as exc:
+                if not opts.check:
+                    QMessageBox.warning(None, 'Não foi possível abrir o histórico', str(exc))
+                return 1
+        window = Window(state, directory, automatic=opts.check, github_trial=trial, github_channel=channel)
         server = QLocalServer()
         server.setSocketOptions(QLocalServer.SocketOption.UserAccessOption)
         QLocalServer.removeServer(socket_path)

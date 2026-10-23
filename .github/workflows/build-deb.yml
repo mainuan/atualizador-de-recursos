@@ -2,7 +2,7 @@ name: Testar e gerar pacote Debian
 on:
   push:
     branches: [main]
-    tags: [v0.2.0-rc1, v0.2.1]
+    tags: [v0.2.0-rc1, v0.2.1, v0.2.2]
   pull_request:
   workflow_dispatch:
 permissions:
@@ -21,7 +21,7 @@ jobs:
       - name: Preparar ferramentas
         run: |
           apt-get update
-          DEBIAN_FRONTEND=noninteractive apt-get install -y python3 python3-pyqt6 python3-apt python3-cryptography debhelper dpkg-dev gnupg desktop-file-utils
+          DEBIAN_FRONTEND=noninteractive apt-get install -y python3 python3-pyqt6 python3-apt python3-cryptography debhelper dpkg-dev gnupg desktop-file-utils lintian
       - name: Testar
         run: /usr/bin/python3 -m unittest discover -s tests -v
       - name: Validar entradas desktop
@@ -44,6 +44,7 @@ jobs:
           (cd dist && sha256sum "$package" > SHA256SUMS)
           dpkg-deb --info "dist/$package"
           dpkg-deb --contents "dist/$package"
+          lintian "dist/$package"
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: mainuan-atualizador-recursos-deb
@@ -112,3 +113,34 @@ jobs:
             releases/v0.2.1/mainuan-atualizador-recursos_0.2.1_all.deb.sha256 \
             --verify-tag --latest --title 'Atualizador de Recursos 0.2.1' \
             --notes-file docs/v0.2.1.md
+  release-022:
+    needs: build
+    if: github.repository == 'mainuan/atualizadorderecursos' && github.ref == 'refs/tags/v0.2.2'
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Conferir referência autorizada
+        run: git merge-base --is-ancestor "$GITHUB_SHA" origin/main
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: mainuan-atualizador-recursos-deb
+          path: dist
+      - name: Conferir pacote e checksum
+        run: |
+          cd dist
+          sha256sum -c SHA256SUMS
+          test "$(dpkg-deb -f mainuan-atualizador-recursos_0.2.2_all.deb Version)" = '0.2.2'
+          test "$(dpkg-deb -f mainuan-atualizador-recursos_0.2.2_all.deb Architecture)" = 'all'
+      - name: Publicar versão estável 0.2.2 autorizada
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" dist/mainuan-atualizador-recursos_0.2.2_all.deb dist/SHA256SUMS \
+            --verify-tag --latest --title 'Atualizador de Recursos 0.2.2' \
+            --notes-file docs/v0.2.2.md

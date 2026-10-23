@@ -17,13 +17,14 @@ from .session import system_identity
 
 
 class Window(QMainWindow):
-    def __init__(self, state, directory=None, automatic=False, demo=None, github_trial=None):
+    def __init__(self, state, directory=None, automatic=False, demo=None, github_trial=None, github_channel=None):
         super().__init__()
         self.state = state
         self.directory = directory
         self.automatic = automatic
         self.demo = demo
         self.github_trial = github_trial
+        self.github_channel = github_channel
         self.catalog = None
         self.online = False
         self.system = {}
@@ -56,7 +57,10 @@ class Window(QMainWindow):
         self.details_dialog = self._auxiliary_dialog('Informações técnicas', self.details_text)
         kwargs = dict(plan_provider=demo.plan, effects_validator=demo.effects,
                       transaction_factory=demo.transaction) if demo else {}
-        if github_trial:
+        if github_channel:
+            from .github_channel import GitHubController
+            self.controller = GitHubController(github_channel, self, guard=self._guard)
+        elif github_trial:
             from .github_trial import GitHubController
             self.controller = GitHubController(github_trial, self, guard=self._guard)
         else:
@@ -126,6 +130,12 @@ class Window(QMainWindow):
         lines.append('A operação completa, incluindo dependências, será apresentada na confirmação da instalação.')
         if self.demo:
             lines.append('Demonstração: autorização e instalação simuladas; nenhum pacote será alterado.')
+        elif self.github_channel:
+            lines.extend(('', 'Canal oficial GitHub: packages.txt e message.txt no mesmo commit.',
+                          'Pacotes de releases estáveis, com IDs, versões e SHA-256 registrados na consulta.',
+                          'O download começa somente após escolher instalar; alterações não anunciadas são bloqueadas.',
+                          'HTTPS e SHA-256 não equivalem à assinatura de um repositório APT.',
+                          'O PackageKit/PolicyKit pode solicitar autorização para origem não confiável.'))
         elif self.github_trial:
             lines.extend(('', 'Homologação GitHub: origem oficial e artefato fixados por IDs e SHA-256.',
                           'O download começa somente após escolher instalar.',
@@ -160,7 +170,9 @@ class Window(QMainWindow):
                 system = {'distro_id': 'mainuan', 'version_id': '26.04', 'architecture': 'amd64'}
                 plans = {r.key: self.demo.plan(r) for r in catalog.releases if r.compatible(system)}
             else:
-                if self.github_trial:
+                if self.github_channel:
+                    catalog, online = self.github_channel.load()
+                elif self.github_trial:
                     catalog, online = self.github_trial.load()
                 else:
                     config = Config.load()
@@ -168,7 +180,9 @@ class Window(QMainWindow):
                 system = {}
                 try:
                     system = system_identity()
-                    if self.github_trial:
+                    if self.github_channel:
+                        plans = {r.key: self.github_channel.plan(r) for r in catalog.releases if r.compatible(system)}
+                    elif self.github_trial:
                         plans = {r.key: self.github_trial.plan(r) for r in catalog.releases if r.compatible(system)}
                     else:
                         import apt

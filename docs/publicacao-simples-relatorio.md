@@ -1,3 +1,8 @@
+# Registro histórico
+A partir de 0.2.2, o canal padrão consulta releases e os dois arquivos diretamente
+no GitHub, sem a infraestrutura descrita abaixo. Consulte [o procedimento atual](canal-github.md).
+O publicador Ed25519/APT está desativado.
+
 # Entrega: simplicidade de publicação recuperada
 
 Este relatório registra a etapa dos 129 testes. A preparação posterior da

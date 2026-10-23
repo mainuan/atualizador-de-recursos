@@ -1,170 +1,105 @@
 # Atualizador de Recursos do Mainuan
 
-Para a **versão estável 0.2.1**, consulte as [notas de lançamento](docs/v0.2.1.md) e a
-[finalização, origem do aviso nativo e auditoria x86-64-v1](docs/finalizacao-0.2.1.md).
-O pacote permanece Python/PyQt6, `Architecture: all`, com produção desativada.
+Canal oficial de novidades em Python 3/PyQt6 Widgets para Mainuan baseado no
+Kubuntu 26.04, KDE Plasma 6 e Wayland. Não substitui o atualizador geral APT/Flatpak.
 
-Para testar o ajuste de instalação da **candidata local 0.2.1~rc1**, consulte
-[o fluxo simplificado, os limites e as instruções para a VM](docs/experiencia-instalacao-rc.md).
-Esta candidata não foi publicada; a produção continua desativada.
-
-Para o primeiro teste prático em VM com snapshot, consulte
-[a versão candidata 0.2.0 RC1 e o modo `--homologacao-github`](docs/v0.2.0-rc1.md).
-Esse modo lê `packages.txt` e `message.txt` do GitHub, instala exclusivamente o
-aplicativo Gestão de Drivers 1.0 pelo PackageKit/PolicyKit e não configura produção.
-
-Canal oficial para **conhecer novidades antes de instalar**. Python 3 com
-**PyQt6 Widgets**, destinado ao Mainuan baseado no Kubuntu 26.04 LTS / Plasma 6.
-
-O aplicativo apresenta lançamentos de um catálogo JSON assinado, seus programas,
-versões e a matéria explicativa. A instalação é voluntária e usa
-**PackageKit por QtDBus e PolicyKit**. O atualizador APT/Flatpak existente continua
-responsável pelas atualizações gerais.
-
-A [candidata local de homologação](docs/versao-candidata.md) reúne o estado do Git,
-os comandos de commit/push para futura autorização e os critérios de aprovação
-em VM. A produção permanece desativada.
-
-A [interface clássica consolidada](docs/consolidacao-interface.md) já é usada
-pelo aplicativo principal e pelo modo `--demo`: beija-flor à esquerda, mensagem
-e programas do catálogo à direita. Histórico, detalhes técnicos e verificação
-manual ficam no menu. A ilustração acompanha o pacote Debian.
-
-## Experimentar sem modificar o sistema
-
-Dependências de desenvolvimento: `python3-pyqt6`, `python3-cryptography` e
-`python3-apt`, fornecidas pela distribuição. Use o Python do sistema:
+## Usar a versão 0.2.2
 
 ```bash
-PYTHONPATH=src /usr/bin/python3 -m mainuan_recursos --demo
-PYTHONPATH=src /usr/bin/python3 -m mainuan_recursos --demo --scenario parcial
+mainuan-atualizador-recursos
 ```
 
-Cenários: `novo`, `visualizado`, `adiado`, `instalado`, `parcial`, `indisponivel`,
-`incompativel`, `erro`, `cancelado`. O modo de demonstração simula inclusive a
-confirmação, a autorização e o progresso. Não cria transporte D-Bus, não consulta
-APT/rede e mantém os estados em memória. O botão da matéria abre o navegador.
+O modo normal consulta `packages.txt` e `message.txt` da main deste repositório
+no **mesmo commit** e descobre as releases estáveis mais recentes com Debian
+compatível dos programas oficiais. Não exige VM, argumento especial, chave de
+catálogo, GitHub App, repositório APT próprio ou configuração pelo usuário.
 
-Para exercitar também a assinatura com chaves **descartáveis**:
+O autostart KDE executa `mainuan-atualizador-recursos --check`: consulta após
+60 segundos e, depois, a cada hora. Não consulta nem instala na sessão Live ou
+quando não consegue confirmar uma sessão instalada. Nada é instalado automaticamente.
 
-```bash
-/usr/bin/python3 tools/dev-catalog.py /tmp/mainuan-catalogo-teste
-/usr/bin/python3 tools/catalog.py verify /tmp/mainuan-catalogo-teste/catalog.json \
-  --config /tmp/mainuan-catalogo-teste/config.json
-PYTHONPATH=src /usr/bin/python3 -m mainuan_recursos --demo \
-  --test-catalog /tmp/mainuan-catalogo-teste/catalog.json \
-  --test-config /tmp/mainuan-catalogo-teste/config.json
+Preserva a interface clássica com o beija-flor e os botões **Instalar novidades**,
+**Conhecer novidades**, **Agora não**. Histórico, informações técnicas e verificação
+manual ficam no menu. Agora não adia a notificação por 24 horas. Visualização e
+instalação são estados separados. Versões adequadas já instaladas são reconhecidas,
+inclusive por outra ferramenta, sem reinstalação.
+
+## Publicar novidades usando dois arquivos
+
+1. Publique uma release **estável** do programa em seu repositório público da
+   organização `mainuan`. Anexe o `.deb` compatível com nome convencional, por
+   exemplo `mainuan-gestao-drivers_1.0_all.deb`. O GitHub precisa informar o digest
+   SHA-256 do asset na API de releases; sem digest verificável, a instalação é bloqueada.
+2. Edite [packages.txt](packages.txt) pela interface web: um repositório por linha.
+3. Edite [message.txt](message.txt): mensagem livre, preservando parágrafos.
+4. Salve. Não execute assinatura nem edite JSON, versões ou outro arquivo.
+
+Exemplo válido atual de `packages.txt`:
+
+```text
+mainuan-gestao-drivers
 ```
 
-Escolha um diretório novo; a ferramenta recusa sobrescrever um existente. As
-opções de catálogo/configuração locais são aceitas somente com `--demo`.
+Exemplo de `message.txt`:
 
-## Infraestrutura oficial e ativação
+```text
+Olá! O Mainuan tem novidades.
 
-Comece pelo [guia de configuração inicial](docs/configuracao-inicial-producao.md),
-voltado ao responsável pela distribuição. O guia separa preparação única,
-lançamentos cotidianos e autorização para o primeiro piloto, com comandos e
-resultados esperados. Inclui [homologação real em VM](docs/homologacao-producao-vm.md)
-e [auditoria da infraestrutura](docs/preparacao-infraestrutura-relatorio.md).
+Confira quais são:
+```
 
-O caminho reservado é:
-`https://raw.githubusercontent.com/mainuan/atualizadorderecursos/main/catalogo/novidades.json`.
-A assinatura fica em `novidades.json.sig`. As matérias podem apontar somente para
-`https://github.com/mainuan/`, incluindo páginas de repositórios e notas de lançamento.
-A validação verifica o **caminho**, além do domínio, e rejeita travessia e
-codificações ambíguas.
+É possível listar vários repositórios oficiais. Os nomes amigáveis vêm das
+releases e a lista é montada automaticamente. Conhecer novidades abre a página
+oficial do primeiro lançamento. Uma nova release estável é descoberta na próxima
+consulta, sem recompilar o Atualizador ou alterar os dois arquivos. Não substitua
+artefatos/tags já distribuídos: publique uma versão nova.
 
-**A produção permanece desativada até a equipe provisionar a chave pública e
-publicar um catálogo assinado.** `catalogo/novidades.json` é uma estrutura vazia,
-ainda sem assinatura. Nenhuma chave oficial foi inventada. A configuração em
-`/etc/mainuan/atualizador-recursos.json` é administrada pela distribuição, e não
-pelo manifesto. A demonstração funciona mesmo sem configuração de produção.
+Leia [Publicação e segurança do canal GitHub](docs/canal-github.md) e as
+[notas de lançamento 0.2.2](docs/v0.2.2.md).
 
-Após essa preparação inicial, publicar novidades exige editar somente
-[packages.txt](packages.txt) (nomes de repositórios Mainuan) e
-[message.txt](message.txt) (mensagem livre). A automação lê os `.deb` das releases
-aprovadas, congela versões/hashes, gera um repositório APT assinado e publica o
-catálogo assinado. Não há JSON ou comando de assinatura na rotina editorial.
-Alterar apenas a mensagem preserva os programas aprovados. Veja
-[publicação pelos dois arquivos](docs/publicacao.md).
+## Segurança da instalação
 
-## Comportamento
+A consulta inicial baixa somente metadados. Após clicar em instalar, verifica
+InstallFiles, baixa os pacotes por HTTPS e confere tamanho, SHA-256 e os campos
+internos Package/Version/Architecture. Verifica dependências, simula e revalida a
+operação antes da autorização nativa do PolicyKit. Alterações fora dos pacotes
+anunciados são bloqueadas. As dependências devem estar satisfeitas no sistema.
 
-- Janela nativa em português com **Conhecer novidades**, **Instalar novidades** e
-  **Agora não** e lista simples de recursos; versões e histórico acessíveis no menu.
-- Autostart KDE: primeira verificação após 60 segundos, depois a cada hora. Sem
-  verificações em sessão Live; nenhuma operação bloqueia o início do Plasma.
-- Visualização, adiamento por 24 horas e situação dos pacotes têm estados
-  separados por identificador/versão. Fechar uma janela já apresentada não a
-  repete; **Agora não** agenda sua reapresentação. O menu permite acesso manual.
-- Pacotes já configurados na versão mínima ou superior aparecem como **Já
-  recebido**, mesmo se vieram do atualizador tradicional. Não são reinstalados.
-- Antes da confirmação, APT somente leitura e PackageKit verificam versões,
-  arquiteturas, origens e dependências; a operação é novamente validada antes
-  de instalar. Conclusão depende de `Finished` e de nova leitura do estado dpkg.
-- Sem rede, um cache com assinatura e validade ainda verificáveis permite
-  consulta. A instalação permanece desabilitada; dados inválidos não substituem
-  um catálogo confiável. Sem cache válido, a interface informa o erro.
-- Sem estilos ou cores fixas na interface: usa a paleta do Plasma, ícones de
-  tema e Widgets nativos. Nenhuma chamada X11 é necessária.
+HTTPS e o digest publicado pelo GitHub **não equivalem à assinatura de um
+repositório APT**. Advertências nativas sobre origem não confiável são preservadas.
+O aplicativo não captura senhas nem altera políticas administrativas. O sucesso
+só é informado após conferir as versões realmente instaladas.
+
+Sem conexão, preserva histórico/cache para consulta e bloqueia a instalação.
+Registra IDs, commits e digests localmente; rejeita substituições de artefatos e
+retrocessos de versões já observadas. Esses controles não protegem contra
+comprometimento da própria conta oficial do GitHub ou do usuário local.
 
 ## Testar e empacotar
 
 ```bash
+PYTHONPATH=src /usr/bin/python3 -m mainuan_recursos --demo
 QT_QPA_PLATFORM=offscreen PYTHONPATH=src /usr/bin/python3 -m unittest discover -s tests -v
 bash build-package.sh
-# Alternativa usando o empacotamento Debian completo:
-dpkg-buildpackage -us -uc -b
+lintian dist/mainuan-atualizador-recursos_0.2.2_all.deb
 ```
 
-O primeiro construtor gera `dist/mainuan-atualizador-recursos_0.2.0_all.deb`, sem
-root. O workflow testa em Ubuntu 26.04, usa debhelper e disponibiliza um artefato
-`.deb`. Não cria tags nem releases. Os testes não instalam pacotes.
+Demo não consulta rede/APT/D-Bus nem altera pacotes. O pacote é `Architecture: all`,
+sem ELF/bibliotecas nativas incorporados. Usa Python/Qt/PyQt6 da distribuição,
+sem compilação nativa nem requisitos próprios x86-64-v2/v3/v4. O teste do conjunto
+da distribuição em processador v1 real permanece pendente.
 
-[Arquitetura e análise do PR #1](docs/arquitetura.md) ·
-[Publicação do catálogo](docs/publicacao.md) ·
-[Testes e homologação](docs/testes.md) ·
-[Relatório de entrega](docs/relatorio.md)
+O GitHub Actions testa, constrói o Debian, verifica arquitetura e executa Lintian.
+A tag autorizada `v0.2.2` publica o pacote e `SHA256SUMS` como release estável.
 
-Licença: GPLv3, preservando a licença do projeto original TigerOS. O Gestão de
-Drivers é referência de arquitetura, sem dependência entre os aplicativos.
+## Histórico
 
-## Homologação antes da produção
+O publicador antigo Ed25519/APT/GitHub App está **desativado**, inclusive para
+execução manual, e não é acionado por alterações nos dois arquivos. Documentos e
+ferramentas antigos são históricos, sem uso no fluxo normal. `publication.toml`
+continua desabilitado. A configuração antiga em `/etc/mainuan/` não é exigida nem
+alterada pelo novo canal. `--homologacao-github` permanece apenas como ensaio
+histórico isolado; não é necessário para utilizar 0.2.2.
 
-A [auditoria e homologação local](docs/homologacao.md) registra as correções,
-92 testes automatizados, capturas em Wayland/Dream, paletas clara/escura e ciclo
-Debian isolado. As pendências de uma VM Mainuan estão separadas. A produção
-permanece desativada até a chave pública oficial e o catálogo assinado serem
-provisionados por decisão dos responsáveis.
-
-
-## Integrações reais e preparação da VM
-
-A [etapa final de homologação](docs/vm-final.md) identificou a instalação física
-Mainuan disponível e a ausência de snapshot/VM. Foram aprovados 101 testes,
-consulta/simulação no PackageKit real, timer de 60 s e paletas BlurGlassy reais
-em Wayland. Instalações autorizadas e aprovação da RC continuam pendentes da VM.
-O roteiro inclui um kit descartável com pacotes de dados e repositório assinado;
-a produção permanece desativada.
-
-Para o primeiro ensaio real com o pacote oficial Gestão de Drivers 1.0, use o
-[kit e roteiro específico](docs/primeiro-teste-drivers-vm.md). Ele exige snapshot,
-limita a operação à instalação do aplicativo e recusa mudanças em dependências.
-
-## Publicação simplificada
-
-O [relatório desta etapa](docs/publicacao-simples-relatorio.md) descreve a análise
-do TigerOS, a automação, 129 testes e a demonstração completa com três programas
-fictícios. `publication.toml` contém apenas a configuração inicial controlada;
-o workflow de publicação depende de habilitação explícita e Secrets protegidos.
-Nenhuma chave oficial ou source APT foi instalada nesta entrega.
-
-```bash
-/usr/bin/python3 tools/demo-publication.py --output /tmp/mainuan-publicacao-ficticia
-/usr/bin/python3 tools/probe-publication.py /tmp/mainuan-publicacao-ficticia \
-  --output /tmp/mainuan-publicacao-ficticia/apt-real.json
-```
-
-O primeiro comando não usa rede; o segundo valida o APT em sandbox sem rede,
-com host somente leitura, e exige `bubblewrap`. Ambos usam chaves descartáveis
-e não instalam pacotes. Veja no guia como abrir essa publicação com `--demo`.
+Licença GPLv3 preservada do TigerOS. Mainuan Gestão de Drivers é referência de
+arquitetura, sem dependência direta entre os aplicativos.
