@@ -16,8 +16,9 @@ from PyQt6 import QtDBus
 from . import __version__
 from .catalog import Catalog, CatalogError, Feature, Package, Release, decode
 from .controller import Controller
+from .i18n import _
 from .packagekit import Transaction, ROOT, SERVICE, PROPERTIES
-from .packages import PackageRow, Plan, PlanningError, configured, identity, version_compare
+from .packages import INSTALL, RECEIVED, UPGRADE, PackageRow, Plan, PlanningError, configured, identity, version_compare
 from .session import SessionKind, session_kind, system_identity, supported_system, system_compatibility
 
 REPOSITORY = 'mainuan-gestao-drivers'
@@ -38,24 +39,24 @@ def require(condition, message):
 
 def check_vm():
     result = subprocess.run(['systemd-detect-virt', '--vm'], capture_output=True, text=True, timeout=5)
-    require(result.returncode == 0, 'A homologação GitHub é exclusiva de uma VM com snapshot; use o modo normal neste computador.')
-    require(os.geteuid() != 0, 'Abra a homologação como usuário comum, sem sudo.')
-    require(session_kind() == SessionKind.INSTALLED, 'A homologação exige uma instalação normal, fora da sessão Live.')
+    require(result.returncode == 0, _('The GitHub acceptance test is exclusive to a VM with a snapshot; use the normal mode on this computer.'))
+    require(os.geteuid() != 0, _('Open the acceptance test as a regular user, without sudo.'))
+    require(session_kind() == SessionKind.INSTALLED, _('The acceptance test requires a normal installation, outside the Live session.'))
     system = system_identity()
-    require(supported_system(system), 'Este ensaio é destinado ao Mainuan baseado no Kubuntu 26.04.')
+    require(supported_system(system), _('This trial is intended for Mainuan based on Kubuntu 26.04.'))
 
 
 def check_url(url, binary=False):
     parsed = urlsplit(url)
     require(parsed.scheme == 'https' and parsed.port in (None, 443) and not parsed.username
-            and not parsed.password and not parsed.fragment, 'URL de homologação inválida.')
+            and not parsed.password and not parsed.fragment, _('Invalid acceptance test URL.'))
     allowed = ((parsed.hostname == 'api.github.com' and parsed.path.startswith('/repos/mainuan/'))
                or (parsed.hostname == 'raw.githubusercontent.com'
                    and parsed.path.startswith('/mainuan/atualizadorderecursos/')))
     if binary:
         allowed = allowed or (parsed.hostname == 'github.com' and parsed.path.startswith('/mainuan/mainuan-gestao-drivers/releases/download/'))
         allowed = allowed or parsed.hostname in ('release-assets.githubusercontent.com', 'objects.githubusercontent.com')
-    require(allowed, 'Redirecionamento fora da infraestrutura autorizada do GitHub.')
+    require(allowed, _('Redirect outside the authorized GitHub infrastructure.'))
 
 
 class Redirects(HTTPRedirectHandler):
@@ -84,7 +85,7 @@ def download(url, limit=1024 * 1024, binary=False, progress=None):
             if progress:
                 progress(min(100, received * 100 // limit))
         data = b''.join(chunks)
-    require(len(data) <= limit, 'Resposta GitHub excede o tamanho permitido.')
+    require(len(data) <= limit, _('GitHub response exceeds the allowed size.'))
     return data
 
 
@@ -94,11 +95,11 @@ def supports_local_files():
     message.setInteractiveAuthorizationAllowed(False)
     reply = QtDBus.QDBusConnection.systemBus().call(message, QtDBus.QDBus.CallMode.Block, 5000)
     require(reply.type() != QtDBus.QDBusMessage.MessageType.ErrorMessage and bool(reply.arguments()),
-            'Não foi possível consultar o suporte do PackageKit a arquivos locais.')
+            _('Could not query PackageKit support for local files.'))
     roles = reply.arguments()[0]
     if hasattr(roles, 'variant'):
         roles = roles.variant()
-    require(int(roles) & (1 << 10), 'O backend PackageKit desta VM não oferece InstallFiles. Nenhum fallback inseguro será utilizado.')
+    require(int(roles) & (1 << 10), _('The PackageKit backend of this VM does not offer InstallFiles. No unsafe fallback will be used.'))
 
 
 class GitHubTrial:
@@ -108,42 +109,42 @@ class GitHubTrial:
         self.release = None
 
     def verify_file(self):
-        require(self.path.is_file() and not self.path.is_symlink(), 'Pacote experimental ausente ou simbólico.')
+        require(self.path.is_file() and not self.path.is_symlink(), _('Experimental package missing or symbolic.'))
         require(self.path.stat().st_size == SIZE and hashlib.sha256(self.path.read_bytes()).hexdigest() == SHA256,
-                'Integridade do Gestão de Drivers 1.0 divergente. A instalação foi bloqueada.')
+                _('Driver Manager 1.0 integrity mismatch. The installation was blocked.'))
 
     def load(self):
         # Lê ambos os arquivos no MESMO commit da main, evitando edição parcial.
         commit = decode(download('https://api.github.com/repos/mainuan/atualizadorderecursos/commits/main'))
         sha = commit.get('sha', '')
-        require(bool(re.fullmatch(r'[a-f0-9]{40}', sha)), 'Referência GitHub inválida.')
+        require(bool(re.fullmatch(r'[a-f0-9]{40}', sha)), _('Invalid GitHub reference.'))
         root = f'https://raw.githubusercontent.com/mainuan/atualizadorderecursos/{sha}/'
         names = download(root + 'packages.txt', 8192).decode('utf-8')
         message = download(root + 'message.txt', 16000).decode('utf-8').strip()
         repositories = [line.split('#', 1)[0].strip() for line in names.splitlines() if line.split('#', 1)[0].strip()]
-        require(repositories == [REPOSITORY], 'Neste primeiro ensaio, packages.txt deve conter somente mainuan-gestao-drivers.')
-        require(bool(message) and len(message) <= 4000 and '\x00' not in message, 'Mensagem vazia ou muito extensa.')
+        require(repositories == [REPOSITORY], _('In this first trial, packages.txt must contain only mainuan-gestao-drivers.'))
+        require(bool(message) and len(message) <= 4000 and '\x00' not in message, _('Message empty or too long.'))
         repo = decode(download(f'https://api.github.com/repos/mainuan/{REPOSITORY}'))
         require(repo.get('id') == 1405529794 and repo.get('full_name') == 'mainuan/' + REPOSITORY
-                and repo.get('owner', {}).get('login') == 'mainuan' and not repo.get('archived'), 'Repositório do programa divergente.')
+                and repo.get('owner', {}).get('login') == 'mainuan' and not repo.get('archived'), _('Program repository mismatch.'))
         release = decode(download(f'https://api.github.com/repos/mainuan/{REPOSITORY}/releases/{RELEASE_ID}'))
         require(release.get('id') == RELEASE_ID and release.get('tag_name') == 'v1.0'
                 and release.get('published_at') and not release.get('draft') and not release.get('prerelease'),
-                'A release aprovada não está disponível como publicação estável.')
+                _('The approved release is not available as a stable publication.'))
         assets = [asset for asset in release.get('assets', []) if asset.get('id') == ASSET_ID]
-        require(len(assets) == 1, 'Artefato aprovado não encontrado.')
+        require(len(assets) == 1, _('Approved artifact not found.'))
         asset = assets[0]
         require(asset.get('name') == self.path.name and asset.get('size') == SIZE
                 and asset.get('digest') == 'sha256:' + SHA256 and asset.get('browser_download_url') == ASSET_URL,
-                'A release foi alterada ou não corresponde ao pacote aprovado para este ensaio.')
+                _('The release was changed or does not match the package approved for this trial.'))
         # O SHA aprovado vincula também o payload e os scripts de manutenção
         # já examinados: nenhum módulo, firmware, serviço ou autostart.
         published = datetime.fromisoformat(commit['commit']['committer']['date'].replace('Z', '+00:00'))
         now = datetime.now(timezone.utc)
-        require(published <= now + timedelta(minutes=5), 'Commit GitHub está no futuro. Confira o relógio da VM.')
+        require(published <= now + timedelta(minutes=5), _('GitHub commit is in the future. Check the VM clock.'))
         package = Package(NAME, VERSION, 'all', SHA256)
-        self.release = Release('homologacao-github', sha[:12], 'O Mainuan tem novidades!', message,
-                               RELEASE_URL, (Feature('Gestão de Drivers 1.0', (package,)),),
+        self.release = Release('homologacao-github', sha[:12], _('Mainuan has news!'), message,
+                               RELEASE_URL, (Feature(_('Driver Manager 1.0'), (package,)),),
                                system_compatibility(('amd64', 'arm64')))
         content = (sha + '\n' + names + '\n' + message + '\n' + SHA256).encode()
         return Catalog(int(published.timestamp()), now + timedelta(hours=4), (self.release,), hashlib.sha256(content).hexdigest()), True
@@ -151,27 +152,28 @@ class GitHubTrial:
     def plan(self, release, check_dependencies=False):
         import apt
         import apt.debfile
-        require(release == self.release, 'Lançamento experimental não aprovado.')
+        require(release == self.release, _('Experimental release not approved.'))
         cache = apt.Cache()
         pkg = cache[NAME] if NAME in cache else None
         installed = pkg.installed.version if pkg and pkg.installed else ''
-        status = 'Atualizar' if installed else 'Instalar'
+        status = UPGRADE if installed else INSTALL
         if pkg and pkg.installed:
             if not configured(pkg):
-                status = 'Pacote com configuração incompleta'
+                status = _('Package with incomplete configuration')
             elif version_compare(installed, VERSION) >= 0:
-                status = 'Já recebido'
-        if status in ('Instalar', 'Atualizar'):
+                status = RECEIVED
+        if status in (INSTALL, UPGRADE):
             if pkg and pkg._pkg.selected_state == 2:
-                status = 'Pacote retido pelo administrador'
+                status = _('Package held by the administrator')
             elif check_dependencies:
                 self.verify_file()
                 deb = apt.debfile.DebPackage(str(self.path), cache)
-                require((deb['Package'], deb['Version'], deb['Architecture']) == (NAME, VERSION, 'all'), 'Metadados Debian divergentes.')
+                require((deb['Package'], deb['Version'], deb['Architecture']) == (NAME, VERSION, 'all'), _('Debian metadata mismatch.'))
                 if not deb.check():
-                    status = 'Dependências não satisfeitas: ' + deb._failure_string
+                    status = _('Unmet dependencies: {details}').format(details=deb._failure_string)
                 elif any(deb.required_changes):
-                    status = 'Este ensaio não permite alterar dependências: ' + ', '.join(name for group in deb.required_changes for name in group)
+                    status = _('This trial does not allow changing dependencies: {packages}').format(
+                        packages=', '.join(name for group in deb.required_changes for name in group))
         return Plan((PackageRow(NAME, VERSION, installed, VERSION, 'all', status, SHA256),))
 
     def prepare_plan(self, release, progress):
@@ -184,10 +186,10 @@ class GitHubTrial:
         if self.path.exists() or self.path.is_symlink():
             self.verify_file()
         else:
-            progress('Baixando novidades...', 0)
+            progress(_('Downloading new features...'), 0)
             payload = download(ASSET_URL, SIZE, binary=True,
-                               progress=lambda percent: progress('Baixando novidades...', percent))
-            require(len(payload) == SIZE and hashlib.sha256(payload).hexdigest() == SHA256, 'Download do pacote com integridade inválida.')
+                               progress=lambda percent: progress(_('Downloading new features...'), percent))
+            require(len(payload) == SIZE and hashlib.sha256(payload).hexdigest() == SHA256, _('Package download with invalid integrity.'))
             self.path.parent.mkdir(mode=0o700, parents=True, exist_ok=True)
             descriptor = os.open(self.path, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
             try:
@@ -196,7 +198,7 @@ class GitHubTrial:
             except BaseException:
                 self.path.unlink(missing_ok=True)
                 raise
-        progress('Preparando instalação...', None)
+        progress(_('Preparing installation...'), None)
         return self.plan(release, check_dependencies=True)
 
 
@@ -214,11 +216,11 @@ class GitHubController(Controller):
 
     def _planned(self, plan):
         if plan.blockers:
-            return self._fail('Não é possível instalar neste ensaio:\n' + '\n'.join(row.status for row in plan.blockers), plan)
+            return self._fail(_('Cannot install in this trial:') + '\n' + '\n'.join(row.status for row in plan.blockers), plan)
         if plan.complete:
-            return self._finish(True, 'Você já recebeu o Gestão de Drivers 1.0. Nenhuma reinstalação será feita.', plan)
+            return self._finish(True, _('You have already received Driver Manager 1.0. No reinstallation will be done.'), plan)
         if self.confirmed and plan != self.confirmed.plan:
-            return self._fail('O estado de pacotes mudou. Revise a operação novamente.', plan)
+            return self._fail(_('The package state has changed. Review the operation again.'), plan)
         self.plan = plan
         self.ids = (str(self.trial.path),)
         self._work(supports_local_files, lambda _: self._tx('InstallFiles', self.ids, True, self._simulated))
@@ -231,7 +233,7 @@ class GitHubController(Controller):
             effects = tuple(sorted(result.packages))
             expected_info = 11 if self.plan.rows[0].installed else 12
             if len(effects) != 1 or effects[0][0] != expected_info or identity(effects[0][1]) != (NAME, VERSION, 'all'):
-                raise PlanningError('O PackageKit propôs alterações além do aplicativo Gestão de Drivers. Nenhum driver ou dependência adicional será instalado neste ensaio.')
+                raise PlanningError(_('PackageKit proposed changes beyond the Driver Manager application. No additional driver or dependency will be installed in this trial.'))
             return ((effects[0][0], effects[0][1], self.plan.rows[0].installed),)
         self._work(validate, self._validated)
 
@@ -239,11 +241,11 @@ class GitHubController(Controller):
         if not self.confirmed:
             return super()._validated(evidence)
         if evidence != self.confirmed.evidence or self.ids != self.confirmed.ids:
-            return self._fail('A operação mudou. Revise novamente a confirmação.')
+            return self._fail(_('The operation has changed. Review the confirmation again.'))
         try:
             self.guard()
             self.trial.verify_file()
         except Exception as exc:
             return self._fail(str(exc))
-        self.progress.emit('Instalando novidades...', None)
+        self.progress.emit(_('Installing new features...'), None)
         self._tx('InstallFiles', self.ids, False, self._installed)

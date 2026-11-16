@@ -1,3 +1,4 @@
+import i18n_support  # noqa: F401  (compiles catalogs, selects pt_BR)
 import os
 import time
 os.environ.setdefault('QT_QPA_PLATFORM', 'offscreen')

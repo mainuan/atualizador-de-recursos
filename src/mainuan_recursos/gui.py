@@ -10,8 +10,9 @@ from PyQt6.QtWidgets import (
 from .catalog import CatalogError, Config
 from .classic import ClassicContent, text_label as label
 from .controller import Controller, Worker
+from .i18n import _, pgettext
 from .localization import localize_standard_buttons
-from .packages import build_plan, identity
+from .packages import RECEIVED, build_plan, identity, status_text
 from .repository import Repository
 from .session import system_identity
 
@@ -35,26 +36,28 @@ class Window(QMainWindow):
         self.package_error = ''
         self.load_error = ''
         self._primary_focus_pending = True
-        self.setWindowTitle('Atualizador de Recursos do Mainuan' + (' — Demonstração' if demo else ' — Homologação GitHub' if github_trial else ''))
+        self.setWindowTitle(_('Mainuan Feature Updater — Demo') if demo else
+                            _('Mainuan Feature Updater — GitHub Acceptance Test') if github_trial else
+                            _('Mainuan Feature Updater'))
         self.setWindowIcon(QIcon.fromTheme('mainuan-recursos', QIcon.fromTheme('system-software-update')))
         self.resize(720, 420)
-        self.view = ClassicContent('Verificando novidades…')
+        self.view = ClassicContent(_('Checking for news…'))
         self.setCentralWidget(self.view)
         self.summary = self.view.message
         for name in ('know', 'install', 'later', 'status', 'progress', 'illustration', 'program_labels'):
             setattr(self, name, getattr(self.view, name))
         self.options = self.view.options
-        self.refresh = self.view.menu.addAction('Verificar novidades')
-        self.history_action = self.view.menu.addAction('Histórico de novidades')
+        self.refresh = self.view.menu.addAction(_('Check for News'))
+        self.history_action = self.view.menu.addAction(_('News History'))
         self.view.menu.addSeparator()
-        self.details_action = self.view.menu.addAction('Informações técnicas')
+        self.details_action = self.view.menu.addAction(_('Technical Information'))
         self.history = QListWidget()
-        self.history.setAccessibleName('Histórico de novidades')
-        self.history_dialog = self._auxiliary_dialog('Histórico de novidades', self.history)
+        self.history.setAccessibleName(_('News History'))
+        self.history_dialog = self._auxiliary_dialog(_('News History'), self.history)
         self.details_text = QPlainTextEdit()
         self.details_text.setReadOnly(True)
-        self.details_text.setAccessibleName('Programas, pacotes, versões e situação real')
-        self.details_dialog = self._auxiliary_dialog('Informações técnicas', self.details_text)
+        self.details_text.setAccessibleName(_('Programs, packages, versions and actual status'))
+        self.details_dialog = self._auxiliary_dialog(_('Technical Information'), self.details_text)
         kwargs = dict(plan_provider=demo.plan, effects_validator=demo.effects,
                       transaction_factory=demo.transaction) if demo else {}
         if github_channel:
@@ -85,7 +88,8 @@ class Window(QMainWindow):
 
     def _auxiliary_dialog(self, title, content):
         dialog = QDialog(self)
-        dialog.setWindowTitle(title + (' — Demonstração' if self.demo else ''))
+        # Translators: title of an auxiliary window opened in demonstration mode.
+        dialog.setWindowTitle(_('{title} — Demo').format(title=title) if self.demo else title)
         layout = QVBoxLayout(dialog)
         layout.addWidget(content)
         buttons = QDialogButtonBox(QDialogButtonBox.StandardButton.Close)
@@ -112,35 +116,40 @@ class Window(QMainWindow):
         release = self.current
         plan = self.plans.get(release.key)
         rows = {r.name: r for r in plan.rows} if plan else {}
-        lines = [release.title, f'Lançamento: {release.id} • {release.version}',
-                 f'Matéria oficial: {release.article_url}', '']
+        lines = [release.title, _('Release: {id} • {version}').format(id=release.id, version=release.version),
+                 _('Official article: {url}').format(url=release.article_url), '']
+        not_checked = _('not checked')
         for feature in release.features:
             lines.append(feature.title)
             for requested in feature.packages:
                 row = rows.get(requested.name)
-                lines.extend((f'  Pacote: {requested.name}',
-                    f'  Versão mínima: {requested.min_version}',
-                    f'  Instalada: {row.installed or "não instalado" if row else "não verificada"}',
-                    f'  Disponível: {row.candidate or "indisponível" if row else "não verificada"}',
-                    f'  Arquitetura: {row.architecture if row else requested.architecture or "não verificada"}',
-                    f'  Situação: {row.status if row else "pacotes não verificados"}'))
+                installed = (row.installed or _('not installed')) if row else not_checked
+                available = (row.candidate or _('unavailable')) if row else not_checked
+                architecture = row.architecture if row else requested.architecture or not_checked
+                status = status_text(row.status) if row else _('packages not checked')
+                lines.extend(('  ' + _('Package: {name}').format(name=requested.name),
+                    '  ' + _('Minimum version: {version}').format(version=requested.min_version),
+                    '  ' + _('Installed: {version}').format(version=installed),
+                    '  ' + _('Available: {version}').format(version=available),
+                    '  ' + _('Architecture: {architecture}').format(architecture=architecture),
+                    '  ' + _('Status: {status}').format(status=status)))
                 if requested.sha256:
-                    lines.append(f'  SHA-256 aprovado: {requested.sha256}')
+                    lines.append('  ' + _('Approved SHA-256: {sha256}').format(sha256=requested.sha256))
             lines.append('')
-        lines.append('A operação completa, incluindo dependências, será apresentada na confirmação da instalação.')
+        lines.append(_('The complete operation, including dependencies, will be shown when confirming the installation.'))
         if self.demo:
-            lines.append('Demonstração: autorização e instalação simuladas; nenhum pacote será alterado.')
+            lines.append(_('Demo: authorization and installation are simulated; no package will be changed.'))
         elif self.github_channel:
-            lines.extend(('', 'Canal oficial GitHub: packages.txt e message.txt no mesmo commit.',
-                          'Pacotes de releases estáveis, com IDs, versões e SHA-256 registrados na consulta.',
-                          'O download começa somente após escolher instalar; alterações não anunciadas são bloqueadas.',
-                          'HTTPS e SHA-256 não equivalem à assinatura de um repositório APT.',
-                          'O PackageKit/PolicyKit pode solicitar autorização para origem não confiável.'))
+            lines.extend(('', _('Official GitHub channel: packages.txt and message.txt from the same commit.'),
+                          _('Packages from stable releases, with IDs, versions and SHA-256 recorded during the query.'),
+                          _('The download starts only after choosing to install; unannounced changes are blocked.'),
+                          _('HTTPS and SHA-256 are not equivalent to an APT repository signature.'),
+                          _('PackageKit/PolicyKit may ask for authorization for an untrusted source.')))
         elif self.github_trial:
-            lines.extend(('', 'Homologação GitHub: origem oficial e artefato fixados por IDs e SHA-256.',
-                          'O download começa somente após escolher instalar.',
-                          'Arquivo local sem assinatura de repositório APT. O PackageKit/PolicyKit pode solicitar autorização para origem não confiável.',
-                          'O ensaio permite somente o aplicativo Gestão de Drivers; alterações em outros pacotes são bloqueadas.'))
+            lines.extend(('', _('GitHub acceptance test: official source and artifact pinned by IDs and SHA-256.'),
+                          _('The download starts only after choosing to install.'),
+                          _('Local file without an APT repository signature. PackageKit/PolicyKit may ask for authorization for an untrusted source.'),
+                          _('The trial only allows the Driver Manager application; changes to other packages are blocked.')))
         return '\n'.join(lines)
 
     def _enable(self, _=False):
@@ -162,7 +171,7 @@ class Window(QMainWindow):
     def reload(self):
         if self.worker or self.controller.busy or self.controller.awaiting:
             return
-        self.status.setText('Consultando as novidades oficiais do Mainuan…')
+        self.status.setText(_('Querying the official Mainuan news…'))
         self.progress.setRange(0, 0)
         def load():
             if self.demo:
@@ -206,7 +215,7 @@ class Window(QMainWindow):
                 self.populate()
             except Exception as exc:
                 self.online = False
-                self.load_error = f'Não foi possível verificar as novidades. {exc}'
+                self.load_error = _('Could not check for news. {error}').format(error=exc)
                 self.status.setText(self.load_error)
             worker.deleteLater()
             self._enable()
@@ -234,13 +243,13 @@ class Window(QMainWindow):
             self.show()
             self.mark_viewed()
         if not self.catalog.releases:
-            self.status.setText('Ainda não há novidades publicadas. Volte em breve!')
+            self.status.setText(_('No news has been published yet. Come back soon!'))
 
     def select(self, index):
         self.current = self.catalog.releases[index] if self.catalog and 0 <= index < len(self.catalog.releases) else None
         self.view.set_programs(())
         if not self.current:
-            self.summary.setText('Nenhuma novidade publicada.\nVolte em breve para conhecer os próximos recursos do Mainuan.')
+            self.summary.setText(_('No news published.\nCome back soon to discover the next Mainuan features.'))
             self.details_text.clear()
             self._enable()
             return
@@ -248,22 +257,23 @@ class Window(QMainWindow):
         self.view.set_programs(feature.title or ', '.join(p.name for p in feature.packages)
                                for feature in self.current.features)
         plan = self.plans.get(self.current.key)
+        welcome = _('We have news for you! Discover the features before installing.')
         if self.package_error:
-            message = f'Não foi possível verificar os pacotes: {self.package_error}'
+            message = _('Could not check the packages: {error}').format(error=self.package_error)
         elif not self.current.compatible(self.system):
-            message = 'Este lançamento não é compatível com a versão ou arquitetura deste sistema.'
+            message = _('This release is not compatible with the version or architecture of this system.')
         elif plan and plan.complete:
-            message = 'Você já recebeu estes recursos pelo sistema. Conheça as novidades!'
+            message = _('You have already received these features through the system. Discover the news!')
         elif plan and plan.blockers:
-            message = 'Alguns pacotes ainda não estão disponíveis para instalação segura. Consulte as informações técnicas no menu.'
+            message = _('Some packages are not yet available for safe installation. See the technical information in the menu.')
         else:
-            message = 'Temos novidades para você! Conheça os recursos antes de instalar.'
+            message = welcome
         if not self.online:
-            message += ' Catálogo em cache: consulta offline; instalação indisponível.'
+            message = _('{message} Cached catalog: offline query; installation unavailable.').format(message=message)
         if self.load_error:
             message = self.load_error
         self.status.setText(message)
-        self.status.setHidden(message == 'Temos novidades para você! Conheça os recursos antes de instalar.')
+        self.status.setHidden(message == welcome)
         self.details_text.setPlainText(self._technical_text())
         if self.isVisible():
             self.mark_viewed()
@@ -271,9 +281,9 @@ class Window(QMainWindow):
 
     def _history_text(self, release):
         plan = self.plans.get(release.key)
-        editorial = {'unseen': 'Nova', 'viewed': 'Visualizada', 'postponed': 'Adiada'}[
-            self.state.entry(release)['presentation']]
-        received = ' • Já recebido' if plan and plan.complete else ''
+        editorial = {'unseen': pgettext('news state', 'New'), 'viewed': pgettext('news state', 'Viewed'),
+                     'postponed': pgettext('news state', 'Postponed')}[self.state.entry(release)['presentation']]
+        received = ' • ' + status_text(RECEIVED) if plan and plan.complete else ''
         return f'{release.title}\n{release.version} • {editorial}{received}'
 
     def mark_viewed(self):
@@ -284,7 +294,7 @@ class Window(QMainWindow):
                 if item:
                     item.setText(self._history_text(self.current))
             except OSError as exc:
-                self.status.setText(f'Não foi possível salvar a visualização no histórico: {exc}')
+                self.status.setText(_('Could not save the viewing in the history: {error}').format(error=exc))
 
     def showEvent(self, event):
         super().showEvent(event)
@@ -296,13 +306,13 @@ class Window(QMainWindow):
         if self.current:
             self.mark_viewed()
             if not QDesktopServices.openUrl(QUrl(self.current.article_url)):
-                self.status.setText('Não foi possível abrir o navegador padrão.')
+                self.status.setText(_('Could not open the default web browser.'))
 
     def _guard(self):
         if not self.online or not self.catalog or datetime.now(timezone.utc) >= self.catalog.expires_at:
-            raise CatalogError('Verifique novamente o catálogo oficial antes de instalar.')
+            raise CatalogError(_('Check the official catalog again before installing.'))
         if not self.active_release or not self.active_release.compatible(self.system):
-            raise CatalogError('Lançamento incompatível com este sistema.')
+            raise CatalogError(_('Release incompatible with this system.'))
 
     def prepare(self):
         if self.current:
@@ -333,22 +343,23 @@ class Window(QMainWindow):
         self._enable()
         from PyQt6.QtWidgets import QDialog, QDialogButtonBox, QPlainTextEdit
         dialog = QDialog(self)
-        dialog.setWindowTitle('Confirmar instalação' + (' — Demonstração' if self.demo else ''))
+        dialog.setWindowTitle(_('Confirm Installation — Demo') if self.demo else _('Confirm Installation'))
         layout = QVBoxLayout(dialog)
-        layout.addWidget(label('A instalação precisa alterar outros pacotes ou revisar o plano. Confira a operação antes de continuar.'))
+        layout.addWidget(label(_('The installation needs to change other packages or review the plan. Check the operation before continuing.')))
         details = QPlainTextEdit()
         details.setReadOnly(True)
-        direct = '\n'.join(f'{r.name}: {r.installed or "não instalado"} → {r.candidate}' for r in prepared.plan.pending)
+        not_installed = _('not installed')
+        direct = '\n'.join(f'{r.name}: {r.installed or not_installed} → {r.candidate}' for r in prepared.plan.pending)
         effects = '\n'.join(f'{package_id.split(";")[0]} → {package_id.split(";")[1]} ({package_id.split(";")[2]})'
                             for _, package_id, _ in prepared.evidence)
-        details.setPlainText(direct + '\n\nOperação completa, incluindo dependências:\n' + effects)
-        details.setAccessibleName('Pacotes e dependências da operação')
+        details.setPlainText(direct + '\n\n' + _('Complete operation, including dependencies:') + '\n' + effects)
+        details.setAccessibleName(_('Packages and dependencies of the operation'))
         layout.addWidget(details)
-        layout.addWidget(label('Autorização e instalação serão simuladas.' if self.demo else
-                               'O sistema solicitará autorização para instalar.'))
+        layout.addWidget(label(_('Authorization and installation will be simulated.') if self.demo else
+                               _('The system will ask for authorization to install.')))
         buttons = QDialogButtonBox()
-        buttons.addButton('Instalar novidades', QDialogButtonBox.ButtonRole.AcceptRole)
-        cancel = buttons.addButton('Cancelar', QDialogButtonBox.ButtonRole.RejectRole)
+        buttons.addButton(_('Install New Features'), QDialogButtonBox.ButtonRole.AcceptRole)
+        cancel = buttons.addButton(_('Cancel'), QDialogButtonBox.ButtonRole.RejectRole)
         cancel.setDefault(True)
         buttons.accepted.connect(dialog.accept)
         buttons.rejected.connect(dialog.reject)
@@ -359,7 +370,7 @@ class Window(QMainWindow):
             self.controller.confirm(prepared)
         else:
             self.controller.cancel_preparation()
-            self.status.setText('Instalação cancelada. Você pode conhecer as novidades quando quiser.')
+            self.status.setText(_('Installation canceled. You can discover the news whenever you want.'))
             self._enable()
 
     def _completed(self, success, message, plan):
@@ -368,7 +379,7 @@ class Window(QMainWindow):
             try:
                 self.state.observe(self.active_release, plan)
             except OSError as exc:
-                message += f'\nNão foi possível salvar o histórico: {exc}'
+                message += '\n' + _('Could not save the history: {error}').format(error=exc)
             self.select(self.history.currentRow())
         self.status.setText(message)
         self._enable()
@@ -384,14 +395,14 @@ class Window(QMainWindow):
             try:
                 self.state.postpone(self.current)
             except OSError as exc:
-                self.status.setText(f'Não foi possível salvar o adiamento de 24 horas: {exc}')
+                self.status.setText(_('Could not save the 24-hour postponement: {error}').format(error=exc))
                 return
         self.close()
 
     def closeEvent(self, event):
         if self.worker or self.controller.busy or self.controller.awaiting:
             event.ignore()
-            self.status.setText('Aguarde o término da operação antes de fechar.')
+            self.status.setText(_('Wait for the operation to finish before closing.'))
         else:
             self.history_dialog.reject()
             self.details_dialog.reject()

@@ -1,23 +1,50 @@
-"""Tradução nativa do Qt para pt_BR, com alternativa para botões padrão."""
-from PyQt6.QtCore import QCoreApplication, QEvent, QLibraryInfo, QLocale, QObject, QTranslator
+"""Qt translations for the session language, with a fallback for standard buttons.
+
+The language is never forced: ``qtbase_<lang>`` is loaded for ``QLocale.system()``
+(which follows LANGUAGE/LC_ALL/LC_MESSAGES/LANG), and the application strings come
+from the gettext catalog (see ``i18n``).
+"""
+from PyQt6.QtCore import QCoreApplication, QEvent, QLibraryInfo, QLocale, QObject, Qt, QTranslator
 from PyQt6.QtWidgets import QDialogButtonBox, QMessageBox
 
+from .i18n import pgettext, translation
 
-_BUTTON_LABELS = {
-    'Ok': ('OK', 'OK'), 'Close': ('Close', 'Fechar'), 'Cancel': ('Cancel', 'Cancelar'),
-    'Yes': ('&Yes', '&Sim'), 'No': ('&No', '&Não'),
-    'YesToAll': ('Yes to &All', 'Sim para &todos'), 'NoToAll': ('N&o to All', 'Não para todos'),
-    'Save': ('Save', 'Salvar'), 'SaveAll': ('Save All', 'Salvar tudo'),
-    'Open': ('Open', 'Abrir'), 'Discard': ('Discard', 'Descartar'),
-    'Apply': ('Apply', 'Aplicar'), 'Reset': ('Reset', 'Redefinir'),
-    'RestoreDefaults': ('Restore Defaults', 'Restaurar padrões'),
-    'Help': ('Help', 'Ajuda'), 'Abort': ('Abort', 'Interromper'),
-    'Retry': ('Retry', 'Tentar novamente'), 'Ignore': ('Ignore', 'Ignorar'),
-}
+
+def _fallback_labels():
+    """English source label -> label from the application catalog.
+
+    Used only when neither qtbase_<lang>.qm nor the platform theme translated a
+    standard button (missing catalog, or English labels supplied by the theme).
+    """
+    return {
+        'Ok': ('OK', pgettext('standard button', 'OK')),
+        'Close': ('Close', pgettext('standard button', 'Close')),
+        'Cancel': ('Cancel', pgettext('standard button', 'Cancel')),
+        'Yes': ('&Yes', pgettext('standard button', '&Yes')),
+        'No': ('&No', pgettext('standard button', '&No')),
+        'YesToAll': ('Yes to &All', pgettext('standard button', 'Yes to &All')),
+        'NoToAll': ('N&o to All', pgettext('standard button', 'No to All')),
+        'Save': ('Save', pgettext('standard button', 'Save')),
+        'SaveAll': ('Save All', pgettext('standard button', 'Save All')),
+        'Open': ('Open', pgettext('standard button', 'Open')),
+        'Discard': ('Discard', pgettext('standard button', 'Discard')),
+        'Apply': ('Apply', pgettext('standard button', 'Apply')),
+        'Reset': ('Reset', pgettext('standard button', 'Reset')),
+        'RestoreDefaults': ('Restore Defaults', pgettext('standard button', 'Restore Defaults')),
+        'Help': ('Help', pgettext('standard button', 'Help')),
+        'Abort': ('Abort', pgettext('standard button', 'Abort')),
+        'Retry': ('Retry', pgettext('standard button', 'Retry')),
+        'Ignore': ('Ignore', pgettext('standard button', 'Ignore')),
+    }
+
 
 def localize_standard_buttons(box):
-    """Cobre catálogos ausentes e textos ingleses fornecidos pelo tema KDE."""
-    for name, (source, fallback) in _BUTTON_LABELS.items():
+    """Translate standard buttons still showing their English label.
+
+    Native Qt translation (qtbase) has priority; the application catalog is the
+    fallback.  Custom labels are never touched, so roles and signals are kept.
+    """
+    for name, (source, fallback) in _fallback_labels().items():
         button = box.button(getattr(box.StandardButton, name))
         if button is None or button.text().replace('&', '') != source.replace('&', ''):
             continue
@@ -36,8 +63,11 @@ class _ButtonLocalizer(QObject):
         return False
 
 
-def install_pt_br(app, translations_directory=None):
-    """Usa qtbase_pt_BR; só corrige rótulos ingleses, preservando papéis/sinais."""
+def install_translations(app, translations_directory=None, locale=None):
+    """Load qtbase for the session locale; only fix standard buttons left in English.
+
+    Returns True when the native Qt catalog for the session language was loaded.
+    """
     previous = getattr(app, '_mainuan_button_localizer', None)
     if previous is not None:
         app.removeEventFilter(previous)
@@ -45,11 +75,10 @@ def install_pt_br(app, translations_directory=None):
     for translator in getattr(app, '_mainuan_translators', ()):
         app.removeTranslator(translator)
         translator.deleteLater()
-    QLocale.setDefault(QLocale('pt_BR'))
     native = QTranslator(app)
     directory = (translations_directory if translations_directory is not None else
                  QLibraryInfo.path(QLibraryInfo.LibraryPath.TranslationsPath))
-    loaded = native.load('qtbase_pt_BR', str(directory))
+    loaded = native.load(locale if locale is not None else QLocale.system(), 'qtbase', '_', str(directory))
     if loaded:
         app.installTranslator(native)
     # Mantém referências Python durante todo o ciclo da aplicação.
@@ -57,4 +86,17 @@ def install_pt_br(app, translations_directory=None):
     app._mainuan_button_localizer = _ButtonLocalizer(app)
     app.installEventFilter(app._mainuan_button_localizer)
     app.aboutToQuit.connect(app._mainuan_button_localizer.stop)
+    apply_catalog_layout_direction(app)
     return loaded
+
+
+def apply_catalog_layout_direction(app):
+    """Mirror the interface when the application catalog in use is right-to-left.
+
+    Qt only mirrors when a loaded qtbase_<lang> says so; Urdu has no qtbase
+    catalog and qtbase may not be installed.  Without an application catalog
+    the interface is English and the direction is left untouched.
+    """
+    language = translation().info().get('language')
+    if language and QLocale(language).textDirection() == Qt.LayoutDirection.RightToLeft:
+        app.setLayoutDirection(Qt.LayoutDirection.RightToLeft)

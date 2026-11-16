@@ -2,7 +2,7 @@ Source: mainuan-atualizador-recursos
 Section: utils
 Priority: optional
 Maintainer: Mainuan Packaging <openwebosbr@gmail.com>
-Build-Depends: debhelper-compat (= 13), python3, python3-pyqt6, python3-apt, python3-cryptography, dpkg-dev, gnupg
+Build-Depends: debhelper-compat (= 13), gettext, python3, python3-pyqt6, python3-apt, python3-cryptography, dpkg-dev, gnupg
 Standards-Version: 4.7.0
 Rules-Requires-Root: no
 Homepage: https://github.com/mainuan/atualizador-de-recursos

@@ -1,9 +1,12 @@
 """Transações PackageKit assíncronas por QtDBus; sem dependência de Widgets."""
 from dataclasses import dataclass
+import os
 import re
 
 from PyQt6 import QtDBus
 from PyQt6.QtCore import QObject, QMetaType, QTimer, pyqtSignal, pyqtSlot
+
+from .i18n import _
 
 SERVICE = 'org.freedesktop.PackageKit'
 ROOT = '/org/freedesktop/PackageKit'
@@ -11,6 +14,15 @@ TX = SERVICE + '.Transaction'
 PROPERTIES = 'org.freedesktop.DBus.Properties'
 ONLY_TRUSTED = 1 << 1
 SIMULATE = 1 << 2
+
+
+def locale_hint():
+    """Session locale for PackageKit messages; never a fixed language."""
+    for variable in ('LC_ALL', 'LC_MESSAGES', 'LANG'):
+        value = os.environ.get(variable)
+        if value:
+            return value
+    return 'C'
 
 
 @dataclass(frozen=True)
@@ -132,11 +144,11 @@ class Transaction(QObject):
         path = args[0] if args else ''
         self.path = path.path() if isinstance(path, QtDBus.QDBusObjectPath) else path
         if not isinstance(self.path, str) or self.path == ROOT or not re.fullmatch(r'/[A-Za-z0-9_/]+', self.path):
-            return self._fail(('invalid-path', 'Caminho de transação inválido.'))
+            return self._fail(('invalid-path', _('Invalid transaction path.')))
         if not self.transport.subscribe(self.path):
-            return self._fail(('signals', 'Não foi possível acompanhar a transação.'))
+            return self._fail(('signals', _('Could not follow the transaction.')))
         self.transport.call(self.path, TX, 'SetHints', [[
-            'interactive=' + ('true' if self.real else 'false'), 'locale=pt_BR.UTF-8', 'cache-age=2147483647']], self._hinted)
+            'interactive=' + ('true' if self.real else 'false'), 'locale=' + locale_hint(), 'cache-age=2147483647']], self._hinted)
 
     def _hinted(self, args, error):
         if self.done:
@@ -152,7 +164,7 @@ class Transaction(QObject):
         if self.done or not error:
             return
         if self.real and error[0] in ('org.freedesktop.DBus.Error.NoReply', 'org.freedesktop.DBus.Error.Timeout'):
-            self.progress.emit('Aguardando o resultado do PackageKit; a operação pode continuar em andamento.', None)
+            self.progress.emit(_('Waiting for the PackageKit result; the operation may still be in progress.'), None)
             return
         self._fail(error)
 
@@ -169,37 +181,40 @@ class Transaction(QObject):
         elif name == 'PropertiesChanged' and args[0] == TX:
             props = args[1]
             if not isinstance(props, dict):
-                self.progress.emit('Processando a transação…', None)
+                self.progress.emit(_('Processing the transaction…'), None)
                 return
             self.properties.update(props)
             for key in args[2] if len(args) > 2 else ():
                 self.properties.pop(key, None)
             percentage = self.properties.get('Percentage')
-            status = {8: 'Baixando novidades...', 9: 'Instalando novidades...', 10: 'Instalando novidades...',
-                      30: 'Aguardando outro gerenciador de pacotes...',
-                      31: 'Aguardando autorização...'}.get(self.properties.get('Status'), 'Preparando instalação...')
+            installing = _('Installing new features...')
+            status = {8: _('Downloading new features...'), 9: installing, 10: installing,
+                      30: _('Waiting for another package manager...'),
+                      31: _('Waiting for authorization...')}.get(self.properties.get('Status'), _('Preparing installation...'))
             self.progress.emit(status, percentage if isinstance(percentage, int) and 0 <= percentage <= 100 else None)
             if len(args) > 2 and args[2]:
                 self.transport.call(self.path, PROPERTIES, 'GetAll', [TX], self._properties)
         elif name == 'Finished':
             self._finish(Result(args[0] == 1 and not self.error, tuple(sorted(self.packages)),
-                                self.error or ('' if args[0] == 1 else f'Operação cancelada ou não concluída (código {args[0]}).'), self.restart))
+                                self.error or ('' if args[0] == 1 else _('Operation canceled or not completed (code {code}).').format(code=args[0])), self.restart))
         elif name == 'Destroy':
-            self._fail(('destroyed', 'Transação encerrada sem confirmação de conclusão.'))
+            self._fail(('destroyed', _('Transaction ended without confirmation of completion.')))
 
     def _properties(self, args, error):
         if not self.done and not error and args:
             self._event('PropertiesChanged', [TX, args[0], []])
 
     def _lost(self):
-        self._fail(('disconnected', 'O serviço PackageKit foi desconectado.'))
+        self._fail(('disconnected', _('The PackageKit service was disconnected.')))
 
     def _timed_out(self):
-        self._fail(('timeout', 'A consulta do PackageKit excedeu o tempo limite.'))
+        self._fail(('timeout', _('The PackageKit query timed out.')))
 
     def _fail(self, error):
-        suffix = ' O resultado pode ser parcial; verifique novamente os pacotes.' if self.real and self.submitted else ''
-        self._finish(Result(False, tuple(sorted(self.packages)), f'{error[0]}: {error[1]}{suffix}', self.restart))
+        message = f'{error[0]}: {error[1]}'
+        if self.real and self.submitted:
+            message = _('{error} The result may be partial; check the packages again.').format(error=message)
+        self._finish(Result(False, tuple(sorted(self.packages)), message, self.restart))
 
     def _finish(self, result):
         if self.done:

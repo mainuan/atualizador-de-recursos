@@ -8,6 +8,8 @@ from PyQt6.QtWidgets import (
     QSizePolicy, QToolButton, QVBoxLayout, QWidget,
 )
 
+from .i18n import _
+
 ILLUSTRATION = Path(__file__).with_name('assets') / 'mainuan-novidades.png'
 
 
@@ -32,7 +34,7 @@ class Illustration(QWidget):
         if image.isNull() or image_format != b'png' or not image.hasAlphaChannel():
             raise ValueError('Forneça a ilustração do Mainuan em PNG com transparência.')
         self.pixmap = QPixmap.fromImage(image)
-        self.setAccessibleName('Beija-flor-de-fronte-violeta diante de um notebook, com a mensagem Novidade!')
+        self.setAccessibleName(_('Violet-capped woodnymph hummingbird in front of a laptop, with the message News!'))
         self.setMinimumWidth(88)
         self.setMaximumWidth(250)
         self.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
@@ -79,8 +81,8 @@ class ClassicContent(QWidget):
         top.addStretch()
         self.options = QToolButton()
         self.options.setIcon(QIcon.fromTheme('application-menu'))
-        self.options.setToolTip('Mais opções')
-        self.options.setAccessibleName('Mais opções')
+        self.options.setToolTip(_('More Options'))
+        self.options.setAccessibleName(_('More Options'))
         self.options.setAutoRaise(True)
         self.options.setPopupMode(QToolButton.ToolButtonPopupMode.InstantPopup)
         self.menu = menu = QMenu(self.options)
@@ -126,21 +128,21 @@ class ClassicContent(QWidget):
         right.addWidget(self.progress)
         actions = QVBoxLayout()
         actions.setSpacing(8)
-        self.know = QPushButton('Conhecer novidades')
+        self.know = QPushButton(_('Discover What’s New'))
         self.know.setIcon(QIcon.fromTheme('internet-web-browser'))
         self.know.setAutoDefault(False)
-        self.know.setAccessibleDescription('Opcional: abrir a página oficial no navegador.')
-        self.install = QPushButton('Instalar novidades')
+        self.know.setAccessibleDescription(_('Optional: open the official page in the web browser.'))
+        self.install = QPushButton(_('Install New Features'))
         self.install.setIcon(QIcon.fromTheme('system-software-install'))
         font = self.install.font()
         font.setBold(True)
         self.install.setFont(font)
         self.install.setAutoDefault(True)
         self.install.setDefault(True)
-        self.install.setAccessibleDescription('Ação principal: verificar e instalar os recursos anunciados com autorização do sistema.')
-        self.later = QPushButton('Agora não')
+        self.install.setAccessibleDescription(_('Main action: check and install the announced features with system authorization.'))
+        self.later = QPushButton(_('Not Now'))
         self.later.setAutoDefault(False)
-        self.later.setAccessibleDescription('Adia a notificação por 24 horas, preservando o acesso manual.')
+        self.later.setAccessibleDescription(_('Postpones the notification for 24 hours, keeping manual access.'))
         self.buttons = (self.install, self.know, self.later)
         width = max(button.sizeHint().width() for button in self.buttons) + 16
         height = max(button.sizeHint().height() for button in self.buttons)

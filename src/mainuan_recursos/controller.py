@@ -3,6 +3,7 @@ from dataclasses import dataclass
 
 from PyQt6.QtCore import QObject, QThread, pyqtSignal
 
+from .i18n import _
 from .packages import PlanningError, build_plan, identity, validate_effects
 from .packagekit import Transaction
 
@@ -73,7 +74,7 @@ class Controller(QObject):
         self.release = release
         self.confirmed = None
         self._set_busy(True)
-        self.progress.emit('Preparando instalação...', None)
+        self.progress.emit(_('Preparing installation...'), None)
         try:
             self.guard()
         except Exception as exc:
@@ -82,11 +83,11 @@ class Controller(QObject):
 
     def _planned(self, plan):
         if plan.blockers:
-            return self._fail('Não é possível preparar a instalação:\n' + '\n'.join(f'{r.name}: {r.status}' for r in plan.blockers), plan)
+            return self._fail(_('Cannot prepare the installation:') + '\n' + '\n'.join(f'{r.name}: {r.status}' for r in plan.blockers), plan)
         if plan.complete:
-            return self._finish(True, 'Você já recebeu todos os recursos deste lançamento.', plan)
+            return self._finish(True, _('You have already received all the features of this release.'), plan)
         if self.confirmed and plan != self.confirmed.plan:
-            return self._fail('Os pacotes mudaram. Prepare a instalação novamente para revisar a operação.', plan)
+            return self._fail(_('The packages have changed. Prepare the installation again to review the operation.'), plan)
         self.plan = plan
         self._tx('Resolve', tuple(r.name for r in plan.pending), False, self._resolved)
 
@@ -105,13 +106,13 @@ class Controller(QObject):
             expected = {r.identity for r in self.plan.pending}
             found = {identity(package_id): package_id for info, package_id in result.packages if info == 2}
             if not expected <= found.keys():
-                raise PlanningError('O PackageKit não encontrou as versões/arquiteturas planejadas nos repositórios.')
+                raise PlanningError(_('PackageKit did not find the planned versions/architectures in the repositories.'))
             self.ids = tuple(sorted(found[key] for key in expected))
             if self.confirmed and self.ids != self.confirmed.ids:
-                raise PlanningError('A origem ou a versão dos pacotes mudou. Revise uma nova operação.')
+                raise PlanningError(_('The source or version of the packages has changed. Review a new operation.'))
         except PlanningError as exc:
             return self._fail(str(exc))
-        self.progress.emit('Preparando instalação...', None)
+        self.progress.emit(_('Preparing installation...'), None)
         self._tx('InstallPackages', self.ids, True, self._simulated)
 
     def _simulated(self, result):
@@ -125,12 +126,12 @@ class Controller(QObject):
     def _validated(self, evidence):
         if self.confirmed:
             if evidence != self.confirmed.evidence:
-                return self._fail('As dependências mudaram. Prepare uma nova operação para confirmar os detalhes.')
+                return self._fail(_('The dependencies have changed. Prepare a new operation to confirm the details.'))
             try:
                 self.guard()
             except Exception as exc:
                 return self._fail(str(exc))
-            self.progress.emit('Instalando novidades...', None)
+            self.progress.emit(_('Installing new features...'), None)
             self._tx('InstallPackages', self.ids, False, self._installed)
         else:
             self.awaiting = Prepared(self.release, self.plan, self.ids, evidence)
@@ -143,7 +144,7 @@ class Controller(QObject):
         self.awaiting = None
         self.confirmed = prepared
         self._set_busy(True)
-        self.progress.emit('Preparando instalação...', None)
+        self.progress.emit(_('Preparing installation...'), None)
         self._work(lambda: self.plan_provider(self.release), self._planned)
 
     def cancel_preparation(self):
@@ -151,13 +152,13 @@ class Controller(QObject):
             self.awaiting = None
 
     def _installed(self, result):
-        self.progress.emit('Preparando instalação...', None)
+        self.progress.emit(_('Preparing installation...'), None)
         def verified(plan):
             success = result.success and plan.complete
-            message = ('Concluído! Aproveite os novos recursos do Mainuan.' if success else
-                       result.error or 'O PackageKit encerrou a operação, mas as versões instaladas ainda não foram confirmadas.')
+            message = (_('Done! Enjoy the new Mainuan features.') if success else
+                       result.error or _('PackageKit finished the operation, but the installed versions have not been confirmed yet.'))
             if result.restart >= 2:
-                message += '\nO sistema solicitou reinício de aplicativo, sessão ou computador.'
+                message += '\n' + _('The system requested a restart of an application, the session or the computer.')
             self._finish(success, message, plan)
         # Mesmo após falhas, observar o estado real para não ocultar resultados parciais.
         self._work(lambda: self.verification_plan(self.release), verified)

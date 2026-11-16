@@ -16,13 +16,13 @@ from mainuan_recursos import github_trial as github
 from mainuan_recursos.catalog import CatalogError
 from mainuan_recursos.demo import Demo
 from mainuan_recursos.gui import Window
-from mainuan_recursos.packages import Plan, PackageRow
+from mainuan_recursos.packages import INSTALL, RECEIVED, Plan, PackageRow
 from mainuan_recursos.state import State
 from qt_support import APP, wait_until
 
 
 def pending():
-    return Plan((PackageRow(github.NAME, '1.0', '', '1.0', 'all', 'Instalar', github.SHA256),))
+    return Plan((PackageRow(github.NAME, '1.0', '', '1.0', 'all', INSTALL, github.SHA256),))
 
 
 class LazyDownloadTests(unittest.TestCase):
@@ -55,7 +55,7 @@ class LazyDownloadTests(unittest.TestCase):
     def test_initial_plan_does_not_read_or_require_deb(self):
         release = object(); self.trial.release = release
         with patch('apt.Cache', return_value={}), patch.object(self.trial, 'verify_file') as verify:
-            self.assertEqual(self.trial.plan(release).rows[0].status, 'Instalar')
+            self.assertEqual(self.trial.plan(release).rows[0].status, INSTALL)
         verify.assert_not_called()
         self.assertFalse(self.trial.path.exists())
 
@@ -73,7 +73,7 @@ class LazyDownloadTests(unittest.TestCase):
         self.assertIn(('Baixando novidades...', 0), [call.args for call in progress.call_args_list])
 
     def test_already_received_skips_download_and_backend(self):
-        received = Plan((PackageRow(github.NAME, '1.0', '1.0', '1.0', 'all', 'Já recebido'),))
+        received = Plan((PackageRow(github.NAME, '1.0', '1.0', '1.0', 'all', RECEIVED),))
         with patch.object(self.trial, 'plan', return_value=received), \
              patch.object(github, 'download') as download, patch.object(github, 'supports_local_files') as support:
             self.assertTrue(self.trial.prepare_plan(object(), Mock()).complete)

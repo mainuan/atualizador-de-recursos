@@ -2,6 +2,22 @@
 from dataclasses import dataclass
 from functools import cache
 
+from .i18n import _, pgettext
+
+# Stable status codes used by the planning logic.  Every other status is a
+# translated, human-readable reason that blocks the installation.
+INSTALL = 'install'
+UPGRADE = 'upgrade'
+RECEIVED = 'received'
+
+
+def status_text(status):
+    """Human-readable label of a package status (codes are never shown raw)."""
+    labels = {INSTALL: pgettext('package status', 'Install'),
+              UPGRADE: pgettext('package status', 'Update'),
+              RECEIVED: pgettext('package status', 'Already received')}
+    return labels.get(status, status)
+
 
 class PlanningError(ValueError):
     pass
@@ -28,15 +44,15 @@ class Plan:
 
     @property
     def pending(self):
-        return tuple(r for r in self.rows if r.status in ('Instalar', 'Atualizar'))
+        return tuple(r for r in self.rows if r.status in (INSTALL, UPGRADE))
 
     @property
     def blockers(self):
-        return tuple(r for r in self.rows if r.status not in ('Instalar', 'Atualizar', 'Já recebido'))
+        return tuple(r for r in self.rows if r.status not in (INSTALL, UPGRADE, RECEIVED))
 
     @property
     def complete(self):
-        return bool(self.rows) and all(r.status == 'Já recebido' for r in self.rows)
+        return bool(self.rows) and all(r.status == RECEIVED for r in self.rows)
 
 
 @cache
@@ -67,7 +83,7 @@ def build_plan(release, cache=None):
     for requested in release.packages:
         name, minimum = requested.name, requested.min_version
         if name not in cache:
-            rows.append(PackageRow(name, minimum, '', '', '', 'Indisponível nos repositórios'))
+            rows.append(PackageRow(name, minimum, '', '', '', _('Unavailable in the repositories')))
             continue
         pkg = cache[name]
         installed, candidate = pkg.installed, pkg.candidate
@@ -75,30 +91,30 @@ def build_plan(release, cache=None):
         available = candidate.version if candidate else ''
         architecture = candidate.architecture if candidate else ''
         if installed and configured(pkg) and version_compare(current, minimum) >= 0:
-            status = 'Já recebido'
+            status = RECEIVED
         elif installed and not configured(pkg):
-            status = 'Pacote com configuração incompleta'
+            status = _('Package with incomplete configuration')
         elif getattr(pkg._pkg, 'selected_state', 0) == 2:  # apt_pkg.SELSTATE_HOLD
-            status = 'Pacote retido pelo administrador'
+            status = _('Package held by the administrator')
         elif requested.sha256:
             # Catálogo automático aprova bytes e versão exatos. Nunca substituir
             # silenciosamente pela versão mais nova que aparecer no APT.
             if not candidate or available != minimum or architecture != requested.architecture:
-                status = 'Candidato APT difere da versão aprovada'
+                status = _('APT candidate differs from the approved version')
             elif not trusted(candidate):
-                status = 'Origem não confiável'
+                status = _('Untrusted source')
             elif getattr(candidate, 'sha256', '') != requested.sha256:
-                status = 'Integridade do pacote aprovado divergente'
+                status = _('Integrity of the approved package does not match')
             else:
-                status = 'Atualizar' if installed else 'Instalar'
+                status = UPGRADE if installed else INSTALL
         elif not candidate or version_compare(available, minimum) < 0:
-            status = 'Versão necessária indisponível'
+            status = _('Required version unavailable')
         elif installed and version_compare(available, current) <= 0:
-            status = 'Sem atualização segura disponível'
+            status = _('No safe update available')
         elif not trusted(candidate):
-            status = 'Origem não confiável'
+            status = _('Untrusted source')
         else:
-            status = 'Atualizar' if installed else 'Instalar'
+            status = UPGRADE if installed else INSTALL
         rows.append(PackageRow(name, minimum, current, available, architecture, status, requested.sha256))
     return Plan(tuple(rows))
 
@@ -106,7 +122,7 @@ def build_plan(release, cache=None):
 def identity(package_id):
     parts = package_id.split(';')
     if len(parts) != 4 or not all(parts[:3]):
-        raise PlanningError('O PackageKit retornou um identificador inválido.')
+        raise PlanningError(_('PackageKit returned an invalid identifier.'))
     return tuple(parts[:3])
 
 
@@ -120,27 +136,27 @@ def validate_effects(effects, expected, cache=None, pins=None):
     for info, package_id in effects:
         # PK_INFO_ENUM_INSTALLING / UPDATING. Demais efeitos falham fechados.
         if info not in (11, 12):
-            raise PlanningError('A operação exige remoção, reinstalação, downgrade ou efeito não permitido.')
+            raise PlanningError(_('The operation requires removal, reinstallation, downgrade or a disallowed effect.'))
         name, version, arch = identity(package_id)
         identities.add((name, version, arch))
         if name not in cache:
-            raise PlanningError(f'Não foi possível validar a origem de {name}.')
+            raise PlanningError(_('Could not validate the source of {name}.').format(name=name))
         pkg = cache[f'{name}:{arch}'] if f'{name}:{arch}' in cache else cache[name]
         matches = [v for v in pkg.versions if v.version == version and v.architecture == arch]
         if not matches or not any(trusted(v) for v in matches):
-            raise PlanningError(f'O pacote {name} não possui uma origem confiável.')
+            raise PlanningError(_('The package {name} does not have a trusted source.').format(name=name))
         if pins and (name, version, arch) in pins:
             approved = pins[(name, version, arch)]
             if not all(getattr(v, 'sha256', '') == approved for v in matches if trusted(v)):
-                raise PlanningError(f'A integridade do pacote aprovado {name} mudou. Verifique os repositórios.')
+                raise PlanningError(_('The integrity of the approved package {name} has changed. Check the repositories.').format(name=name))
         if pkg._pkg.selected_state == 2:
-            raise PlanningError(f'O pacote {name} está retido pelo administrador.')
+            raise PlanningError(_('The package {name} is held by the administrator.').format(name=name))
         if pkg.installed and not configured(pkg):
-            raise PlanningError(f'O pacote {name} está com configuração incompleta.')
+            raise PlanningError(_('The package {name} has an incomplete configuration.').format(name=name))
         installed = pkg.installed.version if pkg.installed else ''
         if installed and version_compare(version, installed) <= 0:
-            raise PlanningError(f'Reinstalação ou downgrade de {name} bloqueado.')
+            raise PlanningError(_('Reinstallation or downgrade of {name} blocked.').format(name=name))
         evidence.append((info, package_id, installed))
     if not set(expected) <= identities:
-        raise PlanningError('A simulação não confirmou todos os pacotes solicitados.')
+        raise PlanningError(_('The simulation did not confirm all requested packages.'))
     return tuple(sorted(evidence))

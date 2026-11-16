@@ -6,8 +6,13 @@ install -Dm755 bin/mainuan-atualizador-recursos "$DEST/usr/bin/mainuan-atualizad
 install -d "$DEST/usr/lib/mainuan-atualizador-recursos/mainuan_recursos"
 install -m644 src/mainuan_recursos/*.py "$DEST/usr/lib/mainuan-atualizador-recursos/mainuan_recursos/"
 install -Dm644 src/mainuan_recursos/assets/mainuan-novidades.png "$DEST/usr/lib/mainuan-atualizador-recursos/mainuan_recursos/assets/mainuan-novidades.png"
-install -Dm644 data/org.mainuan.Recursos.desktop "$DEST/usr/share/applications/org.mainuan.Recursos.desktop"
-install -Dm644 data/mainuan-recursos-autostart.desktop "$DEST/etc/xdg/autostart/mainuan-recursos.desktop"
+# Entradas .desktop: modelos em inglês + traduções de po/ (msgfmt --desktop).
+install -d "$DEST/usr/share/applications" "$DEST/etc/xdg/autostart"
+msgfmt --desktop --template=data/org.mainuan.Recursos.desktop.in -d po -o "$DEST/usr/share/applications/org.mainuan.Recursos.desktop"
+msgfmt --desktop --template=data/mainuan-recursos-autostart.desktop.in -d po -o "$DEST/etc/xdg/autostart/mainuan-recursos.desktop"
+chmod 644 "$DEST/usr/share/applications/org.mainuan.Recursos.desktop" "$DEST/etc/xdg/autostart/mainuan-recursos.desktop"
+# Catálogos gettext: /usr/share/locale/<idioma>/LC_MESSAGES/mainuan-atualizador-recursos.mo
+bash po/i18n.sh compile "$DEST/usr/share/locale"
 install -Dm644 data/atualizador-recursos.json "$DEST/etc/mainuan/atualizador-recursos.json"
 install -Dm644 data/mainuan-recursos.svg "$DEST/usr/share/icons/hicolor/scalable/apps/mainuan-recursos.svg"
 install -d "$DEST/usr/share/doc/mainuan-atualizador-recursos/examples"

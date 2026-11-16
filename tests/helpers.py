@@ -1,3 +1,4 @@
+import i18n_support  # noqa: F401  (compiles catalogs, selects pt_BR)
 import json
 from datetime import datetime, timezone
 from pathlib import Path

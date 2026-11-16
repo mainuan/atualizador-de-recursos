@@ -1,6 +1,6 @@
 import unittest
 
-from mainuan_recursos.packages import PlanningError, build_plan, identity, validate_effects, version_compare
+from mainuan_recursos.packages import UPGRADE, PlanningError, build_plan, identity, validate_effects, version_compare
 from helpers import package, release
 
 
@@ -26,7 +26,7 @@ class PlanningTests(unittest.TestCase):
 
     def test_older_installed_can_be_updated(self):
         result = build_plan(release(), self.cache(installed='1.0'))
-        self.assertTrue(all(r.status == 'Atualizar' for r in result.pending))
+        self.assertTrue(all(r.status == UPGRADE for r in result.pending))
 
     def test_external_updates_visible_without_installing(self):
         cache = self.cache(installed='2.0.0', candidate=None)

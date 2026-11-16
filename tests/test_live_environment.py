@@ -47,7 +47,7 @@ class LiveEnvironmentTests(unittest.TestCase):
         for kind in (SessionKind.LIVE, SessionKind.UNKNOWN):
             with patch('mainuan_recursos.application.session_kind', return_value=kind), \
                  patch('mainuan_recursos.application.QApplication'), \
-                 patch('mainuan_recursos.application.install_pt_br'), \
+                 patch('mainuan_recursos.application.install_translations'), \
                  patch('mainuan_recursos.application.QMessageBox.information') as information, \
                  patch('mainuan_recursos.application.Window') as window:
                 self.assertEqual(main([]), 0)
