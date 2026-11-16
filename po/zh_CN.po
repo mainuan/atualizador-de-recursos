@@ -48,8 +48,8 @@ msgid ""
 "real, manual trial in a VM: GitHub packages.txt/message.txt and Driver "
 "Manager 1.0"
 msgstr ""
-"在虚拟机中进行真实的手动测试：GitHub packages.txt/message.txt 和驱动程序管理"
-"器 1.0"
+"在虚拟机中进行真实的手动测试：GitHub packages.txt/message.txt 和驱动管理器 "
+"1.0"
 
 #: src/mainuan_recursos/application.py:25
 msgid "demonstrate the whole flow without modifying the system"
@@ -744,7 +744,7 @@ msgstr "实验性软件包缺失或为符号链接。"
 
 #: src/mainuan_recursos/github_trial.py:114
 msgid "Driver Manager 1.0 integrity mismatch. The installation was blocked."
-msgstr "驱动程序管理器 1.0 完整性校验不匹配。已阻止安装。"
+msgstr "驱动管理器 1.0 完整性校验不匹配。已阻止安装。"
 
 #: src/mainuan_recursos/github_trial.py:120
 msgid "Invalid GitHub reference."
@@ -783,7 +783,7 @@ msgstr "GitHub 提交的时间在未来。请检查虚拟机时钟。"
 
 #: src/mainuan_recursos/github_trial.py:147
 msgid "Driver Manager 1.0"
-msgstr "驱动程序管理器 1.0"
+msgstr "驱动管理器 1.0"
 
 #: src/mainuan_recursos/github_trial.py:155
 msgid "Experimental release not approved."
@@ -809,7 +809,7 @@ msgstr "无法在此测试中安装："
 #: src/mainuan_recursos/github_trial.py:221
 msgid ""
 "You have already received Driver Manager 1.0. No reinstallation will be done."
-msgstr "您已获得驱动程序管理器 1.0。不会重新安装。"
+msgstr "您已获得驱动管理器 1.0。不会重新安装。"
 
 #: src/mainuan_recursos/github_trial.py:223
 msgid "The package state has changed. Review the operation again."
@@ -820,8 +820,8 @@ msgid ""
 "PackageKit proposed changes beyond the Driver Manager application. No "
 "additional driver or dependency will be installed in this trial."
 msgstr ""
-"PackageKit 提议的更改超出了驱动程序管理器应用程序的范围。此测试中不会安装任何"
-"额外的驱动程序或依赖项。"
+"PackageKit 提议的更改超出了驱动管理器应用程序的范围。此测试中不会安装任何额外"
+"的驱动程序或依赖项。"
 
 #: src/mainuan_recursos/github_trial.py:244
 msgid "The operation has changed. Review the confirmation again."
@@ -984,7 +984,7 @@ msgstr ""
 msgid ""
 "The trial only allows the Driver Manager application; changes to other "
 "packages are blocked."
-msgstr "此测试仅允许驱动程序管理器应用程序；对其他软件包的更改会被阻止。"
+msgstr "此测试仅允许驱动管理器应用程序；对其他软件包的更改会被阻止。"
 
 #: src/mainuan_recursos/gui.py:174
 msgid "Querying the official Mainuan news…"
