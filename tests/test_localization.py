@@ -238,6 +238,26 @@ class SessionLanguageTests(unittest.TestCase):
     def test_unknown_language_falls_back_to_english_not_portuguese(self):
         self.assertEqual(self.window_texts('xx_YY'), self.ENGLISH)
 
+    def test_right_to_left_catalog_mirrors_without_qtbase(self):
+        code = '''
+import tempfile
+from PyQt6.QtWidgets import QApplication
+from mainuan_recursos.demo import Demo
+from mainuan_recursos.gui import Window
+from mainuan_recursos.localization import install_translations
+from mainuan_recursos.state import State
+app = QApplication([])
+with tempfile.TemporaryDirectory() as empty:
+    # Empty Qt translations directory: no qtbase_<lang>.qm can mirror the layout.
+    print(install_translations(app, empty))
+window = Window(State(), demo=Demo())
+print(app.layoutDirection().name, window.isRightToLeft())
+'''
+        # The application's Arabic catalog is used: mirrored even without qtbase_ar.
+        self.assertEqual(run_python(code, 'ar').split(), ['False', 'RightToLeft', 'True'])
+        # Urdu is right-to-left but has no application catalog: English, left to right.
+        self.assertEqual(run_python(code, 'ur').split(), ['False', 'LeftToRight', 'False'])
+
     def test_command_line_help(self):
         code = 'from mainuan_recursos.application import main; main()'
         self.assertIn('Conheça e receba as novidades oficiais do Mainuan.', run_python(code, 'pt_BR', '--help'))

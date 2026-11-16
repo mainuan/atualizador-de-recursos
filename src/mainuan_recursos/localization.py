@@ -4,10 +4,10 @@ The language is never forced: ``qtbase_<lang>`` is loaded for ``QLocale.system()
 (which follows LANGUAGE/LC_ALL/LC_MESSAGES/LANG), and the application strings come
 from the gettext catalog (see ``i18n``).
 """
-from PyQt6.QtCore import QCoreApplication, QEvent, QLibraryInfo, QLocale, QObject, QTranslator
+from PyQt6.QtCore import QCoreApplication, QEvent, QLibraryInfo, QLocale, QObject, Qt, QTranslator
 from PyQt6.QtWidgets import QDialogButtonBox, QMessageBox
 
-from .i18n import pgettext
+from .i18n import pgettext, translation
 
 
 def _fallback_labels():
@@ -86,4 +86,17 @@ def install_translations(app, translations_directory=None, locale=None):
     app._mainuan_button_localizer = _ButtonLocalizer(app)
     app.installEventFilter(app._mainuan_button_localizer)
     app.aboutToQuit.connect(app._mainuan_button_localizer.stop)
+    apply_catalog_layout_direction(app)
     return loaded
+
+
+def apply_catalog_layout_direction(app):
+    """Mirror the interface when the application catalog in use is right-to-left.
+
+    Qt only mirrors when a loaded qtbase_<lang> says so; Urdu has no qtbase
+    catalog and qtbase may not be installed.  Without an application catalog
+    the interface is English and the direction is left untouched.
+    """
+    language = translation().info().get('language')
+    if language and QLocale(language).textDirection() == Qt.LayoutDirection.RightToLeft:
+        app.setLayoutDirection(Qt.LayoutDirection.RightToLeft)
