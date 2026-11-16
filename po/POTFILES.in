@@ -1,0 +1,16 @@
+# Files with translatable strings (paths relative to the repository root).
+src/mainuan_recursos/application.py
+src/mainuan_recursos/catalog.py
+src/mainuan_recursos/classic.py
+src/mainuan_recursos/controller.py
+src/mainuan_recursos/demo.py
+src/mainuan_recursos/github_channel.py
+src/mainuan_recursos/github_trial.py
+src/mainuan_recursos/gui.py
+src/mainuan_recursos/localization.py
+src/mainuan_recursos/packagekit.py
+src/mainuan_recursos/packages.py
+src/mainuan_recursos/repository.py
+src/mainuan_recursos/state.py
+data/org.mainuan.Recursos.desktop.in
+data/mainuan-recursos-autostart.desktop.in

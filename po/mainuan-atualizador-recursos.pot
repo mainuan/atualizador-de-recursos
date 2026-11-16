@@ -1,0 +1,1369 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Mainuan
+# This file is distributed under the same license as the mainuan-atualizador-recursos package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: mainuan-atualizador-recursos\n"
+"Report-Msgid-Bugs-To: https://github.com/mainuan/atualizador-de-recursos/"
+"issues\n"
+"POT-Creation-Date: 2026-11-16 11:22-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/mainuan_recursos/application.py:22
+msgid "Discover and receive the official Mainuan news."
+msgstr ""
+
+#: src/mainuan_recursos/application.py:23
+msgid "check during the session and notify without blocking the login"
+msgstr ""
+
+#: src/mainuan_recursos/application.py:24
+msgid ""
+"real, manual trial in a VM: GitHub packages.txt/message.txt and Driver "
+"Manager 1.0"
+msgstr ""
+
+#: src/mainuan_recursos/application.py:25
+msgid "demonstrate the whole flow without modifying the system"
+msgstr ""
+
+#: src/mainuan_recursos/application.py:26
+msgid "demonstration scenario"
+msgstr ""
+
+#: src/mainuan_recursos/application.py:27
+msgid "signed local catalog, only with --demo"
+msgstr ""
+
+#: src/mainuan_recursos/application.py:28
+msgid "test configuration and key, only with --demo"
+msgstr ""
+
+#: src/mainuan_recursos/application.py:33
+msgid ""
+"--homologacao-github is manual and cannot be combined with --check/--demo."
+msgstr ""
+
+#: src/mainuan_recursos/application.py:38
+#, python-brace-format
+msgid "Acceptance test unavailable: {error}"
+msgstr ""
+
+#: src/mainuan_recursos/application.py:40
+msgid "Use --demo --test-catalog FILE --test-config FILE together."
+msgstr ""
+
+#: src/mainuan_recursos/application.py:51
+msgid ""
+"Checking for news becomes available after installing Mainuan. The Live "
+"session will not be queried."
+msgstr ""
+
+#: src/mainuan_recursos/application.py:53
+msgid ""
+"Could not determine the session type. Querying and installing features have "
+"been disabled."
+msgstr ""
+
+#: src/mainuan_recursos/application.py:54
+msgid "Mainuan News"
+msgstr ""
+
+#: src/mainuan_recursos/application.py:67
+msgid "Invalid test catalog"
+msgstr ""
+
+#: src/mainuan_recursos/application.py:81
+#, python-brace-format
+msgid "Could not open the state directory: {error}"
+msgstr ""
+
+#: src/mainuan_recursos/application.py:83
+#: src/mainuan_recursos/application.py:106
+#: src/mainuan_recursos/application.py:119
+msgid "Could not open the history"
+msgstr ""
+
+#: src/mainuan_recursos/application.py:90
+msgid "Could not lock the local state. Check the directory permissions."
+msgstr ""
+
+#: src/mainuan_recursos/application.py:100
+msgid ""
+"The other instance is starting. Open the application again in a few seconds."
+msgstr ""
+
+#: src/mainuan_recursos/application.py:126
+msgid "Could not create the single-instance channel."
+msgstr ""
+
+#: src/mainuan_recursos/catalog.py:38
+#, python-brace-format
+msgid "Repeated field: {key}"
+msgstr ""
+
+#: src/mainuan_recursos/catalog.py:44 src/mainuan_recursos/catalog.py:270
+msgid "The catalog exceeds the size limit."
+msgstr ""
+
+#: src/mainuan_recursos/catalog.py:47
+msgid "Invalid number."
+msgstr ""
+
+#: src/mainuan_recursos/catalog.py:49
+#, python-brace-format
+msgid "Invalid JSON: {error}"
+msgstr ""
+
+#: src/mainuan_recursos/catalog.py:53
+msgid "A JSON object was expected."
+msgstr ""
+
+#: src/mainuan_recursos/catalog.py:55
+msgid "Missing or unknown fields in the catalog/configuration."
+msgstr ""
+
+#: src/mainuan_recursos/catalog.py:61
+msgid "Invalid text."
+msgstr ""
+
+#: src/mainuan_recursos/catalog.py:66
+msgid "Invalid identifier."
+msgstr ""
+
+#: src/mainuan_recursos/catalog.py:72
+msgid "HTTPS address contains spaces."
+msgstr ""
+
+#: src/mainuan_recursos/catalog.py:77
+msgid "Address outside the configured official HTTPS domains."
+msgstr ""
+
+#: src/mainuan_recursos/catalog.py:79
+msgid "Invalid HTTPS address."
+msgstr ""
+
+#: src/mainuan_recursos/catalog.py:89
+msgid "Ambiguous or disallowed URL path."
+msgstr ""
+
+#: src/mainuan_recursos/catalog.py:95
+msgid "The URL path does not belong to the authorized official infrastructure."
+msgstr ""
+
+#: src/mainuan_recursos/catalog.py:100
+msgid "Configure the official URL prefixes."
+msgstr ""
+
+#: src/mainuan_recursos/catalog.py:105
+msgid "Invalid official prefix; use HTTPS and a path ending in /."
+msgstr ""
+
+#: src/mainuan_recursos/catalog.py:113
+msgid "Use UTC dates with the Z suffix."
+msgstr ""
+
+#: src/mainuan_recursos/catalog.py:116
+msgid "Invalid date."
+msgstr ""
+
+#: src/mainuan_recursos/catalog.py:179
+msgid ""
+"Configure the official Mainuan domains in /etc/mainuan/atualizador-"
+"recursos.json."
+msgstr ""
+
+#: src/mainuan_recursos/catalog.py:183
+msgid "The catalog URL cannot contain a query."
+msgstr ""
+
+#: src/mainuan_recursos/catalog.py:184
+msgid "Install the official public key of the catalog."
+msgstr ""
+
+#: src/mainuan_recursos/catalog.py:188
+msgid "Invalid Ed25519 key."
+msgstr ""
+
+#: src/mainuan_recursos/catalog.py:190
+msgid "Invalid public key."
+msgstr ""
+
+#: src/mainuan_recursos/catalog.py:198
+msgid "Unsupported schema."
+msgstr ""
+
+#: src/mainuan_recursos/catalog.py:199
+msgid "Invalid sequence."
+msgstr ""
+
+#: src/mainuan_recursos/catalog.py:202
+msgid "Catalog expired or with an invalid validity period."
+msgstr ""
+
+#: src/mainuan_recursos/catalog.py:203
+msgid "Invalid list of releases."
+msgstr ""
+
+#: src/mainuan_recursos/catalog.py:210
+msgid "Duplicate release."
+msgstr ""
+
+#: src/mainuan_recursos/catalog.py:215
+msgid "Invalid compatibility."
+msgstr ""
+
+#: src/mainuan_recursos/catalog.py:219
+msgid "Invalid features."
+msgstr ""
+
+#: src/mainuan_recursos/catalog.py:223
+msgid "Invalid packages."
+msgstr ""
+
+#: src/mainuan_recursos/catalog.py:229
+msgid "Invalid or repeated package name."
+msgstr ""
+
+#: src/mainuan_recursos/catalog.py:231
+msgid "Invalid Debian version."
+msgstr ""
+
+#: src/mainuan_recursos/catalog.py:234
+msgid "Incomplete package pin."
+msgstr ""
+
+#: src/mainuan_recursos/catalog.py:238
+msgid "Invalid architecture or SHA-256."
+msgstr ""
+
+#: src/mainuan_recursos/catalog.py:242
+msgid "Invalid provenance."
+msgstr ""
+
+#: src/mainuan_recursos/catalog.py:247
+msgid "Invalid GitHub source."
+msgstr ""
+
+#: src/mainuan_recursos/catalog.py:250
+msgid "Invalid immutable reference."
+msgstr ""
+
+#: src/mainuan_recursos/catalog.py:251
+msgid "Invalid artifacts."
+msgstr ""
+
+#: src/mainuan_recursos/catalog.py:254
+msgid "Invalid artifact ID."
+msgstr ""
+
+#: src/mainuan_recursos/catalog.py:258
+msgid "Provenance does not match the offered packages."
+msgstr ""
+
+#: src/mainuan_recursos/catalog.py:278
+msgid "The catalog signature is not valid or the key is not trusted."
+msgstr ""
+
+#: src/mainuan_recursos/catalog.py:301
+msgid "Response exceeds the size limit."
+msgstr ""
+
+#: src/mainuan_recursos/classic.py:37
+msgid ""
+"Violet-capped woodnymph hummingbird in front of a laptop, with the message "
+"News!"
+msgstr ""
+
+#: src/mainuan_recursos/classic.py:84 src/mainuan_recursos/classic.py:85
+msgid "More Options"
+msgstr ""
+
+#: src/mainuan_recursos/classic.py:131
+msgid "Discover What’s New"
+msgstr ""
+
+#: src/mainuan_recursos/classic.py:134
+msgid "Optional: open the official page in the web browser."
+msgstr ""
+
+#: src/mainuan_recursos/classic.py:135 src/mainuan_recursos/gui.py:361
+msgid "Install New Features"
+msgstr ""
+
+#: src/mainuan_recursos/classic.py:142
+msgid ""
+"Main action: check and install the announced features with system "
+"authorization."
+msgstr ""
+
+#: src/mainuan_recursos/classic.py:143
+msgid "Not Now"
+msgstr ""
+
+#: src/mainuan_recursos/classic.py:145
+msgid "Postpones the notification for 24 hours, keeping manual access."
+msgstr ""
+
+#: src/mainuan_recursos/controller.py:77 src/mainuan_recursos/controller.py:115
+#: src/mainuan_recursos/controller.py:147
+#: src/mainuan_recursos/controller.py:155 src/mainuan_recursos/demo.py:68
+#: src/mainuan_recursos/github_channel.py:359
+#: src/mainuan_recursos/github_trial.py:201
+#: src/mainuan_recursos/packagekit.py:193
+msgid "Preparing installation..."
+msgstr ""
+
+#: src/mainuan_recursos/controller.py:86
+msgid "Cannot prepare the installation:"
+msgstr ""
+
+#: src/mainuan_recursos/controller.py:88
+msgid "You have already received all the features of this release."
+msgstr ""
+
+#: src/mainuan_recursos/controller.py:90
+msgid ""
+"The packages have changed. Prepare the installation again to review the "
+"operation."
+msgstr ""
+
+#: src/mainuan_recursos/controller.py:109
+msgid ""
+"PackageKit did not find the planned versions/architectures in the "
+"repositories."
+msgstr ""
+
+#: src/mainuan_recursos/controller.py:112
+msgid ""
+"The source or version of the packages has changed. Review a new operation."
+msgstr ""
+
+#: src/mainuan_recursos/controller.py:129
+msgid ""
+"The dependencies have changed. Prepare a new operation to confirm the "
+"details."
+msgstr ""
+
+#: src/mainuan_recursos/controller.py:134 src/mainuan_recursos/demo.py:69
+#: src/mainuan_recursos/github_channel.py:440
+#: src/mainuan_recursos/github_trial.py:250
+#: src/mainuan_recursos/packagekit.py:190
+msgid "Installing new features..."
+msgstr ""
+
+#: src/mainuan_recursos/controller.py:158
+msgid "Done! Enjoy the new Mainuan features."
+msgstr ""
+
+#: src/mainuan_recursos/controller.py:159
+msgid ""
+"PackageKit finished the operation, but the installed versions have not been "
+"confirmed yet."
+msgstr ""
+
+#: src/mainuan_recursos/controller.py:161
+msgid ""
+"The system requested a restart of an application, the session or the "
+"computer."
+msgstr ""
+
+#: src/mainuan_recursos/demo.py:20
+msgid "Your Mainuan is evolving!"
+msgstr ""
+
+#: src/mainuan_recursos/demo.py:21
+msgid "Discover the new features prepared to make your day simpler."
+msgstr ""
+
+#: src/mainuan_recursos/demo.py:23
+msgid "A new welcome experience"
+msgstr ""
+
+#: src/mainuan_recursos/demo.py:24
+msgid "More options to customize your desktop"
+msgstr ""
+
+#: src/mainuan_recursos/demo.py:25
+msgid "A hub to discover Mainuan applications"
+msgstr ""
+
+#: src/mainuan_recursos/demo.py:27
+msgid "Previous Mainuan news"
+msgstr ""
+
+#: src/mainuan_recursos/demo.py:37 src/mainuan_recursos/packages.py:86
+msgid "Unavailable in the repositories"
+msgstr ""
+
+#: src/mainuan_recursos/demo.py:76
+msgid "Authorization canceled (simulation)."
+msgstr ""
+
+#: src/mainuan_recursos/demo.py:77
+msgid "Download failed (simulation)."
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:41
+#: src/mainuan_recursos/github_channel.py:48
+msgid "Invalid GitHub address."
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:46
+msgid "GitHub address must use official HTTPS."
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:51
+msgid "Ambiguous GitHub path."
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:53
+msgid "Invalid repository."
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:63
+msgid "Source or redirect outside the official Mainuan organization."
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:72
+msgid "The GitHub query was redirected; check the official source."
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:87
+msgid "GitHub metadata exceeds the allowed limit."
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:96
+msgid "Invalid GitHub artifact."
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:98
+msgid "Use the Debian name package_version_architecture.deb in the release."
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:101
+msgid "Invalid Debian name or version."
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:104
+#, python-brace-format
+msgid "The release has no verifiable SHA-256 published by GitHub for {file}."
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:106
+msgid "Artifact unavailable or invalid size."
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:126
+#: src/mainuan_recursos/github_channel.py:260
+msgid "GitHub history exceeds the allowed limit."
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:139
+#: src/mainuan_recursos/github_channel.py:253
+#: src/mainuan_recursos/github_trial.py:146
+msgid "Mainuan has news!"
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:147
+#, python-brace-format
+msgid ""
+"Repository does not belong to the official organization or is unavailable: "
+"{repository}"
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:149
+#, python-brace-format
+msgid "The repository identity was replaced: {repository}"
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:155
+#, python-brace-format
+msgid "Invalid list of releases: {repository}"
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:160
+#, python-brace-format
+msgid "Too many releases for a safe query: {repository}"
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:163
+msgid "Release with a future date. Check the system clock."
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:164
+msgid "Invalid release ID."
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:168
+msgid "Invalid list of artifacts."
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:173
+msgid "Too many artifacts in the release."
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:183
+#, python-brace-format
+msgid "Duplicate or ambiguous packages in the release: {repository}"
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:188
+msgid "Artifact URL does not match the selected release."
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:190
+msgid "Invalid immutable reference of the release."
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:196
+#, python-brace-format
+msgid "No stable release with a compatible Debian package: {repository}"
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:218
+msgid "This channel is intended for Mainuan based on Kubuntu 26.04."
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:220
+msgid "Invalid official reference."
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:224
+msgid "message.txt is empty."
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:228
+msgid "packages.txt contains invalid or repeated repositories."
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:234
+msgid "Two repositories offer the same Debian package."
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:239
+#, python-brace-format
+msgid "An already announced release or artifact was replaced: {package}"
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:243
+#, python-brace-format
+msgid "Rollback of a published version blocked: {package}"
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:264
+msgid "News not queried in this channel."
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:272
+msgid "Package missing or size mismatch."
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:274
+msgid "SHA-256 integrity mismatch; installation blocked."
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:278
+msgid "Internal package metadata does not match the release."
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:292
+#: src/mainuan_recursos/github_trial.py:162 src/mainuan_recursos/packages.py:96
+msgid "Package with incomplete configuration"
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:296
+#: src/mainuan_recursos/github_trial.py:167 src/mainuan_recursos/packages.py:98
+msgid "Package held by the administrator"
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:302
+#: src/mainuan_recursos/github_trial.py:173
+#, python-brace-format
+msgid "Unmet dependencies: {details}"
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:304
+msgid "The operation requires additional unannounced packages"
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:312
+msgid "The announced release was withdrawn or changed."
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:314
+msgid "The release reference was replaced; installation blocked."
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:317
+msgid "The artifact was changed after the query; check for news again."
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:334
+msgid "Download exceeds the approved size."
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:337
+#: src/mainuan_recursos/github_channel.py:356
+#: src/mainuan_recursos/github_trial.py:189
+#: src/mainuan_recursos/github_trial.py:191
+#: src/mainuan_recursos/packagekit.py:191
+msgid "Downloading new features..."
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:338
+msgid "Download with SHA-256 integrity mismatch."
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:345
+msgid "Check for news online before installing."
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:347
+msgid ""
+"Installation requires a regular user and an installed session, outside Live "
+"mode."
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:367
+msgid "PackageKit proposed additional packages or an incomplete operation."
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:371
+msgid "The simulation would change unannounced packages."
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:373
+msgid "Removal, reinstallation or downgrade blocked."
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:385
+#: src/mainuan_recursos/github_channel.py:386
+msgid "Invalid GitHub cache."
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:391
+msgid "Invalid local edition."
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:394
+msgid "Invalid local artifact."
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:398
+msgid "Invalid GitHub history. Preserve the file before recovering it."
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:415
+msgid "Cannot install:"
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:417
+msgid ""
+"You have already received all the features. No reinstallation will be done."
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:419
+msgid "The package state has changed. Check for news again."
+msgstr ""
+
+#: src/mainuan_recursos/github_channel.py:432
+msgid "The operation has changed; installation blocked."
+msgstr ""
+
+#: src/mainuan_recursos/github_trial.py:42
+msgid ""
+"The GitHub acceptance test is exclusive to a VM with a snapshot; use the "
+"normal mode on this computer."
+msgstr ""
+
+#: src/mainuan_recursos/github_trial.py:43
+msgid "Open the acceptance test as a regular user, without sudo."
+msgstr ""
+
+#: src/mainuan_recursos/github_trial.py:44
+msgid ""
+"The acceptance test requires a normal installation, outside the Live session."
+msgstr ""
+
+#: src/mainuan_recursos/github_trial.py:46
+msgid "This trial is intended for Mainuan based on Kubuntu 26.04."
+msgstr ""
+
+#: src/mainuan_recursos/github_trial.py:52
+msgid "Invalid acceptance test URL."
+msgstr ""
+
+#: src/mainuan_recursos/github_trial.py:59
+msgid "Redirect outside the authorized GitHub infrastructure."
+msgstr ""
+
+#: src/mainuan_recursos/github_trial.py:88
+msgid "GitHub response exceeds the allowed size."
+msgstr ""
+
+#: src/mainuan_recursos/github_trial.py:98
+msgid "Could not query PackageKit support for local files."
+msgstr ""
+
+#: src/mainuan_recursos/github_trial.py:102
+msgid ""
+"The PackageKit backend of this VM does not offer InstallFiles. No unsafe "
+"fallback will be used."
+msgstr ""
+
+#: src/mainuan_recursos/github_trial.py:112
+msgid "Experimental package missing or symbolic."
+msgstr ""
+
+#: src/mainuan_recursos/github_trial.py:114
+msgid "Driver Manager 1.0 integrity mismatch. The installation was blocked."
+msgstr ""
+
+#: src/mainuan_recursos/github_trial.py:120
+msgid "Invalid GitHub reference."
+msgstr ""
+
+#: src/mainuan_recursos/github_trial.py:125
+msgid ""
+"In this first trial, packages.txt must contain only mainuan-gestao-drivers."
+msgstr ""
+
+#: src/mainuan_recursos/github_trial.py:126
+msgid "Message empty or too long."
+msgstr ""
+
+#: src/mainuan_recursos/github_trial.py:129
+msgid "Program repository mismatch."
+msgstr ""
+
+#: src/mainuan_recursos/github_trial.py:133
+msgid "The approved release is not available as a stable publication."
+msgstr ""
+
+#: src/mainuan_recursos/github_trial.py:135
+msgid "Approved artifact not found."
+msgstr ""
+
+#: src/mainuan_recursos/github_trial.py:139
+msgid ""
+"The release was changed or does not match the package approved for this "
+"trial."
+msgstr ""
+
+#: src/mainuan_recursos/github_trial.py:144
+msgid "GitHub commit is in the future. Check the VM clock."
+msgstr ""
+
+#: src/mainuan_recursos/github_trial.py:147
+msgid "Driver Manager 1.0"
+msgstr ""
+
+#: src/mainuan_recursos/github_trial.py:155
+msgid "Experimental release not approved."
+msgstr ""
+
+#: src/mainuan_recursos/github_trial.py:171
+msgid "Debian metadata mismatch."
+msgstr ""
+
+#: src/mainuan_recursos/github_trial.py:175
+#, python-brace-format
+msgid "This trial does not allow changing dependencies: {packages}"
+msgstr ""
+
+#: src/mainuan_recursos/github_trial.py:192
+msgid "Package download with invalid integrity."
+msgstr ""
+
+#: src/mainuan_recursos/github_trial.py:219
+msgid "Cannot install in this trial:"
+msgstr ""
+
+#: src/mainuan_recursos/github_trial.py:221
+msgid ""
+"You have already received Driver Manager 1.0. No reinstallation will be done."
+msgstr ""
+
+#: src/mainuan_recursos/github_trial.py:223
+msgid "The package state has changed. Review the operation again."
+msgstr ""
+
+#: src/mainuan_recursos/github_trial.py:236
+msgid ""
+"PackageKit proposed changes beyond the Driver Manager application. No "
+"additional driver or dependency will be installed in this trial."
+msgstr ""
+
+#: src/mainuan_recursos/github_trial.py:244
+msgid "The operation has changed. Review the confirmation again."
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:39
+msgid "Mainuan Feature Updater — Demo"
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:40
+msgid "Mainuan Feature Updater — GitHub Acceptance Test"
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:41
+msgid "Mainuan Feature Updater"
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:44
+msgid "Checking for news…"
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:50
+msgid "Check for News"
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:51 src/mainuan_recursos/gui.py:55
+#: src/mainuan_recursos/gui.py:56
+msgid "News History"
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:53 src/mainuan_recursos/gui.py:60
+msgid "Technical Information"
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:59
+msgid "Programs, packages, versions and actual status"
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:92
+#, python-brace-format
+msgid "{title} — Demo"
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:119
+#, python-brace-format
+msgid "Release: {id} • {version}"
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:120
+#, python-brace-format
+msgid "Official article: {url}"
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:121
+msgid "not checked"
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:126 src/mainuan_recursos/gui.py:351
+msgid "not installed"
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:127
+msgid "unavailable"
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:129
+msgid "packages not checked"
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:130
+#, python-brace-format
+msgid "Package: {name}"
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:131
+#, python-brace-format
+msgid "Minimum version: {version}"
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:132
+#, python-brace-format
+msgid "Installed: {version}"
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:133
+#, python-brace-format
+msgid "Available: {version}"
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:134
+#, python-brace-format
+msgid "Architecture: {architecture}"
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:135
+#, python-brace-format
+msgid "Status: {status}"
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:137
+#, python-brace-format
+msgid "Approved SHA-256: {sha256}"
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:139
+msgid ""
+"The complete operation, including dependencies, will be shown when "
+"confirming the installation."
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:141
+msgid ""
+"Demo: authorization and installation are simulated; no package will be "
+"changed."
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:143
+msgid ""
+"Official GitHub channel: packages.txt and message.txt from the same commit."
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:144
+msgid ""
+"Packages from stable releases, with IDs, versions and SHA-256 recorded "
+"during the query."
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:145
+msgid ""
+"The download starts only after choosing to install; unannounced changes are "
+"blocked."
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:146
+msgid "HTTPS and SHA-256 are not equivalent to an APT repository signature."
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:147
+msgid "PackageKit/PolicyKit may ask for authorization for an untrusted source."
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:149
+msgid ""
+"GitHub acceptance test: official source and artifact pinned by IDs and "
+"SHA-256."
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:150
+msgid "The download starts only after choosing to install."
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:151
+msgid ""
+"Local file without an APT repository signature. PackageKit/PolicyKit may ask "
+"for authorization for an untrusted source."
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:152
+msgid ""
+"The trial only allows the Driver Manager application; changes to other "
+"packages are blocked."
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:174
+msgid "Querying the official Mainuan news…"
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:218
+#, python-brace-format
+msgid "Could not check for news. {error}"
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:246
+msgid "No news has been published yet. Come back soon!"
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:252
+msgid ""
+"No news published.\n"
+"Come back soon to discover the next Mainuan features."
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:260
+msgid "We have news for you! Discover the features before installing."
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:262
+#, python-brace-format
+msgid "Could not check the packages: {error}"
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:264
+msgid ""
+"This release is not compatible with the version or architecture of this "
+"system."
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:266
+msgid ""
+"You have already received these features through the system. Discover the "
+"news!"
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:268
+msgid ""
+"Some packages are not yet available for safe installation. See the technical "
+"information in the menu."
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:272
+#, python-brace-format
+msgid "{message} Cached catalog: offline query; installation unavailable."
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:284
+msgctxt "news state"
+msgid "New"
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:284
+msgctxt "news state"
+msgid "Viewed"
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:285
+msgctxt "news state"
+msgid "Postponed"
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:297
+#, python-brace-format
+msgid "Could not save the viewing in the history: {error}"
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:309
+msgid "Could not open the default web browser."
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:313
+msgid "Check the official catalog again before installing."
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:315
+msgid "Release incompatible with this system."
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:346
+msgid "Confirm Installation"
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:346
+msgid "Confirm Installation — Demo"
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:348
+msgid ""
+"The installation needs to change other packages or review the plan. Check "
+"the operation before continuing."
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:355
+msgid "Complete operation, including dependencies:"
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:356
+msgid "Packages and dependencies of the operation"
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:358
+msgid "Authorization and installation will be simulated."
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:359
+msgid "The system will ask for authorization to install."
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:362
+msgid "Cancel"
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:373
+msgid "Installation canceled. You can discover the news whenever you want."
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:382
+#, python-brace-format
+msgid "Could not save the history: {error}"
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:398
+#, python-brace-format
+msgid "Could not save the 24-hour postponement: {error}"
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:405
+msgid "Wait for the operation to finish before closing."
+msgstr ""
+
+#: src/mainuan_recursos/localization.py:20
+msgctxt "standard button"
+msgid "OK"
+msgstr ""
+
+#: src/mainuan_recursos/localization.py:21
+msgctxt "standard button"
+msgid "Close"
+msgstr ""
+
+#: src/mainuan_recursos/localization.py:22
+msgctxt "standard button"
+msgid "Cancel"
+msgstr ""
+
+#: src/mainuan_recursos/localization.py:23
+msgctxt "standard button"
+msgid "&Yes"
+msgstr ""
+
+#: src/mainuan_recursos/localization.py:24
+msgctxt "standard button"
+msgid "&No"
+msgstr ""
+
+#: src/mainuan_recursos/localization.py:25
+msgctxt "standard button"
+msgid "Yes to &All"
+msgstr ""
+
+#: src/mainuan_recursos/localization.py:26
+msgctxt "standard button"
+msgid "No to All"
+msgstr ""
+
+#: src/mainuan_recursos/localization.py:27
+msgctxt "standard button"
+msgid "Save"
+msgstr ""
+
+#: src/mainuan_recursos/localization.py:28
+msgctxt "standard button"
+msgid "Save All"
+msgstr ""
+
+#: src/mainuan_recursos/localization.py:29
+msgctxt "standard button"
+msgid "Open"
+msgstr ""
+
+#: src/mainuan_recursos/localization.py:30
+msgctxt "standard button"
+msgid "Discard"
+msgstr ""
+
+#: src/mainuan_recursos/localization.py:31
+msgctxt "standard button"
+msgid "Apply"
+msgstr ""
+
+#: src/mainuan_recursos/localization.py:32
+msgctxt "standard button"
+msgid "Reset"
+msgstr ""
+
+#: src/mainuan_recursos/localization.py:33
+msgctxt "standard button"
+msgid "Restore Defaults"
+msgstr ""
+
+#: src/mainuan_recursos/localization.py:34
+msgctxt "standard button"
+msgid "Help"
+msgstr ""
+
+#: src/mainuan_recursos/localization.py:35
+msgctxt "standard button"
+msgid "Abort"
+msgstr ""
+
+#: src/mainuan_recursos/localization.py:36
+msgctxt "standard button"
+msgid "Retry"
+msgstr ""
+
+#: src/mainuan_recursos/localization.py:37
+msgctxt "standard button"
+msgid "Ignore"
+msgstr ""
+
+#: src/mainuan_recursos/packagekit.py:147
+msgid "Invalid transaction path."
+msgstr ""
+
+#: src/mainuan_recursos/packagekit.py:149
+msgid "Could not follow the transaction."
+msgstr ""
+
+#: src/mainuan_recursos/packagekit.py:167
+msgid ""
+"Waiting for the PackageKit result; the operation may still be in progress."
+msgstr ""
+
+#: src/mainuan_recursos/packagekit.py:184
+msgid "Processing the transaction…"
+msgstr ""
+
+#: src/mainuan_recursos/packagekit.py:192
+msgid "Waiting for another package manager..."
+msgstr ""
+
+#: src/mainuan_recursos/packagekit.py:193
+msgid "Waiting for authorization..."
+msgstr ""
+
+#: src/mainuan_recursos/packagekit.py:199
+#, python-brace-format
+msgid "Operation canceled or not completed (code {code})."
+msgstr ""
+
+#: src/mainuan_recursos/packagekit.py:201
+msgid "Transaction ended without confirmation of completion."
+msgstr ""
+
+#: src/mainuan_recursos/packagekit.py:208
+msgid "The PackageKit service was disconnected."
+msgstr ""
+
+#: src/mainuan_recursos/packagekit.py:211
+msgid "The PackageKit query timed out."
+msgstr ""
+
+#: src/mainuan_recursos/packagekit.py:216
+#, python-brace-format
+msgid "{error} The result may be partial; check the packages again."
+msgstr ""
+
+#: src/mainuan_recursos/packages.py:16
+msgctxt "package status"
+msgid "Install"
+msgstr ""
+
+#: src/mainuan_recursos/packages.py:17
+msgctxt "package status"
+msgid "Update"
+msgstr ""
+
+#: src/mainuan_recursos/packages.py:18
+msgctxt "package status"
+msgid "Already received"
+msgstr ""
+
+#: src/mainuan_recursos/packages.py:103
+msgid "APT candidate differs from the approved version"
+msgstr ""
+
+#: src/mainuan_recursos/packages.py:105 src/mainuan_recursos/packages.py:115
+msgid "Untrusted source"
+msgstr ""
+
+#: src/mainuan_recursos/packages.py:107
+msgid "Integrity of the approved package does not match"
+msgstr ""
+
+#: src/mainuan_recursos/packages.py:111
+msgid "Required version unavailable"
+msgstr ""
+
+#: src/mainuan_recursos/packages.py:113
+msgid "No safe update available"
+msgstr ""
+
+#: src/mainuan_recursos/packages.py:125
+msgid "PackageKit returned an invalid identifier."
+msgstr ""
+
+#: src/mainuan_recursos/packages.py:139
+msgid ""
+"The operation requires removal, reinstallation, downgrade or a disallowed "
+"effect."
+msgstr ""
+
+#: src/mainuan_recursos/packages.py:143
+#, python-brace-format
+msgid "Could not validate the source of {name}."
+msgstr ""
+
+#: src/mainuan_recursos/packages.py:147
+#, python-brace-format
+msgid "The package {name} does not have a trusted source."
+msgstr ""
+
+#: src/mainuan_recursos/packages.py:151
+#, python-brace-format
+msgid ""
+"The integrity of the approved package {name} has changed. Check the "
+"repositories."
+msgstr ""
+
+#: src/mainuan_recursos/packages.py:153
+#, python-brace-format
+msgid "The package {name} is held by the administrator."
+msgstr ""
+
+#: src/mainuan_recursos/packages.py:155
+#, python-brace-format
+msgid "The package {name} has an incomplete configuration."
+msgstr ""
+
+#: src/mainuan_recursos/packages.py:158
+#, python-brace-format
+msgid "Reinstallation or downgrade of {name} blocked."
+msgstr ""
+
+#: src/mainuan_recursos/packages.py:161
+msgid "The simulation did not confirm all requested packages."
+msgstr ""
+
+#: src/mainuan_recursos/repository.py:27
+msgid "Local cache exceeds the size limit."
+msgstr ""
+
+#: src/mainuan_recursos/repository.py:45
+msgid "Old or changed catalog; the valid cache was preserved."
+msgstr ""
+
+#: src/mainuan_recursos/state.py:44
+msgid "Local state too large."
+msgstr ""
+
+#: src/mainuan_recursos/state.py:46 src/mainuan_recursos/state.py:48
+#: src/mainuan_recursos/state.py:56
+msgid "Invalid state."
+msgstr ""
+
+#: src/mainuan_recursos/state.py:51
+msgid "Invalid sequence/digest."
+msgstr ""
+
+#: src/mainuan_recursos/state.py:53
+msgid "Invalid release."
+msgstr ""
+
+#: src/mainuan_recursos/state.py:54
+msgid "Incomplete state."
+msgstr ""
+
+#: src/mainuan_recursos/state.py:58
+msgid "Invalid deadline."
+msgstr ""
+
+#: src/mainuan_recursos/state.py:61
+msgid "The local state is damaged. Preserve the file before recovering it."
+msgstr ""
+
+#: src/mainuan_recursos/state.py:91
+msgid "Old catalog or content changed without increasing the sequence."
+msgstr ""
+
+#: data/mainuan-recursos-autostart.desktop.in:4
+msgid "Checks for news during the session"
+msgstr ""
+
+#: data/org.mainuan.Recursos.desktop.in:4
+msgid "Discover and receive the official Mainuan news"
+msgstr ""
