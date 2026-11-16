@@ -1,0 +1,1454 @@
+# Vietnamese translations for mainuan-atualizador-recursos package.
+# Copyright (C) 2026 Mainuan
+# This file is distributed under the same license as the mainuan-atualizador-recursos package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: mainuan-atualizador-recursos\n"
+"Report-Msgid-Bugs-To: https://github.com/mainuan/atualizador-de-recursos/"
+"issues\n"
+"POT-Creation-Date: 2026-11-16 11:30-0300\n"
+"PO-Revision-Date: 2026-11-16 11:30-0300\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: vi <https://github.com/mainuan>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: data/mainuan-recursos-autostart.desktop.in:3
+#: src/mainuan_recursos/application.py:54
+msgid "Mainuan News"
+msgstr "Tin mới Mainuan"
+
+#: data/mainuan-recursos-autostart.desktop.in:4
+msgid "Checks for news during the session"
+msgstr "Kiểm tra tin mới trong phiên làm việc"
+
+#: data/org.mainuan.Recursos.desktop.in:3 src/mainuan_recursos/gui.py:41
+msgid "Mainuan Feature Updater"
+msgstr "Trình cập nhật tính năng Mainuan"
+
+#: data/org.mainuan.Recursos.desktop.in:4
+msgid "Discover and receive the official Mainuan news"
+msgstr "Khám phá và nhận tin mới chính thức của Mainuan"
+
+#: src/mainuan_recursos/application.py:22
+msgid "Discover and receive the official Mainuan news."
+msgstr "Khám phá và nhận tin mới chính thức của Mainuan."
+
+#: src/mainuan_recursos/application.py:23
+msgid "check during the session and notify without blocking the login"
+msgstr ""
+"kiểm tra trong phiên làm việc và thông báo mà không chặn việc đăng nhập"
+
+#: src/mainuan_recursos/application.py:24
+msgid ""
+"real, manual trial in a VM: GitHub packages.txt/message.txt and Driver "
+"Manager 1.0"
+msgstr ""
+"thử nghiệm thực tế, thủ công trong máy ảo: packages.txt/message.txt trên "
+"GitHub và Trình quản lý trình điều khiển 1.0"
+
+#: src/mainuan_recursos/application.py:25
+msgid "demonstrate the whole flow without modifying the system"
+msgstr "minh hoạ toàn bộ quy trình mà không sửa đổi hệ thống"
+
+#: src/mainuan_recursos/application.py:26
+msgid "demonstration scenario"
+msgstr "kịch bản minh hoạ"
+
+#: src/mainuan_recursos/application.py:27
+msgid "signed local catalog, only with --demo"
+msgstr "danh mục cục bộ đã ký, chỉ dùng với --demo"
+
+#: src/mainuan_recursos/application.py:28
+msgid "test configuration and key, only with --demo"
+msgstr "cấu hình và khoá thử nghiệm, chỉ dùng với --demo"
+
+#: src/mainuan_recursos/application.py:33
+msgid ""
+"--homologacao-github is manual and cannot be combined with --check/--demo."
+msgstr ""
+"--homologacao-github là chế độ thủ công và không thể kết hợp với --check/--"
+"demo."
+
+# reviewed: "unavailable" = không khả dụng; "Không có kiểm thử..." soava como
+# "não existe teste"
+#: src/mainuan_recursos/application.py:38
+#, python-brace-format
+msgid "Acceptance test unavailable: {error}"
+msgstr "Kiểm thử nghiệm thu không khả dụng: {error}"
+
+#: src/mainuan_recursos/application.py:40
+msgid "Use --demo --test-catalog FILE --test-config FILE together."
+msgstr "Dùng --demo --test-catalog TỆP --test-config TỆP cùng nhau."
+
+#: src/mainuan_recursos/application.py:51
+msgid ""
+"Checking for news becomes available after installing Mainuan. The Live "
+"session will not be queried."
+msgstr ""
+"Tính năng kiểm tra tin mới sẽ khả dụng sau khi cài đặt Mainuan. Phiên Live "
+"sẽ không được truy vấn."
+
+#: src/mainuan_recursos/application.py:53
+msgid ""
+"Could not determine the session type. Querying and installing features have "
+"been disabled."
+msgstr ""
+"Không xác định được loại phiên làm việc. Việc truy vấn và cài đặt tính năng "
+"đã bị tắt."
+
+#: src/mainuan_recursos/application.py:67
+msgid "Invalid test catalog"
+msgstr "Danh mục thử nghiệm không hợp lệ"
+
+#: src/mainuan_recursos/application.py:81
+#, python-brace-format
+msgid "Could not open the state directory: {error}"
+msgstr "Không mở được thư mục trạng thái: {error}"
+
+#: src/mainuan_recursos/application.py:83
+#: src/mainuan_recursos/application.py:106
+#: src/mainuan_recursos/application.py:119
+msgid "Could not open the history"
+msgstr "Không mở được lịch sử"
+
+#: src/mainuan_recursos/application.py:90
+msgid "Could not lock the local state. Check the directory permissions."
+msgstr ""
+"Không khoá được trạng thái cục bộ. Hãy kiểm tra quyền truy cập của thư mục."
+
+#: src/mainuan_recursos/application.py:100
+msgid ""
+"The other instance is starting. Open the application again in a few seconds."
+msgstr "Phiên bản khác đang khởi động. Hãy mở lại ứng dụng sau vài giây."
+
+#: src/mainuan_recursos/application.py:126
+msgid "Could not create the single-instance channel."
+msgstr "Không tạo được kênh chạy một phiên bản duy nhất."
+
+#: src/mainuan_recursos/catalog.py:38
+#, python-brace-format
+msgid "Repeated field: {key}"
+msgstr "Trường bị lặp: {key}"
+
+#: src/mainuan_recursos/catalog.py:44 src/mainuan_recursos/catalog.py:270
+msgid "The catalog exceeds the size limit."
+msgstr "Danh mục vượt quá giới hạn kích thước."
+
+#: src/mainuan_recursos/catalog.py:47
+msgid "Invalid number."
+msgstr "Số không hợp lệ."
+
+#: src/mainuan_recursos/catalog.py:49
+#, python-brace-format
+msgid "Invalid JSON: {error}"
+msgstr "JSON không hợp lệ: {error}"
+
+#: src/mainuan_recursos/catalog.py:53
+msgid "A JSON object was expected."
+msgstr "Cần một đối tượng JSON."
+
+#: src/mainuan_recursos/catalog.py:55
+msgid "Missing or unknown fields in the catalog/configuration."
+msgstr "Thiếu trường hoặc có trường không xác định trong danh mục/cấu hình."
+
+#: src/mainuan_recursos/catalog.py:61
+msgid "Invalid text."
+msgstr "Văn bản không hợp lệ."
+
+#: src/mainuan_recursos/catalog.py:66
+msgid "Invalid identifier."
+msgstr "Mã định danh không hợp lệ."
+
+#: src/mainuan_recursos/catalog.py:72
+msgid "HTTPS address contains spaces."
+msgstr "Địa chỉ HTTPS chứa dấu cách."
+
+#: src/mainuan_recursos/catalog.py:77
+msgid "Address outside the configured official HTTPS domains."
+msgstr "Địa chỉ nằm ngoài các tên miền HTTPS chính thức đã cấu hình."
+
+#: src/mainuan_recursos/catalog.py:79
+msgid "Invalid HTTPS address."
+msgstr "Địa chỉ HTTPS không hợp lệ."
+
+#: src/mainuan_recursos/catalog.py:89
+msgid "Ambiguous or disallowed URL path."
+msgstr "Đường dẫn URL không rõ ràng hoặc không được phép."
+
+#: src/mainuan_recursos/catalog.py:95
+msgid "The URL path does not belong to the authorized official infrastructure."
+msgstr "Đường dẫn URL không thuộc hạ tầng chính thức được cấp phép."
+
+#: src/mainuan_recursos/catalog.py:100
+msgid "Configure the official URL prefixes."
+msgstr "Hãy cấu hình các tiền tố URL chính thức."
+
+#: src/mainuan_recursos/catalog.py:105
+msgid "Invalid official prefix; use HTTPS and a path ending in /."
+msgstr ""
+"Tiền tố chính thức không hợp lệ; hãy dùng HTTPS và đường dẫn kết thúc bằng /."
+
+#: src/mainuan_recursos/catalog.py:113
+msgid "Use UTC dates with the Z suffix."
+msgstr "Hãy dùng ngày giờ UTC với hậu tố Z."
+
+#: src/mainuan_recursos/catalog.py:116
+msgid "Invalid date."
+msgstr "Ngày không hợp lệ."
+
+#: src/mainuan_recursos/catalog.py:179
+msgid ""
+"Configure the official Mainuan domains in /etc/mainuan/atualizador-"
+"recursos.json."
+msgstr ""
+"Hãy cấu hình các tên miền chính thức của Mainuan trong /etc/mainuan/"
+"atualizador-recursos.json."
+
+#: src/mainuan_recursos/catalog.py:183
+msgid "The catalog URL cannot contain a query."
+msgstr "URL của danh mục không được chứa chuỗi truy vấn."
+
+#: src/mainuan_recursos/catalog.py:184
+msgid "Install the official public key of the catalog."
+msgstr "Hãy cài đặt khoá công khai chính thức của danh mục."
+
+#: src/mainuan_recursos/catalog.py:188
+msgid "Invalid Ed25519 key."
+msgstr "Khoá Ed25519 không hợp lệ."
+
+#: src/mainuan_recursos/catalog.py:190
+msgid "Invalid public key."
+msgstr "Khoá công khai không hợp lệ."
+
+#: src/mainuan_recursos/catalog.py:198
+msgid "Unsupported schema."
+msgstr "Lược đồ không được hỗ trợ."
+
+#: src/mainuan_recursos/catalog.py:199
+msgid "Invalid sequence."
+msgstr "Số thứ tự không hợp lệ."
+
+#: src/mainuan_recursos/catalog.py:202
+msgid "Catalog expired or with an invalid validity period."
+msgstr "Danh mục đã hết hạn hoặc có thời hạn hiệu lực không hợp lệ."
+
+#: src/mainuan_recursos/catalog.py:203
+msgid "Invalid list of releases."
+msgstr "Danh sách bản phát hành không hợp lệ."
+
+#: src/mainuan_recursos/catalog.py:210
+msgid "Duplicate release."
+msgstr "Bản phát hành bị trùng lặp."
+
+#: src/mainuan_recursos/catalog.py:215
+msgid "Invalid compatibility."
+msgstr "Thông tin tương thích không hợp lệ."
+
+#: src/mainuan_recursos/catalog.py:219
+msgid "Invalid features."
+msgstr "Tính năng không hợp lệ."
+
+#: src/mainuan_recursos/catalog.py:223
+msgid "Invalid packages."
+msgstr "Gói không hợp lệ."
+
+#: src/mainuan_recursos/catalog.py:229
+msgid "Invalid or repeated package name."
+msgstr "Tên gói không hợp lệ hoặc bị lặp."
+
+#: src/mainuan_recursos/catalog.py:231
+msgid "Invalid Debian version."
+msgstr "Phiên bản Debian không hợp lệ."
+
+#: src/mainuan_recursos/catalog.py:234
+msgid "Incomplete package pin."
+msgstr "Ghim gói chưa đầy đủ."
+
+#: src/mainuan_recursos/catalog.py:238
+msgid "Invalid architecture or SHA-256."
+msgstr "Kiến trúc hoặc SHA-256 không hợp lệ."
+
+#: src/mainuan_recursos/catalog.py:242
+msgid "Invalid provenance."
+msgstr "Nguồn gốc không hợp lệ."
+
+#: src/mainuan_recursos/catalog.py:247
+msgid "Invalid GitHub source."
+msgstr "Nguồn GitHub không hợp lệ."
+
+#: src/mainuan_recursos/catalog.py:250
+msgid "Invalid immutable reference."
+msgstr "Tham chiếu bất biến không hợp lệ."
+
+#: src/mainuan_recursos/catalog.py:251
+msgid "Invalid artifacts."
+msgstr "Tệp phát hành không hợp lệ."
+
+#: src/mainuan_recursos/catalog.py:254
+msgid "Invalid artifact ID."
+msgstr "Mã tệp phát hành không hợp lệ."
+
+#: src/mainuan_recursos/catalog.py:258
+msgid "Provenance does not match the offered packages."
+msgstr "Nguồn gốc không khớp với các gói được cung cấp."
+
+#: src/mainuan_recursos/catalog.py:278
+msgid "The catalog signature is not valid or the key is not trusted."
+msgstr "Chữ ký của danh mục không hợp lệ hoặc khoá không được tin cậy."
+
+#: src/mainuan_recursos/catalog.py:301
+msgid "Response exceeds the size limit."
+msgstr "Phản hồi vượt quá giới hạn kích thước."
+
+#: src/mainuan_recursos/classic.py:37
+msgid ""
+"Violet-capped woodnymph hummingbird in front of a laptop, with the message "
+"News!"
+msgstr ""
+"Chim ruồi mũ tím (Thalurania glaucopis) trước một máy tính xách tay, với "
+"thông điệp Tin mới!"
+
+#: src/mainuan_recursos/classic.py:84 src/mainuan_recursos/classic.py:85
+msgid "More Options"
+msgstr "Lựa chọn thêm"
+
+#: src/mainuan_recursos/classic.py:131
+msgid "Discover What’s New"
+msgstr "Khám phá điểm mới"
+
+#: src/mainuan_recursos/classic.py:134
+msgid "Optional: open the official page in the web browser."
+msgstr "Tuỳ chọn: mở trang chính thức trong trình duyệt web."
+
+#: src/mainuan_recursos/classic.py:135 src/mainuan_recursos/gui.py:361
+msgid "Install New Features"
+msgstr "Cài đặt tính năng mới"
+
+#: src/mainuan_recursos/classic.py:142
+msgid ""
+"Main action: check and install the announced features with system "
+"authorization."
+msgstr ""
+"Hành động chính: kiểm tra và cài đặt các tính năng đã công bố với sự cho "
+"phép của hệ thống."
+
+#: src/mainuan_recursos/classic.py:143
+msgid "Not Now"
+msgstr "Để sau"
+
+#: src/mainuan_recursos/classic.py:145
+msgid "Postpones the notification for 24 hours, keeping manual access."
+msgstr "Hoãn thông báo trong 24 giờ, vẫn có thể truy cập thủ công."
+
+#: src/mainuan_recursos/controller.py:77 src/mainuan_recursos/controller.py:115
+#: src/mainuan_recursos/controller.py:147
+#: src/mainuan_recursos/controller.py:155 src/mainuan_recursos/demo.py:68
+#: src/mainuan_recursos/github_channel.py:359
+#: src/mainuan_recursos/github_trial.py:201
+#: src/mainuan_recursos/packagekit.py:193
+msgid "Preparing installation..."
+msgstr "Đang chuẩn bị cài đặt..."
+
+#: src/mainuan_recursos/controller.py:86
+msgid "Cannot prepare the installation:"
+msgstr "Không thể chuẩn bị cài đặt:"
+
+#: src/mainuan_recursos/controller.py:88
+msgid "You have already received all the features of this release."
+msgstr "Bạn đã nhận đủ mọi tính năng của bản phát hành này."
+
+#: src/mainuan_recursos/controller.py:90
+msgid ""
+"The packages have changed. Prepare the installation again to review the "
+"operation."
+msgstr "Các gói đã thay đổi. Hãy chuẩn bị cài đặt lại để xem lại thao tác."
+
+#: src/mainuan_recursos/controller.py:109
+msgid ""
+"PackageKit did not find the planned versions/architectures in the "
+"repositories."
+msgstr ""
+"PackageKit không tìm thấy các phiên bản/kiến trúc dự kiến trong kho phần mềm."
+
+#: src/mainuan_recursos/controller.py:112
+msgid ""
+"The source or version of the packages has changed. Review a new operation."
+msgstr ""
+"Nguồn hoặc phiên bản của các gói đã thay đổi. Hãy xem lại một thao tác mới."
+
+#: src/mainuan_recursos/controller.py:129
+msgid ""
+"The dependencies have changed. Prepare a new operation to confirm the "
+"details."
+msgstr ""
+"Các gói phụ thuộc đã thay đổi. Hãy chuẩn bị một thao tác mới để xác nhận chi "
+"tiết."
+
+#: src/mainuan_recursos/controller.py:134 src/mainuan_recursos/demo.py:69
+#: src/mainuan_recursos/github_channel.py:440
+#: src/mainuan_recursos/github_trial.py:250
+#: src/mainuan_recursos/packagekit.py:190
+msgid "Installing new features..."
+msgstr "Đang cài đặt tính năng mới..."
+
+#: src/mainuan_recursos/controller.py:158
+msgid "Done! Enjoy the new Mainuan features."
+msgstr "Xong! Hãy tận hưởng các tính năng mới của Mainuan."
+
+#: src/mainuan_recursos/controller.py:159
+msgid ""
+"PackageKit finished the operation, but the installed versions have not been "
+"confirmed yet."
+msgstr ""
+"PackageKit đã hoàn tất thao tác, nhưng các phiên bản đã cài đặt chưa được "
+"xác nhận."
+
+#: src/mainuan_recursos/controller.py:161
+msgid ""
+"The system requested a restart of an application, the session or the "
+"computer."
+msgstr ""
+"Hệ thống yêu cầu khởi động lại một ứng dụng, phiên làm việc hoặc máy tính."
+
+#: src/mainuan_recursos/demo.py:20
+msgid "Your Mainuan is evolving!"
+msgstr "Mainuan của bạn đang phát triển!"
+
+#: src/mainuan_recursos/demo.py:21
+msgid "Discover the new features prepared to make your day simpler."
+msgstr ""
+"Khám phá các tính năng mới được chuẩn bị để giúp một ngày của bạn đơn giản "
+"hơn."
+
+#: src/mainuan_recursos/demo.py:23
+msgid "A new welcome experience"
+msgstr "Trải nghiệm chào mừng mới"
+
+#: src/mainuan_recursos/demo.py:24
+msgid "More options to customize your desktop"
+msgstr "Thêm tuỳ chọn để tuỳ biến bàn làm việc"
+
+#: src/mainuan_recursos/demo.py:25
+msgid "A hub to discover Mainuan applications"
+msgstr "Một trung tâm để khám phá các ứng dụng Mainuan"
+
+#: src/mainuan_recursos/demo.py:27
+msgid "Previous Mainuan news"
+msgstr "Tin mới Mainuan trước đây"
+
+#: src/mainuan_recursos/demo.py:37 src/mainuan_recursos/packages.py:86
+msgid "Unavailable in the repositories"
+msgstr "Không có trong kho phần mềm"
+
+#: src/mainuan_recursos/demo.py:76
+msgid "Authorization canceled (simulation)."
+msgstr "Đã huỷ cấp quyền (mô phỏng)."
+
+#: src/mainuan_recursos/demo.py:77
+msgid "Download failed (simulation)."
+msgstr "Tải về thất bại (mô phỏng)."
+
+#: src/mainuan_recursos/github_channel.py:41
+#: src/mainuan_recursos/github_channel.py:48
+msgid "Invalid GitHub address."
+msgstr "Địa chỉ GitHub không hợp lệ."
+
+#: src/mainuan_recursos/github_channel.py:46
+msgid "GitHub address must use official HTTPS."
+msgstr "Địa chỉ GitHub phải dùng HTTPS chính thức."
+
+#: src/mainuan_recursos/github_channel.py:51
+msgid "Ambiguous GitHub path."
+msgstr "Đường dẫn GitHub không rõ ràng."
+
+#: src/mainuan_recursos/github_channel.py:53
+msgid "Invalid repository."
+msgstr "Kho lưu trữ không hợp lệ."
+
+#: src/mainuan_recursos/github_channel.py:63
+msgid "Source or redirect outside the official Mainuan organization."
+msgstr "Nguồn hoặc chuyển hướng nằm ngoài tổ chức chính thức của Mainuan."
+
+#: src/mainuan_recursos/github_channel.py:72
+msgid "The GitHub query was redirected; check the official source."
+msgstr "Truy vấn GitHub đã bị chuyển hướng; hãy kiểm tra nguồn chính thức."
+
+#: src/mainuan_recursos/github_channel.py:87
+msgid "GitHub metadata exceeds the allowed limit."
+msgstr "Siêu dữ liệu GitHub vượt quá giới hạn cho phép."
+
+#: src/mainuan_recursos/github_channel.py:96
+msgid "Invalid GitHub artifact."
+msgstr "Tệp phát hành GitHub không hợp lệ."
+
+#: src/mainuan_recursos/github_channel.py:98
+msgid "Use the Debian name package_version_architecture.deb in the release."
+msgstr ""
+"Hãy dùng tên Debian package_version_architecture.deb trong bản phát hành."
+
+#: src/mainuan_recursos/github_channel.py:101
+msgid "Invalid Debian name or version."
+msgstr "Tên hoặc phiên bản Debian không hợp lệ."
+
+#: src/mainuan_recursos/github_channel.py:104
+#, python-brace-format
+msgid "The release has no verifiable SHA-256 published by GitHub for {file}."
+msgstr ""
+"Bản phát hành không có SHA-256 có thể kiểm chứng do GitHub công bố cho "
+"{file}."
+
+#: src/mainuan_recursos/github_channel.py:106
+msgid "Artifact unavailable or invalid size."
+msgstr "Tệp phát hành không có sẵn hoặc kích thước không hợp lệ."
+
+#: src/mainuan_recursos/github_channel.py:126
+#: src/mainuan_recursos/github_channel.py:260
+msgid "GitHub history exceeds the allowed limit."
+msgstr "Lịch sử GitHub vượt quá giới hạn cho phép."
+
+#: src/mainuan_recursos/github_channel.py:139
+#: src/mainuan_recursos/github_channel.py:253
+#: src/mainuan_recursos/github_trial.py:146
+msgid "Mainuan has news!"
+msgstr "Mainuan có tin mới!"
+
+#: src/mainuan_recursos/github_channel.py:147
+#, python-brace-format
+msgid ""
+"Repository does not belong to the official organization or is unavailable: "
+"{repository}"
+msgstr ""
+"Kho lưu trữ không thuộc tổ chức chính thức hoặc không khả dụng: {repository}"
+
+#: src/mainuan_recursos/github_channel.py:149
+#, python-brace-format
+msgid "The repository identity was replaced: {repository}"
+msgstr "Danh tính của kho lưu trữ đã bị thay thế: {repository}"
+
+#: src/mainuan_recursos/github_channel.py:155
+#, python-brace-format
+msgid "Invalid list of releases: {repository}"
+msgstr "Danh sách bản phát hành không hợp lệ: {repository}"
+
+#: src/mainuan_recursos/github_channel.py:160
+#, python-brace-format
+msgid "Too many releases for a safe query: {repository}"
+msgstr "Quá nhiều bản phát hành để truy vấn an toàn: {repository}"
+
+#: src/mainuan_recursos/github_channel.py:163
+msgid "Release with a future date. Check the system clock."
+msgstr "Bản phát hành có ngày trong tương lai. Hãy kiểm tra đồng hồ hệ thống."
+
+#: src/mainuan_recursos/github_channel.py:164
+msgid "Invalid release ID."
+msgstr "Mã bản phát hành không hợp lệ."
+
+#: src/mainuan_recursos/github_channel.py:168
+msgid "Invalid list of artifacts."
+msgstr "Danh sách tệp phát hành không hợp lệ."
+
+#: src/mainuan_recursos/github_channel.py:173
+msgid "Too many artifacts in the release."
+msgstr "Bản phát hành có quá nhiều tệp."
+
+#: src/mainuan_recursos/github_channel.py:183
+#, python-brace-format
+msgid "Duplicate or ambiguous packages in the release: {repository}"
+msgstr "Gói bị trùng lặp hoặc không rõ ràng trong bản phát hành: {repository}"
+
+#: src/mainuan_recursos/github_channel.py:188
+msgid "Artifact URL does not match the selected release."
+msgstr "URL của tệp phát hành không khớp với bản phát hành đã chọn."
+
+#: src/mainuan_recursos/github_channel.py:190
+msgid "Invalid immutable reference of the release."
+msgstr "Tham chiếu bất biến của bản phát hành không hợp lệ."
+
+#: src/mainuan_recursos/github_channel.py:196
+#, python-brace-format
+msgid "No stable release with a compatible Debian package: {repository}"
+msgstr ""
+"Không có bản phát hành ổn định nào có gói Debian tương thích: {repository}"
+
+#: src/mainuan_recursos/github_channel.py:218
+msgid "This channel is intended for Mainuan based on Kubuntu 26.04."
+msgstr "Kênh này dành cho Mainuan dựa trên Kubuntu 26.04."
+
+#: src/mainuan_recursos/github_channel.py:220
+msgid "Invalid official reference."
+msgstr "Tham chiếu chính thức không hợp lệ."
+
+#: src/mainuan_recursos/github_channel.py:224
+msgid "message.txt is empty."
+msgstr "message.txt trống."
+
+#: src/mainuan_recursos/github_channel.py:228
+msgid "packages.txt contains invalid or repeated repositories."
+msgstr "packages.txt chứa kho lưu trữ không hợp lệ hoặc bị lặp."
+
+#: src/mainuan_recursos/github_channel.py:234
+msgid "Two repositories offer the same Debian package."
+msgstr "Hai kho lưu trữ cung cấp cùng một gói Debian."
+
+#: src/mainuan_recursos/github_channel.py:239
+#, python-brace-format
+msgid "An already announced release or artifact was replaced: {package}"
+msgstr "Một bản phát hành hoặc tệp phát hành đã công bố bị thay thế: {package}"
+
+#: src/mainuan_recursos/github_channel.py:243
+#, python-brace-format
+msgid "Rollback of a published version blocked: {package}"
+msgstr "Đã chặn việc hạ cấp một phiên bản đã phát hành: {package}"
+
+#: src/mainuan_recursos/github_channel.py:264
+msgid "News not queried in this channel."
+msgstr "Kênh này không truy vấn tin mới."
+
+#: src/mainuan_recursos/github_channel.py:272
+msgid "Package missing or size mismatch."
+msgstr "Thiếu gói hoặc kích thước không khớp."
+
+#: src/mainuan_recursos/github_channel.py:274
+msgid "SHA-256 integrity mismatch; installation blocked."
+msgstr "Tính toàn vẹn SHA-256 không khớp; đã chặn cài đặt."
+
+#: src/mainuan_recursos/github_channel.py:278
+msgid "Internal package metadata does not match the release."
+msgstr "Siêu dữ liệu bên trong gói không khớp với bản phát hành."
+
+#: src/mainuan_recursos/github_channel.py:292
+#: src/mainuan_recursos/github_trial.py:162 src/mainuan_recursos/packages.py:96
+msgid "Package with incomplete configuration"
+msgstr "Gói có cấu hình chưa hoàn tất"
+
+#: src/mainuan_recursos/github_channel.py:296
+#: src/mainuan_recursos/github_trial.py:167 src/mainuan_recursos/packages.py:98
+msgid "Package held by the administrator"
+msgstr "Gói bị quản trị viên giữ lại"
+
+#: src/mainuan_recursos/github_channel.py:302
+#: src/mainuan_recursos/github_trial.py:173
+#, python-brace-format
+msgid "Unmet dependencies: {details}"
+msgstr "Phụ thuộc chưa được đáp ứng: {details}"
+
+#: src/mainuan_recursos/github_channel.py:304
+msgid "The operation requires additional unannounced packages"
+msgstr "Thao tác cần thêm các gói chưa được công bố"
+
+#: src/mainuan_recursos/github_channel.py:312
+msgid "The announced release was withdrawn or changed."
+msgstr "Bản phát hành đã công bố bị rút lại hoặc thay đổi."
+
+#: src/mainuan_recursos/github_channel.py:314
+msgid "The release reference was replaced; installation blocked."
+msgstr "Tham chiếu của bản phát hành đã bị thay thế; đã chặn cài đặt."
+
+#: src/mainuan_recursos/github_channel.py:317
+msgid "The artifact was changed after the query; check for news again."
+msgstr "Tệp phát hành đã thay đổi sau khi truy vấn; hãy kiểm tra tin mới lại."
+
+#: src/mainuan_recursos/github_channel.py:334
+msgid "Download exceeds the approved size."
+msgstr "Dung lượng tải về vượt quá kích thước đã duyệt."
+
+#: src/mainuan_recursos/github_channel.py:337
+#: src/mainuan_recursos/github_channel.py:356
+#: src/mainuan_recursos/github_trial.py:189
+#: src/mainuan_recursos/github_trial.py:191
+#: src/mainuan_recursos/packagekit.py:191
+msgid "Downloading new features..."
+msgstr "Đang tải về tính năng mới..."
+
+#: src/mainuan_recursos/github_channel.py:338
+msgid "Download with SHA-256 integrity mismatch."
+msgstr "Tệp tải về có tính toàn vẹn SHA-256 không khớp."
+
+#: src/mainuan_recursos/github_channel.py:345
+msgid "Check for news online before installing."
+msgstr "Hãy kiểm tra tin mới trực tuyến trước khi cài đặt."
+
+#: src/mainuan_recursos/github_channel.py:347
+msgid ""
+"Installation requires a regular user and an installed session, outside Live "
+"mode."
+msgstr ""
+"Việc cài đặt cần một người dùng thường và một phiên làm việc đã cài đặt, "
+"ngoài chế độ Live."
+
+#: src/mainuan_recursos/github_channel.py:367
+msgid "PackageKit proposed additional packages or an incomplete operation."
+msgstr "PackageKit đề xuất thêm gói hoặc một thao tác chưa đầy đủ."
+
+#: src/mainuan_recursos/github_channel.py:371
+msgid "The simulation would change unannounced packages."
+msgstr "Bản mô phỏng sẽ thay đổi các gói chưa được công bố."
+
+#: src/mainuan_recursos/github_channel.py:373
+msgid "Removal, reinstallation or downgrade blocked."
+msgstr "Đã chặn việc gỡ bỏ, cài đặt lại hoặc hạ cấp."
+
+#: src/mainuan_recursos/github_channel.py:385
+#: src/mainuan_recursos/github_channel.py:386
+msgid "Invalid GitHub cache."
+msgstr "Bộ nhớ đệm GitHub không hợp lệ."
+
+# reviewed: no código (github_channel.decode_cache) "edition" é uma edição de
+# notícias no cache local, não versão de release
+#: src/mainuan_recursos/github_channel.py:391
+msgid "Invalid local edition."
+msgstr "Bản tin cục bộ không hợp lệ."
+
+#: src/mainuan_recursos/github_channel.py:394
+msgid "Invalid local artifact."
+msgstr "Tệp phát hành cục bộ không hợp lệ."
+
+#: src/mainuan_recursos/github_channel.py:398
+msgid "Invalid GitHub history. Preserve the file before recovering it."
+msgstr "Lịch sử GitHub không hợp lệ. Hãy giữ lại tệp trước khi khôi phục."
+
+#: src/mainuan_recursos/github_channel.py:415
+msgid "Cannot install:"
+msgstr "Không thể cài đặt:"
+
+#: src/mainuan_recursos/github_channel.py:417
+msgid ""
+"You have already received all the features. No reinstallation will be done."
+msgstr "Bạn đã nhận đủ mọi tính năng. Sẽ không cài đặt lại."
+
+#: src/mainuan_recursos/github_channel.py:419
+msgid "The package state has changed. Check for news again."
+msgstr "Trạng thái gói đã thay đổi. Hãy kiểm tra tin mới lại."
+
+#: src/mainuan_recursos/github_channel.py:432
+msgid "The operation has changed; installation blocked."
+msgstr "Thao tác đã thay đổi; đã chặn cài đặt."
+
+#: src/mainuan_recursos/github_trial.py:42
+msgid ""
+"The GitHub acceptance test is exclusive to a VM with a snapshot; use the "
+"normal mode on this computer."
+msgstr ""
+"Kiểm thử nghiệm thu GitHub chỉ dành cho máy ảo có ảnh chụp nhanh; hãy dùng "
+"chế độ thường trên máy tính này."
+
+#: src/mainuan_recursos/github_trial.py:43
+msgid "Open the acceptance test as a regular user, without sudo."
+msgstr "Hãy mở kiểm thử nghiệm thu bằng người dùng thường, không dùng sudo."
+
+#: src/mainuan_recursos/github_trial.py:44
+msgid ""
+"The acceptance test requires a normal installation, outside the Live session."
+msgstr "Kiểm thử nghiệm thu cần một bản cài đặt bình thường, ngoài phiên Live."
+
+#: src/mainuan_recursos/github_trial.py:46
+msgid "This trial is intended for Mainuan based on Kubuntu 26.04."
+msgstr "Thử nghiệm này dành cho Mainuan dựa trên Kubuntu 26.04."
+
+#: src/mainuan_recursos/github_trial.py:52
+msgid "Invalid acceptance test URL."
+msgstr "URL kiểm thử nghiệm thu không hợp lệ."
+
+#: src/mainuan_recursos/github_trial.py:59
+msgid "Redirect outside the authorized GitHub infrastructure."
+msgstr "Chuyển hướng ra ngoài hạ tầng GitHub được cấp phép."
+
+#: src/mainuan_recursos/github_trial.py:88
+msgid "GitHub response exceeds the allowed size."
+msgstr "Phản hồi của GitHub vượt quá kích thước cho phép."
+
+#: src/mainuan_recursos/github_trial.py:98
+msgid "Could not query PackageKit support for local files."
+msgstr "Không truy vấn được khả năng hỗ trợ tệp cục bộ của PackageKit."
+
+#: src/mainuan_recursos/github_trial.py:102
+msgid ""
+"The PackageKit backend of this VM does not offer InstallFiles. No unsafe "
+"fallback will be used."
+msgstr ""
+"Backend PackageKit của máy ảo này không hỗ trợ InstallFiles. Sẽ không dùng "
+"phương án dự phòng thiếu an toàn."
+
+#: src/mainuan_recursos/github_trial.py:112
+msgid "Experimental package missing or symbolic."
+msgstr "Gói thử nghiệm bị thiếu hoặc là liên kết tượng trưng."
+
+#: src/mainuan_recursos/github_trial.py:114
+msgid "Driver Manager 1.0 integrity mismatch. The installation was blocked."
+msgstr ""
+"Tính toàn vẹn của Trình quản lý trình điều khiển 1.0 không khớp. Đã chặn cài "
+"đặt."
+
+#: src/mainuan_recursos/github_trial.py:120
+msgid "Invalid GitHub reference."
+msgstr "Tham chiếu GitHub không hợp lệ."
+
+#: src/mainuan_recursos/github_trial.py:125
+msgid ""
+"In this first trial, packages.txt must contain only mainuan-gestao-drivers."
+msgstr ""
+"Trong lần thử nghiệm đầu tiên này, packages.txt chỉ được chứa mainuan-gestao-"
+"drivers."
+
+#: src/mainuan_recursos/github_trial.py:126
+msgid "Message empty or too long."
+msgstr "Thông điệp trống hoặc quá dài."
+
+#: src/mainuan_recursos/github_trial.py:129
+msgid "Program repository mismatch."
+msgstr "Kho lưu trữ chương trình không khớp."
+
+#: src/mainuan_recursos/github_trial.py:133
+msgid "The approved release is not available as a stable publication."
+msgstr "Bản phát hành đã duyệt không có sẵn dưới dạng bản phát hành ổn định."
+
+#: src/mainuan_recursos/github_trial.py:135
+msgid "Approved artifact not found."
+msgstr "Không tìm thấy tệp phát hành đã duyệt."
+
+#: src/mainuan_recursos/github_trial.py:139
+msgid ""
+"The release was changed or does not match the package approved for this "
+"trial."
+msgstr ""
+"Bản phát hành đã thay đổi hoặc không khớp với gói đã duyệt cho thử nghiệm "
+"này."
+
+#: src/mainuan_recursos/github_trial.py:144
+msgid "GitHub commit is in the future. Check the VM clock."
+msgstr ""
+"Commit GitHub có thời gian trong tương lai. Hãy kiểm tra đồng hồ của máy ảo."
+
+#: src/mainuan_recursos/github_trial.py:147
+msgid "Driver Manager 1.0"
+msgstr "Trình quản lý trình điều khiển 1.0"
+
+#: src/mainuan_recursos/github_trial.py:155
+msgid "Experimental release not approved."
+msgstr "Bản phát hành thử nghiệm chưa được duyệt."
+
+#: src/mainuan_recursos/github_trial.py:171
+msgid "Debian metadata mismatch."
+msgstr "Siêu dữ liệu Debian không khớp."
+
+#: src/mainuan_recursos/github_trial.py:175
+#, python-brace-format
+msgid "This trial does not allow changing dependencies: {packages}"
+msgstr "Thử nghiệm này không cho phép thay đổi các gói phụ thuộc: {packages}"
+
+#: src/mainuan_recursos/github_trial.py:192
+msgid "Package download with invalid integrity."
+msgstr "Gói tải về có tính toàn vẹn không hợp lệ."
+
+#: src/mainuan_recursos/github_trial.py:219
+msgid "Cannot install in this trial:"
+msgstr "Không thể cài đặt trong thử nghiệm này:"
+
+#: src/mainuan_recursos/github_trial.py:221
+msgid ""
+"You have already received Driver Manager 1.0. No reinstallation will be done."
+msgstr "Bạn đã nhận Trình quản lý trình điều khiển 1.0. Sẽ không cài đặt lại."
+
+#: src/mainuan_recursos/github_trial.py:223
+msgid "The package state has changed. Review the operation again."
+msgstr "Trạng thái gói đã thay đổi. Hãy xem lại thao tác."
+
+#: src/mainuan_recursos/github_trial.py:236
+msgid ""
+"PackageKit proposed changes beyond the Driver Manager application. No "
+"additional driver or dependency will be installed in this trial."
+msgstr ""
+"PackageKit đề xuất các thay đổi ngoài ứng dụng Trình quản lý trình điều "
+"khiển. Sẽ không cài đặt thêm trình điều khiển hay gói phụ thuộc nào trong "
+"thử nghiệm này."
+
+#: src/mainuan_recursos/github_trial.py:244
+msgid "The operation has changed. Review the confirmation again."
+msgstr "Thao tác đã thay đổi. Hãy xem lại phần xác nhận."
+
+#: src/mainuan_recursos/gui.py:39
+msgid "Mainuan Feature Updater — Demo"
+msgstr "Trình cập nhật tính năng Mainuan — Bản minh hoạ"
+
+#: src/mainuan_recursos/gui.py:40
+msgid "Mainuan Feature Updater — GitHub Acceptance Test"
+msgstr "Trình cập nhật tính năng Mainuan — Kiểm thử nghiệm thu GitHub"
+
+#: src/mainuan_recursos/gui.py:44
+msgid "Checking for news…"
+msgstr "Đang kiểm tra tin mới…"
+
+#: src/mainuan_recursos/gui.py:50
+msgid "Check for News"
+msgstr "Kiểm tra tin mới"
+
+#: src/mainuan_recursos/gui.py:51 src/mainuan_recursos/gui.py:55
+#: src/mainuan_recursos/gui.py:56
+msgid "News History"
+msgstr "Lịch sử tin mới"
+
+#: src/mainuan_recursos/gui.py:53 src/mainuan_recursos/gui.py:60
+msgid "Technical Information"
+msgstr "Thông tin kỹ thuật"
+
+#: src/mainuan_recursos/gui.py:59
+msgid "Programs, packages, versions and actual status"
+msgstr "Chương trình, gói, phiên bản và trạng thái thực tế"
+
+#. Translators: title of an auxiliary window opened in demonstration mode.
+#: src/mainuan_recursos/gui.py:92
+#, python-brace-format
+msgid "{title} — Demo"
+msgstr "{title} — Bản minh hoạ"
+
+#: src/mainuan_recursos/gui.py:119
+#, python-brace-format
+msgid "Release: {id} • {version}"
+msgstr "Bản phát hành: {id} • {version}"
+
+#: src/mainuan_recursos/gui.py:120
+#, python-brace-format
+msgid "Official article: {url}"
+msgstr "Bài viết chính thức: {url}"
+
+#: src/mainuan_recursos/gui.py:121
+msgid "not checked"
+msgstr "chưa kiểm tra"
+
+#: src/mainuan_recursos/gui.py:126 src/mainuan_recursos/gui.py:351
+msgid "not installed"
+msgstr "chưa cài đặt"
+
+#: src/mainuan_recursos/gui.py:127
+msgid "unavailable"
+msgstr "không có sẵn"
+
+#: src/mainuan_recursos/gui.py:129
+msgid "packages not checked"
+msgstr "chưa kiểm tra gói"
+
+#: src/mainuan_recursos/gui.py:130
+#, python-brace-format
+msgid "Package: {name}"
+msgstr "Gói: {name}"
+
+#: src/mainuan_recursos/gui.py:131
+#, python-brace-format
+msgid "Minimum version: {version}"
+msgstr "Phiên bản tối thiểu: {version}"
+
+#: src/mainuan_recursos/gui.py:132
+#, python-brace-format
+msgid "Installed: {version}"
+msgstr "Đã cài: {version}"
+
+#: src/mainuan_recursos/gui.py:133
+#, python-brace-format
+msgid "Available: {version}"
+msgstr "Có sẵn: {version}"
+
+#: src/mainuan_recursos/gui.py:134
+#, python-brace-format
+msgid "Architecture: {architecture}"
+msgstr "Kiến trúc: {architecture}"
+
+#: src/mainuan_recursos/gui.py:135
+#, python-brace-format
+msgid "Status: {status}"
+msgstr "Trạng thái: {status}"
+
+#: src/mainuan_recursos/gui.py:137
+#, python-brace-format
+msgid "Approved SHA-256: {sha256}"
+msgstr "SHA-256 đã duyệt: {sha256}"
+
+#: src/mainuan_recursos/gui.py:139
+msgid ""
+"The complete operation, including dependencies, will be shown when "
+"confirming the installation."
+msgstr ""
+"Toàn bộ thao tác, bao gồm các gói phụ thuộc, sẽ được hiển thị khi xác nhận "
+"cài đặt."
+
+#: src/mainuan_recursos/gui.py:141
+msgid ""
+"Demo: authorization and installation are simulated; no package will be "
+"changed."
+msgstr ""
+"Bản minh hoạ: việc cấp quyền và cài đặt chỉ là mô phỏng; không gói nào bị "
+"thay đổi."
+
+#: src/mainuan_recursos/gui.py:143
+msgid ""
+"Official GitHub channel: packages.txt and message.txt from the same commit."
+msgstr ""
+"Kênh GitHub chính thức: packages.txt và message.txt từ cùng một commit."
+
+#: src/mainuan_recursos/gui.py:144
+msgid ""
+"Packages from stable releases, with IDs, versions and SHA-256 recorded "
+"during the query."
+msgstr ""
+"Các gói từ bản phát hành ổn định, với mã, phiên bản và SHA-256 được ghi lại "
+"khi truy vấn."
+
+#: src/mainuan_recursos/gui.py:145
+msgid ""
+"The download starts only after choosing to install; unannounced changes are "
+"blocked."
+msgstr ""
+"Việc tải về chỉ bắt đầu sau khi bạn chọn cài đặt; các thay đổi chưa được "
+"công bố sẽ bị chặn."
+
+#: src/mainuan_recursos/gui.py:146
+msgid "HTTPS and SHA-256 are not equivalent to an APT repository signature."
+msgstr "HTTPS và SHA-256 không tương đương với chữ ký của kho phần mềm APT."
+
+#: src/mainuan_recursos/gui.py:147
+msgid "PackageKit/PolicyKit may ask for authorization for an untrusted source."
+msgstr ""
+"PackageKit/PolicyKit có thể yêu cầu cấp quyền cho một nguồn không đáng tin "
+"cậy."
+
+#: src/mainuan_recursos/gui.py:149
+msgid ""
+"GitHub acceptance test: official source and artifact pinned by IDs and "
+"SHA-256."
+msgstr ""
+"Kiểm thử nghiệm thu GitHub: nguồn chính thức và tệp phát hành được ghim theo "
+"mã và SHA-256."
+
+#: src/mainuan_recursos/gui.py:150
+msgid "The download starts only after choosing to install."
+msgstr "Việc tải về chỉ bắt đầu sau khi bạn chọn cài đặt."
+
+#: src/mainuan_recursos/gui.py:151
+msgid ""
+"Local file without an APT repository signature. PackageKit/PolicyKit may ask "
+"for authorization for an untrusted source."
+msgstr ""
+"Tệp cục bộ không có chữ ký của kho phần mềm APT. PackageKit/PolicyKit có thể "
+"yêu cầu cấp quyền cho một nguồn không đáng tin cậy."
+
+#: src/mainuan_recursos/gui.py:152
+msgid ""
+"The trial only allows the Driver Manager application; changes to other "
+"packages are blocked."
+msgstr ""
+"Thử nghiệm này chỉ cho phép ứng dụng Trình quản lý trình điều khiển; thay "
+"đổi đối với các gói khác sẽ bị chặn."
+
+#: src/mainuan_recursos/gui.py:174
+msgid "Querying the official Mainuan news…"
+msgstr "Đang truy vấn tin mới chính thức của Mainuan…"
+
+#: src/mainuan_recursos/gui.py:218
+#, python-brace-format
+msgid "Could not check for news. {error}"
+msgstr "Không kiểm tra được tin mới. {error}"
+
+#: src/mainuan_recursos/gui.py:246
+msgid "No news has been published yet. Come back soon!"
+msgstr "Chưa có tin mới nào được đăng. Hãy quay lại sớm nhé!"
+
+#: src/mainuan_recursos/gui.py:252
+msgid ""
+"No news published.\n"
+"Come back soon to discover the next Mainuan features."
+msgstr ""
+"Chưa có tin mới nào.\n"
+"Hãy quay lại sớm để khám phá các tính năng tiếp theo của Mainuan."
+
+#: src/mainuan_recursos/gui.py:260
+msgid "We have news for you! Discover the features before installing."
+msgstr "Có tin mới dành cho bạn! Hãy khám phá các tính năng trước khi cài đặt."
+
+#: src/mainuan_recursos/gui.py:262
+#, python-brace-format
+msgid "Could not check the packages: {error}"
+msgstr "Không kiểm tra được các gói: {error}"
+
+#: src/mainuan_recursos/gui.py:264
+msgid ""
+"This release is not compatible with the version or architecture of this "
+"system."
+msgstr ""
+"Bản phát hành này không tương thích với phiên bản hoặc kiến trúc của hệ "
+"thống này."
+
+#: src/mainuan_recursos/gui.py:266
+msgid ""
+"You have already received these features through the system. Discover the "
+"news!"
+msgstr "Bạn đã nhận các tính năng này qua hệ thống. Hãy khám phá tin mới!"
+
+#: src/mainuan_recursos/gui.py:268
+msgid ""
+"Some packages are not yet available for safe installation. See the technical "
+"information in the menu."
+msgstr ""
+"Một số gói chưa sẵn sàng để cài đặt an toàn. Xem thông tin kỹ thuật trong "
+"trình đơn."
+
+#: src/mainuan_recursos/gui.py:272
+#, python-brace-format
+msgid "{message} Cached catalog: offline query; installation unavailable."
+msgstr ""
+"{message} Danh mục trong bộ nhớ đệm: truy vấn ngoại tuyến; không thể cài đặt."
+
+#: src/mainuan_recursos/gui.py:284
+msgctxt "news state"
+msgid "New"
+msgstr "Mới"
+
+#: src/mainuan_recursos/gui.py:284
+msgctxt "news state"
+msgid "Viewed"
+msgstr "Đã xem"
+
+#: src/mainuan_recursos/gui.py:285
+msgctxt "news state"
+msgid "Postponed"
+msgstr "Đã hoãn"
+
+#: src/mainuan_recursos/gui.py:297
+#, python-brace-format
+msgid "Could not save the viewing in the history: {error}"
+msgstr "Không lưu được lượt xem vào lịch sử: {error}"
+
+#: src/mainuan_recursos/gui.py:309
+msgid "Could not open the default web browser."
+msgstr "Không mở được trình duyệt web mặc định."
+
+#: src/mainuan_recursos/gui.py:313
+msgid "Check the official catalog again before installing."
+msgstr "Hãy kiểm tra lại danh mục chính thức trước khi cài đặt."
+
+#: src/mainuan_recursos/gui.py:315
+msgid "Release incompatible with this system."
+msgstr "Bản phát hành không tương thích với hệ thống này."
+
+#: src/mainuan_recursos/gui.py:346
+msgid "Confirm Installation"
+msgstr "Xác nhận cài đặt"
+
+#: src/mainuan_recursos/gui.py:346
+msgid "Confirm Installation — Demo"
+msgstr "Xác nhận cài đặt — Bản minh hoạ"
+
+#: src/mainuan_recursos/gui.py:348
+msgid ""
+"The installation needs to change other packages or review the plan. Check "
+"the operation before continuing."
+msgstr ""
+"Việc cài đặt cần thay đổi các gói khác hoặc xem lại kế hoạch. Hãy kiểm tra "
+"thao tác trước khi tiếp tục."
+
+#: src/mainuan_recursos/gui.py:355
+msgid "Complete operation, including dependencies:"
+msgstr "Toàn bộ thao tác, bao gồm các gói phụ thuộc:"
+
+#: src/mainuan_recursos/gui.py:356
+msgid "Packages and dependencies of the operation"
+msgstr "Các gói và gói phụ thuộc của thao tác"
+
+#: src/mainuan_recursos/gui.py:358
+msgid "Authorization and installation will be simulated."
+msgstr "Việc cấp quyền và cài đặt sẽ được mô phỏng."
+
+#: src/mainuan_recursos/gui.py:359
+msgid "The system will ask for authorization to install."
+msgstr "Hệ thống sẽ yêu cầu cấp quyền để cài đặt."
+
+#: src/mainuan_recursos/gui.py:362
+msgid "Cancel"
+msgstr "Huỷ"
+
+#: src/mainuan_recursos/gui.py:373
+msgid "Installation canceled. You can discover the news whenever you want."
+msgstr "Đã huỷ cài đặt. Bạn có thể khám phá tin mới bất cứ lúc nào."
+
+#: src/mainuan_recursos/gui.py:382
+#, python-brace-format
+msgid "Could not save the history: {error}"
+msgstr "Không lưu được lịch sử: {error}"
+
+#: src/mainuan_recursos/gui.py:398
+#, python-brace-format
+msgid "Could not save the 24-hour postponement: {error}"
+msgstr "Không lưu được việc hoãn 24 giờ: {error}"
+
+#: src/mainuan_recursos/gui.py:405
+msgid "Wait for the operation to finish before closing."
+msgstr "Hãy đợi thao tác hoàn tất trước khi đóng."
+
+#: src/mainuan_recursos/localization.py:20
+msgctxt "standard button"
+msgid "OK"
+msgstr "OK"
+
+#: src/mainuan_recursos/localization.py:21
+msgctxt "standard button"
+msgid "Close"
+msgstr "Đóng"
+
+#: src/mainuan_recursos/localization.py:22
+msgctxt "standard button"
+msgid "Cancel"
+msgstr "Huỷ"
+
+#: src/mainuan_recursos/localization.py:23
+msgctxt "standard button"
+msgid "&Yes"
+msgstr "&Có"
+
+#: src/mainuan_recursos/localization.py:24
+msgctxt "standard button"
+msgid "&No"
+msgstr "&Không"
+
+#: src/mainuan_recursos/localization.py:25
+msgctxt "standard button"
+msgid "Yes to &All"
+msgstr "Có cho &tất cả"
+
+#: src/mainuan_recursos/localization.py:26
+msgctxt "standard button"
+msgid "No to All"
+msgstr "Không cho tất cả"
+
+#: src/mainuan_recursos/localization.py:27
+msgctxt "standard button"
+msgid "Save"
+msgstr "Lưu"
+
+#: src/mainuan_recursos/localization.py:28
+msgctxt "standard button"
+msgid "Save All"
+msgstr "Lưu tất cả"
+
+#: src/mainuan_recursos/localization.py:29
+msgctxt "standard button"
+msgid "Open"
+msgstr "Mở"
+
+#: src/mainuan_recursos/localization.py:30
+msgctxt "standard button"
+msgid "Discard"
+msgstr "Loại bỏ"
+
+#: src/mainuan_recursos/localization.py:31
+msgctxt "standard button"
+msgid "Apply"
+msgstr "Áp dụng"
+
+#: src/mainuan_recursos/localization.py:32
+msgctxt "standard button"
+msgid "Reset"
+msgstr "Đặt lại"
+
+#: src/mainuan_recursos/localization.py:33
+msgctxt "standard button"
+msgid "Restore Defaults"
+msgstr "Khôi phục mặc định"
+
+#: src/mainuan_recursos/localization.py:34
+msgctxt "standard button"
+msgid "Help"
+msgstr "Trợ giúp"
+
+#: src/mainuan_recursos/localization.py:35
+msgctxt "standard button"
+msgid "Abort"
+msgstr "Huỷ bỏ"
+
+#: src/mainuan_recursos/localization.py:36
+msgctxt "standard button"
+msgid "Retry"
+msgstr "Thử lại"
+
+#: src/mainuan_recursos/localization.py:37
+msgctxt "standard button"
+msgid "Ignore"
+msgstr "Bỏ qua"
+
+#: src/mainuan_recursos/packagekit.py:147
+msgid "Invalid transaction path."
+msgstr "Đường dẫn giao dịch không hợp lệ."
+
+#: src/mainuan_recursos/packagekit.py:149
+msgid "Could not follow the transaction."
+msgstr "Không theo dõi được giao dịch."
+
+#: src/mainuan_recursos/packagekit.py:167
+msgid ""
+"Waiting for the PackageKit result; the operation may still be in progress."
+msgstr "Đang chờ kết quả từ PackageKit; thao tác có thể vẫn đang diễn ra."
+
+#: src/mainuan_recursos/packagekit.py:184
+msgid "Processing the transaction…"
+msgstr "Đang xử lý giao dịch…"
+
+#: src/mainuan_recursos/packagekit.py:192
+msgid "Waiting for another package manager..."
+msgstr "Đang chờ trình quản lý gói khác..."
+
+#: src/mainuan_recursos/packagekit.py:193
+msgid "Waiting for authorization..."
+msgstr "Đang chờ cấp quyền..."
+
+#: src/mainuan_recursos/packagekit.py:199
+#, python-brace-format
+msgid "Operation canceled or not completed (code {code})."
+msgstr "Thao tác đã bị huỷ hoặc chưa hoàn tất (mã {code})."
+
+#: src/mainuan_recursos/packagekit.py:201
+msgid "Transaction ended without confirmation of completion."
+msgstr "Giao dịch kết thúc mà không xác nhận hoàn tất."
+
+#: src/mainuan_recursos/packagekit.py:208
+msgid "The PackageKit service was disconnected."
+msgstr "Dịch vụ PackageKit đã bị ngắt kết nối."
+
+#: src/mainuan_recursos/packagekit.py:211
+msgid "The PackageKit query timed out."
+msgstr "Truy vấn PackageKit đã hết thời gian chờ."
+
+#: src/mainuan_recursos/packagekit.py:216
+#, python-brace-format
+msgid "{error} The result may be partial; check the packages again."
+msgstr "{error} Kết quả có thể chưa đầy đủ; hãy kiểm tra lại các gói."
+
+#: src/mainuan_recursos/packages.py:16
+msgctxt "package status"
+msgid "Install"
+msgstr "Cài đặt"
+
+#: src/mainuan_recursos/packages.py:17
+msgctxt "package status"
+msgid "Update"
+msgstr "Cập nhật"
+
+#: src/mainuan_recursos/packages.py:18
+msgctxt "package status"
+msgid "Already received"
+msgstr "Đã nhận"
+
+#: src/mainuan_recursos/packages.py:103
+msgid "APT candidate differs from the approved version"
+msgstr "Phiên bản ứng viên của APT khác với phiên bản đã duyệt"
+
+#: src/mainuan_recursos/packages.py:105 src/mainuan_recursos/packages.py:115
+msgid "Untrusted source"
+msgstr "Nguồn không đáng tin cậy"
+
+#: src/mainuan_recursos/packages.py:107
+msgid "Integrity of the approved package does not match"
+msgstr "Tính toàn vẹn của gói đã duyệt không khớp"
+
+# reviewed: "bắt buộc" = obrigatório/mandatório; o sentido é "a versão exigida
+# não está disponível"
+#: src/mainuan_recursos/packages.py:111
+msgid "Required version unavailable"
+msgstr "Không có sẵn phiên bản cần thiết"
+
+#: src/mainuan_recursos/packages.py:113
+msgid "No safe update available"
+msgstr "Không có bản cập nhật an toàn"
+
+#: src/mainuan_recursos/packages.py:125
+msgid "PackageKit returned an invalid identifier."
+msgstr "PackageKit trả về một mã định danh không hợp lệ."
+
+#: src/mainuan_recursos/packages.py:139
+msgid ""
+"The operation requires removal, reinstallation, downgrade or a disallowed "
+"effect."
+msgstr ""
+"Thao tác yêu cầu gỡ bỏ, cài đặt lại, hạ cấp hoặc một tác động không được "
+"phép."
+
+#: src/mainuan_recursos/packages.py:143
+#, python-brace-format
+msgid "Could not validate the source of {name}."
+msgstr "Không xác thực được nguồn của {name}."
+
+#: src/mainuan_recursos/packages.py:147
+#, python-brace-format
+msgid "The package {name} does not have a trusted source."
+msgstr "Gói {name} không có nguồn đáng tin cậy."
+
+#: src/mainuan_recursos/packages.py:151
+#, python-brace-format
+msgid ""
+"The integrity of the approved package {name} has changed. Check the "
+"repositories."
+msgstr ""
+"Tính toàn vẹn của gói đã duyệt {name} đã thay đổi. Hãy kiểm tra các kho phần "
+"mềm."
+
+#: src/mainuan_recursos/packages.py:153
+#, python-brace-format
+msgid "The package {name} is held by the administrator."
+msgstr "Gói {name} bị quản trị viên giữ lại."
+
+#: src/mainuan_recursos/packages.py:155
+#, python-brace-format
+msgid "The package {name} has an incomplete configuration."
+msgstr "Gói {name} có cấu hình chưa hoàn tất."
+
+#: src/mainuan_recursos/packages.py:158
+#, python-brace-format
+msgid "Reinstallation or downgrade of {name} blocked."
+msgstr "Đã chặn việc cài đặt lại hoặc hạ cấp {name}."
+
+#: src/mainuan_recursos/packages.py:161
+msgid "The simulation did not confirm all requested packages."
+msgstr "Bản mô phỏng không xác nhận được tất cả các gói được yêu cầu."
+
+#: src/mainuan_recursos/repository.py:27
+msgid "Local cache exceeds the size limit."
+msgstr "Bộ nhớ đệm cục bộ vượt quá giới hạn kích thước."
+
+#: src/mainuan_recursos/repository.py:45
+msgid "Old or changed catalog; the valid cache was preserved."
+msgstr "Danh mục cũ hoặc đã thay đổi; bộ nhớ đệm hợp lệ được giữ nguyên."
+
+#: src/mainuan_recursos/state.py:44
+msgid "Local state too large."
+msgstr "Trạng thái cục bộ quá lớn."
+
+#: src/mainuan_recursos/state.py:46 src/mainuan_recursos/state.py:48
+#: src/mainuan_recursos/state.py:56
+msgid "Invalid state."
+msgstr "Trạng thái không hợp lệ."
+
+#: src/mainuan_recursos/state.py:51
+msgid "Invalid sequence/digest."
+msgstr "Số thứ tự/giá trị băm không hợp lệ."
+
+#: src/mainuan_recursos/state.py:53
+msgid "Invalid release."
+msgstr "Bản phát hành không hợp lệ."
+
+#: src/mainuan_recursos/state.py:54
+msgid "Incomplete state."
+msgstr "Trạng thái chưa đầy đủ."
+
+#: src/mainuan_recursos/state.py:58
+msgid "Invalid deadline."
+msgstr "Thời hạn không hợp lệ."
+
+#: src/mainuan_recursos/state.py:61
+msgid "The local state is damaged. Preserve the file before recovering it."
+msgstr "Trạng thái cục bộ bị hỏng. Hãy giữ lại tệp trước khi khôi phục."
+
+#: src/mainuan_recursos/state.py:91
+msgid "Old catalog or content changed without increasing the sequence."
+msgstr "Danh mục cũ hoặc nội dung đã thay đổi mà không tăng số thứ tự."

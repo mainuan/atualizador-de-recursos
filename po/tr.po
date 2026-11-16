@@ -1,0 +1,1425 @@
+# Turkish translations for mainuan-atualizador-recursos package.
+# Copyright (C) 2026 Mainuan
+# This file is distributed under the same license as the mainuan-atualizador-recursos package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: mainuan-atualizador-recursos\n"
+"Report-Msgid-Bugs-To: https://github.com/mainuan/atualizador-de-recursos/"
+"issues\n"
+"POT-Creation-Date: 2026-11-16 11:30-0300\n"
+"PO-Revision-Date: 2026-11-16 11:30-0300\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: tr <https://github.com/mainuan>\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: data/mainuan-recursos-autostart.desktop.in:3
+#: src/mainuan_recursos/application.py:54
+msgid "Mainuan News"
+msgstr "Mainuan Yenilikleri"
+
+#: data/mainuan-recursos-autostart.desktop.in:4
+msgid "Checks for news during the session"
+msgstr "Oturum sırasında yenilikleri denetler"
+
+#: data/org.mainuan.Recursos.desktop.in:3 src/mainuan_recursos/gui.py:41
+msgid "Mainuan Feature Updater"
+msgstr "Mainuan Özellik Güncelleyici"
+
+#: data/org.mainuan.Recursos.desktop.in:4
+msgid "Discover and receive the official Mainuan news"
+msgstr "Resmi Mainuan yeniliklerini keşfedin ve edinin"
+
+#: src/mainuan_recursos/application.py:22
+msgid "Discover and receive the official Mainuan news."
+msgstr "Resmi Mainuan yeniliklerini keşfedin ve edinin."
+
+#: src/mainuan_recursos/application.py:23
+msgid "check during the session and notify without blocking the login"
+msgstr "oturum sırasında denetle ve oturum açılışını engellemeden bildir"
+
+#: src/mainuan_recursos/application.py:24
+msgid ""
+"real, manual trial in a VM: GitHub packages.txt/message.txt and Driver "
+"Manager 1.0"
+msgstr ""
+"VM’de gerçek, elle yapılan deneme: GitHub packages.txt/message.txt ve Sürücü "
+"Yöneticisi 1.0"
+
+#: src/mainuan_recursos/application.py:25
+msgid "demonstrate the whole flow without modifying the system"
+msgstr "sistemi değiştirmeden tüm akışı göster"
+
+#: src/mainuan_recursos/application.py:26
+msgid "demonstration scenario"
+msgstr "gösterim senaryosu"
+
+#: src/mainuan_recursos/application.py:27
+msgid "signed local catalog, only with --demo"
+msgstr "imzalı yerel katalog, yalnızca --demo ile"
+
+#: src/mainuan_recursos/application.py:28
+msgid "test configuration and key, only with --demo"
+msgstr "test yapılandırması ve anahtarı, yalnızca --demo ile"
+
+#: src/mainuan_recursos/application.py:33
+msgid ""
+"--homologacao-github is manual and cannot be combined with --check/--demo."
+msgstr ""
+"--homologacao-github elle çalıştırılır ve --check/--demo ile birlikte "
+"kullanılamaz."
+
+#: src/mainuan_recursos/application.py:38
+#, python-brace-format
+msgid "Acceptance test unavailable: {error}"
+msgstr "Kabul testi kullanılamıyor: {error}"
+
+#: src/mainuan_recursos/application.py:40
+msgid "Use --demo --test-catalog FILE --test-config FILE together."
+msgstr ""
+"--demo --test-catalog DOSYA --test-config DOSYA seçeneklerini birlikte "
+"kullanın."
+
+#: src/mainuan_recursos/application.py:51
+msgid ""
+"Checking for news becomes available after installing Mainuan. The Live "
+"session will not be queried."
+msgstr ""
+"Yenilik denetimi, Mainuan kurulduktan sonra kullanılabilir olur. Canlı "
+"oturumda sorgu yapılmayacak."
+
+#: src/mainuan_recursos/application.py:53
+msgid ""
+"Could not determine the session type. Querying and installing features have "
+"been disabled."
+msgstr ""
+"Oturum türü belirlenemedi. Özellik sorgulama ve kurma devre dışı bırakıldı."
+
+#: src/mainuan_recursos/application.py:67
+msgid "Invalid test catalog"
+msgstr "Geçersiz test kataloğu"
+
+#: src/mainuan_recursos/application.py:81
+#, python-brace-format
+msgid "Could not open the state directory: {error}"
+msgstr "Durum dizini açılamadı: {error}"
+
+#: src/mainuan_recursos/application.py:83
+#: src/mainuan_recursos/application.py:106
+#: src/mainuan_recursos/application.py:119
+msgid "Could not open the history"
+msgstr "Geçmiş açılamadı"
+
+#: src/mainuan_recursos/application.py:90
+msgid "Could not lock the local state. Check the directory permissions."
+msgstr "Yerel durum kilitlenemedi. Dizin izinlerini denetleyin."
+
+#: src/mainuan_recursos/application.py:100
+msgid ""
+"The other instance is starting. Open the application again in a few seconds."
+msgstr ""
+"Diğer örnek başlatılıyor. Birkaç saniye içinde uygulamayı yeniden açın."
+
+#: src/mainuan_recursos/application.py:126
+msgid "Could not create the single-instance channel."
+msgstr "Tek örnek kanalı oluşturulamadı."
+
+#: src/mainuan_recursos/catalog.py:38
+#, python-brace-format
+msgid "Repeated field: {key}"
+msgstr "Yinelenen alan: {key}"
+
+#: src/mainuan_recursos/catalog.py:44 src/mainuan_recursos/catalog.py:270
+msgid "The catalog exceeds the size limit."
+msgstr "Katalog boyut sınırını aşıyor."
+
+#: src/mainuan_recursos/catalog.py:47
+msgid "Invalid number."
+msgstr "Geçersiz sayı."
+
+#: src/mainuan_recursos/catalog.py:49
+#, python-brace-format
+msgid "Invalid JSON: {error}"
+msgstr "Geçersiz JSON: {error}"
+
+#: src/mainuan_recursos/catalog.py:53
+msgid "A JSON object was expected."
+msgstr "Bir JSON nesnesi bekleniyordu."
+
+#: src/mainuan_recursos/catalog.py:55
+msgid "Missing or unknown fields in the catalog/configuration."
+msgstr "Katalogda/yapılandırmada eksik ya da bilinmeyen alanlar var."
+
+#: src/mainuan_recursos/catalog.py:61
+msgid "Invalid text."
+msgstr "Geçersiz metin."
+
+#: src/mainuan_recursos/catalog.py:66
+msgid "Invalid identifier."
+msgstr "Geçersiz tanımlayıcı."
+
+#: src/mainuan_recursos/catalog.py:72
+msgid "HTTPS address contains spaces."
+msgstr "HTTPS adresi boşluk içeriyor."
+
+#: src/mainuan_recursos/catalog.py:77
+msgid "Address outside the configured official HTTPS domains."
+msgstr "Adres, yapılandırılmış resmi HTTPS alan adlarının dışında."
+
+#: src/mainuan_recursos/catalog.py:79
+msgid "Invalid HTTPS address."
+msgstr "Geçersiz HTTPS adresi."
+
+#: src/mainuan_recursos/catalog.py:89
+msgid "Ambiguous or disallowed URL path."
+msgstr "Belirsiz ya da izin verilmeyen URL yolu."
+
+#: src/mainuan_recursos/catalog.py:95
+msgid "The URL path does not belong to the authorized official infrastructure."
+msgstr "URL yolu, yetkilendirilmiş resmi altyapıya ait değil."
+
+#: src/mainuan_recursos/catalog.py:100
+msgid "Configure the official URL prefixes."
+msgstr "Resmi URL öneklerini yapılandırın."
+
+#: src/mainuan_recursos/catalog.py:105
+msgid "Invalid official prefix; use HTTPS and a path ending in /."
+msgstr "Geçersiz resmi önek; HTTPS ve / ile biten bir yol kullanın."
+
+#: src/mainuan_recursos/catalog.py:113
+msgid "Use UTC dates with the Z suffix."
+msgstr "Z sonekli UTC tarihleri kullanın."
+
+#: src/mainuan_recursos/catalog.py:116
+msgid "Invalid date."
+msgstr "Geçersiz tarih."
+
+#: src/mainuan_recursos/catalog.py:179
+msgid ""
+"Configure the official Mainuan domains in /etc/mainuan/atualizador-"
+"recursos.json."
+msgstr ""
+"Resmi Mainuan alan adlarını /etc/mainuan/atualizador-recursos.json "
+"dosyasında yapılandırın."
+
+#: src/mainuan_recursos/catalog.py:183
+msgid "The catalog URL cannot contain a query."
+msgstr "Katalog URL’si sorgu içeremez."
+
+#: src/mainuan_recursos/catalog.py:184
+msgid "Install the official public key of the catalog."
+msgstr "Kataloğun resmi genel anahtarını kurun."
+
+#: src/mainuan_recursos/catalog.py:188
+msgid "Invalid Ed25519 key."
+msgstr "Geçersiz Ed25519 anahtarı."
+
+#: src/mainuan_recursos/catalog.py:190
+msgid "Invalid public key."
+msgstr "Geçersiz genel anahtar."
+
+#: src/mainuan_recursos/catalog.py:198
+msgid "Unsupported schema."
+msgstr "Desteklenmeyen şema."
+
+#: src/mainuan_recursos/catalog.py:199
+msgid "Invalid sequence."
+msgstr "Geçersiz sıra."
+
+#: src/mainuan_recursos/catalog.py:202
+msgid "Catalog expired or with an invalid validity period."
+msgstr "Katalogun süresi dolmuş ya da geçerlilik süresi geçersiz."
+
+#: src/mainuan_recursos/catalog.py:203
+msgid "Invalid list of releases."
+msgstr "Geçersiz sürüm listesi."
+
+#: src/mainuan_recursos/catalog.py:210
+msgid "Duplicate release."
+msgstr "Yinelenen sürüm."
+
+#: src/mainuan_recursos/catalog.py:215
+msgid "Invalid compatibility."
+msgstr "Geçersiz uyumluluk."
+
+#: src/mainuan_recursos/catalog.py:219
+msgid "Invalid features."
+msgstr "Geçersiz özellikler."
+
+#: src/mainuan_recursos/catalog.py:223
+msgid "Invalid packages."
+msgstr "Geçersiz paketler."
+
+#: src/mainuan_recursos/catalog.py:229
+msgid "Invalid or repeated package name."
+msgstr "Geçersiz ya da yinelenen paket adı."
+
+#: src/mainuan_recursos/catalog.py:231
+msgid "Invalid Debian version."
+msgstr "Geçersiz Debian sürümü."
+
+#: src/mainuan_recursos/catalog.py:234
+msgid "Incomplete package pin."
+msgstr "Eksik paket sabitlemesi."
+
+#: src/mainuan_recursos/catalog.py:238
+msgid "Invalid architecture or SHA-256."
+msgstr "Geçersiz mimari ya da SHA-256."
+
+#: src/mainuan_recursos/catalog.py:242
+msgid "Invalid provenance."
+msgstr "Geçersiz köken bilgisi."
+
+#: src/mainuan_recursos/catalog.py:247
+msgid "Invalid GitHub source."
+msgstr "Geçersiz GitHub kaynağı."
+
+#: src/mainuan_recursos/catalog.py:250
+msgid "Invalid immutable reference."
+msgstr "Geçersiz değişmez başvuru."
+
+#: src/mainuan_recursos/catalog.py:251
+msgid "Invalid artifacts."
+msgstr "Geçersiz yapıtlar."
+
+#: src/mainuan_recursos/catalog.py:254
+msgid "Invalid artifact ID."
+msgstr "Geçersiz yapıt kimliği."
+
+#: src/mainuan_recursos/catalog.py:258
+msgid "Provenance does not match the offered packages."
+msgstr "Köken bilgisi, sunulan paketlerle eşleşmiyor."
+
+#: src/mainuan_recursos/catalog.py:278
+msgid "The catalog signature is not valid or the key is not trusted."
+msgstr "Katalog imzası geçerli değil ya da anahtara güvenilmiyor."
+
+#: src/mainuan_recursos/catalog.py:301
+msgid "Response exceeds the size limit."
+msgstr "Yanıt boyut sınırını aşıyor."
+
+#: src/mainuan_recursos/classic.py:37
+msgid ""
+"Violet-capped woodnymph hummingbird in front of a laptop, with the message "
+"News!"
+msgstr ""
+"Dizüstü bilgisayarın önünde, “Yenilikler!” iletisiyle mor başlıklı orman "
+"perisi sinekkuşu"
+
+#: src/mainuan_recursos/classic.py:84 src/mainuan_recursos/classic.py:85
+msgid "More Options"
+msgstr "Daha Fazla Seçenek"
+
+#: src/mainuan_recursos/classic.py:131
+msgid "Discover What’s New"
+msgstr "Yenilikleri Keşfet"
+
+#: src/mainuan_recursos/classic.py:134
+msgid "Optional: open the official page in the web browser."
+msgstr "İsteğe bağlı: resmi sayfayı web tarayıcısında açın."
+
+#: src/mainuan_recursos/classic.py:135 src/mainuan_recursos/gui.py:361
+msgid "Install New Features"
+msgstr "Yeni Özellikleri Kur"
+
+#: src/mainuan_recursos/classic.py:142
+msgid ""
+"Main action: check and install the announced features with system "
+"authorization."
+msgstr ""
+"Ana eylem: duyurulan özellikleri sistem yetkilendirmesiyle denetleyin ve "
+"kurun."
+
+#: src/mainuan_recursos/classic.py:143
+msgid "Not Now"
+msgstr "Şimdi Değil"
+
+#: src/mainuan_recursos/classic.py:145
+msgid "Postpones the notification for 24 hours, keeping manual access."
+msgstr "Bildirimi 24 saat erteler; elle erişim korunur."
+
+#: src/mainuan_recursos/controller.py:77 src/mainuan_recursos/controller.py:115
+#: src/mainuan_recursos/controller.py:147
+#: src/mainuan_recursos/controller.py:155 src/mainuan_recursos/demo.py:68
+#: src/mainuan_recursos/github_channel.py:359
+#: src/mainuan_recursos/github_trial.py:201
+#: src/mainuan_recursos/packagekit.py:193
+msgid "Preparing installation..."
+msgstr "Kurulum hazırlanıyor..."
+
+#: src/mainuan_recursos/controller.py:86
+msgid "Cannot prepare the installation:"
+msgstr "Kurulum hazırlanamıyor:"
+
+#: src/mainuan_recursos/controller.py:88
+msgid "You have already received all the features of this release."
+msgstr "Bu sürümün tüm özelliklerini zaten edindiniz."
+
+#: src/mainuan_recursos/controller.py:90
+msgid ""
+"The packages have changed. Prepare the installation again to review the "
+"operation."
+msgstr ""
+"Paketler değişti. İşlemi gözden geçirmek için kurulumu yeniden hazırlayın."
+
+#: src/mainuan_recursos/controller.py:109
+msgid ""
+"PackageKit did not find the planned versions/architectures in the "
+"repositories."
+msgstr "PackageKit, planlanan sürümleri/mimarileri depolarda bulamadı."
+
+#: src/mainuan_recursos/controller.py:112
+msgid ""
+"The source or version of the packages has changed. Review a new operation."
+msgstr ""
+"Paketlerin kaynağı ya da sürümü değişti. Yeni bir işlemi gözden geçirin."
+
+#: src/mainuan_recursos/controller.py:129
+msgid ""
+"The dependencies have changed. Prepare a new operation to confirm the "
+"details."
+msgstr ""
+"Bağımlılıklar değişti. Ayrıntıları onaylamak için yeni bir işlem hazırlayın."
+
+#: src/mainuan_recursos/controller.py:134 src/mainuan_recursos/demo.py:69
+#: src/mainuan_recursos/github_channel.py:440
+#: src/mainuan_recursos/github_trial.py:250
+#: src/mainuan_recursos/packagekit.py:190
+msgid "Installing new features..."
+msgstr "Yeni özellikler kuruluyor..."
+
+#: src/mainuan_recursos/controller.py:158
+msgid "Done! Enjoy the new Mainuan features."
+msgstr "Tamamlandı! Yeni Mainuan özelliklerinin keyfini çıkarın."
+
+#: src/mainuan_recursos/controller.py:159
+msgid ""
+"PackageKit finished the operation, but the installed versions have not been "
+"confirmed yet."
+msgstr "PackageKit işlemi tamamladı, ancak kurulu sürümler henüz doğrulanmadı."
+
+#: src/mainuan_recursos/controller.py:161
+msgid ""
+"The system requested a restart of an application, the session or the "
+"computer."
+msgstr ""
+"Sistem; bir uygulamanın, oturumun ya da bilgisayarın yeniden başlatılmasını "
+"istedi."
+
+#: src/mainuan_recursos/demo.py:20
+msgid "Your Mainuan is evolving!"
+msgstr "Mainuan’ınız gelişiyor!"
+
+#: src/mainuan_recursos/demo.py:21
+msgid "Discover the new features prepared to make your day simpler."
+msgstr "Gününüzü kolaylaştırmak için hazırlanan yeni özellikleri keşfedin."
+
+#: src/mainuan_recursos/demo.py:23
+msgid "A new welcome experience"
+msgstr "Yeni bir karşılama deneyimi"
+
+#: src/mainuan_recursos/demo.py:24
+msgid "More options to customize your desktop"
+msgstr "Masaüstünüzü özelleştirmek için daha fazla seçenek"
+
+#: src/mainuan_recursos/demo.py:25
+msgid "A hub to discover Mainuan applications"
+msgstr "Mainuan uygulamalarını keşfetmek için bir merkez"
+
+#: src/mainuan_recursos/demo.py:27
+msgid "Previous Mainuan news"
+msgstr "Önceki Mainuan yenilikleri"
+
+#: src/mainuan_recursos/demo.py:37 src/mainuan_recursos/packages.py:86
+msgid "Unavailable in the repositories"
+msgstr "Depolarda kullanılamıyor"
+
+#: src/mainuan_recursos/demo.py:76
+msgid "Authorization canceled (simulation)."
+msgstr "Yetkilendirme iptal edildi (benzetim)."
+
+#: src/mainuan_recursos/demo.py:77
+msgid "Download failed (simulation)."
+msgstr "İndirme başarısız oldu (benzetim)."
+
+#: src/mainuan_recursos/github_channel.py:41
+#: src/mainuan_recursos/github_channel.py:48
+msgid "Invalid GitHub address."
+msgstr "Geçersiz GitHub adresi."
+
+#: src/mainuan_recursos/github_channel.py:46
+msgid "GitHub address must use official HTTPS."
+msgstr "GitHub adresi resmi HTTPS kullanmalıdır."
+
+#: src/mainuan_recursos/github_channel.py:51
+msgid "Ambiguous GitHub path."
+msgstr "Belirsiz GitHub yolu."
+
+#: src/mainuan_recursos/github_channel.py:53
+msgid "Invalid repository."
+msgstr "Geçersiz depo."
+
+#: src/mainuan_recursos/github_channel.py:63
+msgid "Source or redirect outside the official Mainuan organization."
+msgstr "Kaynak ya da yönlendirme resmi Mainuan organizasyonunun dışında."
+
+#: src/mainuan_recursos/github_channel.py:72
+msgid "The GitHub query was redirected; check the official source."
+msgstr "GitHub sorgusu yönlendirildi; resmi kaynağı denetleyin."
+
+#: src/mainuan_recursos/github_channel.py:87
+msgid "GitHub metadata exceeds the allowed limit."
+msgstr "GitHub üst verisi izin verilen sınırı aşıyor."
+
+#: src/mainuan_recursos/github_channel.py:96
+msgid "Invalid GitHub artifact."
+msgstr "Geçersiz GitHub yapıtı."
+
+#: src/mainuan_recursos/github_channel.py:98
+msgid "Use the Debian name package_version_architecture.deb in the release."
+msgstr "Sürümde paket_sürüm_mimari.deb biçimindeki Debian adını kullanın."
+
+#: src/mainuan_recursos/github_channel.py:101
+msgid "Invalid Debian name or version."
+msgstr "Geçersiz Debian adı ya da sürümü."
+
+#: src/mainuan_recursos/github_channel.py:104
+#, python-brace-format
+msgid "The release has no verifiable SHA-256 published by GitHub for {file}."
+msgstr ""
+"Sürümde, GitHub tarafından yayımlanmış ve doğrulanabilir bir SHA-256 yok. "
+"Dosya: {file}"
+
+#: src/mainuan_recursos/github_channel.py:106
+msgid "Artifact unavailable or invalid size."
+msgstr "Yapıt kullanılamıyor ya da boyutu geçersiz."
+
+#: src/mainuan_recursos/github_channel.py:126
+#: src/mainuan_recursos/github_channel.py:260
+msgid "GitHub history exceeds the allowed limit."
+msgstr "GitHub geçmişi izin verilen sınırı aşıyor."
+
+#: src/mainuan_recursos/github_channel.py:139
+#: src/mainuan_recursos/github_channel.py:253
+#: src/mainuan_recursos/github_trial.py:146
+msgid "Mainuan has news!"
+msgstr "Mainuan’da yenilikler var!"
+
+#: src/mainuan_recursos/github_channel.py:147
+#, python-brace-format
+msgid ""
+"Repository does not belong to the official organization or is unavailable: "
+"{repository}"
+msgstr "Depo resmi organizasyona ait değil ya da kullanılamıyor: {repository}"
+
+#: src/mainuan_recursos/github_channel.py:149
+#, python-brace-format
+msgid "The repository identity was replaced: {repository}"
+msgstr "Depo kimliği değiştirildi: {repository}"
+
+#: src/mainuan_recursos/github_channel.py:155
+#, python-brace-format
+msgid "Invalid list of releases: {repository}"
+msgstr "Geçersiz sürüm listesi: {repository}"
+
+#: src/mainuan_recursos/github_channel.py:160
+#, python-brace-format
+msgid "Too many releases for a safe query: {repository}"
+msgstr "Güvenli bir sorgu için çok fazla sürüm var: {repository}"
+
+#: src/mainuan_recursos/github_channel.py:163
+msgid "Release with a future date. Check the system clock."
+msgstr "Sürümün tarihi gelecekte. Sistem saatini denetleyin."
+
+#: src/mainuan_recursos/github_channel.py:164
+msgid "Invalid release ID."
+msgstr "Geçersiz sürüm kimliği."
+
+#: src/mainuan_recursos/github_channel.py:168
+msgid "Invalid list of artifacts."
+msgstr "Geçersiz yapıt listesi."
+
+#: src/mainuan_recursos/github_channel.py:173
+msgid "Too many artifacts in the release."
+msgstr "Sürümde çok fazla yapıt var."
+
+#: src/mainuan_recursos/github_channel.py:183
+#, python-brace-format
+msgid "Duplicate or ambiguous packages in the release: {repository}"
+msgstr "Sürümde yinelenen ya da belirsiz paketler var: {repository}"
+
+#: src/mainuan_recursos/github_channel.py:188
+msgid "Artifact URL does not match the selected release."
+msgstr "Yapıt URL’si seçilen sürümle eşleşmiyor."
+
+#: src/mainuan_recursos/github_channel.py:190
+msgid "Invalid immutable reference of the release."
+msgstr "Sürümün değişmez başvurusu geçersiz."
+
+#: src/mainuan_recursos/github_channel.py:196
+#, python-brace-format
+msgid "No stable release with a compatible Debian package: {repository}"
+msgstr "Uyumlu Debian paketi içeren kararlı sürüm yok: {repository}"
+
+#: src/mainuan_recursos/github_channel.py:218
+msgid "This channel is intended for Mainuan based on Kubuntu 26.04."
+msgstr "Bu kanal, Kubuntu 26.04 tabanlı Mainuan için tasarlanmıştır."
+
+#: src/mainuan_recursos/github_channel.py:220
+msgid "Invalid official reference."
+msgstr "Geçersiz resmi başvuru."
+
+#: src/mainuan_recursos/github_channel.py:224
+msgid "message.txt is empty."
+msgstr "message.txt boş."
+
+#: src/mainuan_recursos/github_channel.py:228
+msgid "packages.txt contains invalid or repeated repositories."
+msgstr "packages.txt geçersiz ya da yinelenen depolar içeriyor."
+
+#: src/mainuan_recursos/github_channel.py:234
+msgid "Two repositories offer the same Debian package."
+msgstr "İki depo aynı Debian paketini sunuyor."
+
+#: src/mainuan_recursos/github_channel.py:239
+#, python-brace-format
+msgid "An already announced release or artifact was replaced: {package}"
+msgstr "Daha önce duyurulmuş bir sürüm ya da yapıt değiştirildi: {package}"
+
+#: src/mainuan_recursos/github_channel.py:243
+#, python-brace-format
+msgid "Rollback of a published version blocked: {package}"
+msgstr "Yayımlanmış bir sürüme geri dönüş engellendi: {package}"
+
+#: src/mainuan_recursos/github_channel.py:264
+msgid "News not queried in this channel."
+msgstr "Bu kanalda yenilikler sorgulanmadı."
+
+#: src/mainuan_recursos/github_channel.py:272
+msgid "Package missing or size mismatch."
+msgstr "Paket eksik ya da boyutu uyuşmuyor."
+
+#: src/mainuan_recursos/github_channel.py:274
+msgid "SHA-256 integrity mismatch; installation blocked."
+msgstr "SHA-256 bütünlüğü uyuşmuyor; kurulum engellendi."
+
+#: src/mainuan_recursos/github_channel.py:278
+msgid "Internal package metadata does not match the release."
+msgstr "Paketin iç üst verisi sürümle eşleşmiyor."
+
+#: src/mainuan_recursos/github_channel.py:292
+#: src/mainuan_recursos/github_trial.py:162 src/mainuan_recursos/packages.py:96
+msgid "Package with incomplete configuration"
+msgstr "Yapılandırması tamamlanmamış paket"
+
+#: src/mainuan_recursos/github_channel.py:296
+#: src/mainuan_recursos/github_trial.py:167 src/mainuan_recursos/packages.py:98
+msgid "Package held by the administrator"
+msgstr "Paket yönetici tarafından tutuluyor"
+
+#: src/mainuan_recursos/github_channel.py:302
+#: src/mainuan_recursos/github_trial.py:173
+#, python-brace-format
+msgid "Unmet dependencies: {details}"
+msgstr "Karşılanmamış bağımlılıklar: {details}"
+
+#: src/mainuan_recursos/github_channel.py:304
+msgid "The operation requires additional unannounced packages"
+msgstr "İşlem, duyurulmamış ek paketler gerektiriyor"
+
+#: src/mainuan_recursos/github_channel.py:312
+msgid "The announced release was withdrawn or changed."
+msgstr "Duyurulan sürüm geri çekildi ya da değiştirildi."
+
+#: src/mainuan_recursos/github_channel.py:314
+msgid "The release reference was replaced; installation blocked."
+msgstr "Sürüm başvurusu değiştirildi; kurulum engellendi."
+
+#: src/mainuan_recursos/github_channel.py:317
+msgid "The artifact was changed after the query; check for news again."
+msgstr "Yapıt, sorgudan sonra değiştirildi; yenilikleri yeniden denetleyin."
+
+#: src/mainuan_recursos/github_channel.py:334
+msgid "Download exceeds the approved size."
+msgstr "İndirme, onaylanan boyutu aşıyor."
+
+#: src/mainuan_recursos/github_channel.py:337
+#: src/mainuan_recursos/github_channel.py:356
+#: src/mainuan_recursos/github_trial.py:189
+#: src/mainuan_recursos/github_trial.py:191
+#: src/mainuan_recursos/packagekit.py:191
+msgid "Downloading new features..."
+msgstr "Yeni özellikler indiriliyor..."
+
+#: src/mainuan_recursos/github_channel.py:338
+msgid "Download with SHA-256 integrity mismatch."
+msgstr "İndirilen dosyanın SHA-256 bütünlüğü uyuşmuyor."
+
+#: src/mainuan_recursos/github_channel.py:345
+msgid "Check for news online before installing."
+msgstr "Kurmadan önce yenilikleri çevrimiçi denetleyin."
+
+#: src/mainuan_recursos/github_channel.py:347
+msgid ""
+"Installation requires a regular user and an installed session, outside Live "
+"mode."
+msgstr ""
+"Kurulum, Canlı kipin dışında, olağan bir kullanıcı ve kurulu bir oturum "
+"gerektirir."
+
+#: src/mainuan_recursos/github_channel.py:367
+msgid "PackageKit proposed additional packages or an incomplete operation."
+msgstr "PackageKit ek paketler ya da eksik bir işlem önerdi."
+
+#: src/mainuan_recursos/github_channel.py:371
+msgid "The simulation would change unannounced packages."
+msgstr "Benzetim, duyurulmamış paketleri değiştirecek."
+
+#: src/mainuan_recursos/github_channel.py:373
+msgid "Removal, reinstallation or downgrade blocked."
+msgstr "Kaldırma, yeniden kurma ya da sürüm düşürme engellendi."
+
+#: src/mainuan_recursos/github_channel.py:385
+#: src/mainuan_recursos/github_channel.py:386
+msgid "Invalid GitHub cache."
+msgstr "Geçersiz GitHub önbelleği."
+
+#: src/mainuan_recursos/github_channel.py:391
+msgid "Invalid local edition."
+msgstr "Geçersiz yerel sürüm."
+
+#: src/mainuan_recursos/github_channel.py:394
+msgid "Invalid local artifact."
+msgstr "Geçersiz yerel yapıt."
+
+#: src/mainuan_recursos/github_channel.py:398
+msgid "Invalid GitHub history. Preserve the file before recovering it."
+msgstr "Geçersiz GitHub geçmişi. Kurtarmadan önce dosyayı saklayın."
+
+#: src/mainuan_recursos/github_channel.py:415
+msgid "Cannot install:"
+msgstr "Kurulamıyor:"
+
+#: src/mainuan_recursos/github_channel.py:417
+msgid ""
+"You have already received all the features. No reinstallation will be done."
+msgstr "Tüm özellikleri zaten edindiniz. Yeniden kurulum yapılmayacak."
+
+#: src/mainuan_recursos/github_channel.py:419
+msgid "The package state has changed. Check for news again."
+msgstr "Paket durumu değişti. Yenilikleri yeniden denetleyin."
+
+#: src/mainuan_recursos/github_channel.py:432
+msgid "The operation has changed; installation blocked."
+msgstr "İşlem değişti; kurulum engellendi."
+
+#: src/mainuan_recursos/github_trial.py:42
+msgid ""
+"The GitHub acceptance test is exclusive to a VM with a snapshot; use the "
+"normal mode on this computer."
+msgstr ""
+"GitHub kabul testi yalnızca anlık görüntüsü olan bir VM içindir; bu "
+"bilgisayarda olağan kipi kullanın."
+
+#: src/mainuan_recursos/github_trial.py:43
+msgid "Open the acceptance test as a regular user, without sudo."
+msgstr "Kabul testini sudo olmadan, olağan bir kullanıcı olarak açın."
+
+#: src/mainuan_recursos/github_trial.py:44
+msgid ""
+"The acceptance test requires a normal installation, outside the Live session."
+msgstr "Kabul testi, Canlı oturumun dışında olağan bir kurulum gerektirir."
+
+#: src/mainuan_recursos/github_trial.py:46
+msgid "This trial is intended for Mainuan based on Kubuntu 26.04."
+msgstr "Bu deneme, Kubuntu 26.04 tabanlı Mainuan için tasarlanmıştır."
+
+#: src/mainuan_recursos/github_trial.py:52
+msgid "Invalid acceptance test URL."
+msgstr "Geçersiz kabul testi URL’si."
+
+#: src/mainuan_recursos/github_trial.py:59
+msgid "Redirect outside the authorized GitHub infrastructure."
+msgstr "Yönlendirme, yetkilendirilmiş GitHub altyapısının dışında."
+
+#: src/mainuan_recursos/github_trial.py:88
+msgid "GitHub response exceeds the allowed size."
+msgstr "GitHub yanıtı izin verilen boyutu aşıyor."
+
+#: src/mainuan_recursos/github_trial.py:98
+msgid "Could not query PackageKit support for local files."
+msgstr "Yerel dosyalar için PackageKit desteği sorgulanamadı."
+
+#: src/mainuan_recursos/github_trial.py:102
+msgid ""
+"The PackageKit backend of this VM does not offer InstallFiles. No unsafe "
+"fallback will be used."
+msgstr ""
+"Bu VM’nin PackageKit arka ucu InstallFiles sunmuyor. Güvenli olmayan bir "
+"yedek yöntem kullanılmayacak."
+
+#: src/mainuan_recursos/github_trial.py:112
+msgid "Experimental package missing or symbolic."
+msgstr "Deneysel paket eksik ya da sembolik bağ."
+
+#: src/mainuan_recursos/github_trial.py:114
+msgid "Driver Manager 1.0 integrity mismatch. The installation was blocked."
+msgstr "Sürücü Yöneticisi 1.0 bütünlüğü uyuşmuyor. Kurulum engellendi."
+
+#: src/mainuan_recursos/github_trial.py:120
+msgid "Invalid GitHub reference."
+msgstr "Geçersiz GitHub başvurusu."
+
+#: src/mainuan_recursos/github_trial.py:125
+msgid ""
+"In this first trial, packages.txt must contain only mainuan-gestao-drivers."
+msgstr ""
+"Bu ilk denemede packages.txt yalnızca mainuan-gestao-drivers içermelidir."
+
+#: src/mainuan_recursos/github_trial.py:126
+msgid "Message empty or too long."
+msgstr "İleti boş ya da çok uzun."
+
+#: src/mainuan_recursos/github_trial.py:129
+msgid "Program repository mismatch."
+msgstr "Program deposu uyuşmuyor."
+
+#: src/mainuan_recursos/github_trial.py:133
+msgid "The approved release is not available as a stable publication."
+msgstr "Onaylanan sürüm, kararlı bir yayın olarak kullanılamıyor."
+
+#: src/mainuan_recursos/github_trial.py:135
+msgid "Approved artifact not found."
+msgstr "Onaylanan yapıt bulunamadı."
+
+#: src/mainuan_recursos/github_trial.py:139
+msgid ""
+"The release was changed or does not match the package approved for this "
+"trial."
+msgstr "Sürüm değiştirildi ya da bu deneme için onaylanan paketle eşleşmiyor."
+
+#: src/mainuan_recursos/github_trial.py:144
+msgid "GitHub commit is in the future. Check the VM clock."
+msgstr "GitHub işlemesi gelecek bir tarihte. VM saatini denetleyin."
+
+#: src/mainuan_recursos/github_trial.py:147
+msgid "Driver Manager 1.0"
+msgstr "Sürücü Yöneticisi 1.0"
+
+#: src/mainuan_recursos/github_trial.py:155
+msgid "Experimental release not approved."
+msgstr "Deneysel sürüm onaylanmadı."
+
+#: src/mainuan_recursos/github_trial.py:171
+msgid "Debian metadata mismatch."
+msgstr "Debian üst verisi uyuşmuyor."
+
+#: src/mainuan_recursos/github_trial.py:175
+#, python-brace-format
+msgid "This trial does not allow changing dependencies: {packages}"
+msgstr "Bu deneme bağımlılıkların değiştirilmesine izin vermiyor: {packages}"
+
+#: src/mainuan_recursos/github_trial.py:192
+msgid "Package download with invalid integrity."
+msgstr "Paket indirmesinin bütünlüğü geçersiz."
+
+#: src/mainuan_recursos/github_trial.py:219
+msgid "Cannot install in this trial:"
+msgstr "Bu denemede kurulamıyor:"
+
+#: src/mainuan_recursos/github_trial.py:221
+msgid ""
+"You have already received Driver Manager 1.0. No reinstallation will be done."
+msgstr "Sürücü Yöneticisi 1.0’ı zaten edindiniz. Yeniden kurulum yapılmayacak."
+
+#: src/mainuan_recursos/github_trial.py:223
+msgid "The package state has changed. Review the operation again."
+msgstr "Paket durumu değişti. İşlemi yeniden gözden geçirin."
+
+#: src/mainuan_recursos/github_trial.py:236
+msgid ""
+"PackageKit proposed changes beyond the Driver Manager application. No "
+"additional driver or dependency will be installed in this trial."
+msgstr ""
+"PackageKit, Sürücü Yöneticisi uygulamasının ötesinde değişiklikler önerdi. "
+"Bu denemede ek sürücü ya da bağımlılık kurulmayacak."
+
+#: src/mainuan_recursos/github_trial.py:244
+msgid "The operation has changed. Review the confirmation again."
+msgstr "İşlem değişti. Onayı yeniden gözden geçirin."
+
+#: src/mainuan_recursos/gui.py:39
+msgid "Mainuan Feature Updater — Demo"
+msgstr "Mainuan Özellik Güncelleyici — Tanıtım"
+
+#: src/mainuan_recursos/gui.py:40
+msgid "Mainuan Feature Updater — GitHub Acceptance Test"
+msgstr "Mainuan Özellik Güncelleyici — GitHub Kabul Testi"
+
+#: src/mainuan_recursos/gui.py:44
+msgid "Checking for news…"
+msgstr "Yenilikler denetleniyor…"
+
+#: src/mainuan_recursos/gui.py:50
+msgid "Check for News"
+msgstr "Yenilikleri Denetle"
+
+#: src/mainuan_recursos/gui.py:51 src/mainuan_recursos/gui.py:55
+#: src/mainuan_recursos/gui.py:56
+msgid "News History"
+msgstr "Yenilik Geçmişi"
+
+#: src/mainuan_recursos/gui.py:53 src/mainuan_recursos/gui.py:60
+msgid "Technical Information"
+msgstr "Teknik Bilgiler"
+
+#: src/mainuan_recursos/gui.py:59
+msgid "Programs, packages, versions and actual status"
+msgstr "Programlar, paketler, sürümler ve gerçek durum"
+
+#. Translators: title of an auxiliary window opened in demonstration mode.
+#: src/mainuan_recursos/gui.py:92
+#, python-brace-format
+msgid "{title} — Demo"
+msgstr "{title} — Tanıtım"
+
+#: src/mainuan_recursos/gui.py:119
+#, python-brace-format
+msgid "Release: {id} • {version}"
+msgstr "Sürüm: {id} • {version}"
+
+#: src/mainuan_recursos/gui.py:120
+#, python-brace-format
+msgid "Official article: {url}"
+msgstr "Resmi makale: {url}"
+
+#: src/mainuan_recursos/gui.py:121
+msgid "not checked"
+msgstr "denetlenmedi"
+
+#: src/mainuan_recursos/gui.py:126 src/mainuan_recursos/gui.py:351
+msgid "not installed"
+msgstr "kurulu değil"
+
+#: src/mainuan_recursos/gui.py:127
+msgid "unavailable"
+msgstr "kullanılamıyor"
+
+#: src/mainuan_recursos/gui.py:129
+msgid "packages not checked"
+msgstr "paketler denetlenmedi"
+
+#: src/mainuan_recursos/gui.py:130
+#, python-brace-format
+msgid "Package: {name}"
+msgstr "Paket: {name}"
+
+#: src/mainuan_recursos/gui.py:131
+#, python-brace-format
+msgid "Minimum version: {version}"
+msgstr "En düşük sürüm: {version}"
+
+#: src/mainuan_recursos/gui.py:132
+#, python-brace-format
+msgid "Installed: {version}"
+msgstr "Kurulu: {version}"
+
+#: src/mainuan_recursos/gui.py:133
+#, python-brace-format
+msgid "Available: {version}"
+msgstr "Kullanılabilir: {version}"
+
+#: src/mainuan_recursos/gui.py:134
+#, python-brace-format
+msgid "Architecture: {architecture}"
+msgstr "Mimari: {architecture}"
+
+#: src/mainuan_recursos/gui.py:135
+#, python-brace-format
+msgid "Status: {status}"
+msgstr "Durum: {status}"
+
+#: src/mainuan_recursos/gui.py:137
+#, python-brace-format
+msgid "Approved SHA-256: {sha256}"
+msgstr "Onaylanan SHA-256: {sha256}"
+
+#: src/mainuan_recursos/gui.py:139
+msgid ""
+"The complete operation, including dependencies, will be shown when "
+"confirming the installation."
+msgstr "Bağımlılıklar dahil tüm işlem, kurulum onaylanırken gösterilecek."
+
+#: src/mainuan_recursos/gui.py:141
+msgid ""
+"Demo: authorization and installation are simulated; no package will be "
+"changed."
+msgstr ""
+"Tanıtım: yetkilendirme ve kurulum benzetimle yapılır; hiçbir paket "
+"değiştirilmeyecek."
+
+#: src/mainuan_recursos/gui.py:143
+msgid ""
+"Official GitHub channel: packages.txt and message.txt from the same commit."
+msgstr "Resmi GitHub kanalı: aynı işlemeden packages.txt ve message.txt."
+
+#: src/mainuan_recursos/gui.py:144
+msgid ""
+"Packages from stable releases, with IDs, versions and SHA-256 recorded "
+"during the query."
+msgstr ""
+"Kararlı sürümlerden paketler; kimlikler, sürümler ve SHA-256 değerleri sorgu "
+"sırasında kaydedilir."
+
+#: src/mainuan_recursos/gui.py:145
+msgid ""
+"The download starts only after choosing to install; unannounced changes are "
+"blocked."
+msgstr ""
+"İndirme yalnızca kurmayı seçtikten sonra başlar; duyurulmamış değişiklikler "
+"engellenir."
+
+#: src/mainuan_recursos/gui.py:146
+msgid "HTTPS and SHA-256 are not equivalent to an APT repository signature."
+msgstr "HTTPS ve SHA-256, bir APT deposu imzasına eşdeğer değildir."
+
+#: src/mainuan_recursos/gui.py:147
+msgid "PackageKit/PolicyKit may ask for authorization for an untrusted source."
+msgstr ""
+"PackageKit/PolicyKit, güvenilmeyen bir kaynak için yetkilendirme isteyebilir."
+
+#: src/mainuan_recursos/gui.py:149
+msgid ""
+"GitHub acceptance test: official source and artifact pinned by IDs and "
+"SHA-256."
+msgstr ""
+"GitHub kabul testi: resmi kaynak ve kimliklerle ve SHA-256 ile sabitlenmiş "
+"yapıt."
+
+#: src/mainuan_recursos/gui.py:150
+msgid "The download starts only after choosing to install."
+msgstr "İndirme yalnızca kurmayı seçtikten sonra başlar."
+
+#: src/mainuan_recursos/gui.py:151
+msgid ""
+"Local file without an APT repository signature. PackageKit/PolicyKit may ask "
+"for authorization for an untrusted source."
+msgstr ""
+"APT deposu imzası olmayan yerel dosya. PackageKit/PolicyKit, güvenilmeyen "
+"bir kaynak için yetkilendirme isteyebilir."
+
+#: src/mainuan_recursos/gui.py:152
+msgid ""
+"The trial only allows the Driver Manager application; changes to other "
+"packages are blocked."
+msgstr ""
+"Deneme yalnızca Sürücü Yöneticisi uygulamasına izin verir; diğer "
+"paketlerdeki değişiklikler engellenir."
+
+#: src/mainuan_recursos/gui.py:174
+msgid "Querying the official Mainuan news…"
+msgstr "Resmi Mainuan yenilikleri sorgulanıyor…"
+
+#: src/mainuan_recursos/gui.py:218
+#, python-brace-format
+msgid "Could not check for news. {error}"
+msgstr "Yenilikler denetlenemedi. {error}"
+
+#: src/mainuan_recursos/gui.py:246
+msgid "No news has been published yet. Come back soon!"
+msgstr "Henüz yenilik yayımlanmadı. Yakında yeniden uğrayın!"
+
+#: src/mainuan_recursos/gui.py:252
+msgid ""
+"No news published.\n"
+"Come back soon to discover the next Mainuan features."
+msgstr ""
+"Yayımlanmış yenilik yok.\n"
+"Sonraki Mainuan özelliklerini keşfetmek için yakında yeniden uğrayın."
+
+#: src/mainuan_recursos/gui.py:260
+msgid "We have news for you! Discover the features before installing."
+msgstr "Sizin için yeniliklerimiz var! Kurmadan önce özellikleri keşfedin."
+
+#: src/mainuan_recursos/gui.py:262
+#, python-brace-format
+msgid "Could not check the packages: {error}"
+msgstr "Paketler denetlenemedi: {error}"
+
+#: src/mainuan_recursos/gui.py:264
+msgid ""
+"This release is not compatible with the version or architecture of this "
+"system."
+msgstr "Bu sürüm, bu sistemin sürümü ya da mimarisiyle uyumlu değil."
+
+#: src/mainuan_recursos/gui.py:266
+msgid ""
+"You have already received these features through the system. Discover the "
+"news!"
+msgstr "Bu özellikleri sistem üzerinden zaten edindiniz. Yenilikleri keşfedin!"
+
+#: src/mainuan_recursos/gui.py:268
+msgid ""
+"Some packages are not yet available for safe installation. See the technical "
+"information in the menu."
+msgstr ""
+"Bazı paketler henüz güvenli kurulum için kullanılabilir değil. Menüdeki "
+"teknik bilgilere bakın."
+
+#: src/mainuan_recursos/gui.py:272
+#, python-brace-format
+msgid "{message} Cached catalog: offline query; installation unavailable."
+msgstr ""
+"{message} Önbellekteki katalog: çevrimdışı sorgu; kurulum kullanılamıyor."
+
+#: src/mainuan_recursos/gui.py:284
+msgctxt "news state"
+msgid "New"
+msgstr "Yeni"
+
+#: src/mainuan_recursos/gui.py:284
+msgctxt "news state"
+msgid "Viewed"
+msgstr "Görüldü"
+
+#: src/mainuan_recursos/gui.py:285
+msgctxt "news state"
+msgid "Postponed"
+msgstr "Ertelendi"
+
+#: src/mainuan_recursos/gui.py:297
+#, python-brace-format
+msgid "Could not save the viewing in the history: {error}"
+msgstr "Görüntüleme geçmişe kaydedilemedi: {error}"
+
+#: src/mainuan_recursos/gui.py:309
+msgid "Could not open the default web browser."
+msgstr "Öntanımlı web tarayıcısı açılamadı."
+
+#: src/mainuan_recursos/gui.py:313
+msgid "Check the official catalog again before installing."
+msgstr "Kurmadan önce resmi kataloğu yeniden denetleyin."
+
+#: src/mainuan_recursos/gui.py:315
+msgid "Release incompatible with this system."
+msgstr "Sürüm bu sistemle uyumsuz."
+
+#: src/mainuan_recursos/gui.py:346
+msgid "Confirm Installation"
+msgstr "Kurulumu Onayla"
+
+#: src/mainuan_recursos/gui.py:346
+msgid "Confirm Installation — Demo"
+msgstr "Kurulumu Onayla — Tanıtım"
+
+#: src/mainuan_recursos/gui.py:348
+msgid ""
+"The installation needs to change other packages or review the plan. Check "
+"the operation before continuing."
+msgstr ""
+"Kurulumun başka paketleri değiştirmesi ya da planı gözden geçirmesi "
+"gerekiyor. Sürdürmeden önce işlemi denetleyin."
+
+#: src/mainuan_recursos/gui.py:355
+msgid "Complete operation, including dependencies:"
+msgstr "Bağımlılıklar dahil tüm işlem:"
+
+#: src/mainuan_recursos/gui.py:356
+msgid "Packages and dependencies of the operation"
+msgstr "İşlemin paketleri ve bağımlılıkları"
+
+#: src/mainuan_recursos/gui.py:358
+msgid "Authorization and installation will be simulated."
+msgstr "Yetkilendirme ve kurulum benzetimle yapılacak."
+
+#: src/mainuan_recursos/gui.py:359
+msgid "The system will ask for authorization to install."
+msgstr "Sistem, kurulum için yetkilendirme isteyecek."
+
+#: src/mainuan_recursos/gui.py:362
+msgid "Cancel"
+msgstr "İptal"
+
+#: src/mainuan_recursos/gui.py:373
+msgid "Installation canceled. You can discover the news whenever you want."
+msgstr "Kurulum iptal edildi. Yenilikleri istediğiniz zaman keşfedebilirsiniz."
+
+#: src/mainuan_recursos/gui.py:382
+#, python-brace-format
+msgid "Could not save the history: {error}"
+msgstr "Geçmiş kaydedilemedi: {error}"
+
+#: src/mainuan_recursos/gui.py:398
+#, python-brace-format
+msgid "Could not save the 24-hour postponement: {error}"
+msgstr "24 saatlik erteleme kaydedilemedi: {error}"
+
+#: src/mainuan_recursos/gui.py:405
+msgid "Wait for the operation to finish before closing."
+msgstr "Kapatmadan önce işlemin bitmesini bekleyin."
+
+#: src/mainuan_recursos/localization.py:20
+msgctxt "standard button"
+msgid "OK"
+msgstr "Tamam"
+
+#: src/mainuan_recursos/localization.py:21
+msgctxt "standard button"
+msgid "Close"
+msgstr "Kapat"
+
+#: src/mainuan_recursos/localization.py:22
+msgctxt "standard button"
+msgid "Cancel"
+msgstr "İptal"
+
+#: src/mainuan_recursos/localization.py:23
+msgctxt "standard button"
+msgid "&Yes"
+msgstr "&Evet"
+
+#: src/mainuan_recursos/localization.py:24
+msgctxt "standard button"
+msgid "&No"
+msgstr "&Hayır"
+
+#: src/mainuan_recursos/localization.py:25
+msgctxt "standard button"
+msgid "Yes to &All"
+msgstr "&Tümüne Evet"
+
+#: src/mainuan_recursos/localization.py:26
+msgctxt "standard button"
+msgid "No to All"
+msgstr "Tümüne Hayır"
+
+#: src/mainuan_recursos/localization.py:27
+msgctxt "standard button"
+msgid "Save"
+msgstr "Kaydet"
+
+#: src/mainuan_recursos/localization.py:28
+msgctxt "standard button"
+msgid "Save All"
+msgstr "Tümünü Kaydet"
+
+#: src/mainuan_recursos/localization.py:29
+msgctxt "standard button"
+msgid "Open"
+msgstr "Aç"
+
+#: src/mainuan_recursos/localization.py:30
+msgctxt "standard button"
+msgid "Discard"
+msgstr "At"
+
+#: src/mainuan_recursos/localization.py:31
+msgctxt "standard button"
+msgid "Apply"
+msgstr "Uygula"
+
+#: src/mainuan_recursos/localization.py:32
+msgctxt "standard button"
+msgid "Reset"
+msgstr "Sıfırla"
+
+#: src/mainuan_recursos/localization.py:33
+msgctxt "standard button"
+msgid "Restore Defaults"
+msgstr "Öntanımlıları Geri Yükle"
+
+#: src/mainuan_recursos/localization.py:34
+msgctxt "standard button"
+msgid "Help"
+msgstr "Yardım"
+
+#: src/mainuan_recursos/localization.py:35
+msgctxt "standard button"
+msgid "Abort"
+msgstr "İptal Et"
+
+#: src/mainuan_recursos/localization.py:36
+msgctxt "standard button"
+msgid "Retry"
+msgstr "Yeniden Dene"
+
+#: src/mainuan_recursos/localization.py:37
+msgctxt "standard button"
+msgid "Ignore"
+msgstr "Yok Say"
+
+#: src/mainuan_recursos/packagekit.py:147
+msgid "Invalid transaction path."
+msgstr "Geçersiz işlem yolu."
+
+#: src/mainuan_recursos/packagekit.py:149
+msgid "Could not follow the transaction."
+msgstr "İşlem izlenemedi."
+
+#: src/mainuan_recursos/packagekit.py:167
+msgid ""
+"Waiting for the PackageKit result; the operation may still be in progress."
+msgstr "PackageKit sonucu bekleniyor; işlem hâlâ sürüyor olabilir."
+
+#: src/mainuan_recursos/packagekit.py:184
+msgid "Processing the transaction…"
+msgstr "İşlem yürütülüyor…"
+
+#: src/mainuan_recursos/packagekit.py:192
+msgid "Waiting for another package manager..."
+msgstr "Başka bir paket yöneticisi bekleniyor..."
+
+#: src/mainuan_recursos/packagekit.py:193
+msgid "Waiting for authorization..."
+msgstr "Yetkilendirme bekleniyor..."
+
+#: src/mainuan_recursos/packagekit.py:199
+#, python-brace-format
+msgid "Operation canceled or not completed (code {code})."
+msgstr "İşlem iptal edildi ya da tamamlanmadı (kod {code})."
+
+#: src/mainuan_recursos/packagekit.py:201
+msgid "Transaction ended without confirmation of completion."
+msgstr "İşlem, tamamlandığı doğrulanmadan sona erdi."
+
+#: src/mainuan_recursos/packagekit.py:208
+msgid "The PackageKit service was disconnected."
+msgstr "PackageKit hizmetiyle bağlantı kesildi."
+
+#: src/mainuan_recursos/packagekit.py:211
+msgid "The PackageKit query timed out."
+msgstr "PackageKit sorgusu zaman aşımına uğradı."
+
+#: src/mainuan_recursos/packagekit.py:216
+#, python-brace-format
+msgid "{error} The result may be partial; check the packages again."
+msgstr "{error} Sonuç eksik olabilir; paketleri yeniden denetleyin."
+
+#: src/mainuan_recursos/packages.py:16
+msgctxt "package status"
+msgid "Install"
+msgstr "Kur"
+
+#: src/mainuan_recursos/packages.py:17
+msgctxt "package status"
+msgid "Update"
+msgstr "Güncelle"
+
+#: src/mainuan_recursos/packages.py:18
+msgctxt "package status"
+msgid "Already received"
+msgstr "Zaten edinildi"
+
+#: src/mainuan_recursos/packages.py:103
+msgid "APT candidate differs from the approved version"
+msgstr "APT adayı onaylanan sürümden farklı"
+
+#: src/mainuan_recursos/packages.py:105 src/mainuan_recursos/packages.py:115
+msgid "Untrusted source"
+msgstr "Güvenilmeyen kaynak"
+
+#: src/mainuan_recursos/packages.py:107
+msgid "Integrity of the approved package does not match"
+msgstr "Onaylanan paketin bütünlüğü uyuşmuyor"
+
+#: src/mainuan_recursos/packages.py:111
+msgid "Required version unavailable"
+msgstr "Gereken sürüm kullanılamıyor"
+
+#: src/mainuan_recursos/packages.py:113
+msgid "No safe update available"
+msgstr "Güvenli güncelleme yok"
+
+#: src/mainuan_recursos/packages.py:125
+msgid "PackageKit returned an invalid identifier."
+msgstr "PackageKit geçersiz bir tanımlayıcı döndürdü."
+
+#: src/mainuan_recursos/packages.py:139
+msgid ""
+"The operation requires removal, reinstallation, downgrade or a disallowed "
+"effect."
+msgstr ""
+"İşlem; kaldırma, yeniden kurma, sürüm düşürme ya da izin verilmeyen bir etki "
+"gerektiriyor."
+
+#: src/mainuan_recursos/packages.py:143
+#, python-brace-format
+msgid "Could not validate the source of {name}."
+msgstr "Paket kaynağı doğrulanamadı: {name}."
+
+#: src/mainuan_recursos/packages.py:147
+#, python-brace-format
+msgid "The package {name} does not have a trusted source."
+msgstr "Güvenilir bir kaynağı olmayan paket: {name}."
+
+#: src/mainuan_recursos/packages.py:151
+#, python-brace-format
+msgid ""
+"The integrity of the approved package {name} has changed. Check the "
+"repositories."
+msgstr "Onaylanan paketin bütünlüğü değişti: {name}. Depoları denetleyin."
+
+#: src/mainuan_recursos/packages.py:153
+#, python-brace-format
+msgid "The package {name} is held by the administrator."
+msgstr "Paket yönetici tarafından tutuluyor: {name}."
+
+#: src/mainuan_recursos/packages.py:155
+#, python-brace-format
+msgid "The package {name} has an incomplete configuration."
+msgstr "Paketin yapılandırması tamamlanmamış: {name}."
+
+#: src/mainuan_recursos/packages.py:158
+#, python-brace-format
+msgid "Reinstallation or downgrade of {name} blocked."
+msgstr "Yeniden kurma ya da sürüm düşürme engellendi: {name}."
+
+#: src/mainuan_recursos/packages.py:161
+msgid "The simulation did not confirm all requested packages."
+msgstr "Benzetim, istenen tüm paketleri doğrulamadı."
+
+#: src/mainuan_recursos/repository.py:27
+msgid "Local cache exceeds the size limit."
+msgstr "Yerel önbellek boyut sınırını aşıyor."
+
+#: src/mainuan_recursos/repository.py:45
+msgid "Old or changed catalog; the valid cache was preserved."
+msgstr "Eski ya da değiştirilmiş katalog; geçerli önbellek korundu."
+
+#: src/mainuan_recursos/state.py:44
+msgid "Local state too large."
+msgstr "Yerel durum çok büyük."
+
+#: src/mainuan_recursos/state.py:46 src/mainuan_recursos/state.py:48
+#: src/mainuan_recursos/state.py:56
+msgid "Invalid state."
+msgstr "Geçersiz durum."
+
+#: src/mainuan_recursos/state.py:51
+msgid "Invalid sequence/digest."
+msgstr "Geçersiz sıra/özet."
+
+#: src/mainuan_recursos/state.py:53
+msgid "Invalid release."
+msgstr "Geçersiz sürüm."
+
+#: src/mainuan_recursos/state.py:54
+msgid "Incomplete state."
+msgstr "Eksik durum."
+
+#: src/mainuan_recursos/state.py:58
+msgid "Invalid deadline."
+msgstr "Geçersiz son tarih."
+
+#: src/mainuan_recursos/state.py:61
+msgid "The local state is damaged. Preserve the file before recovering it."
+msgstr "Yerel durum bozuk. Kurtarmadan önce dosyayı saklayın."
+
+#: src/mainuan_recursos/state.py:91
+msgid "Old catalog or content changed without increasing the sequence."
+msgstr "Eski katalog ya da sıra artırılmadan değiştirilmiş içerik."
