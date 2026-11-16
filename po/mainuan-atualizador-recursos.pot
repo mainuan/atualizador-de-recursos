@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: mainuan-atualizador-recursos\n"
 "Report-Msgid-Bugs-To: https://github.com/mainuan/atualizador-de-recursos/"
 "issues\n"
-"POT-Creation-Date: 2026-11-16 11:22-0300\n"
+"POT-Creation-Date: 2026-11-16 11:30-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,23 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: data/mainuan-recursos-autostart.desktop.in:3
+#: src/mainuan_recursos/application.py:54
+msgid "Mainuan News"
+msgstr ""
+
+#: data/mainuan-recursos-autostart.desktop.in:4
+msgid "Checks for news during the session"
+msgstr ""
+
+#: data/org.mainuan.Recursos.desktop.in:3 src/mainuan_recursos/gui.py:41
+msgid "Mainuan Feature Updater"
+msgstr ""
+
+#: data/org.mainuan.Recursos.desktop.in:4
+msgid "Discover and receive the official Mainuan news"
+msgstr ""
 
 #: src/mainuan_recursos/application.py:22
 msgid "Discover and receive the official Mainuan news."
@@ -72,10 +89,6 @@ msgstr ""
 msgid ""
 "Could not determine the session type. Querying and installing features have "
 "been disabled."
-msgstr ""
-
-#: src/mainuan_recursos/application.py:54
-msgid "Mainuan News"
 msgstr ""
 
 #: src/mainuan_recursos/application.py:67
@@ -816,10 +829,6 @@ msgstr ""
 msgid "Mainuan Feature Updater — GitHub Acceptance Test"
 msgstr ""
 
-#: src/mainuan_recursos/gui.py:41
-msgid "Mainuan Feature Updater"
-msgstr ""
-
 #: src/mainuan_recursos/gui.py:44
 msgid "Checking for news…"
 msgstr ""
@@ -841,6 +850,7 @@ msgstr ""
 msgid "Programs, packages, versions and actual status"
 msgstr ""
 
+#. Translators: title of an auxiliary window opened in demonstration mode.
 #: src/mainuan_recursos/gui.py:92
 #, python-brace-format
 msgid "{title} — Demo"
@@ -1358,12 +1368,4 @@ msgstr ""
 
 #: src/mainuan_recursos/state.py:91
 msgid "Old catalog or content changed without increasing the sequence."
-msgstr ""
-
-#: data/mainuan-recursos-autostart.desktop.in:4
-msgid "Checks for news during the session"
-msgstr ""
-
-#: data/org.mainuan.Recursos.desktop.in:4
-msgid "Discover and receive the official Mainuan news"
 msgstr ""

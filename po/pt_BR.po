@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: mainuan-atualizador-recursos\n"
 "Report-Msgid-Bugs-To: https://github.com/mainuan/atualizador-de-recursos/"
 "issues\n"
-"POT-Creation-Date: 2026-11-16 11:22-0300\n"
+"POT-Creation-Date: 2026-11-16 11:30-0300\n"
 "PO-Revision-Date: 2026-11-16 11:22-0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: Brazilian Portuguese\n"
@@ -18,6 +18,23 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: data/mainuan-recursos-autostart.desktop.in:3
+#: src/mainuan_recursos/application.py:54
+msgid "Mainuan News"
+msgstr "Novidades do Mainuan"
+
+#: data/mainuan-recursos-autostart.desktop.in:4
+msgid "Checks for news during the session"
+msgstr "Verifica novidades durante a sessão"
+
+#: data/org.mainuan.Recursos.desktop.in:3 src/mainuan_recursos/gui.py:41
+msgid "Mainuan Feature Updater"
+msgstr "Atualizador de Recursos do Mainuan"
+
+#: data/org.mainuan.Recursos.desktop.in:4
+msgid "Discover and receive the official Mainuan news"
+msgstr "Conheça e receba as novidades oficiais do Mainuan"
 
 #: src/mainuan_recursos/application.py:22
 msgid "Discover and receive the official Mainuan news."
@@ -81,10 +98,6 @@ msgid ""
 msgstr ""
 "Não foi possível determinar o tipo de sessão. A consulta e a instalação de "
 "recursos foram desabilitadas."
-
-#: src/mainuan_recursos/application.py:54
-msgid "Mainuan News"
-msgstr "Novidades do Mainuan"
 
 #: src/mainuan_recursos/application.py:67
 msgid "Invalid test catalog"
@@ -857,10 +870,6 @@ msgstr "Atualizador de Recursos do Mainuan — Demonstração"
 msgid "Mainuan Feature Updater — GitHub Acceptance Test"
 msgstr "Atualizador de Recursos do Mainuan — Homologação GitHub"
 
-#: src/mainuan_recursos/gui.py:41
-msgid "Mainuan Feature Updater"
-msgstr "Atualizador de Recursos do Mainuan"
-
 #: src/mainuan_recursos/gui.py:44
 msgid "Checking for news…"
 msgstr "Verificando novidades…"
@@ -882,6 +891,7 @@ msgstr "Informações técnicas"
 msgid "Programs, packages, versions and actual status"
 msgstr "Programas, pacotes, versões e situação real"
 
+#. Translators: title of an auxiliary window opened in demonstration mode.
 #: src/mainuan_recursos/gui.py:92
 #, python-brace-format
 msgid "{title} — Demo"
@@ -1426,11 +1436,3 @@ msgstr ""
 #: src/mainuan_recursos/state.py:91
 msgid "Old catalog or content changed without increasing the sequence."
 msgstr "Catálogo antigo ou conteúdo alterado sem aumentar a sequência."
-
-#: data/mainuan-recursos-autostart.desktop.in:4
-msgid "Checks for news during the session"
-msgstr "Verifica novidades durante a sessão"
-
-#: data/org.mainuan.Recursos.desktop.in:4
-msgid "Discover and receive the official Mainuan news"
-msgstr "Conheça e receba as novidades oficiais do Mainuan"
