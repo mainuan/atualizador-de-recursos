@@ -21,11 +21,20 @@ jobs:
       - name: Preparar ferramentas
         run: |
           apt-get update
-          DEBIAN_FRONTEND=noninteractive apt-get install -y python3 python3-pyqt6 python3-apt python3-cryptography debhelper dpkg-dev gnupg desktop-file-utils lintian
+          DEBIAN_FRONTEND=noninteractive apt-get install -y python3 python3-pyqt6 python3-apt python3-cryptography debhelper dpkg-dev gnupg desktop-file-utils lintian gettext
+      - name: Conferir catálogos de tradução
+        run: |
+          po/i18n.sh check-pot
+          po/i18n.sh validate
       - name: Testar
         run: /usr/bin/python3 -m unittest discover -s tests -v
       - name: Validar entradas desktop
-        run: desktop-file-validate data/*.desktop
+        run: |
+          mkdir -p build/desktop
+          for template in data/*.desktop.in; do
+            msgfmt --desktop --template="$template" -d po -o "build/desktop/$(basename "${template%.in}")"
+          done
+          desktop-file-validate build/desktop/*.desktop
       - name: Conferir o artefato final aprovado
         run: |
           cd releases/v0.2.1
