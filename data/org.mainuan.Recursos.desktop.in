@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Mainuan Feature Updater
+Comment=Discover and receive the official Mainuan news
+Exec=mainuan-atualizador-recursos
+Icon=mainuan-recursos
+Terminal=false
+Categories=System;
+StartupNotify=true

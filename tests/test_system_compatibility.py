@@ -161,7 +161,7 @@ class LiveCompatibilityTests(unittest.TestCase):
                  patch('platform.freedesktop_os_release',return_value=os_release()), \
                  patch('mainuan_recursos.application.session_kind',return_value=SessionKind.LIVE), \
                  patch('mainuan_recursos.application.QApplication'), \
-                 patch('mainuan_recursos.application.install_pt_br'), \
+                 patch('mainuan_recursos.application.install_translations'), \
                  patch('mainuan_recursos.application.QMessageBox.information'), \
                  patch('mainuan_recursos.application.Window') as window, \
                  patch('mainuan_recursos.github_channel.metadata') as metadata:

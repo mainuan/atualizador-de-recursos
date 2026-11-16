@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Mainuan News
+Comment=Checks for news during the session
+Exec=mainuan-atualizador-recursos --check
+Icon=mainuan-recursos
+Terminal=false
+OnlyShowIn=KDE;
+X-KDE-StartupNotify=false

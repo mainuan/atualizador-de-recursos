@@ -9,6 +9,7 @@ from threading import RLock
 import time
 
 from .catalog import CatalogError, require, unique_object
+from .i18n import _
 
 
 def atomic_write(path, data):
@@ -40,24 +41,24 @@ class State:
             try:
                 with path.open('rb') as stream:
                     raw = stream.read(8 * 1024 * 1024 + 1)
-                require(len(raw) <= 8 * 1024 * 1024, 'Estado local muito grande.')
+                require(len(raw) <= 8 * 1024 * 1024, _('Local state too large.'))
                 obj = json.loads(raw, object_pairs_hook=unique_object)
-                require(isinstance(obj, dict) and set(obj) == {'releases', 'sequence', 'digest'}, 'Estado inválido.')
+                require(isinstance(obj, dict) and set(obj) == {'releases', 'sequence', 'digest'}, _('Invalid state.'))
                 require(isinstance(obj['releases'], dict) and type(obj['sequence']) is int
-                        and obj['sequence'] >= 0 and isinstance(obj['digest'], str), 'Estado inválido.')
+                        and obj['sequence'] >= 0 and isinstance(obj['digest'], str), _('Invalid state.'))
                 require((obj['sequence'] == 0 and obj['digest'] == '') or
                         (obj['sequence'] > 0 and len(obj['digest']) == 64
-                         and all(c in '0123456789abcdef' for c in obj['digest'])), 'Sequência/digest inválidos.')
+                         and all(c in '0123456789abcdef' for c in obj['digest'])), _('Invalid sequence/digest.'))
                 for key, entry in obj['releases'].items():
-                    require(isinstance(key, str) and isinstance(entry, dict), 'Lançamento inválido.')
-                    require(set(entry) == {'presentation', 'packages', 'postponed_until'}, 'Estado incompleto.')
+                    require(isinstance(key, str) and isinstance(entry, dict), _('Invalid release.'))
+                    require(set(entry) == {'presentation', 'packages', 'postponed_until'}, _('Incomplete state.'))
                     require(entry['presentation'] in ('unseen', 'viewed', 'postponed')
-                            and entry['packages'] in ('unknown', 'pending', 'installed'), 'Estado inválido.')
+                            and entry['packages'] in ('unknown', 'pending', 'installed'), _('Invalid state.'))
                     until = entry['postponed_until']
-                    require(type(until) in (int, float) and math.isfinite(until) and until >= 0, 'Prazo inválido.')
+                    require(type(until) in (int, float) and math.isfinite(until) and until >= 0, _('Invalid deadline.'))
                 self.data = obj
             except (ValueError, KeyError, TypeError, AttributeError, OverflowError) as exc:
-                raise CatalogError('O estado local está danificado. Preserve o arquivo antes de recuperá-lo.') from exc
+                raise CatalogError(_('The local state is damaged. Preserve the file before recovering it.')) from exc
 
     def save(self):
         with self.lock:
@@ -87,7 +88,7 @@ class State:
             if catalog.sequence < self.data['sequence'] or (
                 catalog.sequence == self.data['sequence'] and catalog.digest != self.data['digest']
             ):
-                raise CatalogError('Catálogo antigo ou conteúdo alterado sem aumentar a sequência.')
+                raise CatalogError(_('Old catalog or content changed without increasing the sequence.'))
             self.data.update(sequence=catalog.sequence, digest=catalog.digest)
         self._change(update)
 

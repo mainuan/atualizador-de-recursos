@@ -4,6 +4,7 @@ import json
 from urllib.error import URLError
 
 from .catalog import CatalogError, authenticate, fetch
+from .i18n import _
 from .state import atomic_write
 
 
@@ -23,7 +24,7 @@ class Repository:
             with self.cache.open('rb') as stream:
                 encoded = stream.read(3 * 1024 * 1024 + 1)
             if len(encoded) > 3 * 1024 * 1024:
-                raise CatalogError('Cache local excede o limite de tamanho.')
+                raise CatalogError(_('Local cache exceeds the size limit.'))
             cached = json.loads(encoded)
             raw, signature = (base64.b64decode(cached[k], validate=True) for k in ('catalog', 'signature'))
             catalog = authenticate(raw, signature, self.config)
@@ -41,7 +42,7 @@ class Repository:
     def _accept(self, catalog):
         sequence, digest = self.watermark
         if catalog.sequence < sequence or (catalog.sequence == sequence and catalog.digest != digest):
-            raise CatalogError('Catálogo antigo ou alterado; o cache válido foi preservado.')
+            raise CatalogError(_('Old or changed catalog; the valid cache was preserved.'))
         if self.state is not None:
             # Persistir antes de tocar no cache ou consultar os pacotes.
             self.state.accept(catalog)

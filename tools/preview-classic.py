@@ -20,7 +20,7 @@ from PyQt6.QtWidgets import (
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'src'))
-from mainuan_recursos.localization import install_pt_br, localize_standard_buttons
+from mainuan_recursos.localization import install_translations, localize_standard_buttons
 
 from mainuan_recursos.classic import ClassicContent, ILLUSTRATION, text_label
 PROGRAMS = (
@@ -159,7 +159,7 @@ def main():
     started = time.monotonic()
     app = QApplication([])
     app.setApplicationName('mainuan-previa-classica')
-    native_translations = install_pt_br(app)
+    native_translations = install_translations(app)
     programs = PROGRAMS
     if opts.long_list:
         programs += tuple((f'Programa de exemplo {i:02d} — Ferramentas de acessibilidade, '

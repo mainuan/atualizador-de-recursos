@@ -17,7 +17,7 @@ from mainuan_recursos.demo import Demo
 from mainuan_recursos.gui import Window
 from mainuan_recursos.state import State
 from mainuan_recursos.catalog import Config, authenticate
-from mainuan_recursos.localization import install_pt_br
+from mainuan_recursos.localization import install_translations
 
 
 def main():
@@ -49,7 +49,7 @@ def main():
         Path(private_config.name,'kdeglobals').write_text(scheme)
     app=QApplication([])
     app.setQuitOnLastWindowClosed(False)
-    install_pt_br(app)
+    install_translations(app)
     # Apenas a paleta deste processo de homologação. O aplicativo não fixa cores.
     if opts.palette != 'active':
         palette=QPalette()

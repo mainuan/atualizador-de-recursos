@@ -13,7 +13,7 @@ from publication import (PublicationError, encoded, inputs, load_previous, publi
                          Redirects, validate_policy)
 from publication_fixture import Fixture
 from mainuan_recursos.catalog import Config, CatalogError, authenticate, parse_catalog
-from mainuan_recursos.packages import build_plan, validate_effects, PlanningError
+from mainuan_recursos.packages import INSTALL, build_plan, validate_effects, PlanningError
 from mainuan_recursos.state import State
 from helpers import package
 from publication_verify import verify_publication
@@ -304,7 +304,7 @@ class PublicationTests(unittest.TestCase):
         name = release.packages[0].name
         pkg = package(candidate='1.0', arch='all')
         pkg.candidate.sha256 = release.packages[0].sha256
-        self.assertEqual(build_plan(release, {name: pkg}).rows[0].status, 'Instalar')
+        self.assertEqual(build_plan(release, {name: pkg}).rows[0].status, INSTALL)
         pkg.candidate.sha256 = '0' * 64
         self.assertTrue(build_plan(release, {name: pkg}).blockers)
         for installed in ('1.0', '2.0'):
