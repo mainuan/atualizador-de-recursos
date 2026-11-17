@@ -95,8 +95,11 @@ sem ELF/bibliotecas nativas incorporados. Usa Python/Qt/PyQt6 da distribuição,
 sem compilação nativa nem requisitos próprios x86-64-v2/v3/v4. O teste do conjunto
 da distribuição em processador v1 real permanece pendente.
 
-O GitHub Actions testa, constrói o Debian, verifica arquitetura e executa Lintian.
-A tag autorizada `v0.2.3` publica o pacote e `SHA256SUMS` como release estável.
+O GitHub Actions (`.github/workflows/ci.yml`, sobre o pipeline compartilhado da
+organização) testa, constrói o Debian, executa Lintian, audita a arquitetura e
+instala, reinstala, remove e expurga o pacote num Ubuntu 26.04 limpo. Somente um
+push de tag `v<versão>` igual à versão de `debian/changelog` publica o pacote e
+`SHA256SUMS` como release; uma release existente nunca é substituída.
 
 ## Histórico
 

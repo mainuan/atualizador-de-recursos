@@ -10,8 +10,8 @@ ou ativação de produção. Os artefatos `.deb` anteriores não foram substitu�
 
 ## Imagem e compactação
 
-Foi utilizada a variante encontrada em Downloads com o texto **Novidade!**:
-`Imagem do ChatGPT 23 de out. de 2026, 00_06_46-2.png`. Ela corresponde à descrição
+Foi utilizada a variante da imagem de referência recebida (23 de out. de 2026)
+com o texto **Novidade!**. Ela corresponde à descrição
 fornecida: beija-flor-de-fronte-violeta diante de um notebook e símbolo de download.
 O arquivo foi copiado, sem edição, para
 `tools/preview-classic-assets/mainuan-novidades.png`.
