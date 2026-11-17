@@ -255,8 +255,10 @@ print(app.layoutDirection().name, window.isRightToLeft())
 '''
         # The application's Arabic catalog is used: mirrored even without qtbase_ar.
         self.assertEqual(run_python(code, 'ar').split(), ['False', 'RightToLeft', 'True'])
-        # Urdu is right-to-left but has no application catalog: English, left to right.
-        self.assertEqual(run_python(code, 'ur').split(), ['False', 'LeftToRight', 'False'])
+        # Urdu has an application catalog but no qtbase_ur: mirrored by the catalog.
+        self.assertEqual(run_python(code, 'ur').split(), ['False', 'RightToLeft', 'True'])
+        # Yiddish is right-to-left but has no application catalog: English, left to right.
+        self.assertEqual(run_python(code, 'yi').split(), ['False', 'LeftToRight', 'False'])
 
     def test_command_line_help(self):
         code = 'from mainuan_recursos.application import main; main()'
