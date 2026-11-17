@@ -4,7 +4,7 @@
 beija-flor-de-fronte-violeta diante de um notebook, com símbolo de download e
 mensagem **Novidade!**. A variante encontrada sem a mensagem não foi utilizada.
 
-- Arquivo recebido: `Imagem do ChatGPT 23 de out. de 2026, 00_06_46-2.png`.
+- Arquivo de origem: imagem de referência recebida em 23 de out. de 2026.
 - PNG RGBA, 1122 × 1402 pixels, 1.479.582 bytes.
 - SHA-256: `ab18dab7009c85a72bd7b35cdd74f08fcd339bdc3ea0647b987c7f03d53c6c2b`.
 - Cópia byte a byte, sem recortes, recompressão, fundos, molduras ou novos efeitos.
