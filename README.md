@@ -17,6 +17,9 @@ Canal oficial de novidades do Mainuan: avisa quando há novos programas da organ
 
 ---
 
+<p align="center"><img src="docs/screenshots/atualizador-de-recursos.png" width="680" alt="Atualizador de Recursos mostrando as novidades do Mainuan"></p>
+
+
 ## O que é
 
 O Atualizador de Recursos consulta, neste repositório, os arquivos `packages.txt` e `message.txt` da `main` (sempre do **mesmo commit**) e descobre as releases estáveis mais recentes, com `.deb` compatível, dos programas oficiais listados. Quando há novidade, mostra a mensagem e oferece instalar.

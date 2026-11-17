@@ -17,6 +17,9 @@ Official Mainuan news channel: announces new programs from the organisation and 
 
 ---
 
+<p align="center"><img src="docs/screenshots/atualizador-de-recursos.png" width="680" alt="Resource updater showing Mainuan news"></p>
+
+
 ## About
 
 The app reads `packages.txt` and `message.txt` from this repository's `main` branch (always from the same commit) and finds the latest stable releases, with a compatible `.deb`, of the official programs listed there. It is not a general APT/Flatpak updater and needs no keys, VM, GitHub App, own APT repository or user configuration.
