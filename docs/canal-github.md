@@ -98,6 +98,19 @@ incondicionalmente desativado. Alterar os dois arquivos não executa assinaturas
 GitHub Apps nem publicação APT. Configurações antigas não são lidas pelo modo
 normal. Documentos anteriores de ativação dessa infraestrutura são históricos.
 
+### Outras notas históricas (antes no README)
+
+- O publicador antigo Ed25519/APT/GitHub App está desativado, inclusive para
+  execução manual, e não é acionado por alterações em `packages.txt` ou
+  `message.txt`. `publication.toml` continua desabilitado.
+- A configuração antiga em `/etc/mainuan/` não é exigida nem alterada pelo
+  canal GitHub.
+- `--homologacao-github` permanece apenas como ensaio histórico isolado em VM;
+  não é necessário para o uso normal.
+- A [proposta de transição Mainuan 2027.1 RC1 → final](transicao-2027.1-rc1-final.md)
+  registra os requisitos para a construção da futura ISO. É somente um projeto
+  documentado; não implementa nem publica a migração.
+
 ## Teste prático final
 
 Na VM Mainuan com snapshot, após instalar o pacote 0.2.2 e conferir SHA256SUMS:
