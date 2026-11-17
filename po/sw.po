@@ -1,0 +1,1443 @@
+# Swahili translations for mainuan-atualizador-recursos package.
+# Copyright (C) 2026 Mainuan
+# This file is distributed under the same license as the mainuan-atualizador-recursos package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: mainuan-atualizador-recursos\n"
+"Report-Msgid-Bugs-To: https://github.com/mainuan/atualizador-de-recursos/"
+"issues\n"
+"POT-Creation-Date: 2026-11-16 11:30-0300\n"
+"PO-Revision-Date: 2026-11-16 11:30-0300\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: sw <https://github.com/mainuan>\n"
+"Language: sw\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: data/mainuan-recursos-autostart.desktop.in:3
+#: src/mainuan_recursos/application.py:54
+msgid "Mainuan News"
+msgstr "Habari za Mainuan"
+
+#: data/mainuan-recursos-autostart.desktop.in:4
+msgid "Checks for news during the session"
+msgstr "Hukagua habari wakati wa kipindi"
+
+#: data/org.mainuan.Recursos.desktop.in:3 src/mainuan_recursos/gui.py:41
+msgid "Mainuan Feature Updater"
+msgstr "Kisasishaji cha Vipengele vya Mainuan"
+
+#: data/org.mainuan.Recursos.desktop.in:4
+msgid "Discover and receive the official Mainuan news"
+msgstr "Gundua na upokee habari rasmi za Mainuan"
+
+#: src/mainuan_recursos/application.py:22
+msgid "Discover and receive the official Mainuan news."
+msgstr "Gundua na upokee habari rasmi za Mainuan."
+
+#: src/mainuan_recursos/application.py:23
+msgid "check during the session and notify without blocking the login"
+msgstr "kagua wakati wa kipindi na uarifu bila kuzuia kuingia"
+
+#: src/mainuan_recursos/application.py:24
+msgid ""
+"real, manual trial in a VM: GitHub packages.txt/message.txt and Driver "
+"Manager 1.0"
+msgstr ""
+"jaribio halisi la mkono kwenye VM: packages.txt/message.txt za GitHub na "
+"Kidhibiti cha Viendeshi 1.0"
+
+#: src/mainuan_recursos/application.py:25
+msgid "demonstrate the whole flow without modifying the system"
+msgstr "onyesha mtiririko wote bila kubadilisha mfumo"
+
+#: src/mainuan_recursos/application.py:26
+msgid "demonstration scenario"
+msgstr "hali ya onyesho"
+
+#: src/mainuan_recursos/application.py:27
+msgid "signed local catalog, only with --demo"
+msgstr "katalogi ya ndani iliyotiwa sahihi, pamoja na --demo pekee"
+
+#: src/mainuan_recursos/application.py:28
+msgid "test configuration and key, only with --demo"
+msgstr "usanidi na ufunguo wa majaribio, pamoja na --demo pekee"
+
+#: src/mainuan_recursos/application.py:33
+msgid ""
+"--homologacao-github is manual and cannot be combined with --check/--demo."
+msgstr ""
+"--homologacao-github ni la mkono na haliwezi kuunganishwa na --check/--demo."
+
+#: src/mainuan_recursos/application.py:38
+#, python-brace-format
+msgid "Acceptance test unavailable: {error}"
+msgstr "Jaribio la ukubalifu halipatikani: {error}"
+
+#: src/mainuan_recursos/application.py:40
+msgid "Use --demo --test-catalog FILE --test-config FILE together."
+msgstr "Tumia --demo --test-catalog FILE --test-config FILE kwa pamoja."
+
+#: src/mainuan_recursos/application.py:51
+msgid ""
+"Checking for news becomes available after installing Mainuan. The Live "
+"session will not be queried."
+msgstr ""
+"Ukaguzi wa habari utapatikana baada ya kusakinisha Mainuan. Kipindi cha Live "
+"hakitaulizwa."
+
+#: src/mainuan_recursos/application.py:53
+msgid ""
+"Could not determine the session type. Querying and installing features have "
+"been disabled."
+msgstr ""
+"Haikuweza kubaini aina ya kipindi. Kuuliza na kusakinisha vipengele "
+"kumezimwa."
+
+#: src/mainuan_recursos/application.py:67
+msgid "Invalid test catalog"
+msgstr "Katalogi ya majaribio si sahihi"
+
+#: src/mainuan_recursos/application.py:81
+#, python-brace-format
+msgid "Could not open the state directory: {error}"
+msgstr "Haikuweza kufungua saraka ya hali: {error}"
+
+#: src/mainuan_recursos/application.py:83
+#: src/mainuan_recursos/application.py:106
+#: src/mainuan_recursos/application.py:119
+msgid "Could not open the history"
+msgstr "Haikuweza kufungua historia"
+
+#: src/mainuan_recursos/application.py:90
+msgid "Could not lock the local state. Check the directory permissions."
+msgstr "Haikuweza kufunga hali ya ndani. Kagua ruhusa za saraka."
+
+# reviewed: 'tukio' = event; process instance is 'nakala (ya programu)'
+#: src/mainuan_recursos/application.py:100
+msgid ""
+"The other instance is starting. Open the application again in a few seconds."
+msgstr ""
+"Nakala nyingine ya programu inaanza. Fungua programu tena baada ya sekunde "
+"chache."
+
+# reviewed: consistency with 'instance' = 'nakala'; 'tukio' means event
+#: src/mainuan_recursos/application.py:126
+msgid "Could not create the single-instance channel."
+msgstr "Haikuweza kuunda chaneli ya nakala moja."
+
+#: src/mainuan_recursos/catalog.py:38
+#, python-brace-format
+msgid "Repeated field: {key}"
+msgstr "Sehemu imerudiwa: {key}"
+
+#: src/mainuan_recursos/catalog.py:44 src/mainuan_recursos/catalog.py:270
+msgid "The catalog exceeds the size limit."
+msgstr "Katalogi inazidi kikomo cha ukubwa."
+
+#: src/mainuan_recursos/catalog.py:47
+msgid "Invalid number."
+msgstr "Nambari si sahihi."
+
+#: src/mainuan_recursos/catalog.py:49
+#, python-brace-format
+msgid "Invalid JSON: {error}"
+msgstr "JSON si sahihi: {error}"
+
+#: src/mainuan_recursos/catalog.py:53
+msgid "A JSON object was expected."
+msgstr "Kitu cha JSON kilitarajiwa."
+
+#: src/mainuan_recursos/catalog.py:55
+msgid "Missing or unknown fields in the catalog/configuration."
+msgstr "Sehemu zinakosekana au hazijulikani katika katalogi/usanidi."
+
+#: src/mainuan_recursos/catalog.py:61
+msgid "Invalid text."
+msgstr "Maandishi si sahihi."
+
+#: src/mainuan_recursos/catalog.py:66
+msgid "Invalid identifier."
+msgstr "Kitambulisho si sahihi."
+
+#: src/mainuan_recursos/catalog.py:72
+msgid "HTTPS address contains spaces."
+msgstr "Anwani ya HTTPS ina nafasi."
+
+#: src/mainuan_recursos/catalog.py:77
+msgid "Address outside the configured official HTTPS domains."
+msgstr "Anwani iko nje ya vikoa rasmi vya HTTPS vilivyosanidiwa."
+
+#: src/mainuan_recursos/catalog.py:79
+msgid "Invalid HTTPS address."
+msgstr "Anwani ya HTTPS si sahihi."
+
+#: src/mainuan_recursos/catalog.py:89
+msgid "Ambiguous or disallowed URL path."
+msgstr "Njia ya URL ina utata au hairuhusiwi."
+
+#: src/mainuan_recursos/catalog.py:95
+msgid "The URL path does not belong to the authorized official infrastructure."
+msgstr "Njia ya URL si sehemu ya miundombinu rasmi iliyoidhinishwa."
+
+#: src/mainuan_recursos/catalog.py:100
+msgid "Configure the official URL prefixes."
+msgstr "Sanidi viambishi awali rasmi vya URL."
+
+#: src/mainuan_recursos/catalog.py:105
+msgid "Invalid official prefix; use HTTPS and a path ending in /."
+msgstr "Kiambishi awali rasmi si sahihi; tumia HTTPS na njia inayoishia kwa /."
+
+#: src/mainuan_recursos/catalog.py:113
+msgid "Use UTC dates with the Z suffix."
+msgstr "Tumia tarehe za UTC zenye kiambishi tamati Z."
+
+#: src/mainuan_recursos/catalog.py:116
+msgid "Invalid date."
+msgstr "Tarehe si sahihi."
+
+#: src/mainuan_recursos/catalog.py:179
+msgid ""
+"Configure the official Mainuan domains in /etc/mainuan/atualizador-"
+"recursos.json."
+msgstr ""
+"Sanidi vikoa rasmi vya Mainuan katika /etc/mainuan/atualizador-recursos.json."
+
+#: src/mainuan_recursos/catalog.py:183
+msgid "The catalog URL cannot contain a query."
+msgstr "URL ya katalogi haiwezi kuwa na hoja (query)."
+
+#: src/mainuan_recursos/catalog.py:184
+msgid "Install the official public key of the catalog."
+msgstr "Sakinisha ufunguo rasmi wa umma wa katalogi."
+
+#: src/mainuan_recursos/catalog.py:188
+msgid "Invalid Ed25519 key."
+msgstr "Ufunguo wa Ed25519 si sahihi."
+
+#: src/mainuan_recursos/catalog.py:190
+msgid "Invalid public key."
+msgstr "Ufunguo wa umma si sahihi."
+
+#: src/mainuan_recursos/catalog.py:198
+msgid "Unsupported schema."
+msgstr "Muundo hautumiki."
+
+#: src/mainuan_recursos/catalog.py:199
+msgid "Invalid sequence."
+msgstr "Mfuatano si sahihi."
+
+#: src/mainuan_recursos/catalog.py:202
+msgid "Catalog expired or with an invalid validity period."
+msgstr "Muda wa katalogi umeisha au kipindi chake cha uhalali si sahihi."
+
+#: src/mainuan_recursos/catalog.py:203
+msgid "Invalid list of releases."
+msgstr "Orodha ya matoleo si sahihi."
+
+#: src/mainuan_recursos/catalog.py:210
+msgid "Duplicate release."
+msgstr "Toleo limerudiwa."
+
+#: src/mainuan_recursos/catalog.py:215
+msgid "Invalid compatibility."
+msgstr "Uoanifu si sahihi."
+
+#: src/mainuan_recursos/catalog.py:219
+msgid "Invalid features."
+msgstr "Vipengele si sahihi."
+
+#: src/mainuan_recursos/catalog.py:223
+msgid "Invalid packages."
+msgstr "Vifurushi si sahihi."
+
+#: src/mainuan_recursos/catalog.py:229
+msgid "Invalid or repeated package name."
+msgstr "Jina la kifurushi si sahihi au limerudiwa."
+
+#: src/mainuan_recursos/catalog.py:231
+msgid "Invalid Debian version."
+msgstr "Toleo la Debian si sahihi."
+
+#: src/mainuan_recursos/catalog.py:234
+msgid "Incomplete package pin."
+msgstr "Ubanaji wa kifurushi haujakamilika."
+
+#: src/mainuan_recursos/catalog.py:238
+msgid "Invalid architecture or SHA-256."
+msgstr "Usanifu au SHA-256 si sahihi."
+
+#: src/mainuan_recursos/catalog.py:242
+msgid "Invalid provenance."
+msgstr "Asili si sahihi."
+
+#: src/mainuan_recursos/catalog.py:247
+msgid "Invalid GitHub source."
+msgstr "Chanzo cha GitHub si sahihi."
+
+#: src/mainuan_recursos/catalog.py:250
+msgid "Invalid immutable reference."
+msgstr "Rejeleo lisilobadilika si sahihi."
+
+#: src/mainuan_recursos/catalog.py:251
+msgid "Invalid artifacts."
+msgstr "Faili za toleo si sahihi."
+
+#: src/mainuan_recursos/catalog.py:254
+msgid "Invalid artifact ID."
+msgstr "Kitambulisho cha faili la toleo si sahihi."
+
+#: src/mainuan_recursos/catalog.py:258
+msgid "Provenance does not match the offered packages."
+msgstr "Asili hailingani na vifurushi vinavyotolewa."
+
+#: src/mainuan_recursos/catalog.py:278
+msgid "The catalog signature is not valid or the key is not trusted."
+msgstr "Sahihi ya katalogi si halali au ufunguo hauaminiki."
+
+#: src/mainuan_recursos/catalog.py:301
+msgid "Response exceeds the size limit."
+msgstr "Jibu linazidi kikomo cha ukubwa."
+
+#: src/mainuan_recursos/classic.py:37
+msgid ""
+"Violet-capped woodnymph hummingbird in front of a laptop, with the message "
+"News!"
+msgstr ""
+"Ndege mvumaji mwenye kofia ya urujuani mbele ya kompyuta mpakato, akiwa na "
+"ujumbe Habari!"
+
+#: src/mainuan_recursos/classic.py:84 src/mainuan_recursos/classic.py:85
+msgid "More Options"
+msgstr "Chaguo Zaidi"
+
+# reviewed: 'What's New' idiom: 'Yaliyo Mapya'; 'Kilichoongezwa' = 'what was
+# added'
+#: src/mainuan_recursos/classic.py:131
+msgid "Discover What’s New"
+msgstr "Gundua Yaliyo Mapya"
+
+#: src/mainuan_recursos/classic.py:134
+msgid "Optional: open the official page in the web browser."
+msgstr "Hiari: fungua ukurasa rasmi katika kivinjari."
+
+#: src/mainuan_recursos/classic.py:135 src/mainuan_recursos/gui.py:361
+msgid "Install New Features"
+msgstr "Sakinisha Vipengele Vipya"
+
+#: src/mainuan_recursos/classic.py:142
+msgid ""
+"Main action: check and install the announced features with system "
+"authorization."
+msgstr ""
+"Kitendo kikuu: kagua na usakinishe vipengele vilivyotangazwa kwa idhini ya "
+"mfumo."
+
+#: src/mainuan_recursos/classic.py:143
+msgid "Not Now"
+msgstr "Si Sasa"
+
+#: src/mainuan_recursos/classic.py:145
+msgid "Postpones the notification for 24 hours, keeping manual access."
+msgstr "Huahirisha arifa kwa saa 24, huku ufikiaji wa mkono ukiendelea."
+
+#: src/mainuan_recursos/controller.py:77 src/mainuan_recursos/controller.py:115
+#: src/mainuan_recursos/controller.py:147
+#: src/mainuan_recursos/controller.py:155 src/mainuan_recursos/demo.py:68
+#: src/mainuan_recursos/github_channel.py:359
+#: src/mainuan_recursos/github_trial.py:201
+#: src/mainuan_recursos/packagekit.py:193
+msgid "Preparing installation..."
+msgstr "Inaandaa usakinishaji..."
+
+#: src/mainuan_recursos/controller.py:86
+msgid "Cannot prepare the installation:"
+msgstr "Haiwezi kuandaa usakinishaji:"
+
+#: src/mainuan_recursos/controller.py:88
+msgid "You have already received all the features of this release."
+msgstr "Tayari umepokea vipengele vyote vya toleo hili."
+
+#: src/mainuan_recursos/controller.py:90
+msgid ""
+"The packages have changed. Prepare the installation again to review the "
+"operation."
+msgstr ""
+"Vifurushi vimebadilika. Andaa usakinishaji tena ili kukagua operesheni."
+
+#: src/mainuan_recursos/controller.py:109
+msgid ""
+"PackageKit did not find the planned versions/architectures in the "
+"repositories."
+msgstr "PackageKit haikupata matoleo/usanifu uliopangwa katika hazina."
+
+#: src/mainuan_recursos/controller.py:112
+msgid ""
+"The source or version of the packages has changed. Review a new operation."
+msgstr "Chanzo au toleo la vifurushi limebadilika. Kagua operesheni mpya."
+
+#: src/mainuan_recursos/controller.py:129
+msgid ""
+"The dependencies have changed. Prepare a new operation to confirm the "
+"details."
+msgstr ""
+"Vitegemezi vimebadilika. Andaa operesheni mpya ili kuthibitisha maelezo."
+
+#: src/mainuan_recursos/controller.py:134 src/mainuan_recursos/demo.py:69
+#: src/mainuan_recursos/github_channel.py:440
+#: src/mainuan_recursos/github_trial.py:250
+#: src/mainuan_recursos/packagekit.py:190
+msgid "Installing new features..."
+msgstr "Inasakinisha vipengele vipya..."
+
+#: src/mainuan_recursos/controller.py:158
+msgid "Done! Enjoy the new Mainuan features."
+msgstr "Imekamilika! Furahia vipengele vipya vya Mainuan."
+
+#: src/mainuan_recursos/controller.py:159
+msgid ""
+"PackageKit finished the operation, but the installed versions have not been "
+"confirmed yet."
+msgstr ""
+"PackageKit imemaliza operesheni, lakini matoleo yaliyosakinishwa bado "
+"hayajathibitishwa."
+
+#: src/mainuan_recursos/controller.py:161
+msgid ""
+"The system requested a restart of an application, the session or the "
+"computer."
+msgstr "Mfumo uliomba kuanzishwa upya kwa programu, kipindi au kompyuta."
+
+#: src/mainuan_recursos/demo.py:20
+msgid "Your Mainuan is evolving!"
+msgstr "Mainuan yako inakua!"
+
+#: src/mainuan_recursos/demo.py:21
+msgid "Discover the new features prepared to make your day simpler."
+msgstr "Gundua vipengele vipya vilivyoandaliwa ili kurahisisha siku yako."
+
+#: src/mainuan_recursos/demo.py:23
+msgid "A new welcome experience"
+msgstr "Uzoefu mpya wa kukaribisha"
+
+#: src/mainuan_recursos/demo.py:24
+msgid "More options to customize your desktop"
+msgstr "Chaguo zaidi za kubinafsisha eneo-kazi lako"
+
+#: src/mainuan_recursos/demo.py:25
+msgid "A hub to discover Mainuan applications"
+msgstr "Kitovu cha kugundua programu za Mainuan"
+
+#: src/mainuan_recursos/demo.py:27
+msgid "Previous Mainuan news"
+msgstr "Habari za awali za Mainuan"
+
+#: src/mainuan_recursos/demo.py:37 src/mainuan_recursos/packages.py:86
+msgid "Unavailable in the repositories"
+msgstr "Haipatikani katika hazina"
+
+#: src/mainuan_recursos/demo.py:76
+msgid "Authorization canceled (simulation)."
+msgstr "Idhini imeghairiwa (uigaji)."
+
+#: src/mainuan_recursos/demo.py:77
+msgid "Download failed (simulation)."
+msgstr "Upakuaji umeshindwa (uigaji)."
+
+#: src/mainuan_recursos/github_channel.py:41
+#: src/mainuan_recursos/github_channel.py:48
+msgid "Invalid GitHub address."
+msgstr "Anwani ya GitHub si sahihi."
+
+#: src/mainuan_recursos/github_channel.py:46
+msgid "GitHub address must use official HTTPS."
+msgstr "Anwani ya GitHub lazima itumie HTTPS rasmi."
+
+#: src/mainuan_recursos/github_channel.py:51
+msgid "Ambiguous GitHub path."
+msgstr "Njia ya GitHub ina utata."
+
+#: src/mainuan_recursos/github_channel.py:53
+msgid "Invalid repository."
+msgstr "Hazina si sahihi."
+
+#: src/mainuan_recursos/github_channel.py:63
+msgid "Source or redirect outside the official Mainuan organization."
+msgstr "Chanzo au uelekezaji upya uko nje ya shirika rasmi la Mainuan."
+
+#: src/mainuan_recursos/github_channel.py:72
+msgid "The GitHub query was redirected; check the official source."
+msgstr "Hoja ya GitHub ilielekezwa upya; kagua chanzo rasmi."
+
+#: src/mainuan_recursos/github_channel.py:87
+msgid "GitHub metadata exceeds the allowed limit."
+msgstr "Metadata ya GitHub inazidi kikomo kinachoruhusiwa."
+
+#: src/mainuan_recursos/github_channel.py:96
+msgid "Invalid GitHub artifact."
+msgstr "Faili la toleo la GitHub si sahihi."
+
+#: src/mainuan_recursos/github_channel.py:98
+msgid "Use the Debian name package_version_architecture.deb in the release."
+msgstr "Tumia jina la Debian package_version_architecture.deb katika toleo."
+
+#: src/mainuan_recursos/github_channel.py:101
+msgid "Invalid Debian name or version."
+msgstr "Jina au toleo la Debian si sahihi."
+
+#: src/mainuan_recursos/github_channel.py:104
+#, python-brace-format
+msgid "The release has no verifiable SHA-256 published by GitHub for {file}."
+msgstr ""
+"Toleo halina SHA-256 inayoweza kuthibitishwa iliyochapishwa na GitHub kwa "
+"{file}."
+
+#: src/mainuan_recursos/github_channel.py:106
+msgid "Artifact unavailable or invalid size."
+msgstr "Faili la toleo halipatikani au ukubwa si sahihi."
+
+#: src/mainuan_recursos/github_channel.py:126
+#: src/mainuan_recursos/github_channel.py:260
+msgid "GitHub history exceeds the allowed limit."
+msgstr "Historia ya GitHub inazidi kikomo kinachoruhusiwa."
+
+#: src/mainuan_recursos/github_channel.py:139
+#: src/mainuan_recursos/github_channel.py:253
+#: src/mainuan_recursos/github_trial.py:146
+msgid "Mainuan has news!"
+msgstr "Mainuan ina habari!"
+
+#: src/mainuan_recursos/github_channel.py:147
+#, python-brace-format
+msgid ""
+"Repository does not belong to the official organization or is unavailable: "
+"{repository}"
+msgstr "Hazina si ya shirika rasmi au haipatikani: {repository}"
+
+#: src/mainuan_recursos/github_channel.py:149
+#, python-brace-format
+msgid "The repository identity was replaced: {repository}"
+msgstr "Utambulisho wa hazina ulibadilishwa: {repository}"
+
+#: src/mainuan_recursos/github_channel.py:155
+#, python-brace-format
+msgid "Invalid list of releases: {repository}"
+msgstr "Orodha ya matoleo si sahihi: {repository}"
+
+#: src/mainuan_recursos/github_channel.py:160
+#, python-brace-format
+msgid "Too many releases for a safe query: {repository}"
+msgstr "Matoleo ni mengi mno kwa hoja salama: {repository}"
+
+#: src/mainuan_recursos/github_channel.py:163
+msgid "Release with a future date. Check the system clock."
+msgstr "Toleo lina tarehe ya baadaye. Kagua saa ya mfumo."
+
+#: src/mainuan_recursos/github_channel.py:164
+msgid "Invalid release ID."
+msgstr "Kitambulisho cha toleo si sahihi."
+
+#: src/mainuan_recursos/github_channel.py:168
+msgid "Invalid list of artifacts."
+msgstr "Orodha ya faili za toleo si sahihi."
+
+#: src/mainuan_recursos/github_channel.py:173
+msgid "Too many artifacts in the release."
+msgstr "Faili za toleo ni nyingi mno katika toleo."
+
+#: src/mainuan_recursos/github_channel.py:183
+#, python-brace-format
+msgid "Duplicate or ambiguous packages in the release: {repository}"
+msgstr "Vifurushi vilivyorudiwa au vyenye utata katika toleo: {repository}"
+
+#: src/mainuan_recursos/github_channel.py:188
+msgid "Artifact URL does not match the selected release."
+msgstr "URL ya faili la toleo hailingani na toleo lililochaguliwa."
+
+#: src/mainuan_recursos/github_channel.py:190
+msgid "Invalid immutable reference of the release."
+msgstr "Rejeleo lisilobadilika la toleo si sahihi."
+
+#: src/mainuan_recursos/github_channel.py:196
+#, python-brace-format
+msgid "No stable release with a compatible Debian package: {repository}"
+msgstr ""
+"Hakuna toleo thabiti lenye kifurushi cha Debian kinachooana: {repository}"
+
+#: src/mainuan_recursos/github_channel.py:218
+msgid "This channel is intended for Mainuan based on Kubuntu 26.04."
+msgstr "Chaneli hii imekusudiwa Mainuan inayotegemea Kubuntu 26.04."
+
+#: src/mainuan_recursos/github_channel.py:220
+msgid "Invalid official reference."
+msgstr "Rejeleo rasmi si sahihi."
+
+#: src/mainuan_recursos/github_channel.py:224
+msgid "message.txt is empty."
+msgstr "message.txt ni tupu."
+
+#: src/mainuan_recursos/github_channel.py:228
+msgid "packages.txt contains invalid or repeated repositories."
+msgstr "packages.txt ina hazina zisizo sahihi au zilizorudiwa."
+
+#: src/mainuan_recursos/github_channel.py:234
+msgid "Two repositories offer the same Debian package."
+msgstr "Hazina mbili zinatoa kifurushi kimoja cha Debian."
+
+#: src/mainuan_recursos/github_channel.py:239
+#, python-brace-format
+msgid "An already announced release or artifact was replaced: {package}"
+msgstr ""
+"Toleo au faili la toleo lililokwisha kutangazwa lilibadilishwa: {package}"
+
+#: src/mainuan_recursos/github_channel.py:243
+#, python-brace-format
+msgid "Rollback of a published version blocked: {package}"
+msgstr "Kurudisha toleo lililochapishwa kumezuiwa: {package}"
+
+#: src/mainuan_recursos/github_channel.py:264
+msgid "News not queried in this channel."
+msgstr "Habari hazijaulizwa katika chaneli hii."
+
+#: src/mainuan_recursos/github_channel.py:272
+msgid "Package missing or size mismatch."
+msgstr "Kifurushi kinakosekana au ukubwa haulingani."
+
+#: src/mainuan_recursos/github_channel.py:274
+msgid "SHA-256 integrity mismatch; installation blocked."
+msgstr "Uadilifu wa SHA-256 haulingani; usakinishaji umezuiwa."
+
+#: src/mainuan_recursos/github_channel.py:278
+msgid "Internal package metadata does not match the release."
+msgstr "Metadata ya ndani ya kifurushi hailingani na toleo."
+
+#: src/mainuan_recursos/github_channel.py:292
+#: src/mainuan_recursos/github_trial.py:162 src/mainuan_recursos/packages.py:96
+msgid "Package with incomplete configuration"
+msgstr "Kifurushi chenye usanidi usiokamilika"
+
+#: src/mainuan_recursos/github_channel.py:296
+#: src/mainuan_recursos/github_trial.py:167 src/mainuan_recursos/packages.py:98
+msgid "Package held by the administrator"
+msgstr "Kifurushi kimeshikiliwa na msimamizi"
+
+#: src/mainuan_recursos/github_channel.py:302
+#: src/mainuan_recursos/github_trial.py:173
+#, python-brace-format
+msgid "Unmet dependencies: {details}"
+msgstr "Vitegemezi havijatimizwa: {details}"
+
+#: src/mainuan_recursos/github_channel.py:304
+msgid "The operation requires additional unannounced packages"
+msgstr "Operesheni inahitaji vifurushi vya ziada visivyotangazwa"
+
+#: src/mainuan_recursos/github_channel.py:312
+msgid "The announced release was withdrawn or changed."
+msgstr "Toleo lililotangazwa liliondolewa au kubadilishwa."
+
+#: src/mainuan_recursos/github_channel.py:314
+msgid "The release reference was replaced; installation blocked."
+msgstr "Rejeleo la toleo lilibadilishwa; usakinishaji umezuiwa."
+
+#: src/mainuan_recursos/github_channel.py:317
+msgid "The artifact was changed after the query; check for news again."
+msgstr "Faili la toleo lilibadilishwa baada ya hoja; kagua habari tena."
+
+#: src/mainuan_recursos/github_channel.py:334
+msgid "Download exceeds the approved size."
+msgstr "Upakuaji unazidi ukubwa ulioidhinishwa."
+
+#: src/mainuan_recursos/github_channel.py:337
+#: src/mainuan_recursos/github_channel.py:356
+#: src/mainuan_recursos/github_trial.py:189
+#: src/mainuan_recursos/github_trial.py:191
+#: src/mainuan_recursos/packagekit.py:191
+msgid "Downloading new features..."
+msgstr "Inapakua vipengele vipya..."
+
+#: src/mainuan_recursos/github_channel.py:338
+msgid "Download with SHA-256 integrity mismatch."
+msgstr "Upakuaji wenye uadilifu wa SHA-256 usiolingana."
+
+#: src/mainuan_recursos/github_channel.py:345
+msgid "Check for news online before installing."
+msgstr "Kagua habari mtandaoni kabla ya kusakinisha."
+
+#: src/mainuan_recursos/github_channel.py:347
+msgid ""
+"Installation requires a regular user and an installed session, outside Live "
+"mode."
+msgstr ""
+"Usakinishaji unahitaji mtumiaji wa kawaida na kipindi kilichosakinishwa, nje "
+"ya hali ya Live."
+
+#: src/mainuan_recursos/github_channel.py:367
+msgid "PackageKit proposed additional packages or an incomplete operation."
+msgstr ""
+"PackageKit ilipendekeza vifurushi vya ziada au operesheni isiyokamilika."
+
+#: src/mainuan_recursos/github_channel.py:371
+msgid "The simulation would change unannounced packages."
+msgstr "Uigaji ungebadilisha vifurushi visivyotangazwa."
+
+#: src/mainuan_recursos/github_channel.py:373
+msgid "Removal, reinstallation or downgrade blocked."
+msgstr "Kuondoa, kusakinisha upya au kushusha toleo kumezuiwa."
+
+#: src/mainuan_recursos/github_channel.py:385
+#: src/mainuan_recursos/github_channel.py:386
+msgid "Invalid GitHub cache."
+msgstr "Akiba ya GitHub si sahihi."
+
+#: src/mainuan_recursos/github_channel.py:391
+msgid "Invalid local edition."
+msgstr "Toleo la ndani si sahihi."
+
+#: src/mainuan_recursos/github_channel.py:394
+msgid "Invalid local artifact."
+msgstr "Faili la toleo la ndani si sahihi."
+
+#: src/mainuan_recursos/github_channel.py:398
+msgid "Invalid GitHub history. Preserve the file before recovering it."
+msgstr "Historia ya GitHub si sahihi. Hifadhi faili kabla ya kuirejesha."
+
+#: src/mainuan_recursos/github_channel.py:415
+msgid "Cannot install:"
+msgstr "Haiwezi kusakinisha:"
+
+#: src/mainuan_recursos/github_channel.py:417
+msgid ""
+"You have already received all the features. No reinstallation will be done."
+msgstr ""
+"Tayari umepokea vipengele vyote. Hakuna usakinishaji upya utakaofanywa."
+
+#: src/mainuan_recursos/github_channel.py:419
+msgid "The package state has changed. Check for news again."
+msgstr "Hali ya vifurushi imebadilika. Kagua habari tena."
+
+#: src/mainuan_recursos/github_channel.py:432
+msgid "The operation has changed; installation blocked."
+msgstr "Operesheni imebadilika; usakinishaji umezuiwa."
+
+#: src/mainuan_recursos/github_trial.py:42
+msgid ""
+"The GitHub acceptance test is exclusive to a VM with a snapshot; use the "
+"normal mode on this computer."
+msgstr ""
+"Jaribio la ukubalifu la GitHub ni kwa VM yenye picha-hali (snapshot) pekee; "
+"tumia hali ya kawaida kwenye kompyuta hii."
+
+#: src/mainuan_recursos/github_trial.py:43
+msgid "Open the acceptance test as a regular user, without sudo."
+msgstr "Fungua jaribio la ukubalifu kama mtumiaji wa kawaida, bila sudo."
+
+#: src/mainuan_recursos/github_trial.py:44
+msgid ""
+"The acceptance test requires a normal installation, outside the Live session."
+msgstr ""
+"Jaribio la ukubalifu linahitaji usakinishaji wa kawaida, nje ya kipindi cha "
+"Live."
+
+#: src/mainuan_recursos/github_trial.py:46
+msgid "This trial is intended for Mainuan based on Kubuntu 26.04."
+msgstr "Jaribio hili limekusudiwa Mainuan inayotegemea Kubuntu 26.04."
+
+#: src/mainuan_recursos/github_trial.py:52
+msgid "Invalid acceptance test URL."
+msgstr "URL ya jaribio la ukubalifu si sahihi."
+
+#: src/mainuan_recursos/github_trial.py:59
+msgid "Redirect outside the authorized GitHub infrastructure."
+msgstr "Uelekezaji upya uko nje ya miundombinu iliyoidhinishwa ya GitHub."
+
+#: src/mainuan_recursos/github_trial.py:88
+msgid "GitHub response exceeds the allowed size."
+msgstr "Jibu la GitHub linazidi ukubwa unaoruhusiwa."
+
+#: src/mainuan_recursos/github_trial.py:98
+msgid "Could not query PackageKit support for local files."
+msgstr "Haikuweza kuuliza uwezo wa PackageKit kwa faili za ndani."
+
+#: src/mainuan_recursos/github_trial.py:102
+msgid ""
+"The PackageKit backend of this VM does not offer InstallFiles. No unsafe "
+"fallback will be used."
+msgstr ""
+"Mazingira ya nyuma ya PackageKit ya VM hii hayatoi InstallFiles. Hakuna njia "
+"mbadala isiyo salama itakayotumika."
+
+#: src/mainuan_recursos/github_trial.py:112
+msgid "Experimental package missing or symbolic."
+msgstr "Kifurushi cha majaribio kinakosekana au ni kiungo ishara."
+
+#: src/mainuan_recursos/github_trial.py:114
+msgid "Driver Manager 1.0 integrity mismatch. The installation was blocked."
+msgstr ""
+"Uadilifu wa Kidhibiti cha Viendeshi 1.0 haulingani. Usakinishaji umezuiwa."
+
+#: src/mainuan_recursos/github_trial.py:120
+msgid "Invalid GitHub reference."
+msgstr "Rejeleo la GitHub si sahihi."
+
+#: src/mainuan_recursos/github_trial.py:125
+msgid ""
+"In this first trial, packages.txt must contain only mainuan-gestao-drivers."
+msgstr ""
+"Katika jaribio hili la kwanza, packages.txt lazima iwe na mainuan-gestao-"
+"drivers pekee."
+
+#: src/mainuan_recursos/github_trial.py:126
+msgid "Message empty or too long."
+msgstr "Ujumbe ni tupu au ni mrefu mno."
+
+#: src/mainuan_recursos/github_trial.py:129
+msgid "Program repository mismatch."
+msgstr "Hazina ya programu hailingani."
+
+#: src/mainuan_recursos/github_trial.py:133
+msgid "The approved release is not available as a stable publication."
+msgstr "Toleo lililoidhinishwa halipatikani kama chapisho thabiti."
+
+#: src/mainuan_recursos/github_trial.py:135
+msgid "Approved artifact not found."
+msgstr "Faili la toleo lililoidhinishwa halikupatikana."
+
+#: src/mainuan_recursos/github_trial.py:139
+msgid ""
+"The release was changed or does not match the package approved for this "
+"trial."
+msgstr ""
+"Toleo lilibadilishwa au halilingani na kifurushi kilichoidhinishwa kwa "
+"jaribio hili."
+
+#: src/mainuan_recursos/github_trial.py:144
+msgid "GitHub commit is in the future. Check the VM clock."
+msgstr "Commit ya GitHub iko katika siku zijazo. Kagua saa ya VM."
+
+#: src/mainuan_recursos/github_trial.py:147
+msgid "Driver Manager 1.0"
+msgstr "Kidhibiti cha Viendeshi 1.0"
+
+#: src/mainuan_recursos/github_trial.py:155
+msgid "Experimental release not approved."
+msgstr "Toleo la majaribio halijaidhinishwa."
+
+#: src/mainuan_recursos/github_trial.py:171
+msgid "Debian metadata mismatch."
+msgstr "Metadata ya Debian hailingani."
+
+#: src/mainuan_recursos/github_trial.py:175
+#, python-brace-format
+msgid "This trial does not allow changing dependencies: {packages}"
+msgstr "Jaribio hili haliruhusu kubadilisha vitegemezi: {packages}"
+
+#: src/mainuan_recursos/github_trial.py:192
+msgid "Package download with invalid integrity."
+msgstr "Upakuaji wa kifurushi wenye uadilifu usio sahihi."
+
+#: src/mainuan_recursos/github_trial.py:219
+msgid "Cannot install in this trial:"
+msgstr "Haiwezi kusakinisha katika jaribio hili:"
+
+#: src/mainuan_recursos/github_trial.py:221
+msgid ""
+"You have already received Driver Manager 1.0. No reinstallation will be done."
+msgstr ""
+"Tayari umepokea Kidhibiti cha Viendeshi 1.0. Hakuna usakinishaji upya "
+"utakaofanywa."
+
+#: src/mainuan_recursos/github_trial.py:223
+msgid "The package state has changed. Review the operation again."
+msgstr "Hali ya vifurushi imebadilika. Kagua operesheni tena."
+
+#: src/mainuan_recursos/github_trial.py:236
+msgid ""
+"PackageKit proposed changes beyond the Driver Manager application. No "
+"additional driver or dependency will be installed in this trial."
+msgstr ""
+"PackageKit ilipendekeza mabadiliko zaidi ya programu ya Kidhibiti cha "
+"Viendeshi. Hakuna kiendeshi wala kitegemezi cha ziada kitakachosakinishwa "
+"katika jaribio hili."
+
+#: src/mainuan_recursos/github_trial.py:244
+msgid "The operation has changed. Review the confirmation again."
+msgstr "Operesheni imebadilika. Kagua uthibitisho tena."
+
+#: src/mainuan_recursos/gui.py:39
+msgid "Mainuan Feature Updater — Demo"
+msgstr "Kisasishaji cha Vipengele vya Mainuan — Onyesho"
+
+#: src/mainuan_recursos/gui.py:40
+msgid "Mainuan Feature Updater — GitHub Acceptance Test"
+msgstr "Kisasishaji cha Vipengele vya Mainuan — Jaribio la Ukubalifu la GitHub"
+
+#: src/mainuan_recursos/gui.py:44
+msgid "Checking for news…"
+msgstr "Inakagua habari…"
+
+#: src/mainuan_recursos/gui.py:50
+msgid "Check for News"
+msgstr "Kagua Habari"
+
+#: src/mainuan_recursos/gui.py:51 src/mainuan_recursos/gui.py:55
+#: src/mainuan_recursos/gui.py:56
+msgid "News History"
+msgstr "Historia ya Habari"
+
+#: src/mainuan_recursos/gui.py:53 src/mainuan_recursos/gui.py:60
+msgid "Technical Information"
+msgstr "Taarifa za Kiufundi"
+
+#: src/mainuan_recursos/gui.py:59
+msgid "Programs, packages, versions and actual status"
+msgstr "Programu, vifurushi, matoleo na hali halisi"
+
+#. Translators: title of an auxiliary window opened in demonstration mode.
+#: src/mainuan_recursos/gui.py:92
+#, python-brace-format
+msgid "{title} — Demo"
+msgstr "{title} — Onyesho"
+
+#: src/mainuan_recursos/gui.py:119
+#, python-brace-format
+msgid "Release: {id} • {version}"
+msgstr "Toleo: {id} • {version}"
+
+#: src/mainuan_recursos/gui.py:120
+#, python-brace-format
+msgid "Official article: {url}"
+msgstr "Makala rasmi: {url}"
+
+#: src/mainuan_recursos/gui.py:121
+msgid "not checked"
+msgstr "haijakaguliwa"
+
+#: src/mainuan_recursos/gui.py:126 src/mainuan_recursos/gui.py:351
+msgid "not installed"
+msgstr "haijasakinishwa"
+
+#: src/mainuan_recursos/gui.py:127
+msgid "unavailable"
+msgstr "haipatikani"
+
+#: src/mainuan_recursos/gui.py:129
+msgid "packages not checked"
+msgstr "vifurushi havijakaguliwa"
+
+#: src/mainuan_recursos/gui.py:130
+#, python-brace-format
+msgid "Package: {name}"
+msgstr "Kifurushi: {name}"
+
+#: src/mainuan_recursos/gui.py:131
+#, python-brace-format
+msgid "Minimum version: {version}"
+msgstr "Toleo la chini: {version}"
+
+#: src/mainuan_recursos/gui.py:132
+#, python-brace-format
+msgid "Installed: {version}"
+msgstr "Imesakinishwa: {version}"
+
+#: src/mainuan_recursos/gui.py:133
+#, python-brace-format
+msgid "Available: {version}"
+msgstr "Inapatikana: {version}"
+
+#: src/mainuan_recursos/gui.py:134
+#, python-brace-format
+msgid "Architecture: {architecture}"
+msgstr "Usanifu: {architecture}"
+
+#: src/mainuan_recursos/gui.py:135
+#, python-brace-format
+msgid "Status: {status}"
+msgstr "Hali: {status}"
+
+#: src/mainuan_recursos/gui.py:137
+#, python-brace-format
+msgid "Approved SHA-256: {sha256}"
+msgstr "SHA-256 iliyoidhinishwa: {sha256}"
+
+#: src/mainuan_recursos/gui.py:139
+msgid ""
+"The complete operation, including dependencies, will be shown when "
+"confirming the installation."
+msgstr ""
+"Operesheni kamili, pamoja na vitegemezi, itaonyeshwa wakati wa kuthibitisha "
+"usakinishaji."
+
+#: src/mainuan_recursos/gui.py:141
+msgid ""
+"Demo: authorization and installation are simulated; no package will be "
+"changed."
+msgstr ""
+"Onyesho: idhini na usakinishaji vinaigwa; hakuna kifurushi "
+"kitakachobadilishwa."
+
+#: src/mainuan_recursos/gui.py:143
+msgid ""
+"Official GitHub channel: packages.txt and message.txt from the same commit."
+msgstr ""
+"Chaneli rasmi ya GitHub: packages.txt na message.txt kutoka commit moja."
+
+#: src/mainuan_recursos/gui.py:144
+msgid ""
+"Packages from stable releases, with IDs, versions and SHA-256 recorded "
+"during the query."
+msgstr ""
+"Vifurushi kutoka matoleo thabiti, vyenye vitambulisho, matoleo na SHA-256 "
+"vilivyorekodiwa wakati wa hoja."
+
+#: src/mainuan_recursos/gui.py:145
+msgid ""
+"The download starts only after choosing to install; unannounced changes are "
+"blocked."
+msgstr ""
+"Upakuaji huanza tu baada ya kuchagua kusakinisha; mabadiliko yasiyotangazwa "
+"yanazuiwa."
+
+#: src/mainuan_recursos/gui.py:146
+msgid "HTTPS and SHA-256 are not equivalent to an APT repository signature."
+msgstr "HTTPS na SHA-256 si sawa na sahihi ya hazina ya APT."
+
+#: src/mainuan_recursos/gui.py:147
+msgid "PackageKit/PolicyKit may ask for authorization for an untrusted source."
+msgstr "PackageKit/PolicyKit inaweza kuomba idhini kwa chanzo kisichoaminika."
+
+#: src/mainuan_recursos/gui.py:149
+msgid ""
+"GitHub acceptance test: official source and artifact pinned by IDs and "
+"SHA-256."
+msgstr ""
+"Jaribio la ukubalifu la GitHub: chanzo rasmi na faili la toleo vimebanwa kwa "
+"vitambulisho na SHA-256."
+
+#: src/mainuan_recursos/gui.py:150
+msgid "The download starts only after choosing to install."
+msgstr "Upakuaji huanza tu baada ya kuchagua kusakinisha."
+
+#: src/mainuan_recursos/gui.py:151
+msgid ""
+"Local file without an APT repository signature. PackageKit/PolicyKit may ask "
+"for authorization for an untrusted source."
+msgstr ""
+"Faili la ndani lisilo na sahihi ya hazina ya APT. PackageKit/PolicyKit "
+"inaweza kuomba idhini kwa chanzo kisichoaminika."
+
+#: src/mainuan_recursos/gui.py:152
+msgid ""
+"The trial only allows the Driver Manager application; changes to other "
+"packages are blocked."
+msgstr ""
+"Jaribio huruhusu programu ya Kidhibiti cha Viendeshi pekee; mabadiliko kwa "
+"vifurushi vingine yanazuiwa."
+
+#: src/mainuan_recursos/gui.py:174
+msgid "Querying the official Mainuan news…"
+msgstr "Inauliza habari rasmi za Mainuan…"
+
+#: src/mainuan_recursos/gui.py:218
+#, python-brace-format
+msgid "Could not check for news. {error}"
+msgstr "Haikuweza kukagua habari. {error}"
+
+#: src/mainuan_recursos/gui.py:246
+msgid "No news has been published yet. Come back soon!"
+msgstr "Bado hakuna habari zilizochapishwa. Rudi hivi karibuni!"
+
+#: src/mainuan_recursos/gui.py:252
+msgid ""
+"No news published.\n"
+"Come back soon to discover the next Mainuan features."
+msgstr ""
+"Hakuna habari zilizochapishwa.\n"
+"Rudi hivi karibuni ili kugundua vipengele vijavyo vya Mainuan."
+
+#: src/mainuan_recursos/gui.py:260
+msgid "We have news for you! Discover the features before installing."
+msgstr "Tuna habari kwa ajili yako! Gundua vipengele kabla ya kusakinisha."
+
+#: src/mainuan_recursos/gui.py:262
+#, python-brace-format
+msgid "Could not check the packages: {error}"
+msgstr "Haikuweza kukagua vifurushi: {error}"
+
+#: src/mainuan_recursos/gui.py:264
+msgid ""
+"This release is not compatible with the version or architecture of this "
+"system."
+msgstr "Toleo hili haliendani na toleo au usanifu wa mfumo huu."
+
+#: src/mainuan_recursos/gui.py:266
+msgid ""
+"You have already received these features through the system. Discover the "
+"news!"
+msgstr "Tayari umepokea vipengele hivi kupitia mfumo. Gundua habari!"
+
+#: src/mainuan_recursos/gui.py:268
+msgid ""
+"Some packages are not yet available for safe installation. See the technical "
+"information in the menu."
+msgstr ""
+"Baadhi ya vifurushi bado havipatikani kwa usakinishaji salama. Tazama "
+"taarifa za kiufundi kwenye menyu."
+
+#: src/mainuan_recursos/gui.py:272
+#, python-brace-format
+msgid "{message} Cached catalog: offline query; installation unavailable."
+msgstr ""
+"{message} Katalogi iliyohifadhiwa kwenye akiba: hoja nje ya mtandao; "
+"usakinishaji haupatikani."
+
+#: src/mainuan_recursos/gui.py:284
+msgctxt "news state"
+msgid "New"
+msgstr "Mpya"
+
+#: src/mainuan_recursos/gui.py:284
+msgctxt "news state"
+msgid "Viewed"
+msgstr "Imetazamwa"
+
+#: src/mainuan_recursos/gui.py:285
+msgctxt "news state"
+msgid "Postponed"
+msgstr "Imeahirishwa"
+
+#: src/mainuan_recursos/gui.py:297
+#, python-brace-format
+msgid "Could not save the viewing in the history: {error}"
+msgstr "Haikuweza kuhifadhi utazamaji katika historia: {error}"
+
+#: src/mainuan_recursos/gui.py:309
+msgid "Could not open the default web browser."
+msgstr "Haikuweza kufungua kivinjari chaguo-msingi."
+
+#: src/mainuan_recursos/gui.py:313
+msgid "Check the official catalog again before installing."
+msgstr "Kagua katalogi rasmi tena kabla ya kusakinisha."
+
+#: src/mainuan_recursos/gui.py:315
+msgid "Release incompatible with this system."
+msgstr "Toleo haliendani na mfumo huu."
+
+#: src/mainuan_recursos/gui.py:346
+msgid "Confirm Installation"
+msgstr "Thibitisha Usakinishaji"
+
+#: src/mainuan_recursos/gui.py:346
+msgid "Confirm Installation — Demo"
+msgstr "Thibitisha Usakinishaji — Onyesho"
+
+#: src/mainuan_recursos/gui.py:348
+msgid ""
+"The installation needs to change other packages or review the plan. Check "
+"the operation before continuing."
+msgstr ""
+"Usakinishaji unahitaji kubadilisha vifurushi vingine au kukagua mpango. "
+"Kagua operesheni kabla ya kuendelea."
+
+#: src/mainuan_recursos/gui.py:355
+msgid "Complete operation, including dependencies:"
+msgstr "Operesheni kamili, pamoja na vitegemezi:"
+
+#: src/mainuan_recursos/gui.py:356
+msgid "Packages and dependencies of the operation"
+msgstr "Vifurushi na vitegemezi vya operesheni"
+
+#: src/mainuan_recursos/gui.py:358
+msgid "Authorization and installation will be simulated."
+msgstr "Idhini na usakinishaji vitaigwa."
+
+#: src/mainuan_recursos/gui.py:359
+msgid "The system will ask for authorization to install."
+msgstr "Mfumo utaomba idhini ya kusakinisha."
+
+#: src/mainuan_recursos/gui.py:362
+msgid "Cancel"
+msgstr "Ghairi"
+
+#: src/mainuan_recursos/gui.py:373
+msgid "Installation canceled. You can discover the news whenever you want."
+msgstr ""
+"Usakinishaji umeghairiwa. Unaweza kugundua habari wakati wowote unapotaka."
+
+#: src/mainuan_recursos/gui.py:382
+#, python-brace-format
+msgid "Could not save the history: {error}"
+msgstr "Haikuweza kuhifadhi historia: {error}"
+
+#: src/mainuan_recursos/gui.py:398
+#, python-brace-format
+msgid "Could not save the 24-hour postponement: {error}"
+msgstr "Haikuweza kuhifadhi uahirishaji wa saa 24: {error}"
+
+#: src/mainuan_recursos/gui.py:405
+msgid "Wait for the operation to finish before closing."
+msgstr "Subiri operesheni ikamilike kabla ya kufunga."
+
+#: src/mainuan_recursos/localization.py:20
+msgctxt "standard button"
+msgid "OK"
+msgstr "Sawa"
+
+#: src/mainuan_recursos/localization.py:21
+msgctxt "standard button"
+msgid "Close"
+msgstr "Funga"
+
+#: src/mainuan_recursos/localization.py:22
+msgctxt "standard button"
+msgid "Cancel"
+msgstr "Ghairi"
+
+#: src/mainuan_recursos/localization.py:23
+msgctxt "standard button"
+msgid "&Yes"
+msgstr "&Ndiyo"
+
+#: src/mainuan_recursos/localization.py:24
+msgctxt "standard button"
+msgid "&No"
+msgstr "&Hapana"
+
+#: src/mainuan_recursos/localization.py:25
+msgctxt "standard button"
+msgid "Yes to &All"
+msgstr "Ndiyo kwa &Zote"
+
+#: src/mainuan_recursos/localization.py:26
+msgctxt "standard button"
+msgid "No to All"
+msgstr "Hapana kwa Zote"
+
+#: src/mainuan_recursos/localization.py:27
+msgctxt "standard button"
+msgid "Save"
+msgstr "Hifadhi"
+
+#: src/mainuan_recursos/localization.py:28
+msgctxt "standard button"
+msgid "Save All"
+msgstr "Hifadhi Zote"
+
+#: src/mainuan_recursos/localization.py:29
+msgctxt "standard button"
+msgid "Open"
+msgstr "Fungua"
+
+#: src/mainuan_recursos/localization.py:30
+msgctxt "standard button"
+msgid "Discard"
+msgstr "Tupa"
+
+#: src/mainuan_recursos/localization.py:31
+msgctxt "standard button"
+msgid "Apply"
+msgstr "Tumia"
+
+#: src/mainuan_recursos/localization.py:32
+msgctxt "standard button"
+msgid "Reset"
+msgstr "Weka upya"
+
+#: src/mainuan_recursos/localization.py:33
+msgctxt "standard button"
+msgid "Restore Defaults"
+msgstr "Rejesha Chaguo-msingi"
+
+#: src/mainuan_recursos/localization.py:34
+msgctxt "standard button"
+msgid "Help"
+msgstr "Usaidizi"
+
+#: src/mainuan_recursos/localization.py:35
+msgctxt "standard button"
+msgid "Abort"
+msgstr "Katiza"
+
+#: src/mainuan_recursos/localization.py:36
+msgctxt "standard button"
+msgid "Retry"
+msgstr "Jaribu tena"
+
+#: src/mainuan_recursos/localization.py:37
+msgctxt "standard button"
+msgid "Ignore"
+msgstr "Puuza"
+
+#: src/mainuan_recursos/packagekit.py:147
+msgid "Invalid transaction path."
+msgstr "Njia ya muamala si sahihi."
+
+#: src/mainuan_recursos/packagekit.py:149
+msgid "Could not follow the transaction."
+msgstr "Haikuweza kufuatilia muamala."
+
+#: src/mainuan_recursos/packagekit.py:167
+msgid ""
+"Waiting for the PackageKit result; the operation may still be in progress."
+msgstr "Inasubiri matokeo ya PackageKit; huenda operesheni bado inaendelea."
+
+#: src/mainuan_recursos/packagekit.py:184
+msgid "Processing the transaction…"
+msgstr "Inachakata muamala…"
+
+#: src/mainuan_recursos/packagekit.py:192
+msgid "Waiting for another package manager..."
+msgstr "Inasubiri kidhibiti kingine cha vifurushi..."
+
+#: src/mainuan_recursos/packagekit.py:193
+msgid "Waiting for authorization..."
+msgstr "Inasubiri idhini..."
+
+#: src/mainuan_recursos/packagekit.py:199
+#, python-brace-format
+msgid "Operation canceled or not completed (code {code})."
+msgstr "Operesheni imeghairiwa au haijakamilika (msimbo {code})."
+
+#: src/mainuan_recursos/packagekit.py:201
+msgid "Transaction ended without confirmation of completion."
+msgstr "Muamala umeisha bila uthibitisho wa kukamilika."
+
+#: src/mainuan_recursos/packagekit.py:208
+msgid "The PackageKit service was disconnected."
+msgstr "Huduma ya PackageKit ilitenganishwa."
+
+#: src/mainuan_recursos/packagekit.py:211
+msgid "The PackageKit query timed out."
+msgstr "Muda wa hoja ya PackageKit umeisha."
+
+#: src/mainuan_recursos/packagekit.py:216
+#, python-brace-format
+msgid "{error} The result may be partial; check the packages again."
+msgstr "{error} Huenda matokeo hayajakamilika; kagua vifurushi tena."
+
+#: src/mainuan_recursos/packages.py:16
+msgctxt "package status"
+msgid "Install"
+msgstr "Sakinisha"
+
+#: src/mainuan_recursos/packages.py:17
+msgctxt "package status"
+msgid "Update"
+msgstr "Sasisha"
+
+#: src/mainuan_recursos/packages.py:18
+msgctxt "package status"
+msgid "Already received"
+msgstr "Tayari imepokelewa"
+
+#: src/mainuan_recursos/packages.py:103
+msgid "APT candidate differs from the approved version"
+msgstr "Toleo pendekezwa la APT linatofautiana na toleo lililoidhinishwa"
+
+#: src/mainuan_recursos/packages.py:105 src/mainuan_recursos/packages.py:115
+msgid "Untrusted source"
+msgstr "Chanzo kisichoaminika"
+
+#: src/mainuan_recursos/packages.py:107
+msgid "Integrity of the approved package does not match"
+msgstr "Uadilifu wa kifurushi kilichoidhinishwa haulingani"
+
+#: src/mainuan_recursos/packages.py:111
+msgid "Required version unavailable"
+msgstr "Toleo linalohitajika halipatikani"
+
+#: src/mainuan_recursos/packages.py:113
+msgid "No safe update available"
+msgstr "Hakuna sasisho salama linalopatikana"
+
+#: src/mainuan_recursos/packages.py:125
+msgid "PackageKit returned an invalid identifier."
+msgstr "PackageKit ilirudisha kitambulisho kisicho sahihi."
+
+#: src/mainuan_recursos/packages.py:139
+msgid ""
+"The operation requires removal, reinstallation, downgrade or a disallowed "
+"effect."
+msgstr ""
+"Operesheni inahitaji kuondoa, kusakinisha upya, kushusha toleo au athari "
+"isiyoruhusiwa."
+
+#: src/mainuan_recursos/packages.py:143
+#, python-brace-format
+msgid "Could not validate the source of {name}."
+msgstr "Haikuweza kuthibitisha chanzo cha {name}."
+
+#: src/mainuan_recursos/packages.py:147
+#, python-brace-format
+msgid "The package {name} does not have a trusted source."
+msgstr "Kifurushi {name} hakina chanzo kinachoaminika."
+
+#: src/mainuan_recursos/packages.py:151
+#, python-brace-format
+msgid ""
+"The integrity of the approved package {name} has changed. Check the "
+"repositories."
+msgstr ""
+"Uadilifu wa kifurushi kilichoidhinishwa {name} umebadilika. Kagua hazina."
+
+#: src/mainuan_recursos/packages.py:153
+#, python-brace-format
+msgid "The package {name} is held by the administrator."
+msgstr "Kifurushi {name} kimeshikiliwa na msimamizi."
+
+#: src/mainuan_recursos/packages.py:155
+#, python-brace-format
+msgid "The package {name} has an incomplete configuration."
+msgstr "Kifurushi {name} kina usanidi usiokamilika."
+
+#: src/mainuan_recursos/packages.py:158
+#, python-brace-format
+msgid "Reinstallation or downgrade of {name} blocked."
+msgstr "Kusakinisha upya au kushusha toleo la {name} kumezuiwa."
+
+#: src/mainuan_recursos/packages.py:161
+msgid "The simulation did not confirm all requested packages."
+msgstr "Uigaji haukuthibitisha vifurushi vyote vilivyoombwa."
+
+#: src/mainuan_recursos/repository.py:27
+msgid "Local cache exceeds the size limit."
+msgstr "Akiba ya ndani inazidi kikomo cha ukubwa."
+
+#: src/mainuan_recursos/repository.py:45
+msgid "Old or changed catalog; the valid cache was preserved."
+msgstr "Katalogi ya zamani au iliyobadilishwa; akiba halali imehifadhiwa."
+
+#: src/mainuan_recursos/state.py:44
+msgid "Local state too large."
+msgstr "Hali ya ndani ni kubwa mno."
+
+#: src/mainuan_recursos/state.py:46 src/mainuan_recursos/state.py:48
+#: src/mainuan_recursos/state.py:56
+msgid "Invalid state."
+msgstr "Hali si sahihi."
+
+#: src/mainuan_recursos/state.py:51
+msgid "Invalid sequence/digest."
+msgstr "Mfuatano/muhtasari si sahihi."
+
+#: src/mainuan_recursos/state.py:53
+msgid "Invalid release."
+msgstr "Toleo si sahihi."
+
+#: src/mainuan_recursos/state.py:54
+msgid "Incomplete state."
+msgstr "Hali haijakamilika."
+
+#: src/mainuan_recursos/state.py:58
+msgid "Invalid deadline."
+msgstr "Tarehe ya mwisho si sahihi."
+
+#: src/mainuan_recursos/state.py:61
+msgid "The local state is damaged. Preserve the file before recovering it."
+msgstr "Hali ya ndani imeharibika. Hifadhi faili kabla ya kuirejesha."
+
+#: src/mainuan_recursos/state.py:91
+msgid "Old catalog or content changed without increasing the sequence."
+msgstr "Katalogi ya zamani au maudhui yamebadilishwa bila kuongeza mfuatano."
