@@ -22,6 +22,12 @@ sudo: a autorização administrativa pertence ao agente PolicyKit.
    iniciados por `#` são aceitos. Repetições são rejeitadas.
 5. Edite `message.txt`: mensagem livre em português, preservando parágrafos e
    quebras de linha. A lista de programas usa automaticamente nomes das releases.
+   Traduções da mensagem ficam em `message.<idioma>.txt` (`message.en.txt`,
+   `message.ja.txt`, `message.zh_TW.txt`…), uma por idioma da interface. Sessões
+   em português leem `message.txt`; as outras leem o arquivo do próprio idioma,
+   depois `message.en.txt` e, só se nenhum existir, `message.txt`. Ao mudar a
+   mensagem, atualize as traduções no mesmo commit ou apague as que ficaram
+   desatualizadas. Uma tradução que falta nunca é erro.
 6. Salve no GitHub. Prefira salvar ambos os arquivos no mesmo commit se precisarem
    mudar juntos. Não há assinatura, JSON nem workflow de catálogo para executar.
 

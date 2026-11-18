@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: mainuan-atualizador-recursos\n"
 "Report-Msgid-Bugs-To: https://github.com/mainuan/atualizador-de-recursos/"
 "issues\n"
-"POT-Creation-Date: 2026-11-16 11:30-0300\n"
+"POT-Creation-Date: 2026-11-18 13:16-0300\n"
 "PO-Revision-Date: 2026-11-16 11:30-0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: da <https://github.com/mainuan>\n"
@@ -346,7 +346,7 @@ msgstr "Udskyder notifikationen i 24 timer, men bevarer manuel adgang."
 #: src/mainuan_recursos/controller.py:77 src/mainuan_recursos/controller.py:115
 #: src/mainuan_recursos/controller.py:147
 #: src/mainuan_recursos/controller.py:155 src/mainuan_recursos/demo.py:68
-#: src/mainuan_recursos/github_channel.py:359
+#: src/mainuan_recursos/github_channel.py:391
 #: src/mainuan_recursos/github_trial.py:201
 #: src/mainuan_recursos/packagekit.py:193
 msgid "Preparing installation..."
@@ -388,7 +388,7 @@ msgstr ""
 "detaljerne."
 
 #: src/mainuan_recursos/controller.py:134 src/mainuan_recursos/demo.py:69
-#: src/mainuan_recursos/github_channel.py:440
+#: src/mainuan_recursos/github_channel.py:472
 #: src/mainuan_recursos/github_trial.py:250
 #: src/mainuan_recursos/packagekit.py:190
 msgid "Installing new features..."
@@ -501,18 +501,18 @@ msgstr ""
 msgid "Artifact unavailable or invalid size."
 msgstr "Artefaktet er ikke tilgængeligt eller har ugyldig størrelse."
 
-#: src/mainuan_recursos/github_channel.py:126
-#: src/mainuan_recursos/github_channel.py:260
+#: src/mainuan_recursos/github_channel.py:157
+#: src/mainuan_recursos/github_channel.py:292
 msgid "GitHub history exceeds the allowed limit."
 msgstr "GitHub-historikken overskrider den tilladte grænse."
 
-#: src/mainuan_recursos/github_channel.py:139
-#: src/mainuan_recursos/github_channel.py:253
+#: src/mainuan_recursos/github_channel.py:170
+#: src/mainuan_recursos/github_channel.py:285
 #: src/mainuan_recursos/github_trial.py:146
 msgid "Mainuan has news!"
 msgstr "Mainuan har nyheder!"
 
-#: src/mainuan_recursos/github_channel.py:147
+#: src/mainuan_recursos/github_channel.py:178
 #, python-brace-format
 msgid ""
 "Repository does not belong to the official organization or is unavailable: "
@@ -521,156 +521,156 @@ msgstr ""
 "Depotet hører ikke til den officielle organisation eller er ikke "
 "tilgængeligt: {repository}"
 
-#: src/mainuan_recursos/github_channel.py:149
+#: src/mainuan_recursos/github_channel.py:180
 #, python-brace-format
 msgid "The repository identity was replaced: {repository}"
 msgstr "Depotets identitet er blevet udskiftet: {repository}"
 
-#: src/mainuan_recursos/github_channel.py:155
+#: src/mainuan_recursos/github_channel.py:186
 #, python-brace-format
 msgid "Invalid list of releases: {repository}"
 msgstr "Ugyldig liste over udgivelser: {repository}"
 
-#: src/mainuan_recursos/github_channel.py:160
+#: src/mainuan_recursos/github_channel.py:191
 #, python-brace-format
 msgid "Too many releases for a safe query: {repository}"
 msgstr "For mange udgivelser til en sikker forespørgsel: {repository}"
 
-#: src/mainuan_recursos/github_channel.py:163
+#: src/mainuan_recursos/github_channel.py:194
 msgid "Release with a future date. Check the system clock."
 msgstr "Udgivelse med en fremtidig dato. Tjek systemuret."
 
-#: src/mainuan_recursos/github_channel.py:164
+#: src/mainuan_recursos/github_channel.py:195
 msgid "Invalid release ID."
 msgstr "Ugyldigt udgivelses-id."
 
-#: src/mainuan_recursos/github_channel.py:168
+#: src/mainuan_recursos/github_channel.py:199
 msgid "Invalid list of artifacts."
 msgstr "Ugyldig liste over artefakter."
 
-#: src/mainuan_recursos/github_channel.py:173
+#: src/mainuan_recursos/github_channel.py:204
 msgid "Too many artifacts in the release."
 msgstr "For mange artefakter i udgivelsen."
 
-#: src/mainuan_recursos/github_channel.py:183
+#: src/mainuan_recursos/github_channel.py:214
 #, python-brace-format
 msgid "Duplicate or ambiguous packages in the release: {repository}"
 msgstr "Dobbelte eller tvetydige pakker i udgivelsen: {repository}"
 
-#: src/mainuan_recursos/github_channel.py:188
+#: src/mainuan_recursos/github_channel.py:219
 msgid "Artifact URL does not match the selected release."
 msgstr "Artefaktets URL svarer ikke til den valgte udgivelse."
 
-#: src/mainuan_recursos/github_channel.py:190
+#: src/mainuan_recursos/github_channel.py:221
 msgid "Invalid immutable reference of the release."
 msgstr "Ugyldig uforanderlig reference for udgivelsen."
 
-#: src/mainuan_recursos/github_channel.py:196
+#: src/mainuan_recursos/github_channel.py:227
 #, python-brace-format
 msgid "No stable release with a compatible Debian package: {repository}"
 msgstr "Ingen stabil udgivelse med en kompatibel Debian-pakke: {repository}"
 
-#: src/mainuan_recursos/github_channel.py:218
+#: src/mainuan_recursos/github_channel.py:249
 msgid "This channel is intended for Mainuan based on Kubuntu 26.04."
 msgstr "Denne kanal er beregnet til Mainuan baseret på Kubuntu 26.04."
 
-#: src/mainuan_recursos/github_channel.py:220
+#: src/mainuan_recursos/github_channel.py:251
 msgid "Invalid official reference."
 msgstr "Ugyldig officiel reference."
 
-#: src/mainuan_recursos/github_channel.py:224
+#: src/mainuan_recursos/github_channel.py:255
 msgid "message.txt is empty."
 msgstr "message.txt er tom."
 
-#: src/mainuan_recursos/github_channel.py:228
+#: src/mainuan_recursos/github_channel.py:260
 msgid "packages.txt contains invalid or repeated repositories."
 msgstr "packages.txt indeholder ugyldige eller gentagne depoter."
 
-#: src/mainuan_recursos/github_channel.py:234
+#: src/mainuan_recursos/github_channel.py:266
 msgid "Two repositories offer the same Debian package."
 msgstr "To depoter tilbyder den samme Debian-pakke."
 
-#: src/mainuan_recursos/github_channel.py:239
+#: src/mainuan_recursos/github_channel.py:271
 #, python-brace-format
 msgid "An already announced release or artifact was replaced: {package}"
 msgstr ""
 "En allerede annonceret udgivelse eller et artefakt er blevet udskiftet: "
 "{package}"
 
-#: src/mainuan_recursos/github_channel.py:243
+#: src/mainuan_recursos/github_channel.py:275
 #, python-brace-format
 msgid "Rollback of a published version blocked: {package}"
 msgstr "Tilbagerulning af en offentliggjort version blokeret: {package}"
 
-#: src/mainuan_recursos/github_channel.py:264
+#: src/mainuan_recursos/github_channel.py:296
 msgid "News not queried in this channel."
 msgstr "Nyheder ikke forespurgt i denne kanal."
 
-#: src/mainuan_recursos/github_channel.py:272
+#: src/mainuan_recursos/github_channel.py:304
 msgid "Package missing or size mismatch."
 msgstr "Pakken mangler, eller størrelsen passer ikke."
 
-#: src/mainuan_recursos/github_channel.py:274
+#: src/mainuan_recursos/github_channel.py:306
 msgid "SHA-256 integrity mismatch; installation blocked."
 msgstr "SHA-256-integriteten stemmer ikke; installationen er blokeret."
 
-#: src/mainuan_recursos/github_channel.py:278
+#: src/mainuan_recursos/github_channel.py:310
 msgid "Internal package metadata does not match the release."
 msgstr "Pakkens interne metadata svarer ikke til udgivelsen."
 
-#: src/mainuan_recursos/github_channel.py:292
+#: src/mainuan_recursos/github_channel.py:324
 #: src/mainuan_recursos/github_trial.py:162 src/mainuan_recursos/packages.py:96
 msgid "Package with incomplete configuration"
 msgstr "Pakke med ufuldstændig konfiguration"
 
-#: src/mainuan_recursos/github_channel.py:296
+#: src/mainuan_recursos/github_channel.py:328
 #: src/mainuan_recursos/github_trial.py:167 src/mainuan_recursos/packages.py:98
 msgid "Package held by the administrator"
 msgstr "Pakke tilbageholdt af administratoren"
 
-#: src/mainuan_recursos/github_channel.py:302
+#: src/mainuan_recursos/github_channel.py:334
 #: src/mainuan_recursos/github_trial.py:173
 #, python-brace-format
 msgid "Unmet dependencies: {details}"
 msgstr "Uopfyldte afhængigheder: {details}"
 
-#: src/mainuan_recursos/github_channel.py:304
+#: src/mainuan_recursos/github_channel.py:336
 msgid "The operation requires additional unannounced packages"
 msgstr "Handlingen kræver yderligere pakker, der ikke er annonceret"
 
-#: src/mainuan_recursos/github_channel.py:312
+#: src/mainuan_recursos/github_channel.py:344
 msgid "The announced release was withdrawn or changed."
 msgstr "Den annoncerede udgivelse er trukket tilbage eller ændret."
 
-#: src/mainuan_recursos/github_channel.py:314
+#: src/mainuan_recursos/github_channel.py:346
 msgid "The release reference was replaced; installation blocked."
 msgstr "Udgivelsens reference er blevet udskiftet; installationen er blokeret."
 
-#: src/mainuan_recursos/github_channel.py:317
+#: src/mainuan_recursos/github_channel.py:349
 msgid "The artifact was changed after the query; check for news again."
 msgstr "Artefaktet blev ændret efter forespørgslen; søg efter nyheder igen."
 
-#: src/mainuan_recursos/github_channel.py:334
+#: src/mainuan_recursos/github_channel.py:366
 msgid "Download exceeds the approved size."
 msgstr "Downloaden overskrider den godkendte størrelse."
 
-#: src/mainuan_recursos/github_channel.py:337
-#: src/mainuan_recursos/github_channel.py:356
+#: src/mainuan_recursos/github_channel.py:369
+#: src/mainuan_recursos/github_channel.py:388
 #: src/mainuan_recursos/github_trial.py:189
 #: src/mainuan_recursos/github_trial.py:191
 #: src/mainuan_recursos/packagekit.py:191
 msgid "Downloading new features..."
 msgstr "Downloader nye funktioner..."
 
-#: src/mainuan_recursos/github_channel.py:338
+#: src/mainuan_recursos/github_channel.py:370
 msgid "Download with SHA-256 integrity mismatch."
 msgstr "Download med uoverensstemmende SHA-256-integritet."
 
-#: src/mainuan_recursos/github_channel.py:345
+#: src/mainuan_recursos/github_channel.py:377
 msgid "Check for news online before installing."
 msgstr "Søg efter nyheder online før installation."
 
-#: src/mainuan_recursos/github_channel.py:347
+#: src/mainuan_recursos/github_channel.py:379
 msgid ""
 "Installation requires a regular user and an installed session, outside Live "
 "mode."
@@ -678,51 +678,51 @@ msgstr ""
 "Installation kræver en almindelig bruger og en installeret session uden for "
 "live-tilstand."
 
-#: src/mainuan_recursos/github_channel.py:367
+#: src/mainuan_recursos/github_channel.py:399
 msgid "PackageKit proposed additional packages or an incomplete operation."
 msgstr "PackageKit foreslog yderligere pakker eller en ufuldstændig handling."
 
-#: src/mainuan_recursos/github_channel.py:371
+#: src/mainuan_recursos/github_channel.py:403
 msgid "The simulation would change unannounced packages."
 msgstr "Simuleringen ville ændre pakker, der ikke er annonceret."
 
-#: src/mainuan_recursos/github_channel.py:373
+#: src/mainuan_recursos/github_channel.py:405
 msgid "Removal, reinstallation or downgrade blocked."
 msgstr "Fjernelse, geninstallation eller nedgradering blokeret."
 
-#: src/mainuan_recursos/github_channel.py:385
-#: src/mainuan_recursos/github_channel.py:386
+#: src/mainuan_recursos/github_channel.py:417
+#: src/mainuan_recursos/github_channel.py:418
 msgid "Invalid GitHub cache."
 msgstr "Ugyldig GitHub-cache."
 
-#: src/mainuan_recursos/github_channel.py:391
+#: src/mainuan_recursos/github_channel.py:423
 msgid "Invalid local edition."
 msgstr "Ugyldig lokal udgave."
 
-#: src/mainuan_recursos/github_channel.py:394
+#: src/mainuan_recursos/github_channel.py:426
 msgid "Invalid local artifact."
 msgstr "Ugyldigt lokalt artefakt."
 
-#: src/mainuan_recursos/github_channel.py:398
+#: src/mainuan_recursos/github_channel.py:430
 msgid "Invalid GitHub history. Preserve the file before recovering it."
 msgstr "Ugyldig GitHub-historik. Bevar filen, før du gendanner den."
 
-#: src/mainuan_recursos/github_channel.py:415
+#: src/mainuan_recursos/github_channel.py:447
 msgid "Cannot install:"
 msgstr "Kan ikke installere:"
 
-#: src/mainuan_recursos/github_channel.py:417
+#: src/mainuan_recursos/github_channel.py:449
 msgid ""
 "You have already received all the features. No reinstallation will be done."
 msgstr ""
 "Du har allerede modtaget alle funktionerne. Der foretages ingen "
 "geninstallation."
 
-#: src/mainuan_recursos/github_channel.py:419
+#: src/mainuan_recursos/github_channel.py:451
 msgid "The package state has changed. Check for news again."
 msgstr "Pakketilstanden er ændret. Søg efter nyheder igen."
 
-#: src/mainuan_recursos/github_channel.py:432
+#: src/mainuan_recursos/github_channel.py:464
 msgid "The operation has changed; installation blocked."
 msgstr "Handlingen er ændret; installationen er blokeret."
 

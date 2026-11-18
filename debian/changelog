@@ -1,3 +1,11 @@
+mainuan-atualizador-recursos (0.3.1) resolute; urgency=medium
+
+  * A mensagem do canal GitHub segue o idioma da sessão: message.<idioma>.txt,
+    depois message.en.txt e message.txt. Num sistema em inglês, o cabeçalho
+    da janela de novidades aparecia em português.
+
+ -- ruscher <rruscher@gmail.com>  Wed, 18 Nov 2026 16:00:00 -0300
+
 mainuan-atualizador-recursos (0.3.0) resolute; urgency=medium
 
   * Interface traduzida: textos de origem em inglês e catálogos em 33 idiomas,

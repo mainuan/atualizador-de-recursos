@@ -9,6 +9,7 @@ import sys
 import tempfile
 import unittest
 from unittest.mock import Mock, patch
+from urllib.error import HTTPError
 
 from PyQt6.QtCore import QObject, QTimer, pyqtSignal
 
@@ -32,6 +33,7 @@ class Fixture:
         self.payload = b'pacote ficticio, nunca instalado'
         self.digest = hashlib.sha256(self.payload).hexdigest()
         self.overrides = {}
+        self.localized = {}
         self.calls = []
 
     def asset(self, name):
@@ -53,6 +55,11 @@ class Fixture:
             return ('\n'.join(self.names) + '\n').encode()
         elif url.endswith('/message.txt'):
             return self.message.encode()
+        elif url.startswith('https://raw.githubusercontent.com/') and '/message.' in url:
+            language = url.rsplit('/message.', 1)[1].removesuffix('.txt')
+            if language not in self.localized:
+                raise HTTPError(url, 404, 'Not Found', {}, None)
+            return self.localized[language].encode()
         else:
             name, _, suffix = url.removeprefix(github.API).partition('/')
             if not suffix:
@@ -89,6 +96,42 @@ class ChannelTests(unittest.TestCase):
 
     def load(self):
         return self.channel.load()[0].releases[0]
+
+    def load_in(self, **environment):
+        clean = {k: '' for k in ('LANGUAGE', 'LC_ALL', 'LC_MESSAGES', 'LANG')}
+        clean.update(environment)
+        with patch.dict(os.environ, clean):
+            return self.load()
+
+    def test_message_follows_session_language(self):
+        self.fixture.localized = {'en': 'Hello! Mainuan has news.\n', 'ja': 'こんにちは\n', 'zh_TW': '你好\n'}
+        english = self.load_in(LANGUAGE='en_US', LANG='en_US.UTF-8', LC_TIME='pt_BR.UTF-8')
+        self.assertEqual(english.summary, 'Hello! Mainuan has news.\n')
+        self.assertEqual(self.load_in(LANG='ja_JP.UTF-8').summary, 'こんにちは\n')
+        self.assertEqual(self.load_in(LANG='zh_TW.UTF-8').summary, '你好\n')
+        # Sem tradução: inglês, nunca português para quem não escolheu português.
+        self.assertEqual(self.load_in(LANG='it_IT.UTF-8').summary, 'Hello! Mainuan has news.\n')
+        # Lista de idiomas: o inglês vem antes do português.
+        self.assertEqual(self.load_in(LANGUAGE='en_US:pt_BR', LANG='en_US.UTF-8').summary,
+                         'Hello! Mainuan has news.\n')
+        self.assertEqual(self.load_in(LANGUAGE='it:pt_BR', LANG='it_IT.UTF-8').summary, self.fixture.message)
+        # Português lê o message.txt sem consultas extras.
+        self.fixture.calls.clear()
+        self.assertEqual(self.load_in(LANGUAGE='pt_BR:en', LANG='pt_BR.UTF-8').summary, self.fixture.message)
+        self.assertFalse(any('/message.' in url and not url.endswith('/message.txt') for url in self.fixture.calls))
+
+    def test_message_without_translations_and_language_change_is_same_edition(self):
+        self.assertEqual(self.load_in(LANG='de_DE.UTF-8').summary, self.fixture.message)
+        sequence = self.state.data['sequence']
+        self.fixture.localized = {'en': 'Hello!\n'}
+        self.assertEqual(self.load_in(LANG='en_US.UTF-8').summary, 'Hello!\n')
+        self.assertEqual(self.state.data['sequence'], sequence)
+
+    def test_message_translation_server_error_is_not_ignored(self):
+        url = f'https://raw.githubusercontent.com/mainuan/{github.OFFICIAL}/{self.fixture.commit}/message.fr.txt'
+        self.fixture.overrides[url] = HTTPError(url, 500, 'Server Error', {}, None)
+        with self.assertRaises(OSError):
+            self.load_in(LANG='fr_FR.UTF-8')
 
     def test_metadata_only_consistent_commit_and_real_package_name(self):
         release = self.load()
@@ -330,6 +373,9 @@ class OriginTests(unittest.TestCase):
     def test_https_scope_and_redirect_validation(self):
         github.validate_url(f'https://raw.githubusercontent.com/mainuan/{github.OFFICIAL}/' + 'a'*40 + '/packages.txt')
         github.validate_url(f'https://raw.githubusercontent.com/mainuan/{github.OFFICIAL}/' + 'a'*40 + '/message.txt')
+        github.validate_url(f'https://raw.githubusercontent.com/mainuan/{github.OFFICIAL}/' + 'a'*40 + '/message.zh_TW.txt')
+        with self.assertRaises(CatalogError):
+            github.validate_url(f'https://raw.githubusercontent.com/mainuan/{github.OFFICIAL}/' + 'a'*40 + '/message.../x.txt')
         for url in ('http://api.github.com/repos/mainuan/repo', 'https://api.github.com/repos/mainuan-malicioso/repo',
                     'https://github.com/terceiro/repo/releases/download/v1/pkg.deb',
                     'https://github.com/mainuan/repo/releases/download/../v1/pkg.deb',

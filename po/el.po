@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: mainuan-atualizador-recursos\n"
 "Report-Msgid-Bugs-To: https://github.com/mainuan/atualizador-de-recursos/"
 "issues\n"
-"POT-Creation-Date: 2026-11-16 11:30-0300\n"
+"POT-Creation-Date: 2026-11-18 13:16-0300\n"
 "PO-Revision-Date: 2026-11-16 11:30-0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: el <https://github.com/mainuan>\n"
@@ -354,7 +354,7 @@ msgstr ""
 #: src/mainuan_recursos/controller.py:77 src/mainuan_recursos/controller.py:115
 #: src/mainuan_recursos/controller.py:147
 #: src/mainuan_recursos/controller.py:155 src/mainuan_recursos/demo.py:68
-#: src/mainuan_recursos/github_channel.py:359
+#: src/mainuan_recursos/github_channel.py:391
 #: src/mainuan_recursos/github_trial.py:201
 #: src/mainuan_recursos/packagekit.py:193
 msgid "Preparing installation..."
@@ -398,7 +398,7 @@ msgstr ""
 "τις λεπτομέρειες."
 
 #: src/mainuan_recursos/controller.py:134 src/mainuan_recursos/demo.py:69
-#: src/mainuan_recursos/github_channel.py:440
+#: src/mainuan_recursos/github_channel.py:472
 #: src/mainuan_recursos/github_trial.py:250
 #: src/mainuan_recursos/packagekit.py:190
 msgid "Installing new features..."
@@ -515,18 +515,18 @@ msgstr ""
 msgid "Artifact unavailable or invalid size."
 msgstr "Το αρχείο έκδοσης δεν είναι διαθέσιμο ή έχει μη έγκυρο μέγεθος."
 
-#: src/mainuan_recursos/github_channel.py:126
-#: src/mainuan_recursos/github_channel.py:260
+#: src/mainuan_recursos/github_channel.py:157
+#: src/mainuan_recursos/github_channel.py:292
 msgid "GitHub history exceeds the allowed limit."
 msgstr "Το ιστορικό του GitHub υπερβαίνει το επιτρεπόμενο όριο."
 
-#: src/mainuan_recursos/github_channel.py:139
-#: src/mainuan_recursos/github_channel.py:253
+#: src/mainuan_recursos/github_channel.py:170
+#: src/mainuan_recursos/github_channel.py:285
 #: src/mainuan_recursos/github_trial.py:146
 msgid "Mainuan has news!"
 msgstr "Το Mainuan έχει νέα!"
 
-#: src/mainuan_recursos/github_channel.py:147
+#: src/mainuan_recursos/github_channel.py:178
 #, python-brace-format
 msgid ""
 "Repository does not belong to the official organization or is unavailable: "
@@ -535,77 +535,77 @@ msgstr ""
 "Το αποθετήριο δεν ανήκει στον επίσημο οργανισμό ή δεν είναι διαθέσιμο: "
 "{repository}"
 
-#: src/mainuan_recursos/github_channel.py:149
+#: src/mainuan_recursos/github_channel.py:180
 #, python-brace-format
 msgid "The repository identity was replaced: {repository}"
 msgstr "Η ταυτότητα του αποθετηρίου αντικαταστάθηκε: {repository}"
 
-#: src/mainuan_recursos/github_channel.py:155
+#: src/mainuan_recursos/github_channel.py:186
 #, python-brace-format
 msgid "Invalid list of releases: {repository}"
 msgstr "Μη έγκυρη λίστα εκδόσεων: {repository}"
 
-#: src/mainuan_recursos/github_channel.py:160
+#: src/mainuan_recursos/github_channel.py:191
 #, python-brace-format
 msgid "Too many releases for a safe query: {repository}"
 msgstr "Πάρα πολλές εκδόσεις για ασφαλές ερώτημα: {repository}"
 
-#: src/mainuan_recursos/github_channel.py:163
+#: src/mainuan_recursos/github_channel.py:194
 msgid "Release with a future date. Check the system clock."
 msgstr "Έκδοση με μελλοντική ημερομηνία. Ελέγξτε το ρολόι του συστήματος."
 
-#: src/mainuan_recursos/github_channel.py:164
+#: src/mainuan_recursos/github_channel.py:195
 msgid "Invalid release ID."
 msgstr "Μη έγκυρο αναγνωριστικό έκδοσης."
 
-#: src/mainuan_recursos/github_channel.py:168
+#: src/mainuan_recursos/github_channel.py:199
 msgid "Invalid list of artifacts."
 msgstr "Μη έγκυρη λίστα αρχείων έκδοσης."
 
-#: src/mainuan_recursos/github_channel.py:173
+#: src/mainuan_recursos/github_channel.py:204
 msgid "Too many artifacts in the release."
 msgstr "Πάρα πολλά αρχεία στην έκδοση."
 
-#: src/mainuan_recursos/github_channel.py:183
+#: src/mainuan_recursos/github_channel.py:214
 #, python-brace-format
 msgid "Duplicate or ambiguous packages in the release: {repository}"
 msgstr "Διπλότυπα ή ασαφή πακέτα στην έκδοση: {repository}"
 
-#: src/mainuan_recursos/github_channel.py:188
+#: src/mainuan_recursos/github_channel.py:219
 msgid "Artifact URL does not match the selected release."
 msgstr "Το URL του αρχείου δεν αντιστοιχεί στην επιλεγμένη έκδοση."
 
-#: src/mainuan_recursos/github_channel.py:190
+#: src/mainuan_recursos/github_channel.py:221
 msgid "Invalid immutable reference of the release."
 msgstr "Μη έγκυρη αμετάβλητη αναφορά της έκδοσης."
 
-#: src/mainuan_recursos/github_channel.py:196
+#: src/mainuan_recursos/github_channel.py:227
 #, python-brace-format
 msgid "No stable release with a compatible Debian package: {repository}"
 msgstr "Δεν υπάρχει σταθερή έκδοση με συμβατό πακέτο Debian: {repository}"
 
-#: src/mainuan_recursos/github_channel.py:218
+#: src/mainuan_recursos/github_channel.py:249
 msgid "This channel is intended for Mainuan based on Kubuntu 26.04."
 msgstr ""
 "Αυτό το κανάλι προορίζεται για το Mainuan που βασίζεται στο Kubuntu 26.04."
 
-#: src/mainuan_recursos/github_channel.py:220
+#: src/mainuan_recursos/github_channel.py:251
 msgid "Invalid official reference."
 msgstr "Μη έγκυρη επίσημη αναφορά."
 
-#: src/mainuan_recursos/github_channel.py:224
+#: src/mainuan_recursos/github_channel.py:255
 msgid "message.txt is empty."
 msgstr "Το message.txt είναι κενό."
 
-#: src/mainuan_recursos/github_channel.py:228
+#: src/mainuan_recursos/github_channel.py:260
 msgid "packages.txt contains invalid or repeated repositories."
 msgstr "Το packages.txt περιέχει μη έγκυρα ή επαναλαμβανόμενα αποθετήρια."
 
-#: src/mainuan_recursos/github_channel.py:234
+#: src/mainuan_recursos/github_channel.py:266
 msgid "Two repositories offer the same Debian package."
 msgstr "Δύο αποθετήρια προσφέρουν το ίδιο πακέτο Debian."
 
-#: src/mainuan_recursos/github_channel.py:239
+#: src/mainuan_recursos/github_channel.py:271
 #, python-brace-format
 msgid "An already announced release or artifact was replaced: {package}"
 msgstr ""
@@ -613,81 +613,81 @@ msgstr ""
 
 # reviewed: ungrammatical 'σε παλαιότερη από δημοσιευμένη έκδοση' (missing
 # article, unclear); rephrased as rollback of a published version
-#: src/mainuan_recursos/github_channel.py:243
+#: src/mainuan_recursos/github_channel.py:275
 #, python-brace-format
 msgid "Rollback of a published version blocked: {package}"
 msgstr ""
 "Αποκλείστηκε η επαναφορά δημοσιευμένης έκδοσης σε παλαιότερη: {package}"
 
-#: src/mainuan_recursos/github_channel.py:264
+#: src/mainuan_recursos/github_channel.py:296
 msgid "News not queried in this channel."
 msgstr "Δεν γίνεται αναζήτηση νέων σε αυτό το κανάλι."
 
-#: src/mainuan_recursos/github_channel.py:272
+#: src/mainuan_recursos/github_channel.py:304
 msgid "Package missing or size mismatch."
 msgstr "Το πακέτο λείπει ή το μέγεθος δεν αντιστοιχεί."
 
-#: src/mainuan_recursos/github_channel.py:274
+#: src/mainuan_recursos/github_channel.py:306
 msgid "SHA-256 integrity mismatch; installation blocked."
 msgstr "Αναντιστοιχία ακεραιότητας SHA-256· η εγκατάσταση αποκλείστηκε."
 
-#: src/mainuan_recursos/github_channel.py:278
+#: src/mainuan_recursos/github_channel.py:310
 msgid "Internal package metadata does not match the release."
 msgstr "Τα εσωτερικά μεταδεδομένα του πακέτου δεν αντιστοιχούν στην έκδοση."
 
-#: src/mainuan_recursos/github_channel.py:292
+#: src/mainuan_recursos/github_channel.py:324
 #: src/mainuan_recursos/github_trial.py:162 src/mainuan_recursos/packages.py:96
 msgid "Package with incomplete configuration"
 msgstr "Πακέτο με ελλιπή διαμόρφωση"
 
-#: src/mainuan_recursos/github_channel.py:296
+#: src/mainuan_recursos/github_channel.py:328
 #: src/mainuan_recursos/github_trial.py:167 src/mainuan_recursos/packages.py:98
 msgid "Package held by the administrator"
 msgstr "Πακέτο που κρατείται από τον διαχειριστή"
 
-#: src/mainuan_recursos/github_channel.py:302
+#: src/mainuan_recursos/github_channel.py:334
 #: src/mainuan_recursos/github_trial.py:173
 #, python-brace-format
 msgid "Unmet dependencies: {details}"
 msgstr "Ανικανοποίητες εξαρτήσεις: {details}"
 
-#: src/mainuan_recursos/github_channel.py:304
+#: src/mainuan_recursos/github_channel.py:336
 msgid "The operation requires additional unannounced packages"
 msgstr "Η λειτουργία απαιτεί επιπλέον πακέτα που δεν έχουν ανακοινωθεί"
 
-#: src/mainuan_recursos/github_channel.py:312
+#: src/mainuan_recursos/github_channel.py:344
 msgid "The announced release was withdrawn or changed."
 msgstr "Η ανακοινωμένη έκδοση αποσύρθηκε ή άλλαξε."
 
-#: src/mainuan_recursos/github_channel.py:314
+#: src/mainuan_recursos/github_channel.py:346
 msgid "The release reference was replaced; installation blocked."
 msgstr "Η αναφορά της έκδοσης αντικαταστάθηκε· η εγκατάσταση αποκλείστηκε."
 
-#: src/mainuan_recursos/github_channel.py:317
+#: src/mainuan_recursos/github_channel.py:349
 msgid "The artifact was changed after the query; check for news again."
 msgstr "Το αρχείο άλλαξε μετά το ερώτημα· ελέγξτε ξανά για νέα."
 
-#: src/mainuan_recursos/github_channel.py:334
+#: src/mainuan_recursos/github_channel.py:366
 msgid "Download exceeds the approved size."
 msgstr "Η λήψη υπερβαίνει το εγκεκριμένο μέγεθος."
 
-#: src/mainuan_recursos/github_channel.py:337
-#: src/mainuan_recursos/github_channel.py:356
+#: src/mainuan_recursos/github_channel.py:369
+#: src/mainuan_recursos/github_channel.py:388
 #: src/mainuan_recursos/github_trial.py:189
 #: src/mainuan_recursos/github_trial.py:191
 #: src/mainuan_recursos/packagekit.py:191
 msgid "Downloading new features..."
 msgstr "Λήψη νέων δυνατοτήτων..."
 
-#: src/mainuan_recursos/github_channel.py:338
+#: src/mainuan_recursos/github_channel.py:370
 msgid "Download with SHA-256 integrity mismatch."
 msgstr "Λήψη με αναντιστοιχία ακεραιότητας SHA-256."
 
-#: src/mainuan_recursos/github_channel.py:345
+#: src/mainuan_recursos/github_channel.py:377
 msgid "Check for news online before installing."
 msgstr "Ελέγξτε για νέα στο διαδίκτυο πριν από την εγκατάσταση."
 
-#: src/mainuan_recursos/github_channel.py:347
+#: src/mainuan_recursos/github_channel.py:379
 msgid ""
 "Installation requires a regular user and an installed session, outside Live "
 "mode."
@@ -695,50 +695,50 @@ msgstr ""
 "Η εγκατάσταση απαιτεί κανονικό χρήστη και εγκατεστημένη συνεδρία, εκτός "
 "λειτουργίας Live."
 
-#: src/mainuan_recursos/github_channel.py:367
+#: src/mainuan_recursos/github_channel.py:399
 msgid "PackageKit proposed additional packages or an incomplete operation."
 msgstr "Το PackageKit πρότεινε επιπλέον πακέτα ή ελλιπή λειτουργία."
 
-#: src/mainuan_recursos/github_channel.py:371
+#: src/mainuan_recursos/github_channel.py:403
 msgid "The simulation would change unannounced packages."
 msgstr "Η προσομοίωση θα άλλαζε πακέτα που δεν έχουν ανακοινωθεί."
 
-#: src/mainuan_recursos/github_channel.py:373
+#: src/mainuan_recursos/github_channel.py:405
 msgid "Removal, reinstallation or downgrade blocked."
 msgstr "Η αφαίρεση, η επανεγκατάσταση ή η υποβάθμιση αποκλείστηκε."
 
-#: src/mainuan_recursos/github_channel.py:385
-#: src/mainuan_recursos/github_channel.py:386
+#: src/mainuan_recursos/github_channel.py:417
+#: src/mainuan_recursos/github_channel.py:418
 msgid "Invalid GitHub cache."
 msgstr "Μη έγκυρη κρυφή μνήμη GitHub."
 
-#: src/mainuan_recursos/github_channel.py:391
+#: src/mainuan_recursos/github_channel.py:423
 msgid "Invalid local edition."
 msgstr "Μη έγκυρη τοπική έκδοση."
 
-#: src/mainuan_recursos/github_channel.py:394
+#: src/mainuan_recursos/github_channel.py:426
 msgid "Invalid local artifact."
 msgstr "Μη έγκυρο τοπικό αρχείο έκδοσης."
 
-#: src/mainuan_recursos/github_channel.py:398
+#: src/mainuan_recursos/github_channel.py:430
 msgid "Invalid GitHub history. Preserve the file before recovering it."
 msgstr ""
 "Μη έγκυρο ιστορικό GitHub. Διατηρήστε το αρχείο πριν από την ανάκτησή του."
 
-#: src/mainuan_recursos/github_channel.py:415
+#: src/mainuan_recursos/github_channel.py:447
 msgid "Cannot install:"
 msgstr "Δεν είναι δυνατή η εγκατάσταση:"
 
-#: src/mainuan_recursos/github_channel.py:417
+#: src/mainuan_recursos/github_channel.py:449
 msgid ""
 "You have already received all the features. No reinstallation will be done."
 msgstr "Έχετε ήδη λάβει όλες τις δυνατότητες. Δεν θα γίνει επανεγκατάσταση."
 
-#: src/mainuan_recursos/github_channel.py:419
+#: src/mainuan_recursos/github_channel.py:451
 msgid "The package state has changed. Check for news again."
 msgstr "Η κατάσταση των πακέτων άλλαξε. Ελέγξτε ξανά για νέα."
 
-#: src/mainuan_recursos/github_channel.py:432
+#: src/mainuan_recursos/github_channel.py:464
 msgid "The operation has changed; installation blocked."
 msgstr "Η λειτουργία άλλαξε· η εγκατάσταση αποκλείστηκε."
 
