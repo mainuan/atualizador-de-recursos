@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: mainuan-atualizador-recursos\n"
 "Report-Msgid-Bugs-To: https://github.com/mainuan/atualizador-de-recursos/"
 "issues\n"
-"POT-Creation-Date: 2026-11-16 11:30-0300\n"
+"POT-Creation-Date: 2026-11-18 13:13-0300\n"
 "PO-Revision-Date: 2026-11-16 11:30-0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: ko <https://github.com/mainuan>\n"
@@ -340,7 +340,7 @@ msgstr "알림을 24시간 동안 미루며, 수동으로는 계속 접근할 �
 #: src/mainuan_recursos/controller.py:77 src/mainuan_recursos/controller.py:115
 #: src/mainuan_recursos/controller.py:147
 #: src/mainuan_recursos/controller.py:155 src/mainuan_recursos/demo.py:68
-#: src/mainuan_recursos/github_channel.py:359
+#: src/mainuan_recursos/github_channel.py:390
 #: src/mainuan_recursos/github_trial.py:201
 #: src/mainuan_recursos/packagekit.py:193
 msgid "Preparing installation..."
@@ -381,7 +381,7 @@ msgstr ""
 "의존성이 변경되었습니다. 세부 정보를 확인하려면 새 작업을 준비하십시오."
 
 #: src/mainuan_recursos/controller.py:134 src/mainuan_recursos/demo.py:69
-#: src/mainuan_recursos/github_channel.py:440
+#: src/mainuan_recursos/github_channel.py:471
 #: src/mainuan_recursos/github_trial.py:250
 #: src/mainuan_recursos/packagekit.py:190
 msgid "Installing new features..."
@@ -494,172 +494,172 @@ msgstr "릴리스에 GitHub에서 게시한 {file}의 검증 가능한 SHA-256�
 msgid "Artifact unavailable or invalid size."
 msgstr "아티팩트를 사용할 수 없거나 크기가 잘못되었습니다."
 
-#: src/mainuan_recursos/github_channel.py:126
-#: src/mainuan_recursos/github_channel.py:260
+#: src/mainuan_recursos/github_channel.py:156
+#: src/mainuan_recursos/github_channel.py:291
 msgid "GitHub history exceeds the allowed limit."
 msgstr "GitHub 기록이 허용된 한도를 초과합니다."
 
-#: src/mainuan_recursos/github_channel.py:139
-#: src/mainuan_recursos/github_channel.py:253
+#: src/mainuan_recursos/github_channel.py:169
+#: src/mainuan_recursos/github_channel.py:284
 #: src/mainuan_recursos/github_trial.py:146
 msgid "Mainuan has news!"
 msgstr "Mainuan에 새 소식이 있습니다!"
 
-#: src/mainuan_recursos/github_channel.py:147
+#: src/mainuan_recursos/github_channel.py:177
 #, python-brace-format
 msgid ""
 "Repository does not belong to the official organization or is unavailable: "
 "{repository}"
 msgstr "저장소가 공식 조직에 속하지 않거나 사용할 수 없음: {repository}"
 
-#: src/mainuan_recursos/github_channel.py:149
+#: src/mainuan_recursos/github_channel.py:179
 #, python-brace-format
 msgid "The repository identity was replaced: {repository}"
 msgstr "저장소 ID가 교체됨: {repository}"
 
-#: src/mainuan_recursos/github_channel.py:155
+#: src/mainuan_recursos/github_channel.py:185
 #, python-brace-format
 msgid "Invalid list of releases: {repository}"
 msgstr "잘못된 릴리스 목록: {repository}"
 
-#: src/mainuan_recursos/github_channel.py:160
+#: src/mainuan_recursos/github_channel.py:190
 #, python-brace-format
 msgid "Too many releases for a safe query: {repository}"
 msgstr "안전하게 조회하기에는 릴리스가 너무 많음: {repository}"
 
-#: src/mainuan_recursos/github_channel.py:163
+#: src/mainuan_recursos/github_channel.py:193
 msgid "Release with a future date. Check the system clock."
 msgstr "릴리스 날짜가 미래로 되어 있습니다. 시스템 시계를 확인하십시오."
 
-#: src/mainuan_recursos/github_channel.py:164
+#: src/mainuan_recursos/github_channel.py:194
 msgid "Invalid release ID."
 msgstr "잘못된 릴리스 ID입니다."
 
-#: src/mainuan_recursos/github_channel.py:168
+#: src/mainuan_recursos/github_channel.py:198
 msgid "Invalid list of artifacts."
 msgstr "잘못된 아티팩트 목록입니다."
 
-#: src/mainuan_recursos/github_channel.py:173
+#: src/mainuan_recursos/github_channel.py:203
 msgid "Too many artifacts in the release."
 msgstr "릴리스에 아티팩트가 너무 많습니다."
 
-#: src/mainuan_recursos/github_channel.py:183
+#: src/mainuan_recursos/github_channel.py:213
 #, python-brace-format
 msgid "Duplicate or ambiguous packages in the release: {repository}"
 msgstr "릴리스에 중복되거나 모호한 패키지가 있음: {repository}"
 
-#: src/mainuan_recursos/github_channel.py:188
+#: src/mainuan_recursos/github_channel.py:218
 msgid "Artifact URL does not match the selected release."
 msgstr "아티팩트 URL이 선택한 릴리스와 일치하지 않습니다."
 
-#: src/mainuan_recursos/github_channel.py:190
+#: src/mainuan_recursos/github_channel.py:220
 msgid "Invalid immutable reference of the release."
 msgstr "릴리스의 불변 참조가 잘못되었습니다."
 
-#: src/mainuan_recursos/github_channel.py:196
+#: src/mainuan_recursos/github_channel.py:226
 #, python-brace-format
 msgid "No stable release with a compatible Debian package: {repository}"
 msgstr "호환되는 데비안 패키지가 있는 안정 릴리스가 없음: {repository}"
 
-#: src/mainuan_recursos/github_channel.py:218
+#: src/mainuan_recursos/github_channel.py:248
 msgid "This channel is intended for Mainuan based on Kubuntu 26.04."
 msgstr "이 채널은 Kubuntu 26.04 기반 Mainuan용입니다."
 
-#: src/mainuan_recursos/github_channel.py:220
+#: src/mainuan_recursos/github_channel.py:250
 msgid "Invalid official reference."
 msgstr "잘못된 공식 참조입니다."
 
-#: src/mainuan_recursos/github_channel.py:224
+#: src/mainuan_recursos/github_channel.py:254
 msgid "message.txt is empty."
 msgstr "message.txt가 비어 있습니다."
 
-#: src/mainuan_recursos/github_channel.py:228
+#: src/mainuan_recursos/github_channel.py:259
 msgid "packages.txt contains invalid or repeated repositories."
 msgstr "packages.txt에 잘못되었거나 중복된 저장소가 있습니다."
 
-#: src/mainuan_recursos/github_channel.py:234
+#: src/mainuan_recursos/github_channel.py:265
 msgid "Two repositories offer the same Debian package."
 msgstr "두 저장소가 같은 데비안 패키지를 제공합니다."
 
-#: src/mainuan_recursos/github_channel.py:239
+#: src/mainuan_recursos/github_channel.py:270
 #, python-brace-format
 msgid "An already announced release or artifact was replaced: {package}"
 msgstr "이미 안내된 릴리스 또는 아티팩트가 교체됨: {package}"
 
-#: src/mainuan_recursos/github_channel.py:243
+#: src/mainuan_recursos/github_channel.py:274
 #, python-brace-format
 msgid "Rollback of a published version blocked: {package}"
 msgstr "게시된 버전의 롤백이 차단됨: {package}"
 
-#: src/mainuan_recursos/github_channel.py:264
+#: src/mainuan_recursos/github_channel.py:295
 msgid "News not queried in this channel."
 msgstr "이 채널에서는 소식을 조회하지 않습니다."
 
-#: src/mainuan_recursos/github_channel.py:272
+#: src/mainuan_recursos/github_channel.py:303
 msgid "Package missing or size mismatch."
 msgstr "패키지가 없거나 크기가 일치하지 않습니다."
 
-#: src/mainuan_recursos/github_channel.py:274
+#: src/mainuan_recursos/github_channel.py:305
 msgid "SHA-256 integrity mismatch; installation blocked."
 msgstr "SHA-256 무결성이 일치하지 않아 설치가 차단되었습니다."
 
-#: src/mainuan_recursos/github_channel.py:278
+#: src/mainuan_recursos/github_channel.py:309
 msgid "Internal package metadata does not match the release."
 msgstr "패키지 내부 메타데이터가 릴리스와 일치하지 않습니다."
 
-#: src/mainuan_recursos/github_channel.py:292
+#: src/mainuan_recursos/github_channel.py:323
 #: src/mainuan_recursos/github_trial.py:162 src/mainuan_recursos/packages.py:96
 msgid "Package with incomplete configuration"
 msgstr "설정이 완료되지 않은 패키지"
 
-#: src/mainuan_recursos/github_channel.py:296
+#: src/mainuan_recursos/github_channel.py:327
 #: src/mainuan_recursos/github_trial.py:167 src/mainuan_recursos/packages.py:98
 msgid "Package held by the administrator"
 msgstr "관리자가 고정한 패키지"
 
-#: src/mainuan_recursos/github_channel.py:302
+#: src/mainuan_recursos/github_channel.py:333
 #: src/mainuan_recursos/github_trial.py:173
 #, python-brace-format
 msgid "Unmet dependencies: {details}"
 msgstr "충족되지 않은 의존성: {details}"
 
-#: src/mainuan_recursos/github_channel.py:304
+#: src/mainuan_recursos/github_channel.py:335
 msgid "The operation requires additional unannounced packages"
 msgstr "이 작업에는 안내되지 않은 추가 패키지가 필요합니다"
 
-#: src/mainuan_recursos/github_channel.py:312
+#: src/mainuan_recursos/github_channel.py:343
 msgid "The announced release was withdrawn or changed."
 msgstr "안내된 릴리스가 철회되었거나 변경되었습니다."
 
-#: src/mainuan_recursos/github_channel.py:314
+#: src/mainuan_recursos/github_channel.py:345
 msgid "The release reference was replaced; installation blocked."
 msgstr "릴리스 참조가 교체되어 설치가 차단되었습니다."
 
-#: src/mainuan_recursos/github_channel.py:317
+#: src/mainuan_recursos/github_channel.py:348
 msgid "The artifact was changed after the query; check for news again."
 msgstr "조회 후 아티팩트가 변경되었습니다. 소식을 다시 확인하십시오."
 
-#: src/mainuan_recursos/github_channel.py:334
+#: src/mainuan_recursos/github_channel.py:365
 msgid "Download exceeds the approved size."
 msgstr "다운로드가 승인된 크기를 초과합니다."
 
-#: src/mainuan_recursos/github_channel.py:337
-#: src/mainuan_recursos/github_channel.py:356
+#: src/mainuan_recursos/github_channel.py:368
+#: src/mainuan_recursos/github_channel.py:387
 #: src/mainuan_recursos/github_trial.py:189
 #: src/mainuan_recursos/github_trial.py:191
 #: src/mainuan_recursos/packagekit.py:191
 msgid "Downloading new features..."
 msgstr "새 기능 다운로드 중..."
 
-#: src/mainuan_recursos/github_channel.py:338
+#: src/mainuan_recursos/github_channel.py:369
 msgid "Download with SHA-256 integrity mismatch."
 msgstr "다운로드의 SHA-256 무결성이 일치하지 않습니다."
 
-#: src/mainuan_recursos/github_channel.py:345
+#: src/mainuan_recursos/github_channel.py:376
 msgid "Check for news online before installing."
 msgstr "설치하기 전에 온라인에서 소식을 확인하십시오."
 
-#: src/mainuan_recursos/github_channel.py:347
+#: src/mainuan_recursos/github_channel.py:378
 msgid ""
 "Installation requires a regular user and an installed session, outside Live "
 "mode."
@@ -667,49 +667,49 @@ msgstr ""
 "설치하려면 일반 사용자 계정과 설치된 세션이 필요하며, 라이브 모드에서는 설치"
 "할 수 없습니다."
 
-#: src/mainuan_recursos/github_channel.py:367
+#: src/mainuan_recursos/github_channel.py:398
 msgid "PackageKit proposed additional packages or an incomplete operation."
 msgstr "PackageKit이 추가 패키지 또는 불완전한 작업을 제안했습니다."
 
-#: src/mainuan_recursos/github_channel.py:371
+#: src/mainuan_recursos/github_channel.py:402
 msgid "The simulation would change unannounced packages."
 msgstr "시뮬레이션에서 안내되지 않은 패키지가 변경될 수 있습니다."
 
-#: src/mainuan_recursos/github_channel.py:373
+#: src/mainuan_recursos/github_channel.py:404
 msgid "Removal, reinstallation or downgrade blocked."
 msgstr "삭제, 재설치 또는 다운그레이드가 차단되었습니다."
 
-#: src/mainuan_recursos/github_channel.py:385
-#: src/mainuan_recursos/github_channel.py:386
+#: src/mainuan_recursos/github_channel.py:416
+#: src/mainuan_recursos/github_channel.py:417
 msgid "Invalid GitHub cache."
 msgstr "잘못된 GitHub 캐시입니다."
 
-#: src/mainuan_recursos/github_channel.py:391
+#: src/mainuan_recursos/github_channel.py:422
 msgid "Invalid local edition."
 msgstr "잘못된 로컬 에디션입니다."
 
-#: src/mainuan_recursos/github_channel.py:394
+#: src/mainuan_recursos/github_channel.py:425
 msgid "Invalid local artifact."
 msgstr "잘못된 로컬 아티팩트입니다."
 
-#: src/mainuan_recursos/github_channel.py:398
+#: src/mainuan_recursos/github_channel.py:429
 msgid "Invalid GitHub history. Preserve the file before recovering it."
 msgstr "잘못된 GitHub 기록입니다. 복구하기 전에 파일을 보존하십시오."
 
-#: src/mainuan_recursos/github_channel.py:415
+#: src/mainuan_recursos/github_channel.py:446
 msgid "Cannot install:"
 msgstr "설치할 수 없음:"
 
-#: src/mainuan_recursos/github_channel.py:417
+#: src/mainuan_recursos/github_channel.py:448
 msgid ""
 "You have already received all the features. No reinstallation will be done."
 msgstr "모든 기능을 이미 받았습니다. 재설치하지 않습니다."
 
-#: src/mainuan_recursos/github_channel.py:419
+#: src/mainuan_recursos/github_channel.py:450
 msgid "The package state has changed. Check for news again."
 msgstr "패키지 상태가 변경되었습니다. 소식을 다시 확인하십시오."
 
-#: src/mainuan_recursos/github_channel.py:432
+#: src/mainuan_recursos/github_channel.py:463
 msgid "The operation has changed; installation blocked."
 msgstr "작업이 변경되어 설치가 차단되었습니다."
 
