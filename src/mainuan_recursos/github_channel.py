@@ -59,7 +59,7 @@ def validate_url(url, repository=None, redirect=False):
         allowed = ((parsed.hostname == 'api.github.com' and bool(re.match(
             r'^/repos/mainuan/[A-Za-z0-9][A-Za-z0-9._-]{0,99}(?:/|$)', path)))
             or (parsed.hostname == 'raw.githubusercontent.com'
-                and bool(re.fullmatch(rf'/mainuan/{OFFICIAL}/[a-f0-9]{{40}}/(?:packages|message(?:\.[a-z]{2,3}(?:_[A-Z]{2})?)?)\.txt', path))))
+                and bool(re.fullmatch(rf'/mainuan/{OFFICIAL}/[a-f0-9]{{40}}/(?:packages|message(?:\.[a-z]{{2,3}}(?:_[A-Z]{{2}})?)?)\.txt', path))))
     require(allowed, _('Source or redirect outside the official Mainuan organization.'))
 
 
@@ -120,6 +120,7 @@ def localized_message(root, base):
             message = metadata(root + f'message.{language}.txt', 16000).decode('utf-8').replace('\r\n', '\n')
         except HTTPError as exc:
             if exc.code == 404:
+                exc.close()
                 return None
             raise
         if not message.strip():
