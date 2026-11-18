@@ -1,3 +1,11 @@
+mainuan-atualizador-recursos (0.3.0) resolute; urgency=medium
+
+  * Interface traduzida: textos de origem em inglês e catálogos em 33 idiomas,
+    com espelhamento para idiomas da direita para a esquerda. A versão 0.2.3
+    não tinha catálogos e mostrava português em qualquer idioma do sistema.
+
+ -- ruscher <rruscher@gmail.com>  Wed, 18 Nov 2026 09:55:08 -0300
+
 mainuan-atualizador-recursos (0.2.3) unstable; urgency=medium
 
   * Centraliza compatibilidade com Mainuan 2027.1 RC1/final e versões legadas.

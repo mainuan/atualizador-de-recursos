@@ -36,11 +36,11 @@ The app reads `packages.txt` and `message.txt` from this repository's `main` bra
 
 ## Installation
 
-Preinstalled on the Mainuan ISO. To install manually, download `mainuan-atualizador-recursos_0.2.3_all.deb` and `SHA256SUMS` from the [latest release](https://github.com/mainuan/atualizador-de-recursos/releases/latest):
+Preinstalled on the Mainuan ISO. To install manually, download `mainuan-atualizador-recursos_0.3.0_all.deb` and `SHA256SUMS` from the [latest release](https://github.com/mainuan/atualizador-de-recursos/releases/latest):
 
 ```bash
 sha256sum --check --ignore-missing SHA256SUMS
-sudo apt install ./mainuan-atualizador-recursos_0.2.3_all.deb
+sudo apt install ./mainuan-atualizador-recursos_0.3.0_all.deb
 ```
 
 ## Usage

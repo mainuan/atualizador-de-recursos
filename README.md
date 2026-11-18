@@ -48,15 +48,15 @@ Sem digest verificável, a instalação é bloqueada. O aplicativo registra loca
 
 HTTPS e o digest do GitHub **não equivalem à assinatura de um repositório APT**; as advertências nativas sobre origem não confiável são preservadas. Esses controles não protegem contra o comprometimento da própria conta oficial no GitHub ou do usuário local. Detalhes em [docs/canal-github.md](docs/canal-github.md).
 
-A compatibilidade aceita `ID=mainuan`/`VERSION_ID=2027.1` (RC1 ou final, base Kubuntu 26.04) e as identificações legadas `ubuntu`/`mainuan` com `VERSION_ID` `26.04`/`2026`; recusa `ubuntu/2027.1` e outras versões Ubuntu incompatíveis. Veja as [notas da versão 0.2.3](docs/v0.2.3.md).
+A compatibilidade aceita `ID=mainuan`/`VERSION_ID=2027.1` (RC1 ou final, base Kubuntu 26.04) e as identificações legadas `ubuntu`/`mainuan` com `VERSION_ID` `26.04`/`2026`; recusa `ubuntu/2027.1` e outras versões Ubuntu incompatíveis. Veja as [notas da versão 0.3.0](docs/v0.3.0.md).
 
 ## Instalação
 
-O Atualizador de Recursos já vem instalado na ISO do Mainuan. Para instalar manualmente, baixe `mainuan-atualizador-recursos_0.2.3_all.deb` e `SHA256SUMS` da [última release](https://github.com/mainuan/atualizador-de-recursos/releases/latest) e, na pasta dos dois arquivos:
+O Atualizador de Recursos já vem instalado na ISO do Mainuan. Para instalar manualmente, baixe `mainuan-atualizador-recursos_0.3.0_all.deb` e `SHA256SUMS` da [última release](https://github.com/mainuan/atualizador-de-recursos/releases/latest) e, na pasta dos dois arquivos:
 
 ```bash
 sha256sum --check --ignore-missing SHA256SUMS
-sudo apt install ./mainuan-atualizador-recursos_0.2.3_all.deb
+sudo apt install ./mainuan-atualizador-recursos_0.3.0_all.deb
 ```
 
 O pacote substitui o antigo `feature-update-manager`.
@@ -117,8 +117,8 @@ po/i18n.sh check-pot && po/i18n.sh validate
 python3 -m compileall -q src bin tools
 QT_QPA_PLATFORM=offscreen PYTHONPATH=src python3 -m unittest discover -s tests -v
 dpkg-buildpackage -us -uc -b        # repete os testes em dh_auto_test
-lintian --fail-on error ../mainuan-atualizador-recursos_0.2.3_all.deb
-python3 tools/audit_python_package.py ../mainuan-atualizador-recursos_0.2.3_all.deb --expected-version 0.2.3
+lintian --fail-on error ../mainuan-atualizador-recursos_0.3.0_all.deb
+python3 tools/audit_python_package.py ../mainuan-atualizador-recursos_0.3.0_all.deb --expected-version 0.3.0
 ```
 
 Para experimentar sem tocar no sistema: `PYTHONPATH=src python3 -m mainuan_recursos --demo`. O script `build-package.sh` gera o pacote em `dist/` sem privilégios administrativos.
