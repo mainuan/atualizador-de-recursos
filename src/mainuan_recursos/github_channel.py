@@ -112,23 +112,30 @@ def asset_metadata(repository, asset):
 
 def localized_message(root, base):
     """message.txt is written in Brazilian Portuguese.  Other sessions read
-    message.<language>.txt (``message.ja.txt``, ``message.zh_TW.txt``), then
-    message.en.txt; a missing translation is never an error."""
-    candidates = []
-    for language in message_languages():
-        if language.startswith('pt'):
-            return base
-        candidates.append(language)
-    candidates.append('en')
-    for language in dict.fromkeys(candidates):
+    message.<language>.txt (``message.ja.txt``, ``message.zh_TW.txt``) in the
+    session's order of languages, then message.en.txt; a missing translation
+    is never an error."""
+    def fetch(language):
         try:
             message = metadata(root + f'message.{language}.txt', 16000).decode('utf-8').replace('\r\n', '\n')
         except HTTPError as exc:
             if exc.code == 404:
-                continue
+                return None
             raise
-        if message.strip():
-            text(message, 4000, multiline=True)
+        if not message.strip():
+            return None
+        text(message, 4000, multiline=True)
+        return message
+
+    for language in message_languages():
+        if language.startswith('pt'):
+            return base
+        message = fetch(language)
+        if message:
+            return message
+    if 'en' not in message_languages():
+        message = fetch('en')
+        if message:
             return message
     return base
 

@@ -111,6 +111,10 @@ class ChannelTests(unittest.TestCase):
         self.assertEqual(self.load_in(LANG='zh_TW.UTF-8').summary, '你好\n')
         # Sem tradução: inglês, nunca português para quem não escolheu português.
         self.assertEqual(self.load_in(LANG='it_IT.UTF-8').summary, 'Hello! Mainuan has news.\n')
+        # Lista de idiomas: o inglês vem antes do português.
+        self.assertEqual(self.load_in(LANGUAGE='en_US:pt_BR', LANG='en_US.UTF-8').summary,
+                         'Hello! Mainuan has news.\n')
+        self.assertEqual(self.load_in(LANGUAGE='it:pt_BR', LANG='it_IT.UTF-8').summary, self.fixture.message)
         # Português lê o message.txt sem consultas extras.
         self.fixture.calls.clear()
         self.assertEqual(self.load_in(LANGUAGE='pt_BR:en', LANG='pt_BR.UTF-8').summary, self.fixture.message)
