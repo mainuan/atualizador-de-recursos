@@ -13,7 +13,7 @@ from pathlib import Path
 import re
 import ssl
 import tempfile
-from urllib.error import URLError
+from urllib.error import HTTPError, URLError
 from urllib.parse import quote, unquote, urlsplit
 from urllib.request import HTTPRedirectHandler, HTTPSHandler, Request, build_opener
 
@@ -22,7 +22,7 @@ from .catalog import (Catalog, CatalogError, Feature, Package, Release, NAME, VE
                       decode, require, scoped_url, text, timestamp)
 from .controller import Controller
 from .github_trial import supports_local_files
-from .i18n import _
+from .i18n import _, message_languages
 from .packagekit import Transaction
 from .packages import INSTALL, RECEIVED, UPGRADE, PackageRow, Plan, configured, identity, version_compare
 from .session import SessionKind, session_kind, system_identity, supported_system, system_compatibility
@@ -59,7 +59,7 @@ def validate_url(url, repository=None, redirect=False):
         allowed = ((parsed.hostname == 'api.github.com' and bool(re.match(
             r'^/repos/mainuan/[A-Za-z0-9][A-Za-z0-9._-]{0,99}(?:/|$)', path)))
             or (parsed.hostname == 'raw.githubusercontent.com'
-                and bool(re.fullmatch(rf'/mainuan/{OFFICIAL}/[a-f0-9]{{40}}/(?:packages|message)\.txt', path))))
+                and bool(re.fullmatch(rf'/mainuan/{OFFICIAL}/[a-f0-9]{{40}}/(?:packages|message(?:\.[a-z]{2,3}(?:_[A-Z]{2})?)?)\.txt', path))))
     require(allowed, _('Source or redirect outside the official Mainuan organization.'))
 
 
@@ -108,6 +108,29 @@ def asset_metadata(repository, asset):
     return {'repository': repository, 'asset_id': asset['id'], 'filename': asset['name'],
             'name': name, 'version': version, 'architecture': architecture, 'sha256': digest[7:],
             'size': asset['size'], 'url': asset['browser_download_url']}
+
+
+def localized_message(root, base):
+    """message.txt is written in Brazilian Portuguese.  Other sessions read
+    message.<language>.txt (``message.ja.txt``, ``message.zh_TW.txt``), then
+    message.en.txt; a missing translation is never an error."""
+    candidates = []
+    for language in message_languages():
+        if language.startswith('pt'):
+            return base
+        candidates.append(language)
+    candidates.append('en')
+    for language in dict.fromkeys(candidates):
+        try:
+            message = metadata(root + f'message.{language}.txt', 16000).decode('utf-8').replace('\r\n', '\n')
+        except HTTPError as exc:
+            if exc.code == 404:
+                continue
+            raise
+        if message.strip():
+            text(message, 4000, multiline=True)
+            return message
+    return base
 
 
 class GitHubChannel:
@@ -220,9 +243,10 @@ class GitHubChannel:
         require(bool(re.fullmatch('[a-f0-9]{40}', commit)), _('Invalid official reference.'))
         root = f'https://raw.githubusercontent.com/mainuan/{OFFICIAL}/{commit}/'
         names = metadata(root + 'packages.txt', 8192).decode('utf-8')
-        message = metadata(root + 'message.txt', 16000).decode('utf-8').replace('\r\n', '\n')
-        require(bool(message.strip()), _('message.txt is empty.'))
-        text(message, 4000, multiline=True)
+        base = metadata(root + 'message.txt', 16000).decode('utf-8').replace('\r\n', '\n')
+        require(bool(base.strip()), _('message.txt is empty.'))
+        text(base, 4000, multiline=True)
+        message = localized_message(root, base)
         repositories = [line.split('#', 1)[0].strip() for line in names.splitlines() if line.split('#', 1)[0].strip()]
         require(len(repositories) <= 20 and len(set(repositories)) == len(repositories)
                 and all(REPO.fullmatch(n) and n not in ('.', '..') for n in repositories), _('packages.txt contains invalid or repeated repositories.'))
@@ -243,7 +267,7 @@ class GitHubChannel:
                     require(version_compare(asset['version'], version) >= 0, _('Rollback of a published version blocked: {package}').format(package=name))
             pins[key] = binding
             repo_ids[asset['repository']] = asset['repository_id']
-        content = json.dumps({'message': message, 'repositories': repositories, 'assets': assets,
+        content = json.dumps({'message': base, 'repositories': repositories, 'assets': assets,
                               'features': [asdict(f) for f in features]}, sort_keys=True, ensure_ascii=False).encode()
         digest = hashlib.sha256(content).hexdigest()
         sequence = self.state.data['sequence']
