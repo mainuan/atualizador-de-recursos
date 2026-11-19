@@ -4,6 +4,7 @@ import os
 import sys
 from pathlib import Path
 
+from PyQt6 import sip
 from PyQt6.QtCore import QLockFile, QTimer
 from PyQt6.QtNetwork import QLocalServer, QLocalSocket
 from PyQt6.QtWidgets import QApplication, QMessageBox
@@ -161,4 +162,11 @@ def main(argv=None):
     else:
         window.show()
     QTimer.singleShot(60000 if opts.check else 0, window.reload)
-    return app.exec()
+    result = app.exec()
+    # Destrói a janela (e a thread de consulta) antes do QApplication: sem
+    # isso, o --check que encerra em silêncio podia terminar com SIGSEGV na
+    # finalização do Python, que libera as variáveis locais em ordem qualquer.
+    if window.worker is not None:
+        window.worker.wait()
+    sip.delete(window)
+    return result
