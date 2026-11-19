@@ -4,7 +4,6 @@ import os
 import sys
 from pathlib import Path
 
-from PyQt6 import sip
 from PyQt6.QtCore import QLockFile, QTimer
 from PyQt6.QtNetwork import QLocalServer, QLocalSocket
 from PyQt6.QtWidgets import QApplication, QMessageBox
@@ -20,7 +19,14 @@ from .session import SessionKind, session_kind
 from .state import State, state_directory
 
 
+# O QApplication vive até o fim do processo. Destruí-lo ao sair de main(),
+# junto das variáveis locais e antes de janelas, servidor e threads, fazia o
+# --check que encerra em silêncio cair com SIGSEGV em ~QGuiApplication.
+_application = None
+
+
 def main(argv=None):
+    global _application
     parser = argparse.ArgumentParser(description=_('Discover and receive the official Mainuan news.'))
     parser.add_argument('--check', action='store_true', help=_('check once after login; open only for an explicitly published announcement, otherwise exit silently'))
     parser.add_argument('--homologacao-github', action='store_true', help=_('real, manual trial in a VM: GitHub packages.txt/message.txt and Driver Manager 1.0'))
@@ -47,7 +53,7 @@ def main(argv=None):
     if opts.check and preferences is not None and not preferences.automatic:
         # O usuário desligou as novidades automáticas: nem consulta a rede.
         return 0
-    app = QApplication(sys.argv[:1])
+    app = _application = QApplication(sys.argv[:1])
     install_translations(app)
     app.setApplicationName('mainuan-atualizador-recursos')
     app.setOrganizationName('Mainuan')
@@ -158,15 +164,12 @@ def main(argv=None):
         server.newConnection.connect(connected)
     if opts.check:
         # Sem anúncio para apresentar, o processo do autostart termina em silêncio.
-        window.idle.connect(app.quit)
+        # app.quit pelo laço de eventos, fora do slot da consulta.
+        window.idle.connect(lambda: QTimer.singleShot(0, app.quit))
     else:
         window.show()
     QTimer.singleShot(60000 if opts.check else 0, window.reload)
     result = app.exec()
-    # Destrói a janela (e a thread de consulta) antes do QApplication: sem
-    # isso, o --check que encerra em silêncio podia terminar com SIGSEGV na
-    # finalização do Python, que libera as variáveis locais em ordem qualquer.
     if window.worker is not None:
         window.worker.wait()
-    sip.delete(window)
     return result

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: mainuan-atualizador-recursos\n"
 "Report-Msgid-Bugs-To: https://github.com/mainuan/atualizador-de-recursos/"
 "issues\n"
-"POT-Creation-Date: 2026-11-19 01:40-0300\n"
+"POT-Creation-Date: 2026-11-19 01:47-0300\n"
 "PO-Revision-Date: 2026-11-16 11:30-0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: bn <https://github.com/mainuan>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: data/mainuan-recursos-autostart.desktop.in:3
-#: src/mainuan_recursos/application.py:61
+#: src/mainuan_recursos/application.py:67
 msgid "Mainuan News"
 msgstr "Mainuan-এর খবর"
 
@@ -79,11 +79,11 @@ msgstr ""
 msgid "announcements.json lists invalid or repeated repositories."
 msgstr "packages.txt-এ অবৈধ বা পুনরাবৃত্ত রিপোজিটরি রয়েছে।"
 
-#: src/mainuan_recursos/application.py:24
+#: src/mainuan_recursos/application.py:30
 msgid "Discover and receive the official Mainuan news."
 msgstr "Mainuan-এর অফিসিয়াল খবর জানুন ও গ্রহণ করুন।"
 
-#: src/mainuan_recursos/application.py:25
+#: src/mainuan_recursos/application.py:31
 msgid ""
 "check once after login; open only for an explicitly published announcement, "
 "otherwise exit silently"
@@ -91,7 +91,7 @@ msgstr ""
 
 # reviewed: nome do app localizado (pt_BR traduz "Gestão de Drivers"; bn já
 # usa ড্রাইভার ম্যানেজার na dica da janela)
-#: src/mainuan_recursos/application.py:26
+#: src/mainuan_recursos/application.py:32
 msgid ""
 "real, manual trial in a VM: GitHub packages.txt/message.txt and Driver "
 "Manager 1.0"
@@ -100,39 +100,39 @@ msgstr ""
 "ম্যানেজার 1.0"
 
 # reviewed: texto de --help descreve a opção; usar substantivo verbal
-#: src/mainuan_recursos/application.py:27
+#: src/mainuan_recursos/application.py:33
 msgid "demonstrate the whole flow without modifying the system"
 msgstr "সিস্টেম পরিবর্তন না করে পুরো প্রক্রিয়াটি দেখানো"
 
-#: src/mainuan_recursos/application.py:28
+#: src/mainuan_recursos/application.py:34
 msgid "demonstration scenario"
 msgstr "ডেমো পরিস্থিতি"
 
-#: src/mainuan_recursos/application.py:29
+#: src/mainuan_recursos/application.py:35
 msgid "signed local catalog, only with --demo"
 msgstr "স্বাক্ষরিত স্থানীয় ক্যাটালগ, শুধুমাত্র --demo-এর সাথে"
 
-#: src/mainuan_recursos/application.py:30
+#: src/mainuan_recursos/application.py:36
 msgid "test configuration and key, only with --demo"
 msgstr "পরীক্ষামূলক কনফিগারেশন ও কী, শুধুমাত্র --demo-এর সাথে"
 
-#: src/mainuan_recursos/application.py:35
+#: src/mainuan_recursos/application.py:41
 msgid ""
 "--homologacao-github is manual and cannot be combined with --check/--demo."
 msgstr ""
 "--homologacao-github ম্যানুয়াল এবং এটি --check/--demo-এর সাথে একত্রে ব্যবহার করা "
 "যাবে না।"
 
-#: src/mainuan_recursos/application.py:40
+#: src/mainuan_recursos/application.py:46
 #, python-brace-format
 msgid "Acceptance test unavailable: {error}"
 msgstr "গ্রহণযোগ্যতা পরীক্ষা উপলব্ধ নয়: {error}"
 
-#: src/mainuan_recursos/application.py:42
+#: src/mainuan_recursos/application.py:48
 msgid "Use --demo --test-catalog FILE --test-config FILE together."
 msgstr "--demo --test-catalog FILE --test-config FILE একসাথে ব্যবহার করুন।"
 
-#: src/mainuan_recursos/application.py:58
+#: src/mainuan_recursos/application.py:64
 msgid ""
 "Checking for news becomes available after installing Mainuan. The Live "
 "session will not be queried."
@@ -140,38 +140,38 @@ msgstr ""
 "Mainuan ইনস্টল করার পরে খবর পরীক্ষা করা যাবে। লাইভ সেশনে কোনো অনুসন্ধান করা হবে "
 "না।"
 
-#: src/mainuan_recursos/application.py:60
+#: src/mainuan_recursos/application.py:66
 msgid ""
 "Could not determine the session type. Querying and installing features have "
 "been disabled."
 msgstr ""
 "সেশনের ধরন নির্ধারণ করা যায়নি। ফিচার অনুসন্ধান ও ইনস্টল করা নিষ্ক্রিয় করা হয়েছে।"
 
-#: src/mainuan_recursos/application.py:74
+#: src/mainuan_recursos/application.py:80
 msgid "Invalid test catalog"
 msgstr "পরীক্ষামূলক ক্যাটালগ অবৈধ"
 
-#: src/mainuan_recursos/application.py:88
+#: src/mainuan_recursos/application.py:94
 #, python-brace-format
 msgid "Could not open the state directory: {error}"
 msgstr "স্টেট ডিরেক্টরি খোলা যায়নি: {error}"
 
-#: src/mainuan_recursos/application.py:90
-#: src/mainuan_recursos/application.py:113
-#: src/mainuan_recursos/application.py:126
+#: src/mainuan_recursos/application.py:96
+#: src/mainuan_recursos/application.py:119
+#: src/mainuan_recursos/application.py:132
 msgid "Could not open the history"
 msgstr "ইতিহাস খোলা যায়নি"
 
-#: src/mainuan_recursos/application.py:97
+#: src/mainuan_recursos/application.py:103
 msgid "Could not lock the local state. Check the directory permissions."
 msgstr "স্থানীয় স্টেট লক করা যায়নি। ডিরেক্টরির অনুমতি পরীক্ষা করুন।"
 
-#: src/mainuan_recursos/application.py:107
+#: src/mainuan_recursos/application.py:113
 msgid ""
 "The other instance is starting. Open the application again in a few seconds."
 msgstr "অন্য একটি ইনস্ট্যান্স চালু হচ্ছে। কয়েক সেকেন্ড পরে অ্যাপ্লিকেশনটি আবার খুলুন।"
 
-#: src/mainuan_recursos/application.py:134
+#: src/mainuan_recursos/application.py:140
 msgid "Could not create the single-instance channel."
 msgstr "একক-ইনস্ট্যান্স চ্যানেল তৈরি করা যায়নি।"
 

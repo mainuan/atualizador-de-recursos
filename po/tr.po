@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: mainuan-atualizador-recursos\n"
 "Report-Msgid-Bugs-To: https://github.com/mainuan/atualizador-de-recursos/"
 "issues\n"
-"POT-Creation-Date: 2026-11-19 01:40-0300\n"
+"POT-Creation-Date: 2026-11-19 01:47-0300\n"
 "PO-Revision-Date: 2026-11-16 11:30-0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: tr <https://github.com/mainuan>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: data/mainuan-recursos-autostart.desktop.in:3
-#: src/mainuan_recursos/application.py:61
+#: src/mainuan_recursos/application.py:67
 msgid "Mainuan News"
 msgstr "Mainuan Yenilikleri"
 
@@ -80,17 +80,17 @@ msgstr ""
 msgid "announcements.json lists invalid or repeated repositories."
 msgstr "packages.txt geçersiz ya da yinelenen depolar içeriyor."
 
-#: src/mainuan_recursos/application.py:24
+#: src/mainuan_recursos/application.py:30
 msgid "Discover and receive the official Mainuan news."
 msgstr "Resmi Mainuan yeniliklerini keşfedin ve edinin."
 
-#: src/mainuan_recursos/application.py:25
+#: src/mainuan_recursos/application.py:31
 msgid ""
 "check once after login; open only for an explicitly published announcement, "
 "otherwise exit silently"
 msgstr ""
 
-#: src/mainuan_recursos/application.py:26
+#: src/mainuan_recursos/application.py:32
 msgid ""
 "real, manual trial in a VM: GitHub packages.txt/message.txt and Driver "
 "Manager 1.0"
@@ -98,41 +98,41 @@ msgstr ""
 "VM’de gerçek, elle yapılan deneme: GitHub packages.txt/message.txt ve Sürücü "
 "Yöneticisi 1.0"
 
-#: src/mainuan_recursos/application.py:27
+#: src/mainuan_recursos/application.py:33
 msgid "demonstrate the whole flow without modifying the system"
 msgstr "sistemi değiştirmeden tüm akışı göster"
 
-#: src/mainuan_recursos/application.py:28
+#: src/mainuan_recursos/application.py:34
 msgid "demonstration scenario"
 msgstr "gösterim senaryosu"
 
-#: src/mainuan_recursos/application.py:29
+#: src/mainuan_recursos/application.py:35
 msgid "signed local catalog, only with --demo"
 msgstr "imzalı yerel katalog, yalnızca --demo ile"
 
-#: src/mainuan_recursos/application.py:30
+#: src/mainuan_recursos/application.py:36
 msgid "test configuration and key, only with --demo"
 msgstr "test yapılandırması ve anahtarı, yalnızca --demo ile"
 
-#: src/mainuan_recursos/application.py:35
+#: src/mainuan_recursos/application.py:41
 msgid ""
 "--homologacao-github is manual and cannot be combined with --check/--demo."
 msgstr ""
 "--homologacao-github elle çalıştırılır ve --check/--demo ile birlikte "
 "kullanılamaz."
 
-#: src/mainuan_recursos/application.py:40
+#: src/mainuan_recursos/application.py:46
 #, python-brace-format
 msgid "Acceptance test unavailable: {error}"
 msgstr "Kabul testi kullanılamıyor: {error}"
 
-#: src/mainuan_recursos/application.py:42
+#: src/mainuan_recursos/application.py:48
 msgid "Use --demo --test-catalog FILE --test-config FILE together."
 msgstr ""
 "--demo --test-catalog DOSYA --test-config DOSYA seçeneklerini birlikte "
 "kullanın."
 
-#: src/mainuan_recursos/application.py:58
+#: src/mainuan_recursos/application.py:64
 msgid ""
 "Checking for news becomes available after installing Mainuan. The Live "
 "session will not be queried."
@@ -140,39 +140,39 @@ msgstr ""
 "Yenilik denetimi, Mainuan kurulduktan sonra kullanılabilir olur. Canlı "
 "oturumda sorgu yapılmayacak."
 
-#: src/mainuan_recursos/application.py:60
+#: src/mainuan_recursos/application.py:66
 msgid ""
 "Could not determine the session type. Querying and installing features have "
 "been disabled."
 msgstr ""
 "Oturum türü belirlenemedi. Özellik sorgulama ve kurma devre dışı bırakıldı."
 
-#: src/mainuan_recursos/application.py:74
+#: src/mainuan_recursos/application.py:80
 msgid "Invalid test catalog"
 msgstr "Geçersiz test kataloğu"
 
-#: src/mainuan_recursos/application.py:88
+#: src/mainuan_recursos/application.py:94
 #, python-brace-format
 msgid "Could not open the state directory: {error}"
 msgstr "Durum dizini açılamadı: {error}"
 
-#: src/mainuan_recursos/application.py:90
-#: src/mainuan_recursos/application.py:113
-#: src/mainuan_recursos/application.py:126
+#: src/mainuan_recursos/application.py:96
+#: src/mainuan_recursos/application.py:119
+#: src/mainuan_recursos/application.py:132
 msgid "Could not open the history"
 msgstr "Geçmiş açılamadı"
 
-#: src/mainuan_recursos/application.py:97
+#: src/mainuan_recursos/application.py:103
 msgid "Could not lock the local state. Check the directory permissions."
 msgstr "Yerel durum kilitlenemedi. Dizin izinlerini denetleyin."
 
-#: src/mainuan_recursos/application.py:107
+#: src/mainuan_recursos/application.py:113
 msgid ""
 "The other instance is starting. Open the application again in a few seconds."
 msgstr ""
 "Diğer örnek başlatılıyor. Birkaç saniye içinde uygulamayı yeniden açın."
 
-#: src/mainuan_recursos/application.py:134
+#: src/mainuan_recursos/application.py:140
 msgid "Could not create the single-instance channel."
 msgstr "Tek örnek kanalı oluşturulamadı."
 

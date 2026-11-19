@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: mainuan-atualizador-recursos\n"
 "Report-Msgid-Bugs-To: https://github.com/mainuan/atualizador-de-recursos/"
 "issues\n"
-"POT-Creation-Date: 2026-11-19 01:40-0300\n"
+"POT-Creation-Date: 2026-11-19 01:47-0300\n"
 "PO-Revision-Date: 2026-11-16 11:30-0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: th <https://github.com/mainuan>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: data/mainuan-recursos-autostart.desktop.in:3
-#: src/mainuan_recursos/application.py:61
+#: src/mainuan_recursos/application.py:67
 msgid "Mainuan News"
 msgstr "ข่าวสาร Mainuan"
 
@@ -79,17 +79,17 @@ msgstr ""
 msgid "announcements.json lists invalid or repeated repositories."
 msgstr "packages.txt มีรีโพสิทอรีที่ไม่ถูกต้องหรือซ้ำกัน"
 
-#: src/mainuan_recursos/application.py:24
+#: src/mainuan_recursos/application.py:30
 msgid "Discover and receive the official Mainuan news."
 msgstr "ค้นพบและรับข่าวสารอย่างเป็นทางการของ Mainuan"
 
-#: src/mainuan_recursos/application.py:25
+#: src/mainuan_recursos/application.py:31
 msgid ""
 "check once after login; open only for an explicitly published announcement, "
 "otherwise exit silently"
 msgstr ""
 
-#: src/mainuan_recursos/application.py:26
+#: src/mainuan_recursos/application.py:32
 msgid ""
 "real, manual trial in a VM: GitHub packages.txt/message.txt and Driver "
 "Manager 1.0"
@@ -97,73 +97,73 @@ msgstr ""
 "การทดลองจริงแบบทำเองใน VM: packages.txt/message.txt จาก GitHub "
 "และตัวจัดการไดรเวอร์ 1.0"
 
-#: src/mainuan_recursos/application.py:27
+#: src/mainuan_recursos/application.py:33
 msgid "demonstrate the whole flow without modifying the system"
 msgstr "สาธิตขั้นตอนทั้งหมดโดยไม่แก้ไขระบบ"
 
-#: src/mainuan_recursos/application.py:28
+#: src/mainuan_recursos/application.py:34
 msgid "demonstration scenario"
 msgstr "สถานการณ์สาธิต"
 
-#: src/mainuan_recursos/application.py:29
+#: src/mainuan_recursos/application.py:35
 msgid "signed local catalog, only with --demo"
 msgstr "แค็ตตาล็อกในเครื่องที่ลงลายเซ็นแล้ว ใช้ได้กับ --demo เท่านั้น"
 
-#: src/mainuan_recursos/application.py:30
+#: src/mainuan_recursos/application.py:36
 msgid "test configuration and key, only with --demo"
 msgstr "การกำหนดค่าและกุญแจสำหรับทดสอบ ใช้ได้กับ --demo เท่านั้น"
 
-#: src/mainuan_recursos/application.py:35
+#: src/mainuan_recursos/application.py:41
 msgid ""
 "--homologacao-github is manual and cannot be combined with --check/--demo."
 msgstr "--homologacao-github เป็นแบบทำเองและใช้ร่วมกับ --check/--demo ไม่ได้"
 
-#: src/mainuan_recursos/application.py:40
+#: src/mainuan_recursos/application.py:46
 #, python-brace-format
 msgid "Acceptance test unavailable: {error}"
 msgstr "การทดสอบการยอมรับไม่พร้อมใช้งาน: {error}"
 
-#: src/mainuan_recursos/application.py:42
+#: src/mainuan_recursos/application.py:48
 msgid "Use --demo --test-catalog FILE --test-config FILE together."
 msgstr "ใช้ --demo --test-catalog FILE --test-config FILE ร่วมกัน"
 
-#: src/mainuan_recursos/application.py:58
+#: src/mainuan_recursos/application.py:64
 msgid ""
 "Checking for news becomes available after installing Mainuan. The Live "
 "session will not be queried."
 msgstr "การตรวจหาข่าวสารจะใช้ได้หลังติดตั้ง Mainuan แล้ว จะไม่มีการสอบถามจากเซสชัน Live"
 
-#: src/mainuan_recursos/application.py:60
+#: src/mainuan_recursos/application.py:66
 msgid ""
 "Could not determine the session type. Querying and installing features have "
 "been disabled."
 msgstr "ไม่สามารถระบุชนิดของเซสชันได้ จึงปิดการสอบถามและการติดตั้งฟีเจอร์ไว้"
 
-#: src/mainuan_recursos/application.py:74
+#: src/mainuan_recursos/application.py:80
 msgid "Invalid test catalog"
 msgstr "แค็ตตาล็อกทดสอบไม่ถูกต้อง"
 
-#: src/mainuan_recursos/application.py:88
+#: src/mainuan_recursos/application.py:94
 #, python-brace-format
 msgid "Could not open the state directory: {error}"
 msgstr "ไม่สามารถเปิดไดเรกทอรีสถานะ: {error}"
 
-#: src/mainuan_recursos/application.py:90
-#: src/mainuan_recursos/application.py:113
-#: src/mainuan_recursos/application.py:126
+#: src/mainuan_recursos/application.py:96
+#: src/mainuan_recursos/application.py:119
+#: src/mainuan_recursos/application.py:132
 msgid "Could not open the history"
 msgstr "ไม่สามารถเปิดประวัติ"
 
-#: src/mainuan_recursos/application.py:97
+#: src/mainuan_recursos/application.py:103
 msgid "Could not lock the local state. Check the directory permissions."
 msgstr "ไม่สามารถล็อกสถานะในเครื่อง โปรดตรวจสอบสิทธิ์ของไดเรกทอรี"
 
-#: src/mainuan_recursos/application.py:107
+#: src/mainuan_recursos/application.py:113
 msgid ""
 "The other instance is starting. Open the application again in a few seconds."
 msgstr "อินสแตนซ์อื่นกำลังเริ่มทำงาน โปรดเปิดแอปพลิเคชันอีกครั้งในอีกไม่กี่วินาที"
 
-#: src/mainuan_recursos/application.py:134
+#: src/mainuan_recursos/application.py:140
 msgid "Could not create the single-instance channel."
 msgstr "ไม่สามารถสร้างช่องทางสำหรับอินสแตนซ์เดียว"
 

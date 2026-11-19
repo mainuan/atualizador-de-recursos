@@ -338,12 +338,6 @@ original_single = QTimer.singleShot
 def show(self):
     shown.append(True)
     original_show(self)
-original_reload = Window.reload
-def reload(self):
-    print('RELOAD', file=sys.stderr, flush=True)
-    self.idle.connect(lambda: print('IDLE', file=sys.stderr, flush=True))
-    original_reload(self)
-Window.reload = reload
 with patch.object(application, 'session_kind', return_value=SessionKind.INSTALLED), \\
      patch('mainuan_recursos.github_channel.system_identity', return_value=SYSTEM), \\
      patch('mainuan_recursos.gui.system_identity', return_value=SYSTEM), \\
@@ -358,7 +352,7 @@ print('SAIU', result, len(shown), flush=True)
             with self.subTest(scenario=scenario), tempfile.TemporaryDirectory(prefix='mr-') as tmp:
                 env = {**os.environ, 'PYTHONPATH': os.pathsep.join((str(ROOT / 'src'), str(ROOT / 'tests'))),
                        'QT_QPA_PLATFORM': 'offscreen', 'XDG_STATE_HOME': tmp, 'XDG_CONFIG_HOME': tmp}
-                result = subprocess.run([sys.executable, '-X', 'faulthandler', '-c', driver, scenario], capture_output=True, text=True,
+                result = subprocess.run([sys.executable, '-c', driver, scenario], capture_output=True, text=True,
                                         env=env, timeout=20)
                 self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
                 self.assertIn('SAIU 0 0', result.stdout)
