@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: mainuan-atualizador-recursos\n"
 "Report-Msgid-Bugs-To: https://github.com/mainuan/atualizador-de-recursos/"
 "issues\n"
-"POT-Creation-Date: 2026-11-19 01:32-0300\n"
+"POT-Creation-Date: 2026-11-19 01:40-0300\n"
 "PO-Revision-Date: 2026-11-16 11:30-0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: hi <https://github.com/mainuan>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: data/mainuan-recursos-autostart.desktop.in:3
-#: src/mainuan_recursos/application.py:60
+#: src/mainuan_recursos/application.py:61
 msgid "Mainuan News"
 msgstr "Mainuan में नया क्या है"
 
@@ -79,17 +79,17 @@ msgstr ""
 msgid "announcements.json lists invalid or repeated repositories."
 msgstr "packages.txt में अमान्य या दोहराई गई रिपॉज़िटरी हैं।"
 
-#: src/mainuan_recursos/application.py:23
+#: src/mainuan_recursos/application.py:24
 msgid "Discover and receive the official Mainuan news."
 msgstr "Mainuan की आधिकारिक नई जानकारी देखें और प्राप्त करें।"
 
-#: src/mainuan_recursos/application.py:24
+#: src/mainuan_recursos/application.py:25
 msgid ""
 "check once after login; open only for an explicitly published announcement, "
 "otherwise exit silently"
 msgstr ""
 
-#: src/mainuan_recursos/application.py:25
+#: src/mainuan_recursos/application.py:26
 msgid ""
 "real, manual trial in a VM: GitHub packages.txt/message.txt and Driver "
 "Manager 1.0"
@@ -97,38 +97,38 @@ msgstr ""
 "VM में वास्तविक, मैन्युअल परीक्षण: GitHub packages.txt/message.txt और ड्राइवर प्रबंधक "
 "1.0"
 
-#: src/mainuan_recursos/application.py:26
+#: src/mainuan_recursos/application.py:27
 msgid "demonstrate the whole flow without modifying the system"
 msgstr "सिस्टम में बदलाव किए बिना पूरी प्रक्रिया का प्रदर्शन करें"
 
-#: src/mainuan_recursos/application.py:27
+#: src/mainuan_recursos/application.py:28
 msgid "demonstration scenario"
 msgstr "प्रदर्शन परिदृश्य"
 
-#: src/mainuan_recursos/application.py:28
+#: src/mainuan_recursos/application.py:29
 msgid "signed local catalog, only with --demo"
 msgstr "हस्ताक्षरित स्थानीय कैटलॉग, केवल --demo के साथ"
 
-#: src/mainuan_recursos/application.py:29
+#: src/mainuan_recursos/application.py:30
 msgid "test configuration and key, only with --demo"
 msgstr "परीक्षण कॉन्फ़िगरेशन और कुंजी, केवल --demo के साथ"
 
-#: src/mainuan_recursos/application.py:34
+#: src/mainuan_recursos/application.py:35
 msgid ""
 "--homologacao-github is manual and cannot be combined with --check/--demo."
 msgstr ""
 "--homologacao-github मैन्युअल है और इसे --check/--demo के साथ नहीं जोड़ा जा सकता।"
 
-#: src/mainuan_recursos/application.py:39
+#: src/mainuan_recursos/application.py:40
 #, python-brace-format
 msgid "Acceptance test unavailable: {error}"
 msgstr "स्वीकृति परीक्षण उपलब्ध नहीं: {error}"
 
-#: src/mainuan_recursos/application.py:41
+#: src/mainuan_recursos/application.py:42
 msgid "Use --demo --test-catalog FILE --test-config FILE together."
 msgstr "--demo --test-catalog FILE --test-config FILE को एक साथ उपयोग करें।"
 
-#: src/mainuan_recursos/application.py:57
+#: src/mainuan_recursos/application.py:58
 msgid ""
 "Checking for news becomes available after installing Mainuan. The Live "
 "session will not be queried."
@@ -136,7 +136,7 @@ msgstr ""
 "नई जानकारी की जाँच Mainuan स्थापित करने के बाद उपलब्ध होगी। लाइव सत्र में जाँच नहीं की "
 "जाएगी।"
 
-#: src/mainuan_recursos/application.py:59
+#: src/mainuan_recursos/application.py:60
 msgid ""
 "Could not determine the session type. Querying and installing features have "
 "been disabled."
@@ -144,31 +144,31 @@ msgstr ""
 "सत्र का प्रकार निर्धारित नहीं किया जा सका। सुविधाओं की जाँच और स्थापना अक्षम कर दी गई "
 "है।"
 
-#: src/mainuan_recursos/application.py:73
+#: src/mainuan_recursos/application.py:74
 msgid "Invalid test catalog"
 msgstr "अमान्य परीक्षण कैटलॉग"
 
-#: src/mainuan_recursos/application.py:87
+#: src/mainuan_recursos/application.py:88
 #, python-brace-format
 msgid "Could not open the state directory: {error}"
 msgstr "स्थिति निर्देशिका नहीं खोली जा सकी: {error}"
 
-#: src/mainuan_recursos/application.py:89
-#: src/mainuan_recursos/application.py:112
-#: src/mainuan_recursos/application.py:125
+#: src/mainuan_recursos/application.py:90
+#: src/mainuan_recursos/application.py:113
+#: src/mainuan_recursos/application.py:126
 msgid "Could not open the history"
 msgstr "इतिहास नहीं खोला जा सका"
 
-#: src/mainuan_recursos/application.py:96
+#: src/mainuan_recursos/application.py:97
 msgid "Could not lock the local state. Check the directory permissions."
 msgstr "स्थानीय स्थिति को लॉक नहीं किया जा सका। निर्देशिका की अनुमतियाँ जाँचें।"
 
-#: src/mainuan_recursos/application.py:106
+#: src/mainuan_recursos/application.py:107
 msgid ""
 "The other instance is starting. Open the application again in a few seconds."
 msgstr "दूसरा इंस्टैंस शुरू हो रहा है। कुछ सेकंड बाद अनुप्रयोग फिर से खोलें।"
 
-#: src/mainuan_recursos/application.py:133
+#: src/mainuan_recursos/application.py:134
 msgid "Could not create the single-instance channel."
 msgstr "एकल-इंस्टैंस चैनल नहीं बनाया जा सका।"
 

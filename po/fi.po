@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: mainuan-atualizador-recursos\n"
 "Report-Msgid-Bugs-To: https://github.com/mainuan/atualizador-de-recursos/"
 "issues\n"
-"POT-Creation-Date: 2026-11-19 01:32-0300\n"
+"POT-Creation-Date: 2026-11-19 01:40-0300\n"
 "PO-Revision-Date: 2026-11-16 11:30-0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: fi <https://github.com/mainuan>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/mainuan-recursos-autostart.desktop.in:3
-#: src/mainuan_recursos/application.py:60
+#: src/mainuan_recursos/application.py:61
 msgid "Mainuan News"
 msgstr "Mainuanin uutiset"
 
@@ -80,17 +80,17 @@ msgstr ""
 msgid "announcements.json lists invalid or repeated repositories."
 msgstr "packages.txt sisältää virheellisiä tai toistuvia tietovarastoja."
 
-#: src/mainuan_recursos/application.py:23
+#: src/mainuan_recursos/application.py:24
 msgid "Discover and receive the official Mainuan news."
 msgstr "Tutustu Mainuanin virallisiin uutisiin ja ota ne käyttöön."
 
-#: src/mainuan_recursos/application.py:24
+#: src/mainuan_recursos/application.py:25
 msgid ""
 "check once after login; open only for an explicitly published announcement, "
 "otherwise exit silently"
 msgstr ""
 
-#: src/mainuan_recursos/application.py:25
+#: src/mainuan_recursos/application.py:26
 msgid ""
 "real, manual trial in a VM: GitHub packages.txt/message.txt and Driver "
 "Manager 1.0"
@@ -98,41 +98,41 @@ msgstr ""
 "todellinen manuaalinen koe virtuaalikoneessa: GitHubin packages.txt/"
 "message.txt ja Ajureiden hallinta 1.0"
 
-#: src/mainuan_recursos/application.py:26
+#: src/mainuan_recursos/application.py:27
 msgid "demonstrate the whole flow without modifying the system"
 msgstr "esittele koko kulku muuttamatta järjestelmää"
 
-#: src/mainuan_recursos/application.py:27
+#: src/mainuan_recursos/application.py:28
 msgid "demonstration scenario"
 msgstr "esittelyskenaario"
 
-#: src/mainuan_recursos/application.py:28
+#: src/mainuan_recursos/application.py:29
 msgid "signed local catalog, only with --demo"
 msgstr "allekirjoitettu paikallinen luettelo, vain valitsimen --demo kanssa"
 
-#: src/mainuan_recursos/application.py:29
+#: src/mainuan_recursos/application.py:30
 msgid "test configuration and key, only with --demo"
 msgstr "testiasetukset ja -avain, vain valitsimen --demo kanssa"
 
-#: src/mainuan_recursos/application.py:34
+#: src/mainuan_recursos/application.py:35
 msgid ""
 "--homologacao-github is manual and cannot be combined with --check/--demo."
 msgstr ""
 "--homologacao-github on manuaalinen, eikä sitä voi yhdistää valitsimiin --"
 "check/--demo."
 
-#: src/mainuan_recursos/application.py:39
+#: src/mainuan_recursos/application.py:40
 #, python-brace-format
 msgid "Acceptance test unavailable: {error}"
 msgstr "Hyväksyntätesti ei ole käytettävissä: {error}"
 
-#: src/mainuan_recursos/application.py:41
+#: src/mainuan_recursos/application.py:42
 msgid "Use --demo --test-catalog FILE --test-config FILE together."
 msgstr ""
 "Käytä valitsimia --demo --test-catalog TIEDOSTO --test-config TIEDOSTO "
 "yhdessä."
 
-#: src/mainuan_recursos/application.py:57
+#: src/mainuan_recursos/application.py:58
 msgid ""
 "Checking for news becomes available after installing Mainuan. The Live "
 "session will not be queried."
@@ -140,7 +140,7 @@ msgstr ""
 "Uutisten tarkistus on käytettävissä Mainuanin asentamisen jälkeen. Live-"
 "istunnossa uutisia ei haeta."
 
-#: src/mainuan_recursos/application.py:59
+#: src/mainuan_recursos/application.py:60
 msgid ""
 "Could not determine the session type. Querying and installing features have "
 "been disabled."
@@ -148,33 +148,33 @@ msgstr ""
 "Istunnon tyyppiä ei voitu selvittää. Ominaisuuksien haku ja asennus on "
 "poistettu käytöstä."
 
-#: src/mainuan_recursos/application.py:73
+#: src/mainuan_recursos/application.py:74
 msgid "Invalid test catalog"
 msgstr "Virheellinen testiluettelo"
 
-#: src/mainuan_recursos/application.py:87
+#: src/mainuan_recursos/application.py:88
 #, python-brace-format
 msgid "Could not open the state directory: {error}"
 msgstr "Tilakansiota ei voitu avata: {error}"
 
-#: src/mainuan_recursos/application.py:89
-#: src/mainuan_recursos/application.py:112
-#: src/mainuan_recursos/application.py:125
+#: src/mainuan_recursos/application.py:90
+#: src/mainuan_recursos/application.py:113
+#: src/mainuan_recursos/application.py:126
 msgid "Could not open the history"
 msgstr "Historiaa ei voitu avata"
 
-#: src/mainuan_recursos/application.py:96
+#: src/mainuan_recursos/application.py:97
 msgid "Could not lock the local state. Check the directory permissions."
 msgstr "Paikallista tilaa ei voitu lukita. Tarkista kansion käyttöoikeudet."
 
-#: src/mainuan_recursos/application.py:106
+#: src/mainuan_recursos/application.py:107
 msgid ""
 "The other instance is starting. Open the application again in a few seconds."
 msgstr ""
 "Toinen instanssi on käynnistymässä. Avaa sovellus uudelleen muutaman "
 "sekunnin kuluttua."
 
-#: src/mainuan_recursos/application.py:133
+#: src/mainuan_recursos/application.py:134
 msgid "Could not create the single-instance channel."
 msgstr "Yhden instanssin kanavaa ei voitu luoda."
 

@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: mainuan-atualizador-recursos\n"
 "Report-Msgid-Bugs-To: https://github.com/mainuan/atualizador-de-recursos/"
 "issues\n"
-"POT-Creation-Date: 2026-11-19 01:32-0300\n"
+"POT-Creation-Date: 2026-11-19 01:40-0300\n"
 "PO-Revision-Date: 2026-11-16 11:30-0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: zh_TW <https://github.com/mainuan>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: data/mainuan-recursos-autostart.desktop.in:3
-#: src/mainuan_recursos/application.py:60
+#: src/mainuan_recursos/application.py:61
 msgid "Mainuan News"
 msgstr "Mainuan 最新消息"
 
@@ -82,17 +82,17 @@ msgstr ""
 msgid "announcements.json lists invalid or repeated repositories."
 msgstr "packages.txt 包含無效或重複的儲存庫。"
 
-#: src/mainuan_recursos/application.py:23
+#: src/mainuan_recursos/application.py:24
 msgid "Discover and receive the official Mainuan news."
 msgstr "探索並接收 Mainuan 官方最新消息。"
 
-#: src/mainuan_recursos/application.py:24
+#: src/mainuan_recursos/application.py:25
 msgid ""
 "check once after login; open only for an explicitly published announcement, "
 "otherwise exit silently"
 msgstr ""
 
-#: src/mainuan_recursos/application.py:25
+#: src/mainuan_recursos/application.py:26
 msgid ""
 "real, manual trial in a VM: GitHub packages.txt/message.txt and Driver "
 "Manager 1.0"
@@ -100,73 +100,73 @@ msgstr ""
 "在虛擬機器中進行的實際手動試驗：GitHub packages.txt/message.txt 與驅動程式管"
 "理員 1.0"
 
-#: src/mainuan_recursos/application.py:26
+#: src/mainuan_recursos/application.py:27
 msgid "demonstrate the whole flow without modifying the system"
 msgstr "在不修改系統的情況下示範完整流程"
 
-#: src/mainuan_recursos/application.py:27
+#: src/mainuan_recursos/application.py:28
 msgid "demonstration scenario"
 msgstr "示範情境"
 
-#: src/mainuan_recursos/application.py:28
+#: src/mainuan_recursos/application.py:29
 msgid "signed local catalog, only with --demo"
 msgstr "已簽署的本機目錄，僅限搭配 --demo"
 
-#: src/mainuan_recursos/application.py:29
+#: src/mainuan_recursos/application.py:30
 msgid "test configuration and key, only with --demo"
 msgstr "測試設定與金鑰，僅限搭配 --demo"
 
-#: src/mainuan_recursos/application.py:34
+#: src/mainuan_recursos/application.py:35
 msgid ""
 "--homologacao-github is manual and cannot be combined with --check/--demo."
 msgstr "--homologacao-github 為手動操作，不能與 --check/--demo 合併使用。"
 
-#: src/mainuan_recursos/application.py:39
+#: src/mainuan_recursos/application.py:40
 #, python-brace-format
 msgid "Acceptance test unavailable: {error}"
 msgstr "無法使用驗收測試：{error}"
 
-#: src/mainuan_recursos/application.py:41
+#: src/mainuan_recursos/application.py:42
 msgid "Use --demo --test-catalog FILE --test-config FILE together."
 msgstr "請同時使用 --demo --test-catalog FILE --test-config FILE。"
 
-#: src/mainuan_recursos/application.py:57
+#: src/mainuan_recursos/application.py:58
 msgid ""
 "Checking for news becomes available after installing Mainuan. The Live "
 "session will not be queried."
 msgstr "安裝 Mainuan 後才能檢查最新消息。Live 工作階段將不會進行查詢。"
 
-#: src/mainuan_recursos/application.py:59
+#: src/mainuan_recursos/application.py:60
 msgid ""
 "Could not determine the session type. Querying and installing features have "
 "been disabled."
 msgstr "無法判斷工作階段類型。已停用查詢與安裝功能。"
 
-#: src/mainuan_recursos/application.py:73
+#: src/mainuan_recursos/application.py:74
 msgid "Invalid test catalog"
 msgstr "無效的測試目錄"
 
-#: src/mainuan_recursos/application.py:87
+#: src/mainuan_recursos/application.py:88
 #, python-brace-format
 msgid "Could not open the state directory: {error}"
 msgstr "無法開啟狀態目錄：{error}"
 
-#: src/mainuan_recursos/application.py:89
-#: src/mainuan_recursos/application.py:112
-#: src/mainuan_recursos/application.py:125
+#: src/mainuan_recursos/application.py:90
+#: src/mainuan_recursos/application.py:113
+#: src/mainuan_recursos/application.py:126
 msgid "Could not open the history"
 msgstr "無法開啟歷史紀錄"
 
-#: src/mainuan_recursos/application.py:96
+#: src/mainuan_recursos/application.py:97
 msgid "Could not lock the local state. Check the directory permissions."
 msgstr "無法鎖定本機狀態。請檢查目錄權限。"
 
-#: src/mainuan_recursos/application.py:106
+#: src/mainuan_recursos/application.py:107
 msgid ""
 "The other instance is starting. Open the application again in a few seconds."
 msgstr "另一個執行實體正在啟動。請稍候幾秒再重新開啟應用程式。"
 
-#: src/mainuan_recursos/application.py:133
+#: src/mainuan_recursos/application.py:134
 msgid "Could not create the single-instance channel."
 msgstr "無法建立單一執行實體通道。"
 

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: mainuan-atualizador-recursos\n"
 "Report-Msgid-Bugs-To: https://github.com/mainuan/atualizador-de-recursos/"
 "issues\n"
-"POT-Creation-Date: 2026-11-19 01:32-0300\n"
+"POT-Creation-Date: 2026-11-19 01:40-0300\n"
 "PO-Revision-Date: 2026-11-16 11:30-0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: uk <https://github.com/mainuan>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
 #: data/mainuan-recursos-autostart.desktop.in:3
-#: src/mainuan_recursos/application.py:60
+#: src/mainuan_recursos/application.py:61
 msgid "Mainuan News"
 msgstr "Новини Mainuan"
 
@@ -81,17 +81,17 @@ msgstr ""
 msgid "announcements.json lists invalid or repeated repositories."
 msgstr "Файл packages.txt містить некоректні або повторені сховища."
 
-#: src/mainuan_recursos/application.py:23
+#: src/mainuan_recursos/application.py:24
 msgid "Discover and receive the official Mainuan news."
 msgstr "Дізнавайтеся та отримуйте офіційні новини Mainuan."
 
-#: src/mainuan_recursos/application.py:24
+#: src/mainuan_recursos/application.py:25
 msgid ""
 "check once after login; open only for an explicitly published announcement, "
 "otherwise exit silently"
 msgstr ""
 
-#: src/mainuan_recursos/application.py:25
+#: src/mainuan_recursos/application.py:26
 msgid ""
 "real, manual trial in a VM: GitHub packages.txt/message.txt and Driver "
 "Manager 1.0"
@@ -99,39 +99,39 @@ msgstr ""
 "реальне ручне випробування у віртуальній машині: packages.txt/message.txt з "
 "GitHub і «Керування драйверами» 1.0"
 
-#: src/mainuan_recursos/application.py:26
+#: src/mainuan_recursos/application.py:27
 msgid "demonstrate the whole flow without modifying the system"
 msgstr "продемонструвати увесь процес без внесення змін до системи"
 
-#: src/mainuan_recursos/application.py:27
+#: src/mainuan_recursos/application.py:28
 msgid "demonstration scenario"
 msgstr "демонстраційний сценарій"
 
-#: src/mainuan_recursos/application.py:28
+#: src/mainuan_recursos/application.py:29
 msgid "signed local catalog, only with --demo"
 msgstr "підписаний локальний каталог, лише з --demo"
 
-#: src/mainuan_recursos/application.py:29
+#: src/mainuan_recursos/application.py:30
 msgid "test configuration and key, only with --demo"
 msgstr "тестові налаштування і ключ, лише з --demo"
 
-#: src/mainuan_recursos/application.py:34
+#: src/mainuan_recursos/application.py:35
 msgid ""
 "--homologacao-github is manual and cannot be combined with --check/--demo."
 msgstr ""
 "--homologacao-github запускається вручну, його не можна поєднувати з --"
 "check/--demo."
 
-#: src/mainuan_recursos/application.py:39
+#: src/mainuan_recursos/application.py:40
 #, python-brace-format
 msgid "Acceptance test unavailable: {error}"
 msgstr "Приймальне тестування недоступне: {error}"
 
-#: src/mainuan_recursos/application.py:41
+#: src/mainuan_recursos/application.py:42
 msgid "Use --demo --test-catalog FILE --test-config FILE together."
 msgstr "Використовуйте --demo --test-catalog ФАЙЛ --test-config ФАЙЛ разом."
 
-#: src/mainuan_recursos/application.py:57
+#: src/mainuan_recursos/application.py:58
 msgid ""
 "Checking for news becomes available after installing Mainuan. The Live "
 "session will not be queried."
@@ -139,7 +139,7 @@ msgstr ""
 "Перевірка новин стане доступною після встановлення Mainuan. У Live-сеансі "
 "запити не надсилатимуться."
 
-#: src/mainuan_recursos/application.py:59
+#: src/mainuan_recursos/application.py:60
 msgid ""
 "Could not determine the session type. Querying and installing features have "
 "been disabled."
@@ -147,34 +147,34 @@ msgstr ""
 "Не вдалося визначити тип сеансу. Надсилання запитів і встановлення "
 "можливостей вимкнено."
 
-#: src/mainuan_recursos/application.py:73
+#: src/mainuan_recursos/application.py:74
 msgid "Invalid test catalog"
 msgstr "Некоректний тестовий каталог"
 
-#: src/mainuan_recursos/application.py:87
+#: src/mainuan_recursos/application.py:88
 #, python-brace-format
 msgid "Could not open the state directory: {error}"
 msgstr "Не вдалося відкрити каталог стану: {error}"
 
-#: src/mainuan_recursos/application.py:89
-#: src/mainuan_recursos/application.py:112
-#: src/mainuan_recursos/application.py:125
+#: src/mainuan_recursos/application.py:90
+#: src/mainuan_recursos/application.py:113
+#: src/mainuan_recursos/application.py:126
 msgid "Could not open the history"
 msgstr "Не вдалося відкрити журнал"
 
-#: src/mainuan_recursos/application.py:96
+#: src/mainuan_recursos/application.py:97
 msgid "Could not lock the local state. Check the directory permissions."
 msgstr ""
 "Не вдалося заблокувати локальний стан. Перевірте права доступу до каталогу."
 
-#: src/mainuan_recursos/application.py:106
+#: src/mainuan_recursos/application.py:107
 msgid ""
 "The other instance is starting. Open the application again in a few seconds."
 msgstr ""
 "Інший екземпляр програми запускається. Відкрийте програму ще раз за кілька "
 "секунд."
 
-#: src/mainuan_recursos/application.py:133
+#: src/mainuan_recursos/application.py:134
 msgid "Could not create the single-instance channel."
 msgstr "Не вдалося створити канал для єдиного екземпляра програми."
 
