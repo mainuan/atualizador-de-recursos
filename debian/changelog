@@ -1,3 +1,18 @@
+mainuan-atualizador-recursos (0.4.0) resolute; urgency=medium
+
+  * A janela automática só abre para um anúncio publicado explicitamente em
+    announcements.json (ativo, válido, aplicável à versão do sistema e ainda
+    não apresentado). packages.txt, message.txt e releases de programas não
+    são mais anúncios; packages.txt fica sem repositórios para silenciar as
+    versões 0.2.2 a 0.3.1.
+  * Estado por id@versão do anúncio, com data de apresentação; nova versão do
+    anúncio reaparece uma vez, correção de texto não.
+  * --check verifica uma vez e encerra em silêncio sem anúncio; fechar a janela
+    encerra o processo (antes ficava residente e consultava de hora em hora).
+  * Preferência "Mostrar novidades ao entrar" no menu.
+
+ -- ruscher <rruscher@gmail.com>  Thu, 19 Nov 2026 10:00:00 -0300
+
 mainuan-atualizador-recursos (0.3.1) resolute; urgency=medium
 
   * A mensagem do canal GitHub segue o idioma da sessão: message.<idioma>.txt,

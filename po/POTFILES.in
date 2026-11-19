@@ -1,4 +1,5 @@
 # Files with translatable strings (paths relative to the repository root).
+src/mainuan_recursos/announcement.py
 src/mainuan_recursos/application.py
 src/mainuan_recursos/catalog.py
 src/mainuan_recursos/classic.py

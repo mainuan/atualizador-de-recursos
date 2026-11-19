@@ -26,9 +26,14 @@ SYSTEM = {'distro_id': 'mainuan', 'version_id': '26.04', 'architecture': 'amd64'
 
 
 class Fixture:
+    """GitHub fictício.  ``announcement`` é o announcements.json publicado
+    (``None`` = arquivo inexistente, 404); ``packages`` vem de ``names``."""
     def __init__(self, names=('programa-um',), version='1.0'):
         self.names, self.version = names, version
-        self.message = 'Olá! O Mainuan tem novidades.\n\nConfira quais são:\n'
+        self.announcement = {'schema': 1, 'enabled': True, 'id': 'novidades-teste', 'version': 1,
+                             'title': {'pt_BR': 'Olá! O Mainuan tem novidades.'},
+                             'message': {'pt_BR': 'Confira quais são:'}}
+        self.message = 'Olá! O Mainuan tem novidades.\n\nConfira quais são:'
         self.commit = 'a' * 40
         self.payload = b'pacote ficticio, nunca instalado'
         self.digest = hashlib.sha256(self.payload).hexdigest()
@@ -51,15 +56,12 @@ class Fixture:
             return value
         if url == github.API + github.OFFICIAL + '/commits/main':
             value = {'sha': self.commit}
-        elif url.endswith('/packages.txt'):
-            return ('\n'.join(self.names) + '\n').encode()
-        elif url.endswith('/message.txt'):
-            return self.message.encode()
-        elif url.startswith('https://raw.githubusercontent.com/') and '/message.' in url:
-            language = url.rsplit('/message.', 1)[1].removesuffix('.txt')
-            if language not in self.localized:
+        elif url.endswith('.txt'):
+            raise AssertionError('Canal legado (packages.txt/message.txt) consultado: ' + url)
+        elif url.endswith('/announcements.json'):
+            if self.announcement is None:
                 raise HTTPError(url, 404, 'Not Found', {}, None)
-            return self.localized[language].encode()
+            return json.dumps({'packages': list(self.names), **self.announcement}).encode()
         else:
             name, _, suffix = url.removeprefix(github.API).partition('/')
             if not suffix:
@@ -103,42 +105,43 @@ class ChannelTests(unittest.TestCase):
         with patch.dict(os.environ, clean):
             return self.load()
 
-    def test_message_follows_session_language(self):
-        self.fixture.localized = {'en': 'Hello! Mainuan has news.\n', 'ja': 'こんにちは\n', 'zh_TW': '你好\n'}
+    def test_announcement_text_follows_session_language(self):
+        self.fixture.announcement['title'].update(en='Hello! Mainuan has news.', ja='こんにちは')
+        self.fixture.announcement['message'].update(en='Here is what is new:', ja='新機能')
         english = self.load_in(LANGUAGE='en_US', LANG='en_US.UTF-8', LC_TIME='pt_BR.UTF-8')
-        self.assertEqual(english.summary, 'Hello! Mainuan has news.\n')
-        self.assertEqual(self.load_in(LANG='ja_JP.UTF-8').summary, 'こんにちは\n')
-        self.assertEqual(self.load_in(LANG='zh_TW.UTF-8').summary, '你好\n')
+        self.assertEqual(english.summary, 'Hello! Mainuan has news.\n\nHere is what is new:')
+        self.assertEqual(english.title, 'Hello! Mainuan has news.')
+        self.assertEqual(self.load_in(LANG='ja_JP.UTF-8').summary, 'こんにちは\n\n新機能')
         # Sem tradução: inglês, nunca português para quem não escolheu português.
-        self.assertEqual(self.load_in(LANG='it_IT.UTF-8').summary, 'Hello! Mainuan has news.\n')
-        # Lista de idiomas: o inglês vem antes do português.
-        self.assertEqual(self.load_in(LANGUAGE='en_US:pt_BR', LANG='en_US.UTF-8').summary,
-                         'Hello! Mainuan has news.\n')
+        self.assertEqual(self.load_in(LANG='it_IT.UTF-8').title, 'Hello! Mainuan has news.')
         self.assertEqual(self.load_in(LANGUAGE='it:pt_BR', LANG='it_IT.UTF-8').summary, self.fixture.message)
-        # Português lê o message.txt sem consultas extras.
-        self.fixture.calls.clear()
-        self.assertEqual(self.load_in(LANGUAGE='pt_BR:en', LANG='pt_BR.UTF-8').summary, self.fixture.message)
-        self.assertFalse(any('/message.' in url and not url.endswith('/message.txt') for url in self.fixture.calls))
+        self.assertEqual(self.load_in(LANG='pt_PT.UTF-8').summary, self.fixture.message)
 
-    def test_message_without_translations_and_language_change_is_same_edition(self):
-        self.assertEqual(self.load_in(LANG='de_DE.UTF-8').summary, self.fixture.message)
+    def test_language_change_is_the_same_announcement(self):
+        self.fixture.announcement['title']['en'] = 'Hello!'
+        first = self.load_in(LANG='de_DE.UTF-8')
         sequence = self.state.data['sequence']
-        self.fixture.localized = {'en': 'Hello!\n'}
-        self.assertEqual(self.load_in(LANG='en_US.UTF-8').summary, 'Hello!\n')
+        self.state.viewed(first)
+        second = self.load_in(LANG='pt_BR.UTF-8')
+        self.assertEqual(second.key, first.key)
         self.assertEqual(self.state.data['sequence'], sequence)
+        self.assertFalse(self.state.due(second))
 
-    def test_message_translation_server_error_is_not_ignored(self):
-        url = f'https://raw.githubusercontent.com/mainuan/{github.OFFICIAL}/{self.fixture.commit}/message.fr.txt'
+    def test_announcement_server_error_is_not_ignored(self):
+        url = f'https://raw.githubusercontent.com/mainuan/{github.OFFICIAL}/{self.fixture.commit}/announcements.json'
         self.fixture.overrides[url] = HTTPError(url, 500, 'Server Error', {}, None)
         with self.assertRaises(OSError):
-            self.load_in(LANG='fr_FR.UTF-8')
+            self.load()
 
     def test_metadata_only_consistent_commit_and_real_package_name(self):
         release = self.load()
         self.assertEqual(release.summary, self.fixture.message)
         self.assertEqual(release.packages[0].name, 'pacote-programa-um')
         self.assertEqual(release.features[0].title, 'Programa amigável programa-um')
-        self.assertTrue(all('/'+self.fixture.commit+'/' in url for url in self.fixture.calls if url.endswith('.txt')))
+        self.assertTrue(all('/'+self.fixture.commit+'/' in url for url in self.fixture.calls
+                            if url.startswith('https://raw.githubusercontent.com/')))
+        self.assertEqual(self.channel.active, release.key)
+        self.assertEqual(release.key, 'novidades-teste@1')
         self.assertFalse((self.directory/'pacotes-github').exists())
         self.assertFalse(any('/releases/download/' in url for url in self.fixture.calls))
 
@@ -153,26 +156,35 @@ class ChannelTests(unittest.TestCase):
         with self.assertRaisesRegex(CatalogError, 'compatível'):
             self.load()
 
-    def test_new_release_without_source_or_editorial_change(self):
+    def test_new_program_release_is_not_a_new_announcement(self):
         old = self.load()
+        self.state.viewed(old)
         self.fixture.version = '2.0'
         new = self.load()
-        self.assertNotEqual(new.key, old.key)
+        # Mesmo anúncio (id@versão): o pacote é atualizado, sem reapresentar.
+        self.assertEqual(new.key, old.key)
         self.assertEqual(new.packages[0].min_version, '2.0')
-        self.assertIn(old, self.channel.catalog.releases)
+        self.assertFalse(self.state.due(new))
+        self.assertEqual([r.key for r in self.channel.catalog.releases], [old.key])
         self.assertEqual(self.state.data['sequence'], 2)
 
-    def test_message_change_and_unrelated_main_commit(self):
+    def test_text_edit_unrelated_commit_and_new_version(self):
         first = self.load()
         self.state.viewed(first)
         self.fixture.commit = 'c'*40
         self.assertEqual(self.load(), first)
         self.assertEqual(self.state.data['sequence'], 1)
-        self.fixture.message += '\nMais novidades!'
+        # Correção de texto sem nova versão: atualiza o conteúdo, não reapresenta.
+        self.fixture.announcement['message']['pt_BR'] = 'Confira as novidades:'
+        edited = self.load()
+        self.assertEqual(edited.key, first.key)
+        self.assertFalse(self.state.due(edited))
+        # Nova versão do anúncio: outra chave, apresentada outra vez.
+        self.fixture.announcement['version'] = 2
         new = self.load()
-        self.assertNotEqual(new.key, first.key)
+        self.assertEqual(new.key, 'novidades-teste@2')
         self.assertTrue(self.state.due(new))
-        self.assertFalse(self.state.due(first))
+        self.assertIn(first.key, [r.key for r in self.channel.catalog.releases])
 
     def test_missing_digest_unofficial_repo_and_prerelease_are_blocked(self):
         url = github.API+'programa-um/releases/222/assets?per_page=100&page=1'
@@ -374,6 +386,12 @@ class OriginTests(unittest.TestCase):
         github.validate_url(f'https://raw.githubusercontent.com/mainuan/{github.OFFICIAL}/' + 'a'*40 + '/packages.txt')
         github.validate_url(f'https://raw.githubusercontent.com/mainuan/{github.OFFICIAL}/' + 'a'*40 + '/message.txt')
         github.validate_url(f'https://raw.githubusercontent.com/mainuan/{github.OFFICIAL}/' + 'a'*40 + '/message.zh_TW.txt')
+        github.validate_url(f'https://raw.githubusercontent.com/mainuan/{github.OFFICIAL}/' + 'a'*40 + '/announcements.json')
+        for name in ('announcements.json.bak', 'outro.json', 'x/announcements.json'):
+            with self.subTest(name=name), self.assertRaises(CatalogError):
+                github.validate_url(f'https://raw.githubusercontent.com/mainuan/{github.OFFICIAL}/' + 'a'*40 + '/' + name)
+        with self.assertRaises(CatalogError):
+            github.validate_url('https://raw.githubusercontent.com/terceiro/atualizador-de-recursos/' + 'a'*40 + '/announcements.json')
         with self.assertRaises(CatalogError):
             github.validate_url(f'https://raw.githubusercontent.com/mainuan/{github.OFFICIAL}/' + 'a'*40 + '/message.../x.txt')
         for url in ('http://api.github.com/repos/mainuan/repo', 'https://api.github.com/repos/mainuan-malicioso/repo',
@@ -425,7 +443,7 @@ def execute(app):
             assert w.github_channel is not None and w.github_trial is None
             assert w.install.isEnabled() and w.summary.text()==fixture.message
             assert w.automatic==('--check' in sys.argv)
-            if w.automatic: assert 60000 in requested and w.timer.isActive()
+            if w.automatic: assert 60000 in requested and w.isVisible()
             print('CANAL_NORMAL_OK')
             timer.stop();app.quit()
     timer.timeout.connect(inspect);timer.start(10)
@@ -444,7 +462,8 @@ with patch.object(application,'session_kind',return_value=SessionKind.INSTALLED)
 '''
         for arguments in ([], ['--check']):
             with self.subTest(arguments=arguments), tempfile.TemporaryDirectory() as tmp:
-                env = {**os.environ, 'PYTHONPATH':'src:tests', 'QT_QPA_PLATFORM':'offscreen', 'XDG_STATE_HOME':tmp}
+                env = {**os.environ, 'PYTHONPATH':'src:tests', 'QT_QPA_PLATFORM':'offscreen', 'XDG_STATE_HOME':tmp,
+                       'XDG_CONFIG_HOME':tmp}
                 result = subprocess.run([sys.executable,'-c',driver,*arguments],capture_output=True,text=True,env=env,timeout=10)
                 self.assertEqual(result.returncode,0,result.stdout+result.stderr)
                 self.assertIn('CANAL_NORMAL_OK',result.stdout)

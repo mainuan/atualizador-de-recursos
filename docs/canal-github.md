@@ -1,5 +1,11 @@
 # Publicação pelo canal GitHub — versão 0.2.2
 
+> **A partir da 0.4.0, quem decide se há anúncio é `announcements.json`** —
+> veja [Publicar um anúncio de novidades](anuncios.md). `packages.txt` e
+> `message.txt` ficam só para as versões 0.2.2 a 0.3.1 (sem repositórios, para
+> que fiquem em silêncio). As regras abaixo sobre releases estáveis, SHA-256 e
+> instalação continuam valendo para os programas listados em `packages` do anúncio.
+
 Não existe configuração inicial de chaves, GitHub Apps ou APT próprio. O aplicativo
 instalado funciona com `mainuan-atualizador-recursos`, como usuário comum. Não use
 sudo: a autorização administrativa pertence ao agente PolicyKit.
@@ -89,7 +95,7 @@ autoriza a transação após o download; não se cria solicitação artificial d
 nativas de origem não confiável permanecem visíveis. O sucesso exige observação
 das versões realmente instaladas.
 
-`--check` aguarda 60 segundos e consulta de hora em hora. Sessão Live ou não
+`--check` aguarda 60 segundos, consulta uma vez e encerra (0.4.0; antes, consultava de hora em hora). Sessão Live ou não
 identificada não consulta o GitHub nem oferece instalação. Nunca instala sozinho.
 Histórico, visualização e adiamento de 24 horas são separados do estado instalado.
 O cache em `~/.local/state/mainuan-recursos/` conserva as últimas 50 edições para

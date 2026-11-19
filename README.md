@@ -22,14 +22,14 @@ Canal oficial de novidades do Mainuan: avisa quando há novos programas da organ
 
 ## O que é
 
-O Atualizador de Recursos consulta, neste repositório, os arquivos `packages.txt` e `message.txt` da `main` (sempre do **mesmo commit**) e descobre as releases estáveis mais recentes, com `.deb` compatível, dos programas oficiais listados. Quando há novidade, mostra a mensagem e oferece instalar.
+O Atualizador de Recursos consulta, neste repositório, o arquivo [`announcements.json`](announcements.json) da `main`. A janela de novidades só abre sozinha para um anúncio publicado **de propósito** pela equipe (`"enabled": true`, válido, aplicável à versão instalada do Mainuan e ainda não apresentado). Uma release de programa, sozinha, nunca é anúncio. O anúncio pode sugerir programas oficiais, cuja release estável mais recente com `.deb` compatível o usuário pode instalar.
 
 Não substitui o atualizador geral do sistema (APT/Flatpak). Não exige VM, chave de catálogo, GitHub App, repositório APT próprio nem configuração pelo usuário. O [Mainuan Gestão de Drivers](https://github.com/mainuan/mainuan-gestao-drivers) serviu de referência de arquitetura, sem dependência direta entre os dois aplicativos.
 
 ## Funcionalidades
 
 - Interface clássica com o beija-flor e os botões **Instalar novidades**, **Conhecer novidades** e **Agora não** (adia o aviso por 24 horas). Histórico, informações técnicas e verificação manual ficam no menu.
-- Verificação em segundo plano durante a sessão KDE: 60 segundos após o login e depois a cada hora. Nada é instalado automaticamente.
+- Uma verificação silenciosa 60 segundos após o login no KDE. Sem anúncio, o processo encerra sem janela, notificação, ícone na bandeja ou roubo de foco. Nada é instalado automaticamente. **Mostrar novidades ao entrar**, no menu, desliga a verificação automática.
 - Não consulta nem instala na sessão Live, nem quando não consegue confirmar uma sessão instalada.
 - Reconhece versões adequadas já instaladas, inclusive por outra ferramenta, sem reinstalar.
 - Instalação pelo PackageKit com autorização nativa do PolicyKit, sem capturar senha.
@@ -48,15 +48,15 @@ Sem digest verificável, a instalação é bloqueada. O aplicativo registra loca
 
 HTTPS e o digest do GitHub **não equivalem à assinatura de um repositório APT**; as advertências nativas sobre origem não confiável são preservadas. Esses controles não protegem contra o comprometimento da própria conta oficial no GitHub ou do usuário local. Detalhes em [docs/canal-github.md](docs/canal-github.md).
 
-A compatibilidade aceita `ID=mainuan`/`VERSION_ID=2027.1` (RC1 ou final, base Kubuntu 26.04) e as identificações legadas `ubuntu`/`mainuan` com `VERSION_ID` `26.04`/`2026`; recusa `ubuntu/2027.1` e outras versões Ubuntu incompatíveis. Veja as [notas da versão 0.3.1](docs/v0.3.1.md).
+A compatibilidade aceita `ID=mainuan`/`VERSION_ID=2027.1` (RC1 ou final, base Kubuntu 26.04) e as identificações legadas `ubuntu`/`mainuan` com `VERSION_ID` `26.04`/`2026`; recusa `ubuntu/2027.1` e outras versões Ubuntu incompatíveis. Veja as [notas da versão 0.4.0](docs/v0.4.0.md).
 
 ## Instalação
 
-O Atualizador de Recursos já vem instalado na ISO do Mainuan. Para instalar manualmente, baixe `mainuan-atualizador-recursos_0.3.1_all.deb` e `SHA256SUMS` da [última release](https://github.com/mainuan/atualizador-de-recursos/releases/latest) e, na pasta dos dois arquivos:
+O Atualizador de Recursos já vem instalado na ISO do Mainuan. Para instalar manualmente, baixe `mainuan-atualizador-recursos_0.4.0_all.deb` e `SHA256SUMS` da [última release](https://github.com/mainuan/atualizador-de-recursos/releases/latest) e, na pasta dos dois arquivos:
 
 ```bash
 sha256sum --check --ignore-missing SHA256SUMS
-sudo apt install ./mainuan-atualizador-recursos_0.3.1_all.deb
+sudo apt install ./mainuan-atualizador-recursos_0.4.0_all.deb
 ```
 
 O pacote substitui o antigo `feature-update-manager`.
@@ -71,23 +71,25 @@ mainuan-atualizador-recursos
 
 | Opção | Efeito |
 |---|---|
-| `--check` | modo da sessão (usado pelo autostart do KDE): verifica após 60 s e a cada hora; mostra novidades não apresentadas ou adiadas há 24 h |
+| `--check` | modo da sessão (usado pelo autostart do KDE): verifica uma vez após 60 s; abre só para um anúncio ativo ainda não apresentado (ou adiado há 24 h) e, sem ele, encerra em silêncio |
 | `--demo` | demonstra o fluxo inteiro com catálogo, pacotes e autorização em memória |
 | `--scenario <cenário>` | cenário do `--demo`: `novo`, `visualizado`, `adiado`, `instalado`, `parcial`, `indisponivel`, `incompativel`, `erro` ou `cancelado` |
 | `--test-catalog <arquivo>`, `--test-config <arquivo>` | catálogo e configuração de teste; só com `--demo` |
 | `--homologacao-github` | ensaio histórico em VM com snapshot; não é necessário no uso normal |
 | `--version` | mostra a versão e sai |
 
-O estado, o histórico e o cache ficam em `~/.local/state/mainuan-recursos/` (respeita `XDG_STATE_HOME`). Página de manual: `man mainuan-atualizador-recursos`.
+O estado, o histórico e o cache ficam em `~/.local/state/mainuan-recursos/` (respeita `XDG_STATE_HOME`); a preferência **Mostrar novidades ao entrar**, em `~/.config/mainuan-recursos/preferences.json`. Página de manual: `man mainuan-atualizador-recursos`.
 
 ### Publicar novidades
 
-1. Publique uma release **estável** do programa no repositório dele, na organização `mainuan`, com o `.deb` anexado no nome convencional (por exemplo `mainuan-gestao-drivers_1.0_all.deb`). O GitHub precisa informar o digest SHA-256 do asset.
-2. Edite [`packages.txt`](packages.txt) pela interface web: um repositório por linha (hoje, `mainuan-gestao-drivers`).
-3. Edite [`message.txt`](message.txt): mensagem livre; os parágrafos são preservados.
-4. Salve. Não há assinatura, JSON nem versão para editar.
+1. No GitHub, abra [`announcements.json`](announcements.json) e clique em **Edit this file**.
+2. Troque para `"enabled": true` e preencha `id` (ex.: `"gestao-drivers-1-1"`), `version` (`1`), `title` e `message` (`pt_BR` obrigatório; outros idiomas opcionais). Opcionais: `url` (só `github.com/mainuan` ou `mainuan.github.io`), `packages` (repositórios oficiais que o usuário poderá instalar) e `applies_to` (ex.: `{"version_id": ["2027.1"]}`).
+3. **Commit changes**. O anúncio aparece uma vez em cada computador.
+4. Para parar: `"enabled": false` e salve. Para mostrar de novo a todos: aumente `version`.
 
-Os nomes amigáveis vêm das releases; *Conhecer novidades* abre a página do primeiro lançamento. Uma nova release estável é descoberta na consulta seguinte, sem recompilar o Atualizador. Não substitua artefatos ou tags já distribuídos: publique uma versão nova. Rotina completa em [docs/canal-github.md](docs/canal-github.md).
+Corrigir o texto sem mudar `version` não reapresenta o anúncio, e uma nova release de um programa listado também não. Guia completo, exemplo e regras: [docs/anuncios.md](docs/anuncios.md). Para programas sugeridos, publique releases **estáveis** com o `.deb` no nome convencional e digest SHA-256 do GitHub ([docs/canal-github.md](docs/canal-github.md)).
+
+`packages.txt` (sem repositórios) e `message.txt` ficam no repositório só para que as versões 0.2.2 a 0.3.1 continuem em silêncio; não os edite.
 
 ## Informações técnicas
 
@@ -117,8 +119,8 @@ po/i18n.sh check-pot && po/i18n.sh validate
 python3 -m compileall -q src bin tools
 QT_QPA_PLATFORM=offscreen PYTHONPATH=src python3 -m unittest discover -s tests -v
 dpkg-buildpackage -us -uc -b        # repete os testes em dh_auto_test
-lintian --fail-on error ../mainuan-atualizador-recursos_0.3.1_all.deb
-python3 tools/audit_python_package.py ../mainuan-atualizador-recursos_0.3.1_all.deb --expected-version 0.3.1
+lintian --fail-on error ../mainuan-atualizador-recursos_0.4.0_all.deb
+python3 tools/audit_python_package.py ../mainuan-atualizador-recursos_0.4.0_all.deb --expected-version 0.4.0
 ```
 
 Para experimentar sem tocar no sistema: `PYTHONPATH=src python3 -m mainuan_recursos --demo`. O script `build-package.sh` gera o pacote em `dist/` sem privilégios administrativos.
@@ -133,7 +135,7 @@ Como traduzir: [docs/i18n/README.md](docs/i18n/README.md).
 
 ## Contribuição
 
-Relate problemas em [Issues](https://github.com/mainuan/atualizador-de-recursos/issues) e envie pull requests para `main`; cada PR passa pelo CI. Para anunciar novidades, basta editar `packages.txt` e `message.txt` (ver [Publicar novidades](#publicar-novidades)).
+Relate problemas em [Issues](https://github.com/mainuan/atualizador-de-recursos/issues) e envie pull requests para `main`; cada PR passa pelo CI. Para anunciar novidades, basta editar `announcements.json` (ver [Publicar novidades](#publicar-novidades)).
 
 ## Créditos
 

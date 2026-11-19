@@ -35,7 +35,7 @@ class InstanceTests(unittest.TestCase):
         with tempfile.TemporaryDirectory(prefix='mr-') as temporary:
             root=Path(temporary)
             env=os.environ.copy()
-            env.update(XDG_STATE_HOME=str(root),QT_QPA_PLATFORM='offscreen',INSTANCE_LOG=str(root/'calls'))
+            env.update(XDG_STATE_HOME=str(root),XDG_CONFIG_HOME=str(root),QT_QPA_PLATFORM='offscreen',INSTANCE_LOG=str(root/'calls'))
             arguments=[sys.executable,'-c',DRIVER]
             processes=[]
             def launch():
@@ -77,23 +77,24 @@ class InstanceTests(unittest.TestCase):
                         process.terminate()
                     process.communicate(timeout=5)
 
-    def test_autostart_preserves_checks_when_manual_instance_started_first(self):
+    def test_autostart_does_not_promote_or_keep_a_manual_instance_alive(self):
+        """O --check repetido não cria outra janela, não vira verificação de hora
+        em hora e fechar a janela manual encerra o processo."""
         driver=DRIVER.replace("    raise SystemExit(main(sys.argv[1:]))", """
     from PyQt6.QtCore import QTimer
     from PyQt6.QtWidgets import QApplication
     original_exec=QApplication.exec
     def execute(app):
-        def close_after_promotion():
+        def close_after_request():
             windows=[w for w in app.topLevelWidgets() if isinstance(w,Window)]
-            if windows and windows[0].automatic:
+            if windows and Path(os.environ['INSTANCE_LOG']+'.auto').exists():
                 window=windows[0]
-                assert window.timer.isActive()
-                window.close()
-                assert not window.isVisible()
-                record('background-after-close')
+                assert not window.automatic
+                record('closing-manual')
                 timer.stop()
+                window.close()
         timer=QTimer()
-        timer.timeout.connect(close_after_promotion)
+        timer.timeout.connect(close_after_request)
         timer.start(10)
         return original_exec()
     QApplication.exec=execute
@@ -102,7 +103,7 @@ class InstanceTests(unittest.TestCase):
         with tempfile.TemporaryDirectory(prefix='mr-') as temporary:
             root=Path(temporary)
             env=os.environ.copy()
-            env.update(XDG_STATE_HOME=str(root),QT_QPA_PLATFORM='offscreen',INSTANCE_LOG=str(root/'calls'))
+            env.update(XDG_STATE_HOME=str(root),XDG_CONFIG_HOME=str(root),QT_QPA_PLATFORM='offscreen',INSTANCE_LOG=str(root/'calls'))
             process=subprocess.Popen([sys.executable,'-c',driver],env=env,stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True)
             try:
                 until=time.monotonic()+5
@@ -112,11 +113,11 @@ class InstanceTests(unittest.TestCase):
                     time.sleep(.01)
                 result=subprocess.run([sys.executable,'-c',DRIVER,'--check'],env=env,capture_output=True,text=True,timeout=5)
                 self.assertEqual(result.returncode,0)
-                while 'background-after-close' not in (root/'calls').read_text():
-                    if time.monotonic()>until:
-                        self.fail('Autostart não preservou a instância manual')
-                    time.sleep(.01)
-                self.assertIsNone(process.poll())
+                (root/'calls.auto').touch()
+                self.assertEqual(process.wait(timeout=5),0)
+                calls=(root/'calls').read_text().splitlines()
+                self.assertEqual(calls.count('constructed'),1)
+                self.assertIn('closing-manual',calls)
             finally:
                 if process.poll() is None:
                     process.terminate()

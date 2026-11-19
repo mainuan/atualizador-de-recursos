@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: mainuan-atualizador-recursos\n"
 "Report-Msgid-Bugs-To: https://github.com/mainuan/atualizador-de-recursos/"
 "issues\n"
-"POT-Creation-Date: 2026-11-18 13:16-0300\n"
+"POT-Creation-Date: 2026-11-19 01:47-0300\n"
 "PO-Revision-Date: 2026-11-16 11:30-0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: th <https://github.com/mainuan>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: data/mainuan-recursos-autostart.desktop.in:3
-#: src/mainuan_recursos/application.py:54
+#: src/mainuan_recursos/application.py:67
 msgid "Mainuan News"
 msgstr "ข่าวสาร Mainuan"
 
@@ -26,7 +26,7 @@ msgstr "ข่าวสาร Mainuan"
 msgid "Checks for news during the session"
 msgstr "ตรวจหาข่าวสารระหว่างเซสชัน"
 
-#: data/org.mainuan.Recursos.desktop.in:3 src/mainuan_recursos/gui.py:41
+#: data/org.mainuan.Recursos.desktop.in:3 src/mainuan_recursos/gui.py:47
 msgid "Mainuan Feature Updater"
 msgstr "ตัวอัปเดตฟีเจอร์ Mainuan"
 
@@ -34,15 +34,62 @@ msgstr "ตัวอัปเดตฟีเจอร์ Mainuan"
 msgid "Discover and receive the official Mainuan news"
 msgstr "ค้นพบและรับข่าวสารอย่างเป็นทางการของ Mainuan"
 
-#: src/mainuan_recursos/application.py:22
+#: src/mainuan_recursos/announcement.py:37
+#: src/mainuan_recursos/announcement.py:87
+#: src/mainuan_recursos/announcement.py:91
+#: src/mainuan_recursos/announcement.py:92
+#: src/mainuan_recursos/announcement.py:107
+#: src/mainuan_recursos/announcement.py:110
+#: src/mainuan_recursos/announcement.py:114
+#: src/mainuan_recursos/announcement.py:127
+#: src/mainuan_recursos/announcement.py:136
+#: src/mainuan_recursos/announcement.py:141
+msgid "announcements.json is invalid or incomplete."
+msgstr ""
+
+#: src/mainuan_recursos/announcement.py:100
+#, fuzzy
+#| msgid "GitHub response exceeds the allowed size."
+msgid "announcements.json exceeds the allowed size."
+msgstr "การตอบกลับจาก GitHub เกินขนาดที่อนุญาต"
+
+#: src/mainuan_recursos/announcement.py:109
+msgid "announcements.json uses an unsupported format. Update the application."
+msgstr ""
+
+#: src/mainuan_recursos/announcement.py:117
+#, fuzzy
+#| msgid "Invalid identifier."
+msgid "Invalid announcement identifier."
+msgstr "ตัวระบุไม่ถูกต้อง"
+
+#: src/mainuan_recursos/announcement.py:119
+#, fuzzy
+#| msgid "Invalid Debian name or version."
+msgid "Invalid announcement version."
+msgstr "ชื่อหรือรุ่น Debian ไม่ถูกต้อง"
+
+#: src/mainuan_recursos/announcement.py:125
+msgid "The announcement needs its text in Brazilian Portuguese (pt_BR)."
+msgstr ""
+
+#: src/mainuan_recursos/announcement.py:133
+#, fuzzy
+#| msgid "packages.txt contains invalid or repeated repositories."
+msgid "announcements.json lists invalid or repeated repositories."
+msgstr "packages.txt มีรีโพสิทอรีที่ไม่ถูกต้องหรือซ้ำกัน"
+
+#: src/mainuan_recursos/application.py:30
 msgid "Discover and receive the official Mainuan news."
 msgstr "ค้นพบและรับข่าวสารอย่างเป็นทางการของ Mainuan"
 
-#: src/mainuan_recursos/application.py:23
-msgid "check during the session and notify without blocking the login"
-msgstr "ตรวจสอบระหว่างเซสชันและแจ้งเตือนโดยไม่ขัดขวางการเข้าสู่ระบบ"
+#: src/mainuan_recursos/application.py:31
+msgid ""
+"check once after login; open only for an explicitly published announcement, "
+"otherwise exit silently"
+msgstr ""
 
-#: src/mainuan_recursos/application.py:24
+#: src/mainuan_recursos/application.py:32
 msgid ""
 "real, manual trial in a VM: GitHub packages.txt/message.txt and Driver "
 "Manager 1.0"
@@ -50,73 +97,73 @@ msgstr ""
 "การทดลองจริงแบบทำเองใน VM: packages.txt/message.txt จาก GitHub "
 "และตัวจัดการไดรเวอร์ 1.0"
 
-#: src/mainuan_recursos/application.py:25
+#: src/mainuan_recursos/application.py:33
 msgid "demonstrate the whole flow without modifying the system"
 msgstr "สาธิตขั้นตอนทั้งหมดโดยไม่แก้ไขระบบ"
 
-#: src/mainuan_recursos/application.py:26
+#: src/mainuan_recursos/application.py:34
 msgid "demonstration scenario"
 msgstr "สถานการณ์สาธิต"
 
-#: src/mainuan_recursos/application.py:27
+#: src/mainuan_recursos/application.py:35
 msgid "signed local catalog, only with --demo"
 msgstr "แค็ตตาล็อกในเครื่องที่ลงลายเซ็นแล้ว ใช้ได้กับ --demo เท่านั้น"
 
-#: src/mainuan_recursos/application.py:28
+#: src/mainuan_recursos/application.py:36
 msgid "test configuration and key, only with --demo"
 msgstr "การกำหนดค่าและกุญแจสำหรับทดสอบ ใช้ได้กับ --demo เท่านั้น"
 
-#: src/mainuan_recursos/application.py:33
+#: src/mainuan_recursos/application.py:41
 msgid ""
 "--homologacao-github is manual and cannot be combined with --check/--demo."
 msgstr "--homologacao-github เป็นแบบทำเองและใช้ร่วมกับ --check/--demo ไม่ได้"
 
-#: src/mainuan_recursos/application.py:38
+#: src/mainuan_recursos/application.py:46
 #, python-brace-format
 msgid "Acceptance test unavailable: {error}"
 msgstr "การทดสอบการยอมรับไม่พร้อมใช้งาน: {error}"
 
-#: src/mainuan_recursos/application.py:40
+#: src/mainuan_recursos/application.py:48
 msgid "Use --demo --test-catalog FILE --test-config FILE together."
 msgstr "ใช้ --demo --test-catalog FILE --test-config FILE ร่วมกัน"
 
-#: src/mainuan_recursos/application.py:51
+#: src/mainuan_recursos/application.py:64
 msgid ""
 "Checking for news becomes available after installing Mainuan. The Live "
 "session will not be queried."
 msgstr "การตรวจหาข่าวสารจะใช้ได้หลังติดตั้ง Mainuan แล้ว จะไม่มีการสอบถามจากเซสชัน Live"
 
-#: src/mainuan_recursos/application.py:53
+#: src/mainuan_recursos/application.py:66
 msgid ""
 "Could not determine the session type. Querying and installing features have "
 "been disabled."
 msgstr "ไม่สามารถระบุชนิดของเซสชันได้ จึงปิดการสอบถามและการติดตั้งฟีเจอร์ไว้"
 
-#: src/mainuan_recursos/application.py:67
+#: src/mainuan_recursos/application.py:80
 msgid "Invalid test catalog"
 msgstr "แค็ตตาล็อกทดสอบไม่ถูกต้อง"
 
-#: src/mainuan_recursos/application.py:81
+#: src/mainuan_recursos/application.py:94
 #, python-brace-format
 msgid "Could not open the state directory: {error}"
 msgstr "ไม่สามารถเปิดไดเรกทอรีสถานะ: {error}"
 
-#: src/mainuan_recursos/application.py:83
-#: src/mainuan_recursos/application.py:106
+#: src/mainuan_recursos/application.py:96
 #: src/mainuan_recursos/application.py:119
+#: src/mainuan_recursos/application.py:132
 msgid "Could not open the history"
 msgstr "ไม่สามารถเปิดประวัติ"
 
-#: src/mainuan_recursos/application.py:90
+#: src/mainuan_recursos/application.py:103
 msgid "Could not lock the local state. Check the directory permissions."
 msgstr "ไม่สามารถล็อกสถานะในเครื่อง โปรดตรวจสอบสิทธิ์ของไดเรกทอรี"
 
-#: src/mainuan_recursos/application.py:100
+#: src/mainuan_recursos/application.py:113
 msgid ""
 "The other instance is starting. Open the application again in a few seconds."
 msgstr "อินสแตนซ์อื่นกำลังเริ่มทำงาน โปรดเปิดแอปพลิเคชันอีกครั้งในอีกไม่กี่วินาที"
 
-#: src/mainuan_recursos/application.py:126
+#: src/mainuan_recursos/application.py:140
 msgid "Could not create the single-instance channel."
 msgstr "ไม่สามารถสร้างช่องทางสำหรับอินสแตนซ์เดียว"
 
@@ -311,7 +358,7 @@ msgstr "ค้นพบสิ่งใหม่"
 msgid "Optional: open the official page in the web browser."
 msgstr "ไม่บังคับ: เปิดหน้าทางการในเว็บเบราว์เซอร์"
 
-#: src/mainuan_recursos/classic.py:135 src/mainuan_recursos/gui.py:361
+#: src/mainuan_recursos/classic.py:135 src/mainuan_recursos/gui.py:414
 msgid "Install New Features"
 msgstr "ติดตั้งฟีเจอร์ใหม่"
 
@@ -332,7 +379,7 @@ msgstr "เลื่อนการแจ้งเตือนออกไป 24
 #: src/mainuan_recursos/controller.py:77 src/mainuan_recursos/controller.py:115
 #: src/mainuan_recursos/controller.py:147
 #: src/mainuan_recursos/controller.py:155 src/mainuan_recursos/demo.py:68
-#: src/mainuan_recursos/github_channel.py:391
+#: src/mainuan_recursos/github_channel.py:401
 #: src/mainuan_recursos/github_trial.py:201
 #: src/mainuan_recursos/packagekit.py:193
 msgid "Preparing installation..."
@@ -370,7 +417,7 @@ msgid ""
 msgstr "การขึ้นต่อกันมีการเปลี่ยนแปลง โปรดเตรียมการดำเนินการใหม่เพื่อยืนยันรายละเอียด"
 
 #: src/mainuan_recursos/controller.py:134 src/mainuan_recursos/demo.py:69
-#: src/mainuan_recursos/github_channel.py:472
+#: src/mainuan_recursos/github_channel.py:495
 #: src/mainuan_recursos/github_trial.py:250
 #: src/mainuan_recursos/packagekit.py:190
 msgid "Installing new features..."
@@ -428,63 +475,62 @@ msgstr "ยกเลิกการอนุญาตแล้ว (จำลอ�
 msgid "Download failed (simulation)."
 msgstr "ดาวน์โหลดล้มเหลว (จำลอง)"
 
-#: src/mainuan_recursos/github_channel.py:41
-#: src/mainuan_recursos/github_channel.py:48
+#: src/mainuan_recursos/github_channel.py:46
+#: src/mainuan_recursos/github_channel.py:53
 msgid "Invalid GitHub address."
 msgstr "ที่อยู่ GitHub ไม่ถูกต้อง"
 
-#: src/mainuan_recursos/github_channel.py:46
+#: src/mainuan_recursos/github_channel.py:51
 msgid "GitHub address must use official HTTPS."
 msgstr "ที่อยู่ GitHub ต้องใช้ HTTPS ทางการ"
 
-#: src/mainuan_recursos/github_channel.py:51
+#: src/mainuan_recursos/github_channel.py:56
 msgid "Ambiguous GitHub path."
 msgstr "พาธ GitHub กำกวม"
 
-#: src/mainuan_recursos/github_channel.py:53
+#: src/mainuan_recursos/github_channel.py:58
 msgid "Invalid repository."
 msgstr "รีโพสิทอรีไม่ถูกต้อง"
 
-#: src/mainuan_recursos/github_channel.py:63
+#: src/mainuan_recursos/github_channel.py:68
 msgid "Source or redirect outside the official Mainuan organization."
 msgstr "แหล่งที่มาหรือการเปลี่ยนเส้นทางอยู่นอกองค์กรทางการของ Mainuan"
 
-#: src/mainuan_recursos/github_channel.py:72
+#: src/mainuan_recursos/github_channel.py:77
 msgid "The GitHub query was redirected; check the official source."
 msgstr "การสอบถาม GitHub ถูกเปลี่ยนเส้นทาง โปรดตรวจสอบแหล่งที่มาทางการ"
 
-#: src/mainuan_recursos/github_channel.py:87
+#: src/mainuan_recursos/github_channel.py:92
 msgid "GitHub metadata exceeds the allowed limit."
 msgstr "เมทาดาทา GitHub เกินขีดจำกัดที่อนุญาต"
 
-#: src/mainuan_recursos/github_channel.py:96
+#: src/mainuan_recursos/github_channel.py:101
 msgid "Invalid GitHub artifact."
 msgstr "อาร์ทิแฟกต์ GitHub ไม่ถูกต้อง"
 
-#: src/mainuan_recursos/github_channel.py:98
+#: src/mainuan_recursos/github_channel.py:103
 msgid "Use the Debian name package_version_architecture.deb in the release."
 msgstr "ใช้ชื่อแบบ Debian package_version_architecture.deb ในรุ่นเผยแพร่"
 
-#: src/mainuan_recursos/github_channel.py:101
+#: src/mainuan_recursos/github_channel.py:106
 msgid "Invalid Debian name or version."
 msgstr "ชื่อหรือรุ่น Debian ไม่ถูกต้อง"
 
-#: src/mainuan_recursos/github_channel.py:104
+#: src/mainuan_recursos/github_channel.py:109
 #, python-brace-format
 msgid "The release has no verifiable SHA-256 published by GitHub for {file}."
 msgstr "รุ่นเผยแพร่ไม่มี SHA-256 ที่ตรวจสอบได้ซึ่งเผยแพร่โดย GitHub สำหรับ {file}"
 
-#: src/mainuan_recursos/github_channel.py:106
+#: src/mainuan_recursos/github_channel.py:111
 msgid "Artifact unavailable or invalid size."
 msgstr "อาร์ทิแฟกต์ไม่พร้อมใช้งานหรือขนาดไม่ถูกต้อง"
 
-#: src/mainuan_recursos/github_channel.py:157
-#: src/mainuan_recursos/github_channel.py:292
+#: src/mainuan_recursos/github_channel.py:151
+#: src/mainuan_recursos/github_channel.py:299
 msgid "GitHub history exceeds the allowed limit."
 msgstr "ประวัติ GitHub เกินขีดจำกัดที่อนุญาต"
 
 #: src/mainuan_recursos/github_channel.py:170
-#: src/mainuan_recursos/github_channel.py:285
 #: src/mainuan_recursos/github_trial.py:146
 msgid "Mainuan has news!"
 msgstr "Mainuan มีข่าวใหม่!"
@@ -545,155 +591,149 @@ msgstr "การอ้างอิงที่เปลี่ยนแปลง
 msgid "No stable release with a compatible Debian package: {repository}"
 msgstr "ไม่มีรุ่นเผยแพร่เสถียรที่มีแพ็กเกจ Debian ที่เข้ากันได้: {repository}"
 
-#: src/mainuan_recursos/github_channel.py:249
+#: src/mainuan_recursos/github_channel.py:251
 msgid "This channel is intended for Mainuan based on Kubuntu 26.04."
 msgstr "ช่องทางนี้มีไว้สำหรับ Mainuan ที่สร้างบน Kubuntu 26.04"
 
-#: src/mainuan_recursos/github_channel.py:251
+#: src/mainuan_recursos/github_channel.py:253
 msgid "Invalid official reference."
 msgstr "การอ้างอิงทางการไม่ถูกต้อง"
 
-#: src/mainuan_recursos/github_channel.py:255
-msgid "message.txt is empty."
-msgstr "message.txt ว่างเปล่า"
-
-#: src/mainuan_recursos/github_channel.py:260
-msgid "packages.txt contains invalid or repeated repositories."
-msgstr "packages.txt มีรีโพสิทอรีที่ไม่ถูกต้องหรือซ้ำกัน"
-
-#: src/mainuan_recursos/github_channel.py:266
+#: src/mainuan_recursos/github_channel.py:267
 msgid "Two repositories offer the same Debian package."
 msgstr "มีสองรีโพสิทอรีที่เสนอแพ็กเกจ Debian เดียวกัน"
 
-#: src/mainuan_recursos/github_channel.py:271
+#: src/mainuan_recursos/github_channel.py:272
 #, python-brace-format
 msgid "An already announced release or artifact was replaced: {package}"
 msgstr "รุ่นเผยแพร่หรืออาร์ทิแฟกต์ที่ประกาศไปแล้วถูกแทนที่: {package}"
 
-#: src/mainuan_recursos/github_channel.py:275
+#: src/mainuan_recursos/github_channel.py:276
 #, python-brace-format
 msgid "Rollback of a published version blocked: {package}"
 msgstr "ปิดกั้นการย้อนกลับรุ่นที่เผยแพร่แล้ว: {package}"
 
-#: src/mainuan_recursos/github_channel.py:296
+#: src/mainuan_recursos/github_channel.py:303
 msgid "News not queried in this channel."
 msgstr "ไม่ได้สอบถามข่าวสารในช่องทางนี้"
 
-#: src/mainuan_recursos/github_channel.py:304
+#: src/mainuan_recursos/github_channel.py:311
 msgid "Package missing or size mismatch."
 msgstr "แพ็กเกจขาดหายหรือขนาดไม่ตรงกัน"
 
-#: src/mainuan_recursos/github_channel.py:306
+#: src/mainuan_recursos/github_channel.py:313
 msgid "SHA-256 integrity mismatch; installation blocked."
 msgstr "ความสมบูรณ์ SHA-256 ไม่ตรงกัน ปิดกั้นการติดตั้ง"
 
-#: src/mainuan_recursos/github_channel.py:310
+#: src/mainuan_recursos/github_channel.py:317
 msgid "Internal package metadata does not match the release."
 msgstr "เมทาดาทาภายในแพ็กเกจไม่ตรงกับรุ่นเผยแพร่"
 
-#: src/mainuan_recursos/github_channel.py:324
+#: src/mainuan_recursos/github_channel.py:334
 #: src/mainuan_recursos/github_trial.py:162 src/mainuan_recursos/packages.py:96
 msgid "Package with incomplete configuration"
 msgstr "แพ็กเกจที่กำหนดค่าไม่ครบถ้วน"
 
-#: src/mainuan_recursos/github_channel.py:328
+#: src/mainuan_recursos/github_channel.py:338
 #: src/mainuan_recursos/github_trial.py:167 src/mainuan_recursos/packages.py:98
 msgid "Package held by the administrator"
 msgstr "แพ็กเกจที่ผู้ดูแลระบบตรึงไว้"
 
-#: src/mainuan_recursos/github_channel.py:334
+#: src/mainuan_recursos/github_channel.py:344
 #: src/mainuan_recursos/github_trial.py:173
 #, python-brace-format
 msgid "Unmet dependencies: {details}"
 msgstr "การขึ้นต่อกันที่ไม่ได้รับการตอบสนอง: {details}"
 
-#: src/mainuan_recursos/github_channel.py:336
+#: src/mainuan_recursos/github_channel.py:346
 msgid "The operation requires additional unannounced packages"
 msgstr "การดำเนินการต้องใช้แพ็กเกจเพิ่มเติมที่ไม่ได้ประกาศไว้"
 
-#: src/mainuan_recursos/github_channel.py:344
+#: src/mainuan_recursos/github_channel.py:354
 msgid "The announced release was withdrawn or changed."
 msgstr "รุ่นเผยแพร่ที่ประกาศไว้ถูกถอนหรือเปลี่ยนแปลง"
 
-#: src/mainuan_recursos/github_channel.py:346
+#: src/mainuan_recursos/github_channel.py:356
 msgid "The release reference was replaced; installation blocked."
 msgstr "การอ้างอิงของรุ่นเผยแพร่ถูกแทนที่ ปิดกั้นการติดตั้ง"
 
-#: src/mainuan_recursos/github_channel.py:349
+#: src/mainuan_recursos/github_channel.py:359
 msgid "The artifact was changed after the query; check for news again."
 msgstr "อาร์ทิแฟกต์ถูกเปลี่ยนแปลงหลังการสอบถาม โปรดตรวจหาข่าวสารอีกครั้ง"
 
-#: src/mainuan_recursos/github_channel.py:366
+#: src/mainuan_recursos/github_channel.py:376
 msgid "Download exceeds the approved size."
 msgstr "การดาวน์โหลดเกินขนาดที่อนุมัติ"
 
-#: src/mainuan_recursos/github_channel.py:369
-#: src/mainuan_recursos/github_channel.py:388
+#: src/mainuan_recursos/github_channel.py:379
+#: src/mainuan_recursos/github_channel.py:398
 #: src/mainuan_recursos/github_trial.py:189
 #: src/mainuan_recursos/github_trial.py:191
 #: src/mainuan_recursos/packagekit.py:191
 msgid "Downloading new features..."
 msgstr "กำลังดาวน์โหลดฟีเจอร์ใหม่..."
 
-#: src/mainuan_recursos/github_channel.py:370
+#: src/mainuan_recursos/github_channel.py:380
 msgid "Download with SHA-256 integrity mismatch."
 msgstr "การดาวน์โหลดมีความสมบูรณ์ SHA-256 ไม่ตรงกัน"
 
-#: src/mainuan_recursos/github_channel.py:377
+#: src/mainuan_recursos/github_channel.py:387
 msgid "Check for news online before installing."
 msgstr "ตรวจหาข่าวสารทางออนไลน์ก่อนติดตั้ง"
 
-#: src/mainuan_recursos/github_channel.py:379
+#: src/mainuan_recursos/github_channel.py:389
 msgid ""
 "Installation requires a regular user and an installed session, outside Live "
 "mode."
 msgstr "การติดตั้งต้องใช้ผู้ใช้ทั่วไปและเซสชันที่ติดตั้งแล้ว นอกโหมด Live"
 
-#: src/mainuan_recursos/github_channel.py:399
+#: src/mainuan_recursos/github_channel.py:409
 msgid "PackageKit proposed additional packages or an incomplete operation."
 msgstr "PackageKit เสนอแพ็กเกจเพิ่มเติมหรือการดำเนินการที่ไม่สมบูรณ์"
 
-#: src/mainuan_recursos/github_channel.py:403
+#: src/mainuan_recursos/github_channel.py:413
 msgid "The simulation would change unannounced packages."
 msgstr "การจำลองจะเปลี่ยนแปลงแพ็กเกจที่ไม่ได้ประกาศไว้"
 
-#: src/mainuan_recursos/github_channel.py:405
+#: src/mainuan_recursos/github_channel.py:415
 msgid "Removal, reinstallation or downgrade blocked."
 msgstr "ปิดกั้นการเอาออก การติดตั้งซ้ำ หรือการลดรุ่น"
 
-#: src/mainuan_recursos/github_channel.py:417
-#: src/mainuan_recursos/github_channel.py:418
+#: src/mainuan_recursos/github_channel.py:428
+#: src/mainuan_recursos/github_channel.py:429
 msgid "Invalid GitHub cache."
 msgstr "แคช GitHub ไม่ถูกต้อง"
 
 # reviewed: 'edition' é a edição de notícias (cache de edições), não
 # versão/release; 'รุ่นจัดทำ' é incompreensível
-#: src/mainuan_recursos/github_channel.py:423
+#: src/mainuan_recursos/github_channel.py:435
+#: src/mainuan_recursos/github_channel.py:442
+#: src/mainuan_recursos/github_channel.py:445
 msgid "Invalid local edition."
 msgstr "ฉบับในเครื่องไม่ถูกต้อง"
 
-#: src/mainuan_recursos/github_channel.py:426
+#: src/mainuan_recursos/github_channel.py:448
 msgid "Invalid local artifact."
 msgstr "อาร์ทิแฟกต์ในเครื่องไม่ถูกต้อง"
 
-#: src/mainuan_recursos/github_channel.py:430
+#: src/mainuan_recursos/github_channel.py:453
 msgid "Invalid GitHub history. Preserve the file before recovering it."
 msgstr "ประวัติ GitHub ไม่ถูกต้อง โปรดเก็บรักษาไฟล์ไว้ก่อนกู้คืน"
 
-#: src/mainuan_recursos/github_channel.py:447
+#: src/mainuan_recursos/github_channel.py:470
 msgid "Cannot install:"
 msgstr "ไม่สามารถติดตั้ง:"
 
-#: src/mainuan_recursos/github_channel.py:449
+#: src/mainuan_recursos/github_channel.py:472
 msgid ""
 "You have already received all the features. No reinstallation will be done."
 msgstr "คุณได้รับฟีเจอร์ทั้งหมดแล้ว จะไม่มีการติดตั้งซ้ำ"
 
-#: src/mainuan_recursos/github_channel.py:451
+#: src/mainuan_recursos/github_channel.py:474
 msgid "The package state has changed. Check for news again."
 msgstr "สถานะของแพ็กเกจมีการเปลี่ยนแปลง โปรดตรวจหาข่าวสารอีกครั้ง"
 
-#: src/mainuan_recursos/github_channel.py:464
+#: src/mainuan_recursos/github_channel.py:487
 msgid "The operation has changed; installation blocked."
 msgstr "การดำเนินการมีการเปลี่ยนแปลง ปิดกั้นการติดตั้ง"
 
@@ -830,152 +870,163 @@ msgstr ""
 msgid "The operation has changed. Review the confirmation again."
 msgstr "การดำเนินการมีการเปลี่ยนแปลง โปรดตรวจทานการยืนยันอีกครั้ง"
 
-#: src/mainuan_recursos/gui.py:39
+#: src/mainuan_recursos/gui.py:45
 msgid "Mainuan Feature Updater — Demo"
 msgstr "ตัวอัปเดตฟีเจอร์ Mainuan — สาธิต"
 
-#: src/mainuan_recursos/gui.py:40
+#: src/mainuan_recursos/gui.py:46
 msgid "Mainuan Feature Updater — GitHub Acceptance Test"
 msgstr "ตัวอัปเดตฟีเจอร์ Mainuan — การทดสอบการยอมรับ GitHub"
 
-#: src/mainuan_recursos/gui.py:44
+#: src/mainuan_recursos/gui.py:50
 msgid "Checking for news…"
 msgstr "กำลังตรวจหาข่าวสาร…"
 
-#: src/mainuan_recursos/gui.py:50
+#: src/mainuan_recursos/gui.py:56
 msgid "Check for News"
 msgstr "ตรวจหาข่าวสาร"
 
-#: src/mainuan_recursos/gui.py:51 src/mainuan_recursos/gui.py:55
-#: src/mainuan_recursos/gui.py:56
+#: src/mainuan_recursos/gui.py:57 src/mainuan_recursos/gui.py:67
+#: src/mainuan_recursos/gui.py:68
 msgid "News History"
 msgstr "ประวัติข่าวสาร"
 
-#: src/mainuan_recursos/gui.py:53 src/mainuan_recursos/gui.py:60
+#: src/mainuan_recursos/gui.py:60
+msgid "Show News at Login"
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:65 src/mainuan_recursos/gui.py:72
 msgid "Technical Information"
 msgstr "ข้อมูลทางเทคนิค"
 
-#: src/mainuan_recursos/gui.py:59
+#: src/mainuan_recursos/gui.py:71
 msgid "Programs, packages, versions and actual status"
 msgstr "โปรแกรม แพ็กเกจ รุ่น และสถานะจริง"
 
+#: src/mainuan_recursos/gui.py:103
+#, fuzzy, python-brace-format
+#| msgid "Could not save the history: {error}"
+msgid "Could not save the preference: {error}"
+msgstr "ไม่สามารถบันทึกประวัติ: {error}"
+
 #. Translators: title of an auxiliary window opened in demonstration mode.
-#: src/mainuan_recursos/gui.py:92
+#: src/mainuan_recursos/gui.py:108
 #, python-brace-format
 msgid "{title} — Demo"
 msgstr "{title} — สาธิต"
 
-#: src/mainuan_recursos/gui.py:119
+#: src/mainuan_recursos/gui.py:135
 #, python-brace-format
 msgid "Release: {id} • {version}"
 msgstr "รุ่นเผยแพร่: {id} • {version}"
 
-#: src/mainuan_recursos/gui.py:120
+#: src/mainuan_recursos/gui.py:136
 #, python-brace-format
 msgid "Official article: {url}"
 msgstr "บทความทางการ: {url}"
 
-#: src/mainuan_recursos/gui.py:121
+#: src/mainuan_recursos/gui.py:137
 msgid "not checked"
 msgstr "ยังไม่ได้ตรวจสอบ"
 
-#: src/mainuan_recursos/gui.py:126 src/mainuan_recursos/gui.py:351
+#: src/mainuan_recursos/gui.py:142 src/mainuan_recursos/gui.py:404
 msgid "not installed"
 msgstr "ยังไม่ได้ติดตั้ง"
 
-#: src/mainuan_recursos/gui.py:127
+#: src/mainuan_recursos/gui.py:143
 msgid "unavailable"
 msgstr "ไม่พร้อมใช้งาน"
 
-#: src/mainuan_recursos/gui.py:129
+#: src/mainuan_recursos/gui.py:145
 msgid "packages not checked"
 msgstr "ยังไม่ได้ตรวจสอบแพ็กเกจ"
 
-#: src/mainuan_recursos/gui.py:130
+#: src/mainuan_recursos/gui.py:146
 #, python-brace-format
 msgid "Package: {name}"
 msgstr "แพ็กเกจ: {name}"
 
-#: src/mainuan_recursos/gui.py:131
+#: src/mainuan_recursos/gui.py:147
 #, python-brace-format
 msgid "Minimum version: {version}"
 msgstr "รุ่นต่ำสุด: {version}"
 
-#: src/mainuan_recursos/gui.py:132
+#: src/mainuan_recursos/gui.py:148
 #, python-brace-format
 msgid "Installed: {version}"
 msgstr "ที่ติดตั้ง: {version}"
 
-#: src/mainuan_recursos/gui.py:133
+#: src/mainuan_recursos/gui.py:149
 #, python-brace-format
 msgid "Available: {version}"
 msgstr "ที่มีให้: {version}"
 
-#: src/mainuan_recursos/gui.py:134
+#: src/mainuan_recursos/gui.py:150
 #, python-brace-format
 msgid "Architecture: {architecture}"
 msgstr "สถาปัตยกรรม: {architecture}"
 
-#: src/mainuan_recursos/gui.py:135
+#: src/mainuan_recursos/gui.py:151
 #, python-brace-format
 msgid "Status: {status}"
 msgstr "สถานะ: {status}"
 
-#: src/mainuan_recursos/gui.py:137
+#: src/mainuan_recursos/gui.py:153
 #, python-brace-format
 msgid "Approved SHA-256: {sha256}"
 msgstr "SHA-256 ที่อนุมัติ: {sha256}"
 
-#: src/mainuan_recursos/gui.py:139
+#: src/mainuan_recursos/gui.py:155
 msgid ""
 "The complete operation, including dependencies, will be shown when "
 "confirming the installation."
 msgstr "การดำเนินการทั้งหมด รวมถึงการขึ้นต่อกัน จะแสดงเมื่อยืนยันการติดตั้ง"
 
-#: src/mainuan_recursos/gui.py:141
+#: src/mainuan_recursos/gui.py:157
 msgid ""
 "Demo: authorization and installation are simulated; no package will be "
 "changed."
 msgstr "สาธิต: การอนุญาตและการติดตั้งเป็นการจำลอง จะไม่มีแพ็กเกจใดถูกเปลี่ยนแปลง"
 
-#: src/mainuan_recursos/gui.py:143
+#: src/mainuan_recursos/gui.py:159
 msgid ""
-"Official GitHub channel: packages.txt and message.txt from the same commit."
-msgstr "ช่องทาง GitHub ทางการ: packages.txt และ message.txt จากคอมมิตเดียวกัน"
+"Official GitHub channel: announcements.json, read from a single commit and "
+"published explicitly."
+msgstr ""
 
-#: src/mainuan_recursos/gui.py:144
+#: src/mainuan_recursos/gui.py:160
 msgid ""
 "Packages from stable releases, with IDs, versions and SHA-256 recorded "
 "during the query."
 msgstr "แพ็กเกจจากรุ่นเผยแพร่เสถียร พร้อม ID รุ่น และ SHA-256 ที่บันทึกไว้ระหว่างการสอบถาม"
 
-#: src/mainuan_recursos/gui.py:145
+#: src/mainuan_recursos/gui.py:161
 msgid ""
 "The download starts only after choosing to install; unannounced changes are "
 "blocked."
 msgstr ""
 "การดาวน์โหลดจะเริ่มหลังจากเลือกติดตั้งแล้วเท่านั้น การเปลี่ยนแปลงที่ไม่ได้ประกาศไว้จะถูกปิดกั้น"
 
-#: src/mainuan_recursos/gui.py:146
+#: src/mainuan_recursos/gui.py:162
 msgid "HTTPS and SHA-256 are not equivalent to an APT repository signature."
 msgstr "HTTPS และ SHA-256 ไม่เทียบเท่ากับลายเซ็นของคลังแพ็กเกจ APT"
 
-#: src/mainuan_recursos/gui.py:147
+#: src/mainuan_recursos/gui.py:163
 msgid "PackageKit/PolicyKit may ask for authorization for an untrusted source."
 msgstr "PackageKit/PolicyKit อาจขอการอนุญาตสำหรับแหล่งที่ไม่น่าเชื่อถือ"
 
-#: src/mainuan_recursos/gui.py:149
+#: src/mainuan_recursos/gui.py:165
 msgid ""
 "GitHub acceptance test: official source and artifact pinned by IDs and "
 "SHA-256."
 msgstr ""
 "การทดสอบการยอมรับ GitHub: แหล่งที่มาทางการและอาร์ทิแฟกต์ที่ตรึงด้วย ID และ SHA-256"
 
-#: src/mainuan_recursos/gui.py:150
+#: src/mainuan_recursos/gui.py:166
 msgid "The download starts only after choosing to install."
 msgstr "การดาวน์โหลดจะเริ่มหลังจากเลือกติดตั้งแล้วเท่านั้น"
 
-#: src/mainuan_recursos/gui.py:151
+#: src/mainuan_recursos/gui.py:167
 msgid ""
 "Local file without an APT repository signature. PackageKit/PolicyKit may ask "
 "for authorization for an untrusted source."
@@ -983,29 +1034,33 @@ msgstr ""
 "ไฟล์ในเครื่องที่ไม่มีลายเซ็นของคลังแพ็กเกจ APT โดย PackageKit/PolicyKit "
 "อาจขอการอนุญาตสำหรับแหล่งที่ไม่น่าเชื่อถือ"
 
-#: src/mainuan_recursos/gui.py:152
+#: src/mainuan_recursos/gui.py:168
 msgid ""
 "The trial only allows the Driver Manager application; changes to other "
 "packages are blocked."
 msgstr ""
 "การทดลองนี้อนุญาตเฉพาะแอปพลิเคชันตัวจัดการไดรเวอร์เท่านั้น การเปลี่ยนแปลงแพ็กเกจอื่นจะถูกปิดกั้น"
 
-#: src/mainuan_recursos/gui.py:174
+#: src/mainuan_recursos/gui.py:193
 msgid "Querying the official Mainuan news…"
 msgstr "กำลังสอบถามข่าวสารทางการของ Mainuan…"
 
-#: src/mainuan_recursos/gui.py:218
+#: src/mainuan_recursos/gui.py:246
 #, python-brace-format
 msgid "Could not check for news. {error}"
 msgstr "ไม่สามารถตรวจหาข่าวสาร {error}"
 
 # reviewed: 'แล้วกลับมา' (='e então volte') soa truncado; forma natural de
 # 'Come back soon!'
-#: src/mainuan_recursos/gui.py:246
+#: src/mainuan_recursos/gui.py:297
 msgid "No news has been published yet. Come back soon!"
 msgstr "ยังไม่มีข่าวสารที่เผยแพร่ แวะกลับมาใหม่เร็ว ๆ นี้!"
 
-#: src/mainuan_recursos/gui.py:252
+#: src/mainuan_recursos/gui.py:299
+msgid "No news is published right now. Earlier news is in the history."
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:305
 msgid ""
 "No news published.\n"
 "Come back soon to discover the next Mainuan features."
@@ -1013,79 +1068,79 @@ msgstr ""
 "ยังไม่มีข่าวสารที่เผยแพร่\n"
 "กลับมาใหม่เร็ว ๆ นี้เพื่อค้นพบฟีเจอร์ถัดไปของ Mainuan"
 
-#: src/mainuan_recursos/gui.py:260
+#: src/mainuan_recursos/gui.py:313
 msgid "We have news for you! Discover the features before installing."
 msgstr "เรามีข่าวใหม่สำหรับคุณ! ค้นพบฟีเจอร์ต่าง ๆ ก่อนติดตั้ง"
 
-#: src/mainuan_recursos/gui.py:262
+#: src/mainuan_recursos/gui.py:315
 #, python-brace-format
 msgid "Could not check the packages: {error}"
 msgstr "ไม่สามารถตรวจสอบแพ็กเกจ: {error}"
 
-#: src/mainuan_recursos/gui.py:264
+#: src/mainuan_recursos/gui.py:317
 msgid ""
 "This release is not compatible with the version or architecture of this "
 "system."
 msgstr "รุ่นเผยแพร่นี้เข้ากันไม่ได้กับรุ่นหรือสถาปัตยกรรมของระบบนี้"
 
-#: src/mainuan_recursos/gui.py:266
+#: src/mainuan_recursos/gui.py:319
 msgid ""
 "You have already received these features through the system. Discover the "
 "news!"
 msgstr "คุณได้รับฟีเจอร์เหล่านี้ผ่านระบบแล้ว มาค้นพบสิ่งใหม่กันเลย!"
 
-#: src/mainuan_recursos/gui.py:268
+#: src/mainuan_recursos/gui.py:321
 msgid ""
 "Some packages are not yet available for safe installation. See the technical "
 "information in the menu."
 msgstr "บางแพ็กเกจยังไม่พร้อมสำหรับการติดตั้งอย่างปลอดภัย ดูข้อมูลทางเทคนิคในเมนู"
 
-#: src/mainuan_recursos/gui.py:272
+#: src/mainuan_recursos/gui.py:325
 #, python-brace-format
 msgid "{message} Cached catalog: offline query; installation unavailable."
 msgstr "{message} แค็ตตาล็อกที่แคชไว้: สอบถามแบบออฟไลน์ ไม่สามารถติดตั้งได้"
 
-#: src/mainuan_recursos/gui.py:284
+#: src/mainuan_recursos/gui.py:337
 msgctxt "news state"
 msgid "New"
 msgstr "ใหม่"
 
-#: src/mainuan_recursos/gui.py:284
+#: src/mainuan_recursos/gui.py:337
 msgctxt "news state"
 msgid "Viewed"
 msgstr "ดูแล้ว"
 
-#: src/mainuan_recursos/gui.py:285
+#: src/mainuan_recursos/gui.py:338
 msgctxt "news state"
 msgid "Postponed"
 msgstr "เลื่อนไว้"
 
-#: src/mainuan_recursos/gui.py:297
+#: src/mainuan_recursos/gui.py:350
 #, python-brace-format
 msgid "Could not save the viewing in the history: {error}"
 msgstr "ไม่สามารถบันทึกการดูลงในประวัติ: {error}"
 
-#: src/mainuan_recursos/gui.py:309
+#: src/mainuan_recursos/gui.py:362
 msgid "Could not open the default web browser."
 msgstr "ไม่สามารถเปิดเว็บเบราว์เซอร์ค่าเริ่มต้น"
 
-#: src/mainuan_recursos/gui.py:313
+#: src/mainuan_recursos/gui.py:366
 msgid "Check the official catalog again before installing."
 msgstr "ตรวจสอบแค็ตตาล็อกทางการอีกครั้งก่อนติดตั้ง"
 
-#: src/mainuan_recursos/gui.py:315
+#: src/mainuan_recursos/gui.py:368
 msgid "Release incompatible with this system."
 msgstr "รุ่นเผยแพร่เข้ากันไม่ได้กับระบบนี้"
 
-#: src/mainuan_recursos/gui.py:346
+#: src/mainuan_recursos/gui.py:399
 msgid "Confirm Installation"
 msgstr "ยืนยันการติดตั้ง"
 
-#: src/mainuan_recursos/gui.py:346
+#: src/mainuan_recursos/gui.py:399
 msgid "Confirm Installation — Demo"
 msgstr "ยืนยันการติดตั้ง — สาธิต"
 
-#: src/mainuan_recursos/gui.py:348
+#: src/mainuan_recursos/gui.py:401
 msgid ""
 "The installation needs to change other packages or review the plan. Check "
 "the operation before continuing."
@@ -1093,41 +1148,41 @@ msgstr ""
 "การติดตั้งจำเป็นต้องเปลี่ยนแปลงแพ็กเกจอื่นหรือตรวจทานแผน "
 "โปรดตรวจสอบการดำเนินการก่อนดำเนินการต่อ"
 
-#: src/mainuan_recursos/gui.py:355
+#: src/mainuan_recursos/gui.py:408
 msgid "Complete operation, including dependencies:"
 msgstr "การดำเนินการทั้งหมด รวมถึงการขึ้นต่อกัน:"
 
-#: src/mainuan_recursos/gui.py:356
+#: src/mainuan_recursos/gui.py:409
 msgid "Packages and dependencies of the operation"
 msgstr "แพ็กเกจและการขึ้นต่อกันของการดำเนินการ"
 
-#: src/mainuan_recursos/gui.py:358
+#: src/mainuan_recursos/gui.py:411
 msgid "Authorization and installation will be simulated."
 msgstr "การอนุญาตและการติดตั้งจะเป็นการจำลอง"
 
-#: src/mainuan_recursos/gui.py:359
+#: src/mainuan_recursos/gui.py:412
 msgid "The system will ask for authorization to install."
 msgstr "ระบบจะขอการอนุญาตเพื่อติดตั้ง"
 
-#: src/mainuan_recursos/gui.py:362
+#: src/mainuan_recursos/gui.py:415
 msgid "Cancel"
 msgstr "ยกเลิก"
 
-#: src/mainuan_recursos/gui.py:373
+#: src/mainuan_recursos/gui.py:426
 msgid "Installation canceled. You can discover the news whenever you want."
 msgstr "ยกเลิกการติดตั้งแล้ว คุณสามารถค้นพบข่าวสารได้ทุกเมื่อที่ต้องการ"
 
-#: src/mainuan_recursos/gui.py:382
+#: src/mainuan_recursos/gui.py:435
 #, python-brace-format
 msgid "Could not save the history: {error}"
 msgstr "ไม่สามารถบันทึกประวัติ: {error}"
 
-#: src/mainuan_recursos/gui.py:398
+#: src/mainuan_recursos/gui.py:451
 #, python-brace-format
 msgid "Could not save the 24-hour postponement: {error}"
 msgstr "ไม่สามารถบันทึกการเลื่อน 24 ชั่วโมง: {error}"
 
-#: src/mainuan_recursos/gui.py:405
+#: src/mainuan_recursos/gui.py:458
 msgid "Wait for the operation to finish before closing."
 msgstr "โปรดรอให้การดำเนินการเสร็จสิ้นก่อนปิด"
 
@@ -1357,35 +1412,35 @@ msgstr "แคชในเครื่องเกินขีดจำกัด
 msgid "Old or changed catalog; the valid cache was preserved."
 msgstr "แค็ตตาล็อกเก่าหรือถูกเปลี่ยนแปลง จึงเก็บแคชที่ใช้ได้ไว้"
 
-#: src/mainuan_recursos/state.py:44
+#: src/mainuan_recursos/state.py:54
 msgid "Local state too large."
 msgstr "สถานะในเครื่องใหญ่เกินไป"
 
-#: src/mainuan_recursos/state.py:46 src/mainuan_recursos/state.py:48
-#: src/mainuan_recursos/state.py:56
+#: src/mainuan_recursos/state.py:56 src/mainuan_recursos/state.py:58
+#: src/mainuan_recursos/state.py:66
 msgid "Invalid state."
 msgstr "สถานะไม่ถูกต้อง"
 
-#: src/mainuan_recursos/state.py:51
+#: src/mainuan_recursos/state.py:61
 msgid "Invalid sequence/digest."
 msgstr "ลำดับ/ไดเจสต์ไม่ถูกต้อง"
 
-#: src/mainuan_recursos/state.py:53
+#: src/mainuan_recursos/state.py:63
 msgid "Invalid release."
 msgstr "รุ่นเผยแพร่ไม่ถูกต้อง"
 
-#: src/mainuan_recursos/state.py:54
+#: src/mainuan_recursos/state.py:64
 msgid "Incomplete state."
 msgstr "สถานะไม่ครบถ้วน"
 
-#: src/mainuan_recursos/state.py:58
+#: src/mainuan_recursos/state.py:68 src/mainuan_recursos/state.py:71
 msgid "Invalid deadline."
 msgstr "กำหนดเวลาไม่ถูกต้อง"
 
-#: src/mainuan_recursos/state.py:61
+#: src/mainuan_recursos/state.py:74
 msgid "The local state is damaged. Preserve the file before recovering it."
 msgstr "สถานะในเครื่องเสียหาย โปรดเก็บรักษาไฟล์ไว้ก่อนกู้คืน"
 
-#: src/mainuan_recursos/state.py:91
+#: src/mainuan_recursos/state.py:104
 msgid "Old catalog or content changed without increasing the sequence."
 msgstr "แค็ตตาล็อกเก่าหรือเนื้อหาถูกเปลี่ยนโดยไม่เพิ่มลำดับ"

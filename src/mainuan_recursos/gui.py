@@ -1,7 +1,7 @@
 """Janela clássica: apresentação aprovada ligada aos fluxos existentes."""
 from datetime import datetime, timezone
 
-from PyQt6.QtCore import Qt, QTimer, QUrl
+from PyQt6.QtCore import Qt, QUrl, pyqtSignal
 from PyQt6.QtGui import QDesktopServices, QIcon
 from PyQt6.QtWidgets import (
     QDialog, QDialogButtonBox, QListWidget, QMainWindow, QPlainTextEdit, QVBoxLayout,
@@ -18,9 +18,15 @@ from .session import system_identity
 
 
 class Window(QMainWindow):
-    def __init__(self, state, directory=None, automatic=False, demo=None, github_trial=None, github_channel=None):
+    # Verificação automática terminada sem nada a apresentar: o processo pode encerrar.
+    idle = pyqtSignal()
+
+    def __init__(self, state, directory=None, automatic=False, demo=None, github_trial=None, github_channel=None,
+                 preferences=None):
         super().__init__()
         self.state = state
+        self.preferences = preferences
+        self.active = None
         self.directory = directory
         self.automatic = automatic
         self.demo = demo
@@ -49,6 +55,12 @@ class Window(QMainWindow):
         self.options = self.view.options
         self.refresh = self.view.menu.addAction(_('Check for News'))
         self.history_action = self.view.menu.addAction(_('News History'))
+        self.automatic_action = None
+        if preferences is not None:
+            self.automatic_action = self.view.menu.addAction(_('Show News at Login'))
+            self.automatic_action.setCheckable(True)
+            self.automatic_action.setChecked(preferences.automatic)
+            self.automatic_action.toggled.connect(self._set_automatic)
         self.view.menu.addSeparator()
         self.details_action = self.view.menu.addAction(_('Technical Information'))
         self.history = QListWidget()
@@ -79,12 +91,16 @@ class Window(QMainWindow):
         self.install.clicked.connect(self.prepare)
         self.later.clicked.connect(self.postpone)
         self.history.currentRowChanged.connect(self.select)
-        self.timer = QTimer(self)
-        self.timer.setInterval(3600000)
-        self.timer.timeout.connect(self.reload)
-        if automatic:
-            self.timer.start()
         self._enable()
+
+    def _set_automatic(self, enabled):
+        try:
+            self.preferences.set_automatic(enabled)
+        except OSError as exc:
+            self.automatic_action.blockSignals(True)
+            self.automatic_action.setChecked(self.preferences.automatic)
+            self.automatic_action.blockSignals(False)
+            self.status.setText(_('Could not save the preference: {error}').format(error=exc))
 
     def _auxiliary_dialog(self, title, content):
         dialog = QDialog(self)
@@ -140,7 +156,7 @@ class Window(QMainWindow):
         if self.demo:
             lines.append(_('Demo: authorization and installation are simulated; no package will be changed.'))
         elif self.github_channel:
-            lines.extend(('', _('Official GitHub channel: packages.txt and message.txt from the same commit.'),
+            lines.extend(('', _('Official GitHub channel: announcements.json, read from a single commit and published explicitly.'),
                           _('Packages from stable releases, with IDs, versions and SHA-256 recorded during the query.'),
                           _('The download starts only after choosing to install; unannounced changes are blocked.'),
                           _('HTTPS and SHA-256 are not equivalent to an APT repository signature.'),
@@ -160,7 +176,10 @@ class Window(QMainWindow):
         self.history.setEnabled(not busy)
         self.history_action.setEnabled(not busy)
         self.details_action.setEnabled(not busy and self.current is not None)
-        self.know.setEnabled(not busy and self.current is not None)
+        self.know.setEnabled(not busy and self.current is not None and bool(self.current.article_url))
+        # Anúncio só informativo: sem link e sem programas, sem botões inúteis.
+        self.know.setVisible(self.current is None or bool(self.current.article_url))
+        self.install.setVisible(self.current is None or bool(self.current.packages))
         self.install.setEnabled(bool(not busy and compatible and self.online and plan and plan.pending and not plan.blockers))
         self.later.setEnabled(not busy and self.current is not None)
         self.progress.setVisible(bool(self.worker or self.controller.busy))
@@ -179,8 +198,10 @@ class Window(QMainWindow):
                 system = {'distro_id': 'mainuan', 'version_id': '26.04', 'architecture': 'amd64'}
                 plans = {r.key: self.demo.plan(r) for r in catalog.releases if r.compatible(system)}
             else:
+                active = None
                 if self.github_channel:
                     catalog, online = self.github_channel.load()
+                    active = self.github_channel.active
                 elif self.github_trial:
                     catalog, online = self.github_trial.load()
                 else:
@@ -190,7 +211,11 @@ class Window(QMainWindow):
                 try:
                     system = system_identity()
                     if self.github_channel:
-                        plans = {r.key: self.github_channel.plan(r) for r in catalog.releases if r.compatible(system)}
+                        # A verificação automática só olha o anúncio ativo; o histórico
+                        # é consultado quando o usuário abre o aplicativo.
+                        targets = [r for r in catalog.releases if r.compatible(system)
+                                   and (not automatic or r.key == active)]
+                        plans = {r.key: self.github_channel.plan(r) for r in targets}
                     elif self.github_trial:
                         plans = {r.key: self.github_trial.plan(r) for r in catalog.releases if r.compatible(system)}
                     else:
@@ -198,8 +223,10 @@ class Window(QMainWindow):
                         cache = apt.Cache()
                         plans = {r.key: build_plan(r, cache) for r in catalog.releases if r.compatible(system)}
                 except Exception as exc:
-                    return catalog, online, system, {}, str(exc) or type(exc).__name__
-            return catalog, online, system, plans, ''
+                    return catalog, online, system, {}, str(exc) or type(exc).__name__, active
+                return catalog, online, system, plans, '', active
+            return catalog, online, system, plans, '', None
+        automatic = self.automatic and not self.isVisible()
         self.worker = Worker(load, self)
         worker = self.worker
         def done():
@@ -207,9 +234,10 @@ class Window(QMainWindow):
             try:
                 if worker.error:
                     raise CatalogError(worker.error)
-                catalog, online, system, plans, package_error = worker.value
+                catalog, online, system, plans, package_error, active = worker.value
                 self.state.accept(catalog)
                 self.catalog, self.online, self.system, self.plans = catalog, online, system, plans
+                self.active = active
                 self.package_error = package_error
                 self.load_error = ''
                 self.populate()
@@ -219,12 +247,30 @@ class Window(QMainWindow):
                 self.status.setText(self.load_error)
             worker.deleteLater()
             self._enable()
+            if self.automatic and not self.isVisible():
+                # Nada a apresentar (ou consulta sem sucesso): silêncio total.
+                self.idle.emit()
         worker.finished.connect(done)
         self._enable()
         worker.start()
 
-    def populate(self):
+    def presentable(self):
+        """Novidades que podem abrir a janela sozinhas (modo automático).
+
+        No canal GitHub: só o anúncio ativo da consulta online que acabou de
+        terminar, compatível, ainda não apresentado (ou adiado e vencido) e com
+        a preferência do usuário ligada.  Cache, histórico e consultas com
+        falha nunca abrem a janela.
+        """
+        if self.preferences is not None and not self.preferences.automatic:
+            return []
         due = [r for r in self.catalog.releases if r.compatible(self.system) and self.state.due(r)]
+        if self.github_channel:
+            return [r for r in due if self.online and self.active and r.key == self.active]
+        return due
+
+    def populate(self):
+        due = self.presentable()
         previous = self.current.key if self.current else None
         self.history.blockSignals(True)
         self.history.clear()
@@ -233,7 +279,12 @@ class Window(QMainWindow):
             if plan:
                 self.state.observe(release, plan)
             self.history.addItem(self._history_text(release))
-        selected = next((i for i, r in enumerate(self.catalog.releases) if r.key == previous), 0)
+        default = 0
+        if self.github_channel:
+            # Sem anúncio ativo, a janela diz claramente que nada foi publicado;
+            # as edições anteriores continuam no histórico.
+            default = next((i for i, r in enumerate(self.catalog.releases) if r.key == self.active), -1)
+        selected = next((i for i, r in enumerate(self.catalog.releases) if r.key == previous), default)
         if self.automatic and not self.isVisible() and due:
             selected = self.catalog.releases.index(due[0])
         self.history.setCurrentRow(selected if self.catalog.releases else -1)
@@ -244,6 +295,8 @@ class Window(QMainWindow):
             self.mark_viewed()
         if not self.catalog.releases:
             self.status.setText(_('No news has been published yet. Come back soon!'))
+        elif self.current is None and not self.load_error:
+            self.status.setText(_('No news is published right now. Earlier news is in the history.'))
 
     def select(self, index):
         self.current = self.catalog.releases[index] if self.catalog and 0 <= index < len(self.catalog.releases) else None
@@ -406,8 +459,6 @@ class Window(QMainWindow):
         else:
             self.history_dialog.reject()
             self.details_dialog.reject()
-            if self.automatic:
-                self.hide()
-                event.ignore()
-            else:
-                super().closeEvent(event)
+            # Também no modo automático: fechar encerra o processo da sessão,
+            # que não fica residente nem verifica de hora em hora.
+            super().closeEvent(event)

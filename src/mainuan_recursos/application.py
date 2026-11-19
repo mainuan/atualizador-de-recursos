@@ -14,13 +14,21 @@ from .catalog import Config, authenticate
 from .gui import Window
 from .i18n import _
 from .localization import install_translations
+from .preferences import Preferences
 from .session import SessionKind, session_kind
 from .state import State, state_directory
 
 
+# O QApplication vive até o fim do processo. Destruí-lo ao sair de main(),
+# junto das variáveis locais e antes de janelas, servidor e threads, fazia o
+# --check que encerra em silêncio cair com SIGSEGV em ~QGuiApplication.
+_application = None
+
+
 def main(argv=None):
+    global _application
     parser = argparse.ArgumentParser(description=_('Discover and receive the official Mainuan news.'))
-    parser.add_argument('--check', action='store_true', help=_('check during the session and notify without blocking the login'))
+    parser.add_argument('--check', action='store_true', help=_('check once after login; open only for an explicitly published announcement, otherwise exit silently'))
     parser.add_argument('--homologacao-github', action='store_true', help=_('real, manual trial in a VM: GitHub packages.txt/message.txt and Driver Manager 1.0'))
     parser.add_argument('--demo', action='store_true', help=_('demonstrate the whole flow without modifying the system'))
     parser.add_argument('--scenario', choices=SCENARIOS, default='novo', help=_('demonstration scenario'))
@@ -41,12 +49,17 @@ def main(argv=None):
     session = SessionKind.INSTALLED if opts.demo else session_kind()
     if session != SessionKind.INSTALLED and opts.check:
         return 0
-    app = QApplication(sys.argv[:1])
+    preferences = None if opts.demo or opts.homologacao_github else Preferences()
+    if opts.check and preferences is not None and not preferences.automatic:
+        # O usuário desligou as novidades automáticas: nem consulta a rede.
+        return 0
+    app = _application = QApplication(sys.argv[:1])
     install_translations(app)
     app.setApplicationName('mainuan-atualizador-recursos')
     app.setOrganizationName('Mainuan')
     app.setDesktopFileName('org.mainuan.Recursos')
-    app.setQuitOnLastWindowClosed(not opts.check)
+    # Fechar a janela (inclusive a aberta pelo autostart) encerra o processo.
+    app.setQuitOnLastWindowClosed(True)
     if session != SessionKind.INSTALLED:
         message = (_('Checking for news becomes available after installing Mainuan. The Live session will not be queried.')
                    if session == SessionKind.LIVE else
@@ -118,7 +131,8 @@ def main(argv=None):
                 if not opts.check:
                     QMessageBox.warning(None, _('Could not open the history'), str(exc))
                 return 1
-        window = Window(state, directory, automatic=opts.check, github_trial=trial, github_channel=channel)
+        window = Window(state, directory, automatic=opts.check, github_trial=trial, github_channel=channel,
+                        preferences=preferences)
         server = QLocalServer()
         server.setSocketOptions(QLocalServer.SocketOption.UserAccessOption)
         QLocalServer.removeServer(socket_path)
@@ -139,11 +153,8 @@ def main(argv=None):
                     window.raise_()
                     window.activateWindow()
                     window.reload()
-                elif request == b'auto' and not window.automatic:
-                    window.automatic = True
-                    app.setQuitOnLastWindowClosed(False)
-                    window.timer.start()
-                    QTimer.singleShot(60000, window.reload)
+                # b'auto': uma instância já está aberta (manual ou da sessão); a
+                # verificação repetida não abre outra janela nem fica residente.
                 client.disconnectFromServer()
             client.readyRead.connect(read)
             QTimer.singleShot(2000, client.disconnectFromServer)
@@ -151,7 +162,14 @@ def main(argv=None):
             if client.bytesAvailable():
                 read()
         server.newConnection.connect(connected)
-    if not opts.check:
+    if opts.check:
+        # Sem anúncio para apresentar, o processo do autostart termina em silêncio.
+        # app.quit pelo laço de eventos, fora do slot da consulta.
+        window.idle.connect(lambda: QTimer.singleShot(0, app.quit))
+    else:
         window.show()
     QTimer.singleShot(60000 if opts.check else 0, window.reload)
-    return app.exec()
+    result = app.exec()
+    if window.worker is not None:
+        window.worker.wait()
+    return result

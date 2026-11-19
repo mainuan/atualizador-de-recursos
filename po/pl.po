@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: mainuan-atualizador-recursos\n"
 "Report-Msgid-Bugs-To: https://github.com/mainuan/atualizador-de-recursos/"
 "issues\n"
-"POT-Creation-Date: 2026-11-18 13:16-0300\n"
+"POT-Creation-Date: 2026-11-19 01:47-0300\n"
 "PO-Revision-Date: 2026-11-16 11:30-0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: pl <https://github.com/mainuan>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "|| n%100>=20) ? 1 : 2);\n"
 
 #: data/mainuan-recursos-autostart.desktop.in:3
-#: src/mainuan_recursos/application.py:54
+#: src/mainuan_recursos/application.py:67
 msgid "Mainuan News"
 msgstr "Nowości Mainuan"
 
@@ -28,7 +28,7 @@ msgstr "Nowości Mainuan"
 msgid "Checks for news during the session"
 msgstr "Sprawdza nowości w trakcie sesji"
 
-#: data/org.mainuan.Recursos.desktop.in:3 src/mainuan_recursos/gui.py:41
+#: data/org.mainuan.Recursos.desktop.in:3 src/mainuan_recursos/gui.py:47
 msgid "Mainuan Feature Updater"
 msgstr "Aktualizator funkcji Mainuan"
 
@@ -36,15 +36,62 @@ msgstr "Aktualizator funkcji Mainuan"
 msgid "Discover and receive the official Mainuan news"
 msgstr "Odkrywaj i otrzymuj oficjalne nowości Mainuan"
 
-#: src/mainuan_recursos/application.py:22
+#: src/mainuan_recursos/announcement.py:37
+#: src/mainuan_recursos/announcement.py:87
+#: src/mainuan_recursos/announcement.py:91
+#: src/mainuan_recursos/announcement.py:92
+#: src/mainuan_recursos/announcement.py:107
+#: src/mainuan_recursos/announcement.py:110
+#: src/mainuan_recursos/announcement.py:114
+#: src/mainuan_recursos/announcement.py:127
+#: src/mainuan_recursos/announcement.py:136
+#: src/mainuan_recursos/announcement.py:141
+msgid "announcements.json is invalid or incomplete."
+msgstr ""
+
+#: src/mainuan_recursos/announcement.py:100
+#, fuzzy
+#| msgid "GitHub response exceeds the allowed size."
+msgid "announcements.json exceeds the allowed size."
+msgstr "Odpowiedź GitHuba przekracza dozwolony rozmiar."
+
+#: src/mainuan_recursos/announcement.py:109
+msgid "announcements.json uses an unsupported format. Update the application."
+msgstr ""
+
+#: src/mainuan_recursos/announcement.py:117
+#, fuzzy
+#| msgid "Invalid identifier."
+msgid "Invalid announcement identifier."
+msgstr "Nieprawidłowy identyfikator."
+
+#: src/mainuan_recursos/announcement.py:119
+#, fuzzy
+#| msgid "Invalid Debian name or version."
+msgid "Invalid announcement version."
+msgstr "Nieprawidłowa nazwa lub wersja Debiana."
+
+#: src/mainuan_recursos/announcement.py:125
+msgid "The announcement needs its text in Brazilian Portuguese (pt_BR)."
+msgstr ""
+
+#: src/mainuan_recursos/announcement.py:133
+#, fuzzy
+#| msgid "packages.txt contains invalid or repeated repositories."
+msgid "announcements.json lists invalid or repeated repositories."
+msgstr "Plik packages.txt zawiera nieprawidłowe lub powtórzone repozytoria."
+
+#: src/mainuan_recursos/application.py:30
 msgid "Discover and receive the official Mainuan news."
 msgstr "Odkrywaj i otrzymuj oficjalne nowości Mainuan."
 
-#: src/mainuan_recursos/application.py:23
-msgid "check during the session and notify without blocking the login"
-msgstr "sprawdź w trakcie sesji i powiadom bez blokowania logowania"
+#: src/mainuan_recursos/application.py:31
+msgid ""
+"check once after login; open only for an explicitly published announcement, "
+"otherwise exit silently"
+msgstr ""
 
-#: src/mainuan_recursos/application.py:24
+#: src/mainuan_recursos/application.py:32
 msgid ""
 "real, manual trial in a VM: GitHub packages.txt/message.txt and Driver "
 "Manager 1.0"
@@ -52,38 +99,38 @@ msgstr ""
 "rzeczywisty, ręczny test w maszynie wirtualnej: packages.txt/message.txt z "
 "GitHuba i Menedżer sterowników 1.0"
 
-#: src/mainuan_recursos/application.py:25
+#: src/mainuan_recursos/application.py:33
 msgid "demonstrate the whole flow without modifying the system"
 msgstr "pokaż cały przebieg bez zmieniania systemu"
 
-#: src/mainuan_recursos/application.py:26
+#: src/mainuan_recursos/application.py:34
 msgid "demonstration scenario"
 msgstr "scenariusz demonstracyjny"
 
-#: src/mainuan_recursos/application.py:27
+#: src/mainuan_recursos/application.py:35
 msgid "signed local catalog, only with --demo"
 msgstr "podpisany katalog lokalny, tylko z --demo"
 
-#: src/mainuan_recursos/application.py:28
+#: src/mainuan_recursos/application.py:36
 msgid "test configuration and key, only with --demo"
 msgstr "konfiguracja i klucz testowy, tylko z --demo"
 
-#: src/mainuan_recursos/application.py:33
+#: src/mainuan_recursos/application.py:41
 msgid ""
 "--homologacao-github is manual and cannot be combined with --check/--demo."
 msgstr ""
 "--homologacao-github jest ręczny i nie można go łączyć z --check/--demo."
 
-#: src/mainuan_recursos/application.py:38
+#: src/mainuan_recursos/application.py:46
 #, python-brace-format
 msgid "Acceptance test unavailable: {error}"
 msgstr "Test akceptacyjny jest niedostępny: {error}"
 
-#: src/mainuan_recursos/application.py:40
+#: src/mainuan_recursos/application.py:48
 msgid "Use --demo --test-catalog FILE --test-config FILE together."
 msgstr "Użyj razem --demo --test-catalog PLIK --test-config PLIK."
 
-#: src/mainuan_recursos/application.py:51
+#: src/mainuan_recursos/application.py:64
 msgid ""
 "Checking for news becomes available after installing Mainuan. The Live "
 "session will not be queried."
@@ -91,7 +138,7 @@ msgstr ""
 "Sprawdzanie nowości będzie dostępne po wgraniu Mainuan. W sesji Live nie "
 "będą wykonywane zapytania."
 
-#: src/mainuan_recursos/application.py:53
+#: src/mainuan_recursos/application.py:66
 msgid ""
 "Could not determine the session type. Querying and installing features have "
 "been disabled."
@@ -99,32 +146,32 @@ msgstr ""
 "Nie można określić rodzaju sesji. Odpytywanie i wgrywanie funkcji zostały "
 "wyłączone."
 
-#: src/mainuan_recursos/application.py:67
+#: src/mainuan_recursos/application.py:80
 msgid "Invalid test catalog"
 msgstr "Nieprawidłowy katalog testowy"
 
-#: src/mainuan_recursos/application.py:81
+#: src/mainuan_recursos/application.py:94
 #, python-brace-format
 msgid "Could not open the state directory: {error}"
 msgstr "Nie można otworzyć katalogu stanu: {error}"
 
-#: src/mainuan_recursos/application.py:83
-#: src/mainuan_recursos/application.py:106
+#: src/mainuan_recursos/application.py:96
 #: src/mainuan_recursos/application.py:119
+#: src/mainuan_recursos/application.py:132
 msgid "Could not open the history"
 msgstr "Nie można otworzyć historii"
 
-#: src/mainuan_recursos/application.py:90
+#: src/mainuan_recursos/application.py:103
 msgid "Could not lock the local state. Check the directory permissions."
 msgstr "Nie można zablokować stanu lokalnego. Sprawdź uprawnienia katalogu."
 
-#: src/mainuan_recursos/application.py:100
+#: src/mainuan_recursos/application.py:113
 msgid ""
 "The other instance is starting. Open the application again in a few seconds."
 msgstr ""
 "Inne wystąpienie jest uruchamiane. Otwórz aplikację ponownie za kilka sekund."
 
-#: src/mainuan_recursos/application.py:126
+#: src/mainuan_recursos/application.py:140
 msgid "Could not create the single-instance channel."
 msgstr "Nie można utworzyć kanału pojedynczego wystąpienia."
 
@@ -320,7 +367,7 @@ msgstr "Odkryj nowości"
 msgid "Optional: open the official page in the web browser."
 msgstr "Opcjonalnie: otwórz oficjalną stronę w przeglądarce internetowej."
 
-#: src/mainuan_recursos/classic.py:135 src/mainuan_recursos/gui.py:361
+#: src/mainuan_recursos/classic.py:135 src/mainuan_recursos/gui.py:414
 msgid "Install New Features"
 msgstr "Wgraj nowe funkcje"
 
@@ -342,7 +389,7 @@ msgstr "Odkłada powiadomienie na 24 godziny, zachowując dostęp ręczny."
 #: src/mainuan_recursos/controller.py:77 src/mainuan_recursos/controller.py:115
 #: src/mainuan_recursos/controller.py:147
 #: src/mainuan_recursos/controller.py:155 src/mainuan_recursos/demo.py:68
-#: src/mainuan_recursos/github_channel.py:391
+#: src/mainuan_recursos/github_channel.py:401
 #: src/mainuan_recursos/github_trial.py:201
 #: src/mainuan_recursos/packagekit.py:193
 msgid "Preparing installation..."
@@ -385,7 +432,7 @@ msgstr ""
 "szczegóły."
 
 #: src/mainuan_recursos/controller.py:134 src/mainuan_recursos/demo.py:69
-#: src/mainuan_recursos/github_channel.py:472
+#: src/mainuan_recursos/github_channel.py:495
 #: src/mainuan_recursos/github_trial.py:250
 #: src/mainuan_recursos/packagekit.py:190
 msgid "Installing new features..."
@@ -445,65 +492,64 @@ msgstr "Anulowano upoważnienie (symulacja)."
 msgid "Download failed (simulation)."
 msgstr "Nie udało się pobrać (symulacja)."
 
-#: src/mainuan_recursos/github_channel.py:41
-#: src/mainuan_recursos/github_channel.py:48
+#: src/mainuan_recursos/github_channel.py:46
+#: src/mainuan_recursos/github_channel.py:53
 msgid "Invalid GitHub address."
 msgstr "Nieprawidłowy adres GitHub."
 
-#: src/mainuan_recursos/github_channel.py:46
+#: src/mainuan_recursos/github_channel.py:51
 msgid "GitHub address must use official HTTPS."
 msgstr "Adres GitHub musi używać oficjalnego HTTPS."
 
-#: src/mainuan_recursos/github_channel.py:51
+#: src/mainuan_recursos/github_channel.py:56
 msgid "Ambiguous GitHub path."
 msgstr "Niejednoznaczna ścieżka GitHub."
 
-#: src/mainuan_recursos/github_channel.py:53
+#: src/mainuan_recursos/github_channel.py:58
 msgid "Invalid repository."
 msgstr "Nieprawidłowe repozytorium."
 
-#: src/mainuan_recursos/github_channel.py:63
+#: src/mainuan_recursos/github_channel.py:68
 msgid "Source or redirect outside the official Mainuan organization."
 msgstr "Źródło lub przekierowanie spoza oficjalnej organizacji Mainuan."
 
-#: src/mainuan_recursos/github_channel.py:72
+#: src/mainuan_recursos/github_channel.py:77
 msgid "The GitHub query was redirected; check the official source."
 msgstr "Zapytanie do GitHuba zostało przekierowane; sprawdź oficjalne źródło."
 
-#: src/mainuan_recursos/github_channel.py:87
+#: src/mainuan_recursos/github_channel.py:92
 msgid "GitHub metadata exceeds the allowed limit."
 msgstr "Metadane GitHuba przekraczają dozwolone ograniczenie."
 
-#: src/mainuan_recursos/github_channel.py:96
+#: src/mainuan_recursos/github_channel.py:101
 msgid "Invalid GitHub artifact."
 msgstr "Nieprawidłowy artefakt GitHuba."
 
-#: src/mainuan_recursos/github_channel.py:98
+#: src/mainuan_recursos/github_channel.py:103
 msgid "Use the Debian name package_version_architecture.deb in the release."
 msgstr "Użyj w wydaniu nazwy Debiana pakiet_wersja_architektura.deb."
 
-#: src/mainuan_recursos/github_channel.py:101
+#: src/mainuan_recursos/github_channel.py:106
 msgid "Invalid Debian name or version."
 msgstr "Nieprawidłowa nazwa lub wersja Debiana."
 
-#: src/mainuan_recursos/github_channel.py:104
+#: src/mainuan_recursos/github_channel.py:109
 #, python-brace-format
 msgid "The release has no verifiable SHA-256 published by GitHub for {file}."
 msgstr ""
 "Wydanie nie ma weryfikowalnej sumy SHA-256 opublikowanej przez GitHub dla "
 "{file}."
 
-#: src/mainuan_recursos/github_channel.py:106
+#: src/mainuan_recursos/github_channel.py:111
 msgid "Artifact unavailable or invalid size."
 msgstr "Artefakt jest niedostępny lub ma nieprawidłowy rozmiar."
 
-#: src/mainuan_recursos/github_channel.py:157
-#: src/mainuan_recursos/github_channel.py:292
+#: src/mainuan_recursos/github_channel.py:151
+#: src/mainuan_recursos/github_channel.py:299
 msgid "GitHub history exceeds the allowed limit."
 msgstr "Historia GitHuba przekracza dozwolone ograniczenie."
 
 #: src/mainuan_recursos/github_channel.py:170
-#: src/mainuan_recursos/github_channel.py:285
 #: src/mainuan_recursos/github_trial.py:146
 msgid "Mainuan has news!"
 msgstr "Mainuan ma nowości!"
@@ -566,158 +612,152 @@ msgstr "Nieprawidłowe niezmienne odniesienie wydania."
 msgid "No stable release with a compatible Debian package: {repository}"
 msgstr "Brak stabilnego wydania ze zgodnym pakietem Debiana: {repository}"
 
-#: src/mainuan_recursos/github_channel.py:249
+#: src/mainuan_recursos/github_channel.py:251
 msgid "This channel is intended for Mainuan based on Kubuntu 26.04."
 msgstr "Ten kanał jest przeznaczony dla Mainuan opartego na Kubuntu 26.04."
 
-#: src/mainuan_recursos/github_channel.py:251
+#: src/mainuan_recursos/github_channel.py:253
 msgid "Invalid official reference."
 msgstr "Nieprawidłowe oficjalne odniesienie."
 
-#: src/mainuan_recursos/github_channel.py:255
-msgid "message.txt is empty."
-msgstr "Plik message.txt jest pusty."
-
-#: src/mainuan_recursos/github_channel.py:260
-msgid "packages.txt contains invalid or repeated repositories."
-msgstr "Plik packages.txt zawiera nieprawidłowe lub powtórzone repozytoria."
-
-#: src/mainuan_recursos/github_channel.py:266
+#: src/mainuan_recursos/github_channel.py:267
 msgid "Two repositories offer the same Debian package."
 msgstr "Dwa repozytoria oferują ten sam pakiet Debiana."
 
-#: src/mainuan_recursos/github_channel.py:271
+#: src/mainuan_recursos/github_channel.py:272
 #, python-brace-format
 msgid "An already announced release or artifact was replaced: {package}"
 msgstr "Podmieniono już ogłoszone wydanie lub artefakt: {package}"
 
-#: src/mainuan_recursos/github_channel.py:275
+#: src/mainuan_recursos/github_channel.py:276
 #, python-brace-format
 msgid "Rollback of a published version blocked: {package}"
 msgstr "Zablokowano wycofanie opublikowanej wersji: {package}"
 
-#: src/mainuan_recursos/github_channel.py:296
+#: src/mainuan_recursos/github_channel.py:303
 msgid "News not queried in this channel."
 msgstr "W tym kanale nie odpytano o nowości."
 
-#: src/mainuan_recursos/github_channel.py:304
+#: src/mainuan_recursos/github_channel.py:311
 msgid "Package missing or size mismatch."
 msgstr "Brak pakietu lub niezgodny rozmiar."
 
-#: src/mainuan_recursos/github_channel.py:306
+#: src/mainuan_recursos/github_channel.py:313
 msgid "SHA-256 integrity mismatch; installation blocked."
 msgstr "Niezgodność sumy kontrolnej SHA-256; wgrywanie zablokowane."
 
-#: src/mainuan_recursos/github_channel.py:310
+#: src/mainuan_recursos/github_channel.py:317
 msgid "Internal package metadata does not match the release."
 msgstr "Wewnętrzne metadane pakietu nie zgadzają się z wydaniem."
 
-#: src/mainuan_recursos/github_channel.py:324
+#: src/mainuan_recursos/github_channel.py:334
 #: src/mainuan_recursos/github_trial.py:162 src/mainuan_recursos/packages.py:96
 msgid "Package with incomplete configuration"
 msgstr "Pakiet z niepełną konfiguracją"
 
-#: src/mainuan_recursos/github_channel.py:328
+#: src/mainuan_recursos/github_channel.py:338
 #: src/mainuan_recursos/github_trial.py:167 src/mainuan_recursos/packages.py:98
 msgid "Package held by the administrator"
 msgstr "Pakiet wstrzymany przez administratora"
 
-#: src/mainuan_recursos/github_channel.py:334
+#: src/mainuan_recursos/github_channel.py:344
 #: src/mainuan_recursos/github_trial.py:173
 #, python-brace-format
 msgid "Unmet dependencies: {details}"
 msgstr "Niespełnione zależności: {details}"
 
-#: src/mainuan_recursos/github_channel.py:336
+#: src/mainuan_recursos/github_channel.py:346
 msgid "The operation requires additional unannounced packages"
 msgstr "Działanie wymaga dodatkowych, nieogłoszonych pakietów"
 
-#: src/mainuan_recursos/github_channel.py:344
+#: src/mainuan_recursos/github_channel.py:354
 msgid "The announced release was withdrawn or changed."
 msgstr "Ogłoszone wydanie zostało wycofane lub zmienione."
 
-#: src/mainuan_recursos/github_channel.py:346
+#: src/mainuan_recursos/github_channel.py:356
 msgid "The release reference was replaced; installation blocked."
 msgstr "Odniesienie wydania zostało podmienione; wgrywanie zablokowane."
 
-#: src/mainuan_recursos/github_channel.py:349
+#: src/mainuan_recursos/github_channel.py:359
 msgid "The artifact was changed after the query; check for news again."
 msgstr "Artefakt zmienił się po zapytaniu; sprawdź nowości ponownie."
 
-#: src/mainuan_recursos/github_channel.py:366
+#: src/mainuan_recursos/github_channel.py:376
 msgid "Download exceeds the approved size."
 msgstr "Pobieranie przekracza zatwierdzony rozmiar."
 
-#: src/mainuan_recursos/github_channel.py:369
-#: src/mainuan_recursos/github_channel.py:388
+#: src/mainuan_recursos/github_channel.py:379
+#: src/mainuan_recursos/github_channel.py:398
 #: src/mainuan_recursos/github_trial.py:189
 #: src/mainuan_recursos/github_trial.py:191
 #: src/mainuan_recursos/packagekit.py:191
 msgid "Downloading new features..."
 msgstr "Pobieranie nowych funkcji..."
 
-#: src/mainuan_recursos/github_channel.py:370
+#: src/mainuan_recursos/github_channel.py:380
 msgid "Download with SHA-256 integrity mismatch."
 msgstr "Pobrany plik ma niezgodną sumę kontrolną SHA-256."
 
-#: src/mainuan_recursos/github_channel.py:377
+#: src/mainuan_recursos/github_channel.py:387
 msgid "Check for news online before installing."
 msgstr "Przed wgraniem sprawdź nowości w sieci."
 
 # reviewed: "installed session" = installed system (not Live); "wgranej sesji"
 # was meaningless
-#: src/mainuan_recursos/github_channel.py:379
+#: src/mainuan_recursos/github_channel.py:389
 msgid ""
 "Installation requires a regular user and an installed session, outside Live "
 "mode."
 msgstr ""
 "Wgrywanie wymaga zwykłego użytkownika i wgranego systemu, poza trybem Live."
 
-#: src/mainuan_recursos/github_channel.py:399
+#: src/mainuan_recursos/github_channel.py:409
 msgid "PackageKit proposed additional packages or an incomplete operation."
 msgstr "PackageKit zaproponował dodatkowe pakiety lub niepełne działanie."
 
-#: src/mainuan_recursos/github_channel.py:403
+#: src/mainuan_recursos/github_channel.py:413
 msgid "The simulation would change unannounced packages."
 msgstr "Symulacja zmieniłaby nieogłoszone pakiety."
 
 # reviewed: downgrade: "obniżenie wersji", no mixing zainstalować with Wgraj
 # terminology
-#: src/mainuan_recursos/github_channel.py:405
+#: src/mainuan_recursos/github_channel.py:415
 msgid "Removal, reinstallation or downgrade blocked."
 msgstr "Zablokowano usuwanie, ponowne wgrywanie lub obniżenie wersji."
 
-#: src/mainuan_recursos/github_channel.py:417
-#: src/mainuan_recursos/github_channel.py:418
+#: src/mainuan_recursos/github_channel.py:428
+#: src/mainuan_recursos/github_channel.py:429
 msgid "Invalid GitHub cache."
 msgstr "Nieprawidłowa pamięć podręczna GitHuba."
 
-#: src/mainuan_recursos/github_channel.py:423
+#: src/mainuan_recursos/github_channel.py:435
+#: src/mainuan_recursos/github_channel.py:442
+#: src/mainuan_recursos/github_channel.py:445
 msgid "Invalid local edition."
 msgstr "Nieprawidłowe wydanie lokalne."
 
-#: src/mainuan_recursos/github_channel.py:426
+#: src/mainuan_recursos/github_channel.py:448
 msgid "Invalid local artifact."
 msgstr "Nieprawidłowy artefakt lokalny."
 
-#: src/mainuan_recursos/github_channel.py:430
+#: src/mainuan_recursos/github_channel.py:453
 msgid "Invalid GitHub history. Preserve the file before recovering it."
 msgstr "Nieprawidłowa historia GitHuba. Zachowaj plik przed jego odzyskaniem."
 
-#: src/mainuan_recursos/github_channel.py:447
+#: src/mainuan_recursos/github_channel.py:470
 msgid "Cannot install:"
 msgstr "Nie można wgrać:"
 
-#: src/mainuan_recursos/github_channel.py:449
+#: src/mainuan_recursos/github_channel.py:472
 msgid ""
 "You have already received all the features. No reinstallation will be done."
 msgstr "Otrzymano już wszystkie funkcje. Nic nie zostanie wgrane ponownie."
 
-#: src/mainuan_recursos/github_channel.py:451
+#: src/mainuan_recursos/github_channel.py:474
 msgid "The package state has changed. Check for news again."
 msgstr "Stan pakietów uległ zmianie. Sprawdź nowości ponownie."
 
-#: src/mainuan_recursos/github_channel.py:464
+#: src/mainuan_recursos/github_channel.py:487
 msgid "The operation has changed; installation blocked."
 msgstr "Działanie uległo zmianie; wgrywanie zablokowane."
 
@@ -865,103 +905,113 @@ msgstr ""
 msgid "The operation has changed. Review the confirmation again."
 msgstr "Działanie uległo zmianie. Przejrzyj potwierdzenie ponownie."
 
-#: src/mainuan_recursos/gui.py:39
+#: src/mainuan_recursos/gui.py:45
 msgid "Mainuan Feature Updater — Demo"
 msgstr "Aktualizator funkcji Mainuan — demonstracja"
 
-#: src/mainuan_recursos/gui.py:40
+#: src/mainuan_recursos/gui.py:46
 msgid "Mainuan Feature Updater — GitHub Acceptance Test"
 msgstr "Aktualizator funkcji Mainuan — test akceptacyjny GitHuba"
 
-#: src/mainuan_recursos/gui.py:44
+#: src/mainuan_recursos/gui.py:50
 msgid "Checking for news…"
 msgstr "Sprawdzanie nowości…"
 
-#: src/mainuan_recursos/gui.py:50
+#: src/mainuan_recursos/gui.py:56
 msgid "Check for News"
 msgstr "Sprawdź nowości"
 
-#: src/mainuan_recursos/gui.py:51 src/mainuan_recursos/gui.py:55
-#: src/mainuan_recursos/gui.py:56
+#: src/mainuan_recursos/gui.py:57 src/mainuan_recursos/gui.py:67
+#: src/mainuan_recursos/gui.py:68
 msgid "News History"
 msgstr "Historia nowości"
 
-#: src/mainuan_recursos/gui.py:53 src/mainuan_recursos/gui.py:60
+#: src/mainuan_recursos/gui.py:60
+msgid "Show News at Login"
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:65 src/mainuan_recursos/gui.py:72
 msgid "Technical Information"
 msgstr "Informacje techniczne"
 
-#: src/mainuan_recursos/gui.py:59
+#: src/mainuan_recursos/gui.py:71
 msgid "Programs, packages, versions and actual status"
 msgstr "Programy, pakiety, wersje i rzeczywisty stan"
 
+#: src/mainuan_recursos/gui.py:103
+#, fuzzy, python-brace-format
+#| msgid "Could not save the history: {error}"
+msgid "Could not save the preference: {error}"
+msgstr "Nie można zapisać historii: {error}"
+
 #. Translators: title of an auxiliary window opened in demonstration mode.
-#: src/mainuan_recursos/gui.py:92
+#: src/mainuan_recursos/gui.py:108
 #, python-brace-format
 msgid "{title} — Demo"
 msgstr "{title} — demonstracja"
 
-#: src/mainuan_recursos/gui.py:119
+#: src/mainuan_recursos/gui.py:135
 #, python-brace-format
 msgid "Release: {id} • {version}"
 msgstr "Wydanie: {id} • {version}"
 
-#: src/mainuan_recursos/gui.py:120
+#: src/mainuan_recursos/gui.py:136
 #, python-brace-format
 msgid "Official article: {url}"
 msgstr "Oficjalny artykuł: {url}"
 
-#: src/mainuan_recursos/gui.py:121
+#: src/mainuan_recursos/gui.py:137
 msgid "not checked"
 msgstr "nie sprawdzono"
 
-#: src/mainuan_recursos/gui.py:126 src/mainuan_recursos/gui.py:351
+#: src/mainuan_recursos/gui.py:142 src/mainuan_recursos/gui.py:404
 msgid "not installed"
 msgstr "nie wgrano"
 
-#: src/mainuan_recursos/gui.py:127
+#: src/mainuan_recursos/gui.py:143
 msgid "unavailable"
 msgstr "niedostępne"
 
-#: src/mainuan_recursos/gui.py:129
+#: src/mainuan_recursos/gui.py:145
 msgid "packages not checked"
 msgstr "nie sprawdzono pakietów"
 
-#: src/mainuan_recursos/gui.py:130
+#: src/mainuan_recursos/gui.py:146
 #, python-brace-format
 msgid "Package: {name}"
 msgstr "Pakiet: {name}"
 
-#: src/mainuan_recursos/gui.py:131
+#: src/mainuan_recursos/gui.py:147
 #, python-brace-format
 msgid "Minimum version: {version}"
 msgstr "Najniższa wersja: {version}"
 
-#: src/mainuan_recursos/gui.py:132
+#: src/mainuan_recursos/gui.py:148
 #, python-brace-format
 msgid "Installed: {version}"
 msgstr "Wgrana: {version}"
 
-#: src/mainuan_recursos/gui.py:133
+#: src/mainuan_recursos/gui.py:149
 #, python-brace-format
 msgid "Available: {version}"
 msgstr "Dostępna: {version}"
 
-#: src/mainuan_recursos/gui.py:134
+#: src/mainuan_recursos/gui.py:150
 #, python-brace-format
 msgid "Architecture: {architecture}"
 msgstr "Architektura: {architecture}"
 
-#: src/mainuan_recursos/gui.py:135
+#: src/mainuan_recursos/gui.py:151
 #, python-brace-format
 msgid "Status: {status}"
 msgstr "Stan: {status}"
 
-#: src/mainuan_recursos/gui.py:137
+#: src/mainuan_recursos/gui.py:153
 #, python-brace-format
 msgid "Approved SHA-256: {sha256}"
 msgstr "Zatwierdzona suma SHA-256: {sha256}"
 
-#: src/mainuan_recursos/gui.py:139
+#: src/mainuan_recursos/gui.py:155
 msgid ""
 "The complete operation, including dependencies, will be shown when "
 "confirming the installation."
@@ -969,7 +1019,7 @@ msgstr ""
 "Pełne działanie, łącznie z zależnościami, zostanie pokazane przy "
 "potwierdzaniu wgrywania."
 
-#: src/mainuan_recursos/gui.py:141
+#: src/mainuan_recursos/gui.py:157
 msgid ""
 "Demo: authorization and installation are simulated; no package will be "
 "changed."
@@ -977,13 +1027,13 @@ msgstr ""
 "Demonstracja: upoważnienie i wgrywanie są symulowane; żaden pakiet nie "
 "zostanie zmieniony."
 
-#: src/mainuan_recursos/gui.py:143
+#: src/mainuan_recursos/gui.py:159
 msgid ""
-"Official GitHub channel: packages.txt and message.txt from the same commit."
+"Official GitHub channel: announcements.json, read from a single commit and "
+"published explicitly."
 msgstr ""
-"Oficjalny kanał GitHub: packages.txt i message.txt z tego samego commitu."
 
-#: src/mainuan_recursos/gui.py:144
+#: src/mainuan_recursos/gui.py:160
 msgid ""
 "Packages from stable releases, with IDs, versions and SHA-256 recorded "
 "during the query."
@@ -991,7 +1041,7 @@ msgstr ""
 "Pakiety ze stabilnych wydań, z identyfikatorami, wersjami i sumami SHA-256 "
 "zapisanymi podczas zapytania."
 
-#: src/mainuan_recursos/gui.py:145
+#: src/mainuan_recursos/gui.py:161
 msgid ""
 "The download starts only after choosing to install; unannounced changes are "
 "blocked."
@@ -999,16 +1049,16 @@ msgstr ""
 "Pobieranie rozpoczyna się dopiero po wybraniu wgrania; nieogłoszone zmiany "
 "są blokowane."
 
-#: src/mainuan_recursos/gui.py:146
+#: src/mainuan_recursos/gui.py:162
 msgid "HTTPS and SHA-256 are not equivalent to an APT repository signature."
 msgstr "HTTPS i SHA-256 nie są równoważne podpisowi repozytorium APT."
 
-#: src/mainuan_recursos/gui.py:147
+#: src/mainuan_recursos/gui.py:163
 msgid "PackageKit/PolicyKit may ask for authorization for an untrusted source."
 msgstr ""
 "PackageKit/PolicyKit może poprosić o upoważnienie dla niezaufanego źródła."
 
-#: src/mainuan_recursos/gui.py:149
+#: src/mainuan_recursos/gui.py:165
 msgid ""
 "GitHub acceptance test: official source and artifact pinned by IDs and "
 "SHA-256."
@@ -1016,11 +1066,11 @@ msgstr ""
 "Test akceptacyjny GitHuba: oficjalne źródło i artefakt przypięte "
 "identyfikatorami i sumą SHA-256."
 
-#: src/mainuan_recursos/gui.py:150
+#: src/mainuan_recursos/gui.py:166
 msgid "The download starts only after choosing to install."
 msgstr "Pobieranie rozpoczyna się dopiero po wybraniu wgrania."
 
-#: src/mainuan_recursos/gui.py:151
+#: src/mainuan_recursos/gui.py:167
 msgid ""
 "Local file without an APT repository signature. PackageKit/PolicyKit may ask "
 "for authorization for an untrusted source."
@@ -1028,7 +1078,7 @@ msgstr ""
 "Plik lokalny bez podpisu repozytorium APT. PackageKit/PolicyKit może "
 "poprosić o upoważnienie dla niezaufanego źródła."
 
-#: src/mainuan_recursos/gui.py:152
+#: src/mainuan_recursos/gui.py:168
 msgid ""
 "The trial only allows the Driver Manager application; changes to other "
 "packages are blocked."
@@ -1036,20 +1086,24 @@ msgstr ""
 "Test dopuszcza tylko aplikację Menedżer sterowników; zmiany w innych "
 "pakietach są blokowane."
 
-#: src/mainuan_recursos/gui.py:174
+#: src/mainuan_recursos/gui.py:193
 msgid "Querying the official Mainuan news…"
 msgstr "Odpytywanie oficjalnych nowości Mainuan…"
 
-#: src/mainuan_recursos/gui.py:218
+#: src/mainuan_recursos/gui.py:246
 #, python-brace-format
 msgid "Could not check for news. {error}"
 msgstr "Nie można sprawdzić nowości. {error}"
 
-#: src/mainuan_recursos/gui.py:246
+#: src/mainuan_recursos/gui.py:297
 msgid "No news has been published yet. Come back soon!"
 msgstr "Nie opublikowano jeszcze żadnych nowości. Zajrzyj wkrótce!"
 
-#: src/mainuan_recursos/gui.py:252
+#: src/mainuan_recursos/gui.py:299
+msgid "No news is published right now. Earlier news is in the history."
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:305
 msgid ""
 "No news published.\n"
 "Come back soon to discover the next Mainuan features."
@@ -1057,28 +1111,28 @@ msgstr ""
 "Nie opublikowano nowości.\n"
 "Zajrzyj wkrótce, aby odkryć kolejne funkcje Mainuan."
 
-#: src/mainuan_recursos/gui.py:260
+#: src/mainuan_recursos/gui.py:313
 msgid "We have news for you! Discover the features before installing."
 msgstr "Mamy dla ciebie nowości! Poznaj funkcje przed wgraniem."
 
-#: src/mainuan_recursos/gui.py:262
+#: src/mainuan_recursos/gui.py:315
 #, python-brace-format
 msgid "Could not check the packages: {error}"
 msgstr "Nie można sprawdzić pakietów: {error}"
 
-#: src/mainuan_recursos/gui.py:264
+#: src/mainuan_recursos/gui.py:317
 msgid ""
 "This release is not compatible with the version or architecture of this "
 "system."
 msgstr "To wydanie nie jest zgodne z wersją lub architekturą tego systemu."
 
-#: src/mainuan_recursos/gui.py:266
+#: src/mainuan_recursos/gui.py:319
 msgid ""
 "You have already received these features through the system. Discover the "
 "news!"
 msgstr "Te funkcje otrzymano już wraz z systemem. Poznaj nowości!"
 
-#: src/mainuan_recursos/gui.py:268
+#: src/mainuan_recursos/gui.py:321
 msgid ""
 "Some packages are not yet available for safe installation. See the technical "
 "information in the menu."
@@ -1086,54 +1140,54 @@ msgstr ""
 "Niektóre pakiety nie są jeszcze dostępne do bezpiecznego wgrania. Zobacz "
 "informacje techniczne w menu."
 
-#: src/mainuan_recursos/gui.py:272
+#: src/mainuan_recursos/gui.py:325
 #, python-brace-format
 msgid "{message} Cached catalog: offline query; installation unavailable."
 msgstr ""
 "{message} Katalog z pamięci podręcznej: zapytanie bez sieci; wgrywanie "
 "niedostępne."
 
-#: src/mainuan_recursos/gui.py:284
+#: src/mainuan_recursos/gui.py:337
 msgctxt "news state"
 msgid "New"
 msgstr "Nowe"
 
-#: src/mainuan_recursos/gui.py:284
+#: src/mainuan_recursos/gui.py:337
 msgctxt "news state"
 msgid "Viewed"
 msgstr "Obejrzane"
 
-#: src/mainuan_recursos/gui.py:285
+#: src/mainuan_recursos/gui.py:338
 msgctxt "news state"
 msgid "Postponed"
 msgstr "Odłożone"
 
-#: src/mainuan_recursos/gui.py:297
+#: src/mainuan_recursos/gui.py:350
 #, python-brace-format
 msgid "Could not save the viewing in the history: {error}"
 msgstr "Nie można zapisać obejrzenia w historii: {error}"
 
-#: src/mainuan_recursos/gui.py:309
+#: src/mainuan_recursos/gui.py:362
 msgid "Could not open the default web browser."
 msgstr "Nie można otworzyć domyślnej przeglądarki internetowej."
 
-#: src/mainuan_recursos/gui.py:313
+#: src/mainuan_recursos/gui.py:366
 msgid "Check the official catalog again before installing."
 msgstr "Przed wgraniem sprawdź ponownie oficjalny katalog."
 
-#: src/mainuan_recursos/gui.py:315
+#: src/mainuan_recursos/gui.py:368
 msgid "Release incompatible with this system."
 msgstr "Wydanie niezgodne z tym systemem."
 
-#: src/mainuan_recursos/gui.py:346
+#: src/mainuan_recursos/gui.py:399
 msgid "Confirm Installation"
 msgstr "Potwierdź wgrywanie"
 
-#: src/mainuan_recursos/gui.py:346
+#: src/mainuan_recursos/gui.py:399
 msgid "Confirm Installation — Demo"
 msgstr "Potwierdź wgrywanie — demonstracja"
 
-#: src/mainuan_recursos/gui.py:348
+#: src/mainuan_recursos/gui.py:401
 msgid ""
 "The installation needs to change other packages or review the plan. Check "
 "the operation before continuing."
@@ -1141,41 +1195,41 @@ msgstr ""
 "Wgrywanie wymaga zmiany innych pakietów lub przejrzenia planu. Sprawdź "
 "działanie przed kontynuowaniem."
 
-#: src/mainuan_recursos/gui.py:355
+#: src/mainuan_recursos/gui.py:408
 msgid "Complete operation, including dependencies:"
 msgstr "Pełne działanie, łącznie z zależnościami:"
 
-#: src/mainuan_recursos/gui.py:356
+#: src/mainuan_recursos/gui.py:409
 msgid "Packages and dependencies of the operation"
 msgstr "Pakiety i zależności działania"
 
-#: src/mainuan_recursos/gui.py:358
+#: src/mainuan_recursos/gui.py:411
 msgid "Authorization and installation will be simulated."
 msgstr "Upoważnienie i wgrywanie zostaną zasymulowane."
 
-#: src/mainuan_recursos/gui.py:359
+#: src/mainuan_recursos/gui.py:412
 msgid "The system will ask for authorization to install."
 msgstr "System poprosi o upoważnienie do wgrania."
 
-#: src/mainuan_recursos/gui.py:362
+#: src/mainuan_recursos/gui.py:415
 msgid "Cancel"
 msgstr "Anuluj"
 
-#: src/mainuan_recursos/gui.py:373
+#: src/mainuan_recursos/gui.py:426
 msgid "Installation canceled. You can discover the news whenever you want."
 msgstr "Anulowano wgrywanie. Nowości możesz poznać w dowolnej chwili."
 
-#: src/mainuan_recursos/gui.py:382
+#: src/mainuan_recursos/gui.py:435
 #, python-brace-format
 msgid "Could not save the history: {error}"
 msgstr "Nie można zapisać historii: {error}"
 
-#: src/mainuan_recursos/gui.py:398
+#: src/mainuan_recursos/gui.py:451
 #, python-brace-format
 msgid "Could not save the 24-hour postponement: {error}"
 msgstr "Nie można zapisać odłożenia na 24 godziny: {error}"
 
-#: src/mainuan_recursos/gui.py:405
+#: src/mainuan_recursos/gui.py:458
 msgid "Wait for the operation to finish before closing."
 msgstr "Przed zamknięciem zaczekaj na zakończenie działania."
 
@@ -1411,35 +1465,35 @@ msgstr "Lokalna pamięć podręczna przekracza ograniczenie rozmiaru."
 msgid "Old or changed catalog; the valid cache was preserved."
 msgstr "Stary lub zmieniony katalog; zachowano prawidłową pamięć podręczną."
 
-#: src/mainuan_recursos/state.py:44
+#: src/mainuan_recursos/state.py:54
 msgid "Local state too large."
 msgstr "Stan lokalny jest zbyt duży."
 
-#: src/mainuan_recursos/state.py:46 src/mainuan_recursos/state.py:48
-#: src/mainuan_recursos/state.py:56
+#: src/mainuan_recursos/state.py:56 src/mainuan_recursos/state.py:58
+#: src/mainuan_recursos/state.py:66
 msgid "Invalid state."
 msgstr "Nieprawidłowy stan."
 
-#: src/mainuan_recursos/state.py:51
+#: src/mainuan_recursos/state.py:61
 msgid "Invalid sequence/digest."
 msgstr "Nieprawidłowa sekwencja/skrót."
 
-#: src/mainuan_recursos/state.py:53
+#: src/mainuan_recursos/state.py:63
 msgid "Invalid release."
 msgstr "Nieprawidłowe wydanie."
 
-#: src/mainuan_recursos/state.py:54
+#: src/mainuan_recursos/state.py:64
 msgid "Incomplete state."
 msgstr "Niepełny stan."
 
-#: src/mainuan_recursos/state.py:58
+#: src/mainuan_recursos/state.py:68 src/mainuan_recursos/state.py:71
 msgid "Invalid deadline."
 msgstr "Nieprawidłowy termin."
 
-#: src/mainuan_recursos/state.py:61
+#: src/mainuan_recursos/state.py:74
 msgid "The local state is damaged. Preserve the file before recovering it."
 msgstr "Stan lokalny jest uszkodzony. Zachowaj plik przed jego odzyskaniem."
 
-#: src/mainuan_recursos/state.py:91
+#: src/mainuan_recursos/state.py:104
 msgid "Old catalog or content changed without increasing the sequence."
 msgstr "Stary katalog lub treść zmieniona bez zwiększenia sekwencji."
