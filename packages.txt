@@ -1,1 +1,4 @@
-mainuan-gestao-drivers
+# Arquivo legado: lido apenas pelas versões 0.2.2 a 0.3.1 do Atualizador.
+# Fica SEM repositórios para que essas versões não abram a janela de novidades.
+# Não acrescente nomes aqui. Para anunciar novidades, edite announcements.json
+# (guia: docs/anuncios.md).

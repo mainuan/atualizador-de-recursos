@@ -22,12 +22,12 @@ Official Mainuan news channel: announces new programs from the organisation and 
 
 ## About
 
-The app reads `packages.txt` and `message.txt` from this repository's `main` branch (always from the same commit) and finds the latest stable releases, with a compatible `.deb`, of the official programs listed there. It is not a general APT/Flatpak updater and needs no keys, VM, GitHub App, own APT repository or user configuration.
+The app reads [`announcements.json`](announcements.json) from this repository's `main` branch. The news window opens by itself only for an announcement the team published on purpose (`"enabled": true`, valid, applicable to the installed Mainuan version and not yet shown); a program release alone is never an announcement. An announcement may suggest official programs, whose latest stable release with a compatible `.deb` the user can then install. It is not a general APT/Flatpak updater and needs no keys, VM, GitHub App, own APT repository or user configuration.
 
 ## Features
 
 - Classic window with **Install New Features**, **Discover What’s New** and **Not Now** (postpones for 24 hours); history and manual check in the menu.
-- Background check in the KDE session 60 seconds after login and then hourly; nothing is installed automatically; no checks in the Live session.
+- One silent check 60 seconds after the KDE login; without an announcement the process exits with no window, notification or tray icon. Nothing is installed automatically; no checks in the Live session; **Show News at Login** in the menu turns the automatic check off.
 - Installation through PackageKit with native PolicyKit authorisation; no password capture.
 - Offline: history and cache stay available, installation is blocked.
 - Demo mode with fictitious scenarios.
@@ -36,16 +36,16 @@ The app reads `packages.txt` and `message.txt` from this repository's `main` bra
 
 ## Installation
 
-Preinstalled on the Mainuan ISO. To install manually, download `mainuan-atualizador-recursos_0.3.1_all.deb` and `SHA256SUMS` from the [latest release](https://github.com/mainuan/atualizador-de-recursos/releases/latest):
+Preinstalled on the Mainuan ISO. To install manually, download `mainuan-atualizador-recursos_0.4.0_all.deb` and `SHA256SUMS` from the [latest release](https://github.com/mainuan/atualizador-de-recursos/releases/latest):
 
 ```bash
 sha256sum --check --ignore-missing SHA256SUMS
-sudo apt install ./mainuan-atualizador-recursos_0.3.1_all.deb
+sudo apt install ./mainuan-atualizador-recursos_0.4.0_all.deb
 ```
 
 ## Usage
 
-`mainuan-atualizador-recursos [--check] [--demo [--scenario NAME]] [--version]`. To announce news, publish a stable release with a `.deb` in the program's repository, add the repository name to `packages.txt` and write the text in `message.txt`. Manual page: `man mainuan-atualizador-recursos`.
+`mainuan-atualizador-recursos [--check] [--demo [--scenario NAME]] [--version]`. To announce news, edit `announcements.json` on GitHub, set `"enabled": true`, fill in `id`, `version`, `title`/`message` and save; set `"enabled": false` to stop. Guide (Portuguese): [docs/anuncios.md](docs/anuncios.md). `packages.txt`/`message.txt` are kept only so that versions up to 0.3.1 stay silent. Manual page: `man mainuan-atualizador-recursos`.
 
 ## Technical information
 

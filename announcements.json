@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "enabled": false,
+  "id": "",
+  "version": 1,
+  "title": {
+    "pt_BR": "",
+    "en": ""
+  },
+  "message": {
+    "pt_BR": "",
+    "en": ""
+  },
+  "url": "",
+  "packages": [],
+  "applies_to": {}
+}
