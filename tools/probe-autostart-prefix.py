@@ -29,7 +29,6 @@ def execute(app):
         windows=[w for w in app.topLevelWidgets() if isinstance(w,Window)]
         if windows:
             window=windows[0]
-            report['hourly_interval_ms']=window.timer.interval()
             report['shown_before_check']=window.isVisible()
             if checks and window.worker is None:
                 report['status']=window.status.text()

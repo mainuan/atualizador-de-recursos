@@ -1,4 +1,11 @@
-"""Estado editorial e observação de pacotes, separados por lançamento."""
+"""Estado editorial e observação de pacotes, separados por lançamento.
+
+Cada entrada é indexada por ``id@versão`` (no canal GitHub, o id e a versão do
+anúncio).  ``presentation``: ``unseen`` (ainda não apresentado), ``viewed``
+(apresentado/lido; fechar a janela também conta) ou ``postponed`` (Agora não,
+até ``postponed_until``).  ``presented_at`` guarda a primeira apresentação.
+Uma nova versão do anúncio é outra chave e, portanto, é apresentada de novo.
+"""
 from copy import deepcopy
 import json
 import math
@@ -32,6 +39,9 @@ def atomic_write(path, data):
             os.unlink(temporary)
 
 
+BASE_FIELDS = frozenset({'presentation', 'packages', 'postponed_until'})
+
+
 class State:
     def __init__(self, path=None):
         self.path = path
@@ -51,11 +61,14 @@ class State:
                          and all(c in '0123456789abcdef' for c in obj['digest'])), _('Invalid sequence/digest.'))
                 for key, entry in obj['releases'].items():
                     require(isinstance(key, str) and isinstance(entry, dict), _('Invalid release.'))
-                    require(set(entry) == {'presentation', 'packages', 'postponed_until'}, _('Incomplete state.'))
+                    require(set(entry) in (BASE_FIELDS, BASE_FIELDS | {'presented_at'}), _('Incomplete state.'))
                     require(entry['presentation'] in ('unseen', 'viewed', 'postponed')
                             and entry['packages'] in ('unknown', 'pending', 'installed'), _('Invalid state.'))
                     until = entry['postponed_until']
                     require(type(until) in (int, float) and math.isfinite(until) and until >= 0, _('Invalid deadline.'))
+                    presented = entry.get('presented_at', 0)
+                    require(type(presented) in (int, float) and math.isfinite(presented) and presented >= 0,
+                            _('Invalid deadline.'))
                 self.data = obj
             except (ValueError, KeyError, TypeError, AttributeError, OverflowError) as exc:
                 raise CatalogError(_('The local state is damaged. Preserve the file before recovering it.')) from exc
@@ -106,14 +119,20 @@ class State:
     def viewed(self, release):
         def update():
             entry = self.entry(release)
+            now = time.time()
+            entry.setdefault('presented_at', now)
             # Consulta manual antes do prazo não cancela o adiamento solicitado.
-            if entry['presentation'] != 'postponed' or entry['postponed_until'] <= time.time():
+            if entry['presentation'] != 'postponed' or entry['postponed_until'] <= now:
                 entry['presentation'] = 'viewed'
         self._change(update)
 
     def postpone(self, release, now=None):
-        self._change(lambda: self.entry(release).update(
-            presentation='postponed', postponed_until=(time.time() if now is None else now) + 86400))
+        def update():
+            moment = time.time() if now is None else now
+            entry = self.entry(release)
+            entry.setdefault('presented_at', moment)
+            entry.update(presentation='postponed', postponed_until=moment + 86400)
+        self._change(update)
 
     def observe(self, release, plan):
         self._change(lambda: self.entry(release).update(packages='installed' if plan.complete else 'pending'))

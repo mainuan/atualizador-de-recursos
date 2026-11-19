@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: mainuan-atualizador-recursos\n"
 "Report-Msgid-Bugs-To: https://github.com/mainuan/atualizador-de-recursos/"
 "issues\n"
-"POT-Creation-Date: 2026-11-18 13:16-0300\n"
+"POT-Creation-Date: 2026-11-19 01:32-0300\n"
 "PO-Revision-Date: 2026-11-16 11:30-0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: sv <https://github.com/mainuan>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: data/mainuan-recursos-autostart.desktop.in:3
-#: src/mainuan_recursos/application.py:54
+#: src/mainuan_recursos/application.py:60
 msgid "Mainuan News"
 msgstr "Mainuan-nyheter"
 
@@ -27,7 +27,7 @@ msgstr "Mainuan-nyheter"
 msgid "Checks for news during the session"
 msgstr "Söker efter nyheter under sessionen"
 
-#: data/org.mainuan.Recursos.desktop.in:3 src/mainuan_recursos/gui.py:41
+#: data/org.mainuan.Recursos.desktop.in:3 src/mainuan_recursos/gui.py:47
 msgid "Mainuan Feature Updater"
 msgstr "Mainuans funktionsuppdaterare"
 
@@ -35,15 +35,62 @@ msgstr "Mainuans funktionsuppdaterare"
 msgid "Discover and receive the official Mainuan news"
 msgstr "Upptäck och ta emot officiella nyheter från Mainuan"
 
-#: src/mainuan_recursos/application.py:22
+#: src/mainuan_recursos/announcement.py:37
+#: src/mainuan_recursos/announcement.py:87
+#: src/mainuan_recursos/announcement.py:91
+#: src/mainuan_recursos/announcement.py:92
+#: src/mainuan_recursos/announcement.py:107
+#: src/mainuan_recursos/announcement.py:110
+#: src/mainuan_recursos/announcement.py:114
+#: src/mainuan_recursos/announcement.py:127
+#: src/mainuan_recursos/announcement.py:136
+#: src/mainuan_recursos/announcement.py:141
+msgid "announcements.json is invalid or incomplete."
+msgstr ""
+
+#: src/mainuan_recursos/announcement.py:100
+#, fuzzy
+#| msgid "GitHub response exceeds the allowed size."
+msgid "announcements.json exceeds the allowed size."
+msgstr "GitHub-svaret överskrider den tillåtna storleken."
+
+#: src/mainuan_recursos/announcement.py:109
+msgid "announcements.json uses an unsupported format. Update the application."
+msgstr ""
+
+#: src/mainuan_recursos/announcement.py:117
+#, fuzzy
+#| msgid "Invalid identifier."
+msgid "Invalid announcement identifier."
+msgstr "Ogiltig identifierare."
+
+#: src/mainuan_recursos/announcement.py:119
+#, fuzzy
+#| msgid "Invalid Debian name or version."
+msgid "Invalid announcement version."
+msgstr "Ogiltigt Debian-namn eller ogiltig Debian-version."
+
+#: src/mainuan_recursos/announcement.py:125
+msgid "The announcement needs its text in Brazilian Portuguese (pt_BR)."
+msgstr ""
+
+#: src/mainuan_recursos/announcement.py:133
+#, fuzzy
+#| msgid "packages.txt contains invalid or repeated repositories."
+msgid "announcements.json lists invalid or repeated repositories."
+msgstr "packages.txt innehåller ogiltiga eller upprepade arkiv."
+
+#: src/mainuan_recursos/application.py:23
 msgid "Discover and receive the official Mainuan news."
 msgstr "Upptäck och ta emot officiella nyheter från Mainuan."
 
-#: src/mainuan_recursos/application.py:23
-msgid "check during the session and notify without blocking the login"
-msgstr "sök under sessionen och meddela utan att blockera inloggningen"
-
 #: src/mainuan_recursos/application.py:24
+msgid ""
+"check once after login; open only for an explicitly published announcement, "
+"otherwise exit silently"
+msgstr ""
+
+#: src/mainuan_recursos/application.py:25
 msgid ""
 "real, manual trial in a VM: GitHub packages.txt/message.txt and Driver "
 "Manager 1.0"
@@ -51,40 +98,40 @@ msgstr ""
 "verklig, manuell provning i en virtuell maskin: GitHub packages.txt/"
 "message.txt och Drivrutinshanterare 1.0"
 
-#: src/mainuan_recursos/application.py:25
+#: src/mainuan_recursos/application.py:26
 msgid "demonstrate the whole flow without modifying the system"
 msgstr "demonstrera hela flödet utan att ändra systemet"
 
-#: src/mainuan_recursos/application.py:26
+#: src/mainuan_recursos/application.py:27
 msgid "demonstration scenario"
 msgstr "demonstrationsscenario"
 
-#: src/mainuan_recursos/application.py:27
+#: src/mainuan_recursos/application.py:28
 msgid "signed local catalog, only with --demo"
 msgstr "signerad lokal katalog, endast med --demo"
 
-#: src/mainuan_recursos/application.py:28
+#: src/mainuan_recursos/application.py:29
 msgid "test configuration and key, only with --demo"
 msgstr "testinställningar och nyckel, endast med --demo"
 
-#: src/mainuan_recursos/application.py:33
+#: src/mainuan_recursos/application.py:34
 msgid ""
 "--homologacao-github is manual and cannot be combined with --check/--demo."
 msgstr ""
 "--homologacao-github är manuellt och kan inte kombineras med --check/--demo."
 
-#: src/mainuan_recursos/application.py:38
+#: src/mainuan_recursos/application.py:39
 #, python-brace-format
 msgid "Acceptance test unavailable: {error}"
 msgstr "Acceptanstestet är inte tillgängligt: {error}"
 
 # reviewed: FILE är visad platshållartext (inte argparse-metavar); översätt
 # till FIL som fil1/paket1 i andra lotes
-#: src/mainuan_recursos/application.py:40
+#: src/mainuan_recursos/application.py:41
 msgid "Use --demo --test-catalog FILE --test-config FILE together."
 msgstr "Använd --demo --test-catalog FIL --test-config FIL tillsammans."
 
-#: src/mainuan_recursos/application.py:51
+#: src/mainuan_recursos/application.py:57
 msgid ""
 "Checking for news becomes available after installing Mainuan. The Live "
 "session will not be queried."
@@ -92,7 +139,7 @@ msgstr ""
 "Sökning efter nyheter blir tillgänglig när Mainuan har installerats. Ingen "
 "sökning görs i live-sessionen."
 
-#: src/mainuan_recursos/application.py:53
+#: src/mainuan_recursos/application.py:59
 msgid ""
 "Could not determine the session type. Querying and installing features have "
 "been disabled."
@@ -100,34 +147,34 @@ msgstr ""
 "Kunde inte avgöra sessionstypen. Sökning efter och installation av "
 "funktioner har inaktiverats."
 
-#: src/mainuan_recursos/application.py:67
+#: src/mainuan_recursos/application.py:73
 msgid "Invalid test catalog"
 msgstr "Ogiltig testkatalog"
 
-#: src/mainuan_recursos/application.py:81
+#: src/mainuan_recursos/application.py:87
 #, python-brace-format
 msgid "Could not open the state directory: {error}"
 msgstr "Kunde inte öppna tillståndsmappen: {error}"
 
-#: src/mainuan_recursos/application.py:83
-#: src/mainuan_recursos/application.py:106
-#: src/mainuan_recursos/application.py:119
+#: src/mainuan_recursos/application.py:89
+#: src/mainuan_recursos/application.py:112
+#: src/mainuan_recursos/application.py:125
 msgid "Could not open the history"
 msgstr "Kunde inte öppna historiken"
 
-#: src/mainuan_recursos/application.py:90
+#: src/mainuan_recursos/application.py:96
 msgid "Could not lock the local state. Check the directory permissions."
 msgstr ""
 "Kunde inte låsa det lokala tillståndet. Kontrollera mappens behörigheter."
 
-#: src/mainuan_recursos/application.py:100
+#: src/mainuan_recursos/application.py:106
 msgid ""
 "The other instance is starting. Open the application again in a few seconds."
 msgstr ""
 "Den andra instansen håller på att starta. Öppna programmet igen om några "
 "sekunder."
 
-#: src/mainuan_recursos/application.py:126
+#: src/mainuan_recursos/application.py:133
 msgid "Could not create the single-instance channel."
 msgstr "Kunde inte skapa kanalen för enkel instans."
 
@@ -325,7 +372,7 @@ msgstr "Upptäck vad som är nytt"
 msgid "Optional: open the official page in the web browser."
 msgstr "Valfritt: öppna den officiella sidan i webbläsaren."
 
-#: src/mainuan_recursos/classic.py:135 src/mainuan_recursos/gui.py:361
+#: src/mainuan_recursos/classic.py:135 src/mainuan_recursos/gui.py:414
 msgid "Install New Features"
 msgstr "Installera nya funktioner"
 
@@ -348,7 +395,7 @@ msgstr "Skjuter upp aviseringen i 24 timmar men behåller manuell åtkomst."
 #: src/mainuan_recursos/controller.py:77 src/mainuan_recursos/controller.py:115
 #: src/mainuan_recursos/controller.py:147
 #: src/mainuan_recursos/controller.py:155 src/mainuan_recursos/demo.py:68
-#: src/mainuan_recursos/github_channel.py:391
+#: src/mainuan_recursos/github_channel.py:401
 #: src/mainuan_recursos/github_trial.py:201
 #: src/mainuan_recursos/packagekit.py:193
 msgid "Preparing installation..."
@@ -389,7 +436,7 @@ msgstr ""
 "Beroendena har ändrats. Förbered en ny åtgärd för att bekräfta detaljerna."
 
 #: src/mainuan_recursos/controller.py:134 src/mainuan_recursos/demo.py:69
-#: src/mainuan_recursos/github_channel.py:472
+#: src/mainuan_recursos/github_channel.py:495
 #: src/mainuan_recursos/github_trial.py:250
 #: src/mainuan_recursos/packagekit.py:190
 msgid "Installing new features..."
@@ -450,63 +497,62 @@ msgstr "Auktoriseringen avbröts (simulering)."
 msgid "Download failed (simulation)."
 msgstr "Hämtningen misslyckades (simulering)."
 
-#: src/mainuan_recursos/github_channel.py:41
-#: src/mainuan_recursos/github_channel.py:48
+#: src/mainuan_recursos/github_channel.py:46
+#: src/mainuan_recursos/github_channel.py:53
 msgid "Invalid GitHub address."
 msgstr "Ogiltig GitHub-adress."
 
-#: src/mainuan_recursos/github_channel.py:46
+#: src/mainuan_recursos/github_channel.py:51
 msgid "GitHub address must use official HTTPS."
 msgstr "GitHub-adressen måste använda officiell HTTPS."
 
-#: src/mainuan_recursos/github_channel.py:51
+#: src/mainuan_recursos/github_channel.py:56
 msgid "Ambiguous GitHub path."
 msgstr "Tvetydig GitHub-sökväg."
 
-#: src/mainuan_recursos/github_channel.py:53
+#: src/mainuan_recursos/github_channel.py:58
 msgid "Invalid repository."
 msgstr "Ogiltigt arkiv."
 
-#: src/mainuan_recursos/github_channel.py:63
+#: src/mainuan_recursos/github_channel.py:68
 msgid "Source or redirect outside the official Mainuan organization."
 msgstr "Källa eller omdirigering utanför Mainuans officiella organisation."
 
-#: src/mainuan_recursos/github_channel.py:72
+#: src/mainuan_recursos/github_channel.py:77
 msgid "The GitHub query was redirected; check the official source."
 msgstr "GitHub-förfrågan omdirigerades. Kontrollera den officiella källan."
 
-#: src/mainuan_recursos/github_channel.py:87
+#: src/mainuan_recursos/github_channel.py:92
 msgid "GitHub metadata exceeds the allowed limit."
 msgstr "GitHub-metadata överskrider den tillåtna gränsen."
 
-#: src/mainuan_recursos/github_channel.py:96
+#: src/mainuan_recursos/github_channel.py:101
 msgid "Invalid GitHub artifact."
 msgstr "Ogiltig GitHub-artefakt."
 
-#: src/mainuan_recursos/github_channel.py:98
+#: src/mainuan_recursos/github_channel.py:103
 msgid "Use the Debian name package_version_architecture.deb in the release."
 msgstr "Använd Debian-namnet package_version_architecture.deb i utgåvan."
 
-#: src/mainuan_recursos/github_channel.py:101
+#: src/mainuan_recursos/github_channel.py:106
 msgid "Invalid Debian name or version."
 msgstr "Ogiltigt Debian-namn eller ogiltig Debian-version."
 
-#: src/mainuan_recursos/github_channel.py:104
+#: src/mainuan_recursos/github_channel.py:109
 #, python-brace-format
 msgid "The release has no verifiable SHA-256 published by GitHub for {file}."
 msgstr "Utgåvan har ingen verifierbar SHA-256 publicerad av GitHub för {file}."
 
-#: src/mainuan_recursos/github_channel.py:106
+#: src/mainuan_recursos/github_channel.py:111
 msgid "Artifact unavailable or invalid size."
 msgstr "Artefakten är inte tillgänglig eller har ogiltig storlek."
 
-#: src/mainuan_recursos/github_channel.py:157
-#: src/mainuan_recursos/github_channel.py:292
+#: src/mainuan_recursos/github_channel.py:151
+#: src/mainuan_recursos/github_channel.py:299
 msgid "GitHub history exceeds the allowed limit."
 msgstr "GitHub-historiken överskrider den tillåtna gränsen."
 
 #: src/mainuan_recursos/github_channel.py:170
-#: src/mainuan_recursos/github_channel.py:285
 #: src/mainuan_recursos/github_trial.py:146
 msgid "Mainuan has news!"
 msgstr "Mainuan har nyheter!"
@@ -569,105 +615,97 @@ msgstr "Ogiltig oföränderlig referens för utgåvan."
 msgid "No stable release with a compatible Debian package: {repository}"
 msgstr "Ingen stabil utgåva med ett kompatibelt Debian-paket: {repository}"
 
-#: src/mainuan_recursos/github_channel.py:249
+#: src/mainuan_recursos/github_channel.py:251
 msgid "This channel is intended for Mainuan based on Kubuntu 26.04."
 msgstr "Den här kanalen är avsedd för Mainuan baserat på Kubuntu 26.04."
 
-#: src/mainuan_recursos/github_channel.py:251
+#: src/mainuan_recursos/github_channel.py:253
 msgid "Invalid official reference."
 msgstr "Ogiltig officiell referens."
 
-#: src/mainuan_recursos/github_channel.py:255
-msgid "message.txt is empty."
-msgstr "message.txt är tom."
-
-#: src/mainuan_recursos/github_channel.py:260
-msgid "packages.txt contains invalid or repeated repositories."
-msgstr "packages.txt innehåller ogiltiga eller upprepade arkiv."
-
-#: src/mainuan_recursos/github_channel.py:266
+#: src/mainuan_recursos/github_channel.py:267
 msgid "Two repositories offer the same Debian package."
 msgstr "Två arkiv erbjuder samma Debian-paket."
 
-#: src/mainuan_recursos/github_channel.py:271
+#: src/mainuan_recursos/github_channel.py:272
 #, python-brace-format
 msgid "An already announced release or artifact was replaced: {package}"
 msgstr "En redan aviserad utgåva eller artefakt har ersatts: {package}"
 
-#: src/mainuan_recursos/github_channel.py:275
+#: src/mainuan_recursos/github_channel.py:276
 #, python-brace-format
 msgid "Rollback of a published version blocked: {package}"
 msgstr "Återgång från en publicerad version blockerades: {package}"
 
-#: src/mainuan_recursos/github_channel.py:296
+#: src/mainuan_recursos/github_channel.py:303
 msgid "News not queried in this channel."
 msgstr "Nyheter efterfrågas inte i den här kanalen."
 
-#: src/mainuan_recursos/github_channel.py:304
+#: src/mainuan_recursos/github_channel.py:311
 msgid "Package missing or size mismatch."
 msgstr "Paketet saknas eller har fel storlek."
 
-#: src/mainuan_recursos/github_channel.py:306
+#: src/mainuan_recursos/github_channel.py:313
 msgid "SHA-256 integrity mismatch; installation blocked."
 msgstr "SHA-256-integriteten stämmer inte. Installationen blockerades."
 
-#: src/mainuan_recursos/github_channel.py:310
+#: src/mainuan_recursos/github_channel.py:317
 msgid "Internal package metadata does not match the release."
 msgstr "Paketets interna metadata stämmer inte med utgåvan."
 
-#: src/mainuan_recursos/github_channel.py:324
+#: src/mainuan_recursos/github_channel.py:334
 #: src/mainuan_recursos/github_trial.py:162 src/mainuan_recursos/packages.py:96
 msgid "Package with incomplete configuration"
 msgstr "Paket med ofullständig konfiguration"
 
-#: src/mainuan_recursos/github_channel.py:328
+#: src/mainuan_recursos/github_channel.py:338
 #: src/mainuan_recursos/github_trial.py:167 src/mainuan_recursos/packages.py:98
 msgid "Package held by the administrator"
 msgstr "Paket låst av administratören"
 
-#: src/mainuan_recursos/github_channel.py:334
+#: src/mainuan_recursos/github_channel.py:344
 #: src/mainuan_recursos/github_trial.py:173
 #, python-brace-format
 msgid "Unmet dependencies: {details}"
 msgstr "Ouppfyllda beroenden: {details}"
 
-#: src/mainuan_recursos/github_channel.py:336
+#: src/mainuan_recursos/github_channel.py:346
 msgid "The operation requires additional unannounced packages"
 msgstr "Åtgärden kräver ytterligare paket som inte har aviserats"
 
-#: src/mainuan_recursos/github_channel.py:344
+#: src/mainuan_recursos/github_channel.py:354
 msgid "The announced release was withdrawn or changed."
 msgstr "Den aviserade utgåvan har dragits tillbaka eller ändrats."
 
-#: src/mainuan_recursos/github_channel.py:346
+#: src/mainuan_recursos/github_channel.py:356
 msgid "The release reference was replaced; installation blocked."
 msgstr "Utgåvans referens har ersatts. Installationen blockerades."
 
-#: src/mainuan_recursos/github_channel.py:349
+#: src/mainuan_recursos/github_channel.py:359
 msgid "The artifact was changed after the query; check for news again."
 msgstr "Artefakten ändrades efter förfrågan. Sök efter nyheter igen."
 
-#: src/mainuan_recursos/github_channel.py:366
+#: src/mainuan_recursos/github_channel.py:376
 msgid "Download exceeds the approved size."
 msgstr "Hämtningen överskrider den godkända storleken."
 
-#: src/mainuan_recursos/github_channel.py:369
-#: src/mainuan_recursos/github_channel.py:388
+#: src/mainuan_recursos/github_channel.py:379
+#: src/mainuan_recursos/github_channel.py:398
 #: src/mainuan_recursos/github_trial.py:189
 #: src/mainuan_recursos/github_trial.py:191
 #: src/mainuan_recursos/packagekit.py:191
 msgid "Downloading new features..."
 msgstr "Hämtar nya funktioner..."
 
-#: src/mainuan_recursos/github_channel.py:370
+#: src/mainuan_recursos/github_channel.py:380
 msgid "Download with SHA-256 integrity mismatch."
 msgstr "Hämtningen har felaktig SHA-256-integritet."
 
-#: src/mainuan_recursos/github_channel.py:377
+#: src/mainuan_recursos/github_channel.py:387
 msgid "Check for news online before installing."
 msgstr "Sök efter nyheter på nätet innan du installerar."
 
-#: src/mainuan_recursos/github_channel.py:379
+#: src/mainuan_recursos/github_channel.py:389
 msgid ""
 "Installation requires a regular user and an installed session, outside Live "
 "mode."
@@ -675,50 +713,52 @@ msgstr ""
 "Installationen kräver en vanlig användare och en installerad session, "
 "utanför live-läget."
 
-#: src/mainuan_recursos/github_channel.py:399
+#: src/mainuan_recursos/github_channel.py:409
 msgid "PackageKit proposed additional packages or an incomplete operation."
 msgstr "PackageKit föreslog ytterligare paket eller en ofullständig åtgärd."
 
-#: src/mainuan_recursos/github_channel.py:403
+#: src/mainuan_recursos/github_channel.py:413
 msgid "The simulation would change unannounced packages."
 msgstr "Simuleringen skulle ändra paket som inte har aviserats."
 
-#: src/mainuan_recursos/github_channel.py:405
+#: src/mainuan_recursos/github_channel.py:415
 msgid "Removal, reinstallation or downgrade blocked."
 msgstr "Borttagning, ominstallation eller nedgradering blockerades."
 
-#: src/mainuan_recursos/github_channel.py:417
-#: src/mainuan_recursos/github_channel.py:418
+#: src/mainuan_recursos/github_channel.py:428
+#: src/mainuan_recursos/github_channel.py:429
 msgid "Invalid GitHub cache."
 msgstr "Ogiltig GitHub-cache."
 
-#: src/mainuan_recursos/github_channel.py:423
+#: src/mainuan_recursos/github_channel.py:435
+#: src/mainuan_recursos/github_channel.py:442
+#: src/mainuan_recursos/github_channel.py:445
 msgid "Invalid local edition."
 msgstr "Ogiltig lokal utgåva."
 
-#: src/mainuan_recursos/github_channel.py:426
+#: src/mainuan_recursos/github_channel.py:448
 msgid "Invalid local artifact."
 msgstr "Ogiltig lokal artefakt."
 
-#: src/mainuan_recursos/github_channel.py:430
+#: src/mainuan_recursos/github_channel.py:453
 msgid "Invalid GitHub history. Preserve the file before recovering it."
 msgstr ""
 "Ogiltig GitHub-historik. Spara en kopia av filen innan du återställer den."
 
-#: src/mainuan_recursos/github_channel.py:447
+#: src/mainuan_recursos/github_channel.py:470
 msgid "Cannot install:"
 msgstr "Kan inte installera:"
 
-#: src/mainuan_recursos/github_channel.py:449
+#: src/mainuan_recursos/github_channel.py:472
 msgid ""
 "You have already received all the features. No reinstallation will be done."
 msgstr "Du har redan fått alla funktioner. Ingen ominstallation görs."
 
-#: src/mainuan_recursos/github_channel.py:451
+#: src/mainuan_recursos/github_channel.py:474
 msgid "The package state has changed. Check for news again."
 msgstr "Paketens tillstånd har ändrats. Sök efter nyheter igen."
 
-#: src/mainuan_recursos/github_channel.py:464
+#: src/mainuan_recursos/github_channel.py:487
 msgid "The operation has changed; installation blocked."
 msgstr "Åtgärden har ändrats. Installationen blockerades."
 
@@ -864,122 +904,132 @@ msgstr ""
 msgid "The operation has changed. Review the confirmation again."
 msgstr "Åtgärden har ändrats. Granska bekräftelsen igen."
 
-#: src/mainuan_recursos/gui.py:39
+#: src/mainuan_recursos/gui.py:45
 msgid "Mainuan Feature Updater — Demo"
 msgstr "Mainuans funktionsuppdaterare — Demo"
 
-#: src/mainuan_recursos/gui.py:40
+#: src/mainuan_recursos/gui.py:46
 msgid "Mainuan Feature Updater — GitHub Acceptance Test"
 msgstr "Mainuans funktionsuppdaterare — GitHub-acceptanstest"
 
-#: src/mainuan_recursos/gui.py:44
+#: src/mainuan_recursos/gui.py:50
 msgid "Checking for news…"
 msgstr "Söker efter nyheter…"
 
-#: src/mainuan_recursos/gui.py:50
+#: src/mainuan_recursos/gui.py:56
 msgid "Check for News"
 msgstr "Sök efter nyheter"
 
-#: src/mainuan_recursos/gui.py:51 src/mainuan_recursos/gui.py:55
-#: src/mainuan_recursos/gui.py:56
+#: src/mainuan_recursos/gui.py:57 src/mainuan_recursos/gui.py:67
+#: src/mainuan_recursos/gui.py:68
 msgid "News History"
 msgstr "Nyhetshistorik"
 
-#: src/mainuan_recursos/gui.py:53 src/mainuan_recursos/gui.py:60
+#: src/mainuan_recursos/gui.py:60
+msgid "Show News at Login"
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:65 src/mainuan_recursos/gui.py:72
 msgid "Technical Information"
 msgstr "Teknisk information"
 
-#: src/mainuan_recursos/gui.py:59
+#: src/mainuan_recursos/gui.py:71
 msgid "Programs, packages, versions and actual status"
 msgstr "Program, paket, versioner och faktisk status"
 
+#: src/mainuan_recursos/gui.py:103
+#, fuzzy, python-brace-format
+#| msgid "Could not save the history: {error}"
+msgid "Could not save the preference: {error}"
+msgstr "Kunde inte spara historiken: {error}"
+
 #. Translators: title of an auxiliary window opened in demonstration mode.
-#: src/mainuan_recursos/gui.py:92
+#: src/mainuan_recursos/gui.py:108
 #, python-brace-format
 msgid "{title} — Demo"
 msgstr "{title} — Demo"
 
-#: src/mainuan_recursos/gui.py:119
+#: src/mainuan_recursos/gui.py:135
 #, python-brace-format
 msgid "Release: {id} • {version}"
 msgstr "Utgåva: {id} • {version}"
 
-#: src/mainuan_recursos/gui.py:120
+#: src/mainuan_recursos/gui.py:136
 #, python-brace-format
 msgid "Official article: {url}"
 msgstr "Officiell artikel: {url}"
 
-#: src/mainuan_recursos/gui.py:121
+#: src/mainuan_recursos/gui.py:137
 msgid "not checked"
 msgstr "inte kontrollerad"
 
-#: src/mainuan_recursos/gui.py:126 src/mainuan_recursos/gui.py:351
+#: src/mainuan_recursos/gui.py:142 src/mainuan_recursos/gui.py:404
 msgid "not installed"
 msgstr "inte installerat"
 
-#: src/mainuan_recursos/gui.py:127
+#: src/mainuan_recursos/gui.py:143
 msgid "unavailable"
 msgstr "inte tillgängligt"
 
-#: src/mainuan_recursos/gui.py:129
+#: src/mainuan_recursos/gui.py:145
 msgid "packages not checked"
 msgstr "paketen har inte kontrollerats"
 
-#: src/mainuan_recursos/gui.py:130
+#: src/mainuan_recursos/gui.py:146
 #, python-brace-format
 msgid "Package: {name}"
 msgstr "Paket: {name}"
 
-#: src/mainuan_recursos/gui.py:131
+#: src/mainuan_recursos/gui.py:147
 #, python-brace-format
 msgid "Minimum version: {version}"
 msgstr "Lägsta version: {version}"
 
-#: src/mainuan_recursos/gui.py:132
+#: src/mainuan_recursos/gui.py:148
 #, python-brace-format
 msgid "Installed: {version}"
 msgstr "Installerad: {version}"
 
-#: src/mainuan_recursos/gui.py:133
+#: src/mainuan_recursos/gui.py:149
 #, python-brace-format
 msgid "Available: {version}"
 msgstr "Tillgänglig: {version}"
 
-#: src/mainuan_recursos/gui.py:134
+#: src/mainuan_recursos/gui.py:150
 #, python-brace-format
 msgid "Architecture: {architecture}"
 msgstr "Arkitektur: {architecture}"
 
-#: src/mainuan_recursos/gui.py:135
+#: src/mainuan_recursos/gui.py:151
 #, python-brace-format
 msgid "Status: {status}"
 msgstr "Status: {status}"
 
-#: src/mainuan_recursos/gui.py:137
+#: src/mainuan_recursos/gui.py:153
 #, python-brace-format
 msgid "Approved SHA-256: {sha256}"
 msgstr "Godkänd SHA-256: {sha256}"
 
-#: src/mainuan_recursos/gui.py:139
+#: src/mainuan_recursos/gui.py:155
 msgid ""
 "The complete operation, including dependencies, will be shown when "
 "confirming the installation."
 msgstr ""
 "Hela åtgärden, inklusive beroenden, visas när du bekräftar installationen."
 
-#: src/mainuan_recursos/gui.py:141
+#: src/mainuan_recursos/gui.py:157
 msgid ""
 "Demo: authorization and installation are simulated; no package will be "
 "changed."
 msgstr "Demo: auktorisering och installation simuleras. Inga paket ändras."
 
-#: src/mainuan_recursos/gui.py:143
+#: src/mainuan_recursos/gui.py:159
 msgid ""
-"Official GitHub channel: packages.txt and message.txt from the same commit."
+"Official GitHub channel: announcements.json, read from a single commit and "
+"published explicitly."
 msgstr ""
-"Officiell GitHub-kanal: packages.txt och message.txt från samma incheckning."
 
-#: src/mainuan_recursos/gui.py:144
+#: src/mainuan_recursos/gui.py:160
 msgid ""
 "Packages from stable releases, with IDs, versions and SHA-256 recorded "
 "during the query."
@@ -987,7 +1037,7 @@ msgstr ""
 "Paket från stabila utgåvor, med id, versioner och SHA-256 registrerade vid "
 "förfrågan."
 
-#: src/mainuan_recursos/gui.py:145
+#: src/mainuan_recursos/gui.py:161
 msgid ""
 "The download starts only after choosing to install; unannounced changes are "
 "blocked."
@@ -995,28 +1045,28 @@ msgstr ""
 "Hämtningen startar först när du väljer att installera. Ändringar som inte "
 "har aviserats blockeras."
 
-#: src/mainuan_recursos/gui.py:146
+#: src/mainuan_recursos/gui.py:162
 msgid "HTTPS and SHA-256 are not equivalent to an APT repository signature."
 msgstr "HTTPS och SHA-256 motsvarar inte en signatur från ett APT-förråd."
 
-#: src/mainuan_recursos/gui.py:147
+#: src/mainuan_recursos/gui.py:163
 msgid "PackageKit/PolicyKit may ask for authorization for an untrusted source."
 msgstr ""
 "PackageKit/PolicyKit kan begära auktorisering för en källa som inte är "
 "betrodd."
 
-#: src/mainuan_recursos/gui.py:149
+#: src/mainuan_recursos/gui.py:165
 msgid ""
 "GitHub acceptance test: official source and artifact pinned by IDs and "
 "SHA-256."
 msgstr ""
 "GitHub-acceptanstest: officiell källa och artefakt låsta med id och SHA-256."
 
-#: src/mainuan_recursos/gui.py:150
+#: src/mainuan_recursos/gui.py:166
 msgid "The download starts only after choosing to install."
 msgstr "Hämtningen startar först när du väljer att installera."
 
-#: src/mainuan_recursos/gui.py:151
+#: src/mainuan_recursos/gui.py:167
 msgid ""
 "Local file without an APT repository signature. PackageKit/PolicyKit may ask "
 "for authorization for an untrusted source."
@@ -1024,7 +1074,7 @@ msgstr ""
 "Lokal fil utan signatur från ett APT-förråd. PackageKit/PolicyKit kan begära "
 "auktorisering för en källa som inte är betrodd."
 
-#: src/mainuan_recursos/gui.py:152
+#: src/mainuan_recursos/gui.py:168
 msgid ""
 "The trial only allows the Driver Manager application; changes to other "
 "packages are blocked."
@@ -1032,20 +1082,24 @@ msgstr ""
 "Provningen tillåter bara programmet Drivrutinshanterare. Ändringar av andra "
 "paket blockeras."
 
-#: src/mainuan_recursos/gui.py:174
+#: src/mainuan_recursos/gui.py:193
 msgid "Querying the official Mainuan news…"
 msgstr "Hämtar Mainuans officiella nyheter…"
 
-#: src/mainuan_recursos/gui.py:218
+#: src/mainuan_recursos/gui.py:246
 #, python-brace-format
 msgid "Could not check for news. {error}"
 msgstr "Kunde inte söka efter nyheter. {error}"
 
-#: src/mainuan_recursos/gui.py:246
+#: src/mainuan_recursos/gui.py:297
 msgid "No news has been published yet. Come back soon!"
 msgstr "Inga nyheter har publicerats ännu. Kom tillbaka snart!"
 
-#: src/mainuan_recursos/gui.py:252
+#: src/mainuan_recursos/gui.py:299
+msgid "No news is published right now. Earlier news is in the history."
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:305
 msgid ""
 "No news published.\n"
 "Come back soon to discover the next Mainuan features."
@@ -1053,29 +1107,29 @@ msgstr ""
 "Inga nyheter publicerade.\n"
 "Kom snart tillbaka för att upptäcka Mainuans kommande funktioner."
 
-#: src/mainuan_recursos/gui.py:260
+#: src/mainuan_recursos/gui.py:313
 msgid "We have news for you! Discover the features before installing."
 msgstr "Vi har nyheter till dig! Upptäck funktionerna innan du installerar."
 
-#: src/mainuan_recursos/gui.py:262
+#: src/mainuan_recursos/gui.py:315
 #, python-brace-format
 msgid "Could not check the packages: {error}"
 msgstr "Kunde inte kontrollera paketen: {error}"
 
-#: src/mainuan_recursos/gui.py:264
+#: src/mainuan_recursos/gui.py:317
 msgid ""
 "This release is not compatible with the version or architecture of this "
 "system."
 msgstr ""
 "Den här utgåvan är inte kompatibel med systemets version eller arkitektur."
 
-#: src/mainuan_recursos/gui.py:266
+#: src/mainuan_recursos/gui.py:319
 msgid ""
 "You have already received these features through the system. Discover the "
 "news!"
 msgstr "Du har redan fått de här funktionerna via systemet. Upptäck nyheterna!"
 
-#: src/mainuan_recursos/gui.py:268
+#: src/mainuan_recursos/gui.py:321
 msgid ""
 "Some packages are not yet available for safe installation. See the technical "
 "information in the menu."
@@ -1083,54 +1137,54 @@ msgstr ""
 "Vissa paket är ännu inte tillgängliga för säker installation. Se den "
 "tekniska informationen i menyn."
 
-#: src/mainuan_recursos/gui.py:272
+#: src/mainuan_recursos/gui.py:325
 #, python-brace-format
 msgid "{message} Cached catalog: offline query; installation unavailable."
 msgstr ""
 "{message} Cachad katalog: förfrågan utan nätverk, installation inte "
 "tillgänglig."
 
-#: src/mainuan_recursos/gui.py:284
+#: src/mainuan_recursos/gui.py:337
 msgctxt "news state"
 msgid "New"
 msgstr "Ny"
 
-#: src/mainuan_recursos/gui.py:284
+#: src/mainuan_recursos/gui.py:337
 msgctxt "news state"
 msgid "Viewed"
 msgstr "Visad"
 
-#: src/mainuan_recursos/gui.py:285
+#: src/mainuan_recursos/gui.py:338
 msgctxt "news state"
 msgid "Postponed"
 msgstr "Uppskjuten"
 
-#: src/mainuan_recursos/gui.py:297
+#: src/mainuan_recursos/gui.py:350
 #, python-brace-format
 msgid "Could not save the viewing in the history: {error}"
 msgstr "Kunde inte spara visningen i historiken: {error}"
 
-#: src/mainuan_recursos/gui.py:309
+#: src/mainuan_recursos/gui.py:362
 msgid "Could not open the default web browser."
 msgstr "Kunde inte öppna standardwebbläsaren."
 
-#: src/mainuan_recursos/gui.py:313
+#: src/mainuan_recursos/gui.py:366
 msgid "Check the official catalog again before installing."
 msgstr "Kontrollera den officiella katalogen igen innan du installerar."
 
-#: src/mainuan_recursos/gui.py:315
+#: src/mainuan_recursos/gui.py:368
 msgid "Release incompatible with this system."
 msgstr "Utgåvan är inte kompatibel med det här systemet."
 
-#: src/mainuan_recursos/gui.py:346
+#: src/mainuan_recursos/gui.py:399
 msgid "Confirm Installation"
 msgstr "Bekräfta installation"
 
-#: src/mainuan_recursos/gui.py:346
+#: src/mainuan_recursos/gui.py:399
 msgid "Confirm Installation — Demo"
 msgstr "Bekräfta installation — Demo"
 
-#: src/mainuan_recursos/gui.py:348
+#: src/mainuan_recursos/gui.py:401
 msgid ""
 "The installation needs to change other packages or review the plan. Check "
 "the operation before continuing."
@@ -1138,41 +1192,41 @@ msgstr ""
 "Installationen behöver ändra andra paket eller granska planen. Kontrollera "
 "åtgärden innan du fortsätter."
 
-#: src/mainuan_recursos/gui.py:355
+#: src/mainuan_recursos/gui.py:408
 msgid "Complete operation, including dependencies:"
 msgstr "Hela åtgärden, inklusive beroenden:"
 
-#: src/mainuan_recursos/gui.py:356
+#: src/mainuan_recursos/gui.py:409
 msgid "Packages and dependencies of the operation"
 msgstr "Åtgärdens paket och beroenden"
 
-#: src/mainuan_recursos/gui.py:358
+#: src/mainuan_recursos/gui.py:411
 msgid "Authorization and installation will be simulated."
 msgstr "Auktorisering och installation kommer att simuleras."
 
-#: src/mainuan_recursos/gui.py:359
+#: src/mainuan_recursos/gui.py:412
 msgid "The system will ask for authorization to install."
 msgstr "Systemet kommer att begära auktorisering för att installera."
 
-#: src/mainuan_recursos/gui.py:362
+#: src/mainuan_recursos/gui.py:415
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: src/mainuan_recursos/gui.py:373
+#: src/mainuan_recursos/gui.py:426
 msgid "Installation canceled. You can discover the news whenever you want."
 msgstr "Installationen avbröts. Du kan upptäcka nyheterna när du vill."
 
-#: src/mainuan_recursos/gui.py:382
+#: src/mainuan_recursos/gui.py:435
 #, python-brace-format
 msgid "Could not save the history: {error}"
 msgstr "Kunde inte spara historiken: {error}"
 
-#: src/mainuan_recursos/gui.py:398
+#: src/mainuan_recursos/gui.py:451
 #, python-brace-format
 msgid "Could not save the 24-hour postponement: {error}"
 msgstr "Kunde inte spara uppskjutningen på 24 timmar: {error}"
 
-#: src/mainuan_recursos/gui.py:405
+#: src/mainuan_recursos/gui.py:458
 msgid "Wait for the operation to finish before closing."
 msgstr "Vänta tills åtgärden är klar innan du stänger."
 
@@ -1406,37 +1460,37 @@ msgstr "Den lokala cachen överskrider storleksgränsen."
 msgid "Old or changed catalog; the valid cache was preserved."
 msgstr "Gammal eller ändrad katalog. Den giltiga cachen behölls."
 
-#: src/mainuan_recursos/state.py:44
+#: src/mainuan_recursos/state.py:54
 msgid "Local state too large."
 msgstr "Det lokala tillståndet är för stort."
 
-#: src/mainuan_recursos/state.py:46 src/mainuan_recursos/state.py:48
-#: src/mainuan_recursos/state.py:56
+#: src/mainuan_recursos/state.py:56 src/mainuan_recursos/state.py:58
+#: src/mainuan_recursos/state.py:66
 msgid "Invalid state."
 msgstr "Ogiltigt tillstånd."
 
-#: src/mainuan_recursos/state.py:51
+#: src/mainuan_recursos/state.py:61
 msgid "Invalid sequence/digest."
 msgstr "Ogiltig sekvens/kontrollsumma."
 
-#: src/mainuan_recursos/state.py:53
+#: src/mainuan_recursos/state.py:63
 msgid "Invalid release."
 msgstr "Ogiltig utgåva."
 
-#: src/mainuan_recursos/state.py:54
+#: src/mainuan_recursos/state.py:64
 msgid "Incomplete state."
 msgstr "Ofullständigt tillstånd."
 
-#: src/mainuan_recursos/state.py:58
+#: src/mainuan_recursos/state.py:68 src/mainuan_recursos/state.py:71
 msgid "Invalid deadline."
 msgstr "Ogiltig tidsgräns."
 
-#: src/mainuan_recursos/state.py:61
+#: src/mainuan_recursos/state.py:74
 msgid "The local state is damaged. Preserve the file before recovering it."
 msgstr ""
 "Det lokala tillståndet är skadat. Spara en kopia av filen innan du "
 "återställer den."
 
-#: src/mainuan_recursos/state.py:91
+#: src/mainuan_recursos/state.py:104
 msgid "Old catalog or content changed without increasing the sequence."
 msgstr "Gammal katalog eller innehåll som ändrats utan att sekvensen ökats."

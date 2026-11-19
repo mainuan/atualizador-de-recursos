@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: mainuan-atualizador-recursos\n"
 "Report-Msgid-Bugs-To: https://github.com/mainuan/atualizador-de-recursos/"
 "issues\n"
-"POT-Creation-Date: 2026-11-18 13:16-0300\n"
+"POT-Creation-Date: 2026-11-19 01:32-0300\n"
 "PO-Revision-Date: 2026-11-16 11:30-0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: zh_TW <https://github.com/mainuan>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: data/mainuan-recursos-autostart.desktop.in:3
-#: src/mainuan_recursos/application.py:54
+#: src/mainuan_recursos/application.py:60
 msgid "Mainuan News"
 msgstr "Mainuan 最新消息"
 
@@ -27,7 +27,7 @@ msgstr "Mainuan 最新消息"
 msgid "Checks for news during the session"
 msgstr "在工作階段期間檢查最新消息"
 
-#: data/org.mainuan.Recursos.desktop.in:3 src/mainuan_recursos/gui.py:41
+#: data/org.mainuan.Recursos.desktop.in:3 src/mainuan_recursos/gui.py:47
 msgid "Mainuan Feature Updater"
 msgstr "Mainuan 功能更新程式"
 
@@ -35,15 +35,64 @@ msgstr "Mainuan 功能更新程式"
 msgid "Discover and receive the official Mainuan news"
 msgstr "探索並接收 Mainuan 官方最新消息"
 
-#: src/mainuan_recursos/application.py:22
+#: src/mainuan_recursos/announcement.py:37
+#: src/mainuan_recursos/announcement.py:87
+#: src/mainuan_recursos/announcement.py:91
+#: src/mainuan_recursos/announcement.py:92
+#: src/mainuan_recursos/announcement.py:107
+#: src/mainuan_recursos/announcement.py:110
+#: src/mainuan_recursos/announcement.py:114
+#: src/mainuan_recursos/announcement.py:127
+#: src/mainuan_recursos/announcement.py:136
+#: src/mainuan_recursos/announcement.py:141
+msgid "announcements.json is invalid or incomplete."
+msgstr ""
+
+#: src/mainuan_recursos/announcement.py:100
+#, fuzzy
+#| msgid "GitHub response exceeds the allowed size."
+msgid "announcements.json exceeds the allowed size."
+msgstr "GitHub 回應超過允許的大小。"
+
+#: src/mainuan_recursos/announcement.py:109
+msgid "announcements.json uses an unsupported format. Update the application."
+msgstr ""
+
+#: src/mainuan_recursos/announcement.py:117
+#, fuzzy
+#| msgid "Invalid identifier."
+msgid "Invalid announcement identifier."
+msgstr "無效的識別碼。"
+
+#: src/mainuan_recursos/announcement.py:119
+#, fuzzy
+#| msgid "Invalid Debian name or version."
+msgid "Invalid announcement version."
+msgstr "無效的 Debian 名稱或版本。"
+
+#: src/mainuan_recursos/announcement.py:125
+msgid "The announcement needs its text in Brazilian Portuguese (pt_BR)."
+msgstr ""
+
+# reviewed: GitHub repository = 儲存庫 (GitHub zh-TW UI); 軟體庫 reservado a
+# repositórios APT
+#: src/mainuan_recursos/announcement.py:133
+#, fuzzy
+#| msgid "packages.txt contains invalid or repeated repositories."
+msgid "announcements.json lists invalid or repeated repositories."
+msgstr "packages.txt 包含無效或重複的儲存庫。"
+
+#: src/mainuan_recursos/application.py:23
 msgid "Discover and receive the official Mainuan news."
 msgstr "探索並接收 Mainuan 官方最新消息。"
 
-#: src/mainuan_recursos/application.py:23
-msgid "check during the session and notify without blocking the login"
-msgstr "在工作階段期間檢查，並在不阻擋登入的情況下發出通知"
-
 #: src/mainuan_recursos/application.py:24
+msgid ""
+"check once after login; open only for an explicitly published announcement, "
+"otherwise exit silently"
+msgstr ""
+
+#: src/mainuan_recursos/application.py:25
 msgid ""
 "real, manual trial in a VM: GitHub packages.txt/message.txt and Driver "
 "Manager 1.0"
@@ -51,73 +100,73 @@ msgstr ""
 "在虛擬機器中進行的實際手動試驗：GitHub packages.txt/message.txt 與驅動程式管"
 "理員 1.0"
 
-#: src/mainuan_recursos/application.py:25
+#: src/mainuan_recursos/application.py:26
 msgid "demonstrate the whole flow without modifying the system"
 msgstr "在不修改系統的情況下示範完整流程"
 
-#: src/mainuan_recursos/application.py:26
+#: src/mainuan_recursos/application.py:27
 msgid "demonstration scenario"
 msgstr "示範情境"
 
-#: src/mainuan_recursos/application.py:27
+#: src/mainuan_recursos/application.py:28
 msgid "signed local catalog, only with --demo"
 msgstr "已簽署的本機目錄，僅限搭配 --demo"
 
-#: src/mainuan_recursos/application.py:28
+#: src/mainuan_recursos/application.py:29
 msgid "test configuration and key, only with --demo"
 msgstr "測試設定與金鑰，僅限搭配 --demo"
 
-#: src/mainuan_recursos/application.py:33
+#: src/mainuan_recursos/application.py:34
 msgid ""
 "--homologacao-github is manual and cannot be combined with --check/--demo."
 msgstr "--homologacao-github 為手動操作，不能與 --check/--demo 合併使用。"
 
-#: src/mainuan_recursos/application.py:38
+#: src/mainuan_recursos/application.py:39
 #, python-brace-format
 msgid "Acceptance test unavailable: {error}"
 msgstr "無法使用驗收測試：{error}"
 
-#: src/mainuan_recursos/application.py:40
+#: src/mainuan_recursos/application.py:41
 msgid "Use --demo --test-catalog FILE --test-config FILE together."
 msgstr "請同時使用 --demo --test-catalog FILE --test-config FILE。"
 
-#: src/mainuan_recursos/application.py:51
+#: src/mainuan_recursos/application.py:57
 msgid ""
 "Checking for news becomes available after installing Mainuan. The Live "
 "session will not be queried."
 msgstr "安裝 Mainuan 後才能檢查最新消息。Live 工作階段將不會進行查詢。"
 
-#: src/mainuan_recursos/application.py:53
+#: src/mainuan_recursos/application.py:59
 msgid ""
 "Could not determine the session type. Querying and installing features have "
 "been disabled."
 msgstr "無法判斷工作階段類型。已停用查詢與安裝功能。"
 
-#: src/mainuan_recursos/application.py:67
+#: src/mainuan_recursos/application.py:73
 msgid "Invalid test catalog"
 msgstr "無效的測試目錄"
 
-#: src/mainuan_recursos/application.py:81
+#: src/mainuan_recursos/application.py:87
 #, python-brace-format
 msgid "Could not open the state directory: {error}"
 msgstr "無法開啟狀態目錄：{error}"
 
-#: src/mainuan_recursos/application.py:83
-#: src/mainuan_recursos/application.py:106
-#: src/mainuan_recursos/application.py:119
+#: src/mainuan_recursos/application.py:89
+#: src/mainuan_recursos/application.py:112
+#: src/mainuan_recursos/application.py:125
 msgid "Could not open the history"
 msgstr "無法開啟歷史紀錄"
 
-#: src/mainuan_recursos/application.py:90
+#: src/mainuan_recursos/application.py:96
 msgid "Could not lock the local state. Check the directory permissions."
 msgstr "無法鎖定本機狀態。請檢查目錄權限。"
 
-#: src/mainuan_recursos/application.py:100
+#: src/mainuan_recursos/application.py:106
 msgid ""
 "The other instance is starting. Open the application again in a few seconds."
 msgstr "另一個執行實體正在啟動。請稍候幾秒再重新開啟應用程式。"
 
-#: src/mainuan_recursos/application.py:126
+#: src/mainuan_recursos/application.py:133
 msgid "Could not create the single-instance channel."
 msgstr "無法建立單一執行實體通道。"
 
@@ -311,7 +360,7 @@ msgstr "探索新功能"
 msgid "Optional: open the official page in the web browser."
 msgstr "選用：在網頁瀏覽器中開啟官方頁面。"
 
-#: src/mainuan_recursos/classic.py:135 src/mainuan_recursos/gui.py:361
+#: src/mainuan_recursos/classic.py:135 src/mainuan_recursos/gui.py:414
 msgid "Install New Features"
 msgstr "安裝新功能"
 
@@ -332,7 +381,7 @@ msgstr "將通知延後 24 小時，仍可手動存取。"
 #: src/mainuan_recursos/controller.py:77 src/mainuan_recursos/controller.py:115
 #: src/mainuan_recursos/controller.py:147
 #: src/mainuan_recursos/controller.py:155 src/mainuan_recursos/demo.py:68
-#: src/mainuan_recursos/github_channel.py:391
+#: src/mainuan_recursos/github_channel.py:401
 #: src/mainuan_recursos/github_trial.py:201
 #: src/mainuan_recursos/packagekit.py:193
 msgid "Preparing installation..."
@@ -370,7 +419,7 @@ msgid ""
 msgstr "相依套件已變更。請準備新的操作以確認詳細資訊。"
 
 #: src/mainuan_recursos/controller.py:134 src/mainuan_recursos/demo.py:69
-#: src/mainuan_recursos/github_channel.py:472
+#: src/mainuan_recursos/github_channel.py:495
 #: src/mainuan_recursos/github_trial.py:250
 #: src/mainuan_recursos/packagekit.py:190
 msgid "Installing new features..."
@@ -428,65 +477,64 @@ msgstr "授權已取消（模擬）。"
 msgid "Download failed (simulation)."
 msgstr "下載失敗（模擬）。"
 
-#: src/mainuan_recursos/github_channel.py:41
-#: src/mainuan_recursos/github_channel.py:48
+#: src/mainuan_recursos/github_channel.py:46
+#: src/mainuan_recursos/github_channel.py:53
 msgid "Invalid GitHub address."
 msgstr "無效的 GitHub 位址。"
 
-#: src/mainuan_recursos/github_channel.py:46
+#: src/mainuan_recursos/github_channel.py:51
 msgid "GitHub address must use official HTTPS."
 msgstr "GitHub 位址必須使用官方 HTTPS。"
 
-#: src/mainuan_recursos/github_channel.py:51
+#: src/mainuan_recursos/github_channel.py:56
 msgid "Ambiguous GitHub path."
 msgstr "GitHub 路徑不明確。"
 
 # reviewed: GitHub repository = 儲存庫 (GitHub zh-TW UI); 軟體庫 reservado a
 # repositórios APT
-#: src/mainuan_recursos/github_channel.py:53
+#: src/mainuan_recursos/github_channel.py:58
 msgid "Invalid repository."
 msgstr "無效的儲存庫。"
 
-#: src/mainuan_recursos/github_channel.py:63
+#: src/mainuan_recursos/github_channel.py:68
 msgid "Source or redirect outside the official Mainuan organization."
 msgstr "來源或重新導向位於 Mainuan 官方組織之外。"
 
-#: src/mainuan_recursos/github_channel.py:72
+#: src/mainuan_recursos/github_channel.py:77
 msgid "The GitHub query was redirected; check the official source."
 msgstr "GitHub 查詢遭到重新導向；請檢查官方來源。"
 
-#: src/mainuan_recursos/github_channel.py:87
+#: src/mainuan_recursos/github_channel.py:92
 msgid "GitHub metadata exceeds the allowed limit."
 msgstr "GitHub 中繼資料超過允許的限制。"
 
-#: src/mainuan_recursos/github_channel.py:96
+#: src/mainuan_recursos/github_channel.py:101
 msgid "Invalid GitHub artifact."
 msgstr "無效的 GitHub 構件。"
 
-#: src/mainuan_recursos/github_channel.py:98
+#: src/mainuan_recursos/github_channel.py:103
 msgid "Use the Debian name package_version_architecture.deb in the release."
 msgstr "請在發行版本中使用 Debian 名稱 package_version_architecture.deb。"
 
-#: src/mainuan_recursos/github_channel.py:101
+#: src/mainuan_recursos/github_channel.py:106
 msgid "Invalid Debian name or version."
 msgstr "無效的 Debian 名稱或版本。"
 
-#: src/mainuan_recursos/github_channel.py:104
+#: src/mainuan_recursos/github_channel.py:109
 #, python-brace-format
 msgid "The release has no verifiable SHA-256 published by GitHub for {file}."
 msgstr "此發行版本沒有 GitHub 為 {file} 發布的可驗證 SHA-256。"
 
-#: src/mainuan_recursos/github_channel.py:106
+#: src/mainuan_recursos/github_channel.py:111
 msgid "Artifact unavailable or invalid size."
 msgstr "構件無法使用或大小無效。"
 
-#: src/mainuan_recursos/github_channel.py:157
-#: src/mainuan_recursos/github_channel.py:292
+#: src/mainuan_recursos/github_channel.py:151
+#: src/mainuan_recursos/github_channel.py:299
 msgid "GitHub history exceeds the allowed limit."
 msgstr "GitHub 歷史紀錄超過允許的限制。"
 
 #: src/mainuan_recursos/github_channel.py:170
-#: src/mainuan_recursos/github_channel.py:285
 #: src/mainuan_recursos/github_trial.py:146
 msgid "Mainuan has news!"
 msgstr "Mainuan 有最新消息！"
@@ -551,157 +599,149 @@ msgstr "發行版本的不可變參照無效。"
 msgid "No stable release with a compatible Debian package: {repository}"
 msgstr "沒有含相容 Debian 套件的穩定發行版本：{repository}"
 
-#: src/mainuan_recursos/github_channel.py:249
+#: src/mainuan_recursos/github_channel.py:251
 msgid "This channel is intended for Mainuan based on Kubuntu 26.04."
 msgstr "此通道適用於以 Kubuntu 26.04 為基礎的 Mainuan。"
 
-#: src/mainuan_recursos/github_channel.py:251
+#: src/mainuan_recursos/github_channel.py:253
 msgid "Invalid official reference."
 msgstr "無效的官方參照。"
 
-#: src/mainuan_recursos/github_channel.py:255
-msgid "message.txt is empty."
-msgstr "message.txt 是空的。"
-
 # reviewed: GitHub repository = 儲存庫 (GitHub zh-TW UI); 軟體庫 reservado a
 # repositórios APT
-#: src/mainuan_recursos/github_channel.py:260
-msgid "packages.txt contains invalid or repeated repositories."
-msgstr "packages.txt 包含無效或重複的儲存庫。"
-
-# reviewed: GitHub repository = 儲存庫 (GitHub zh-TW UI); 軟體庫 reservado a
-# repositórios APT
-#: src/mainuan_recursos/github_channel.py:266
+#: src/mainuan_recursos/github_channel.py:267
 msgid "Two repositories offer the same Debian package."
 msgstr "兩個儲存庫提供相同的 Debian 套件。"
 
-#: src/mainuan_recursos/github_channel.py:271
+#: src/mainuan_recursos/github_channel.py:272
 #, python-brace-format
 msgid "An already announced release or artifact was replaced: {package}"
 msgstr "已公告的發行版本或構件遭到替換：{package}"
 
-#: src/mainuan_recursos/github_channel.py:275
+#: src/mainuan_recursos/github_channel.py:276
 #, python-brace-format
 msgid "Rollback of a published version blocked: {package}"
 msgstr "已封鎖已發布版本的回溯：{package}"
 
-#: src/mainuan_recursos/github_channel.py:296
+#: src/mainuan_recursos/github_channel.py:303
 msgid "News not queried in this channel."
 msgstr "此通道未查詢最新消息。"
 
-#: src/mainuan_recursos/github_channel.py:304
+#: src/mainuan_recursos/github_channel.py:311
 msgid "Package missing or size mismatch."
 msgstr "套件遺失或大小不符。"
 
-#: src/mainuan_recursos/github_channel.py:306
+#: src/mainuan_recursos/github_channel.py:313
 msgid "SHA-256 integrity mismatch; installation blocked."
 msgstr "SHA-256 完整性不符；已封鎖安裝。"
 
-#: src/mainuan_recursos/github_channel.py:310
+#: src/mainuan_recursos/github_channel.py:317
 msgid "Internal package metadata does not match the release."
 msgstr "套件內部中繼資料與發行版本不符。"
 
-#: src/mainuan_recursos/github_channel.py:324
+#: src/mainuan_recursos/github_channel.py:334
 #: src/mainuan_recursos/github_trial.py:162 src/mainuan_recursos/packages.py:96
 msgid "Package with incomplete configuration"
 msgstr "套件設定未完成"
 
-#: src/mainuan_recursos/github_channel.py:328
+#: src/mainuan_recursos/github_channel.py:338
 #: src/mainuan_recursos/github_trial.py:167 src/mainuan_recursos/packages.py:98
 msgid "Package held by the administrator"
 msgstr "套件已被管理員保留"
 
-#: src/mainuan_recursos/github_channel.py:334
+#: src/mainuan_recursos/github_channel.py:344
 #: src/mainuan_recursos/github_trial.py:173
 #, python-brace-format
 msgid "Unmet dependencies: {details}"
 msgstr "未滿足的相依性：{details}"
 
-#: src/mainuan_recursos/github_channel.py:336
+#: src/mainuan_recursos/github_channel.py:346
 msgid "The operation requires additional unannounced packages"
 msgstr "此操作需要其他未公告的套件"
 
-#: src/mainuan_recursos/github_channel.py:344
+#: src/mainuan_recursos/github_channel.py:354
 msgid "The announced release was withdrawn or changed."
 msgstr "公告的發行版本已撤回或變更。"
 
-#: src/mainuan_recursos/github_channel.py:346
+#: src/mainuan_recursos/github_channel.py:356
 msgid "The release reference was replaced; installation blocked."
 msgstr "發行版本參照已被替換；已封鎖安裝。"
 
-#: src/mainuan_recursos/github_channel.py:349
+#: src/mainuan_recursos/github_channel.py:359
 msgid "The artifact was changed after the query; check for news again."
 msgstr "構件在查詢後已變更；請重新檢查最新消息。"
 
-#: src/mainuan_recursos/github_channel.py:366
+#: src/mainuan_recursos/github_channel.py:376
 msgid "Download exceeds the approved size."
 msgstr "下載超過核准的大小。"
 
-#: src/mainuan_recursos/github_channel.py:369
-#: src/mainuan_recursos/github_channel.py:388
+#: src/mainuan_recursos/github_channel.py:379
+#: src/mainuan_recursos/github_channel.py:398
 #: src/mainuan_recursos/github_trial.py:189
 #: src/mainuan_recursos/github_trial.py:191
 #: src/mainuan_recursos/packagekit.py:191
 msgid "Downloading new features..."
 msgstr "正在下載新功能..."
 
-#: src/mainuan_recursos/github_channel.py:370
+#: src/mainuan_recursos/github_channel.py:380
 msgid "Download with SHA-256 integrity mismatch."
 msgstr "下載內容的 SHA-256 完整性不符。"
 
-#: src/mainuan_recursos/github_channel.py:377
+#: src/mainuan_recursos/github_channel.py:387
 msgid "Check for news online before installing."
 msgstr "安裝前請先在線上檢查最新消息。"
 
-#: src/mainuan_recursos/github_channel.py:379
+#: src/mainuan_recursos/github_channel.py:389
 msgid ""
 "Installation requires a regular user and an installed session, outside Live "
 "mode."
 msgstr "安裝需要一般使用者及已安裝的工作階段，不能在 Live 模式下進行。"
 
-#: src/mainuan_recursos/github_channel.py:399
+#: src/mainuan_recursos/github_channel.py:409
 msgid "PackageKit proposed additional packages or an incomplete operation."
 msgstr "PackageKit 提出了額外的套件或不完整的操作。"
 
-#: src/mainuan_recursos/github_channel.py:403
+#: src/mainuan_recursos/github_channel.py:413
 msgid "The simulation would change unannounced packages."
 msgstr "模擬結果顯示會變更未公告的套件。"
 
-#: src/mainuan_recursos/github_channel.py:405
+#: src/mainuan_recursos/github_channel.py:415
 msgid "Removal, reinstallation or downgrade blocked."
 msgstr "已封鎖移除、重新安裝或降級。"
 
-#: src/mainuan_recursos/github_channel.py:417
-#: src/mainuan_recursos/github_channel.py:418
+#: src/mainuan_recursos/github_channel.py:428
+#: src/mainuan_recursos/github_channel.py:429
 msgid "Invalid GitHub cache."
 msgstr "無效的 GitHub 快取。"
 
-#: src/mainuan_recursos/github_channel.py:423
+#: src/mainuan_recursos/github_channel.py:435
+#: src/mainuan_recursos/github_channel.py:442
+#: src/mainuan_recursos/github_channel.py:445
 msgid "Invalid local edition."
 msgstr "無效的本機版本。"
 
-#: src/mainuan_recursos/github_channel.py:426
+#: src/mainuan_recursos/github_channel.py:448
 msgid "Invalid local artifact."
 msgstr "無效的本機構件。"
 
-#: src/mainuan_recursos/github_channel.py:430
+#: src/mainuan_recursos/github_channel.py:453
 msgid "Invalid GitHub history. Preserve the file before recovering it."
 msgstr "無效的 GitHub 歷史紀錄。請先保留該檔案再進行復原。"
 
-#: src/mainuan_recursos/github_channel.py:447
+#: src/mainuan_recursos/github_channel.py:470
 msgid "Cannot install:"
 msgstr "無法安裝："
 
-#: src/mainuan_recursos/github_channel.py:449
+#: src/mainuan_recursos/github_channel.py:472
 msgid ""
 "You have already received all the features. No reinstallation will be done."
 msgstr "您已收到所有功能。不會進行重新安裝。"
 
-#: src/mainuan_recursos/github_channel.py:451
+#: src/mainuan_recursos/github_channel.py:474
 msgid "The package state has changed. Check for news again."
 msgstr "套件狀態已變更。請重新檢查最新消息。"
 
-#: src/mainuan_recursos/github_channel.py:464
+#: src/mainuan_recursos/github_channel.py:487
 msgid "The operation has changed; installation blocked."
 msgstr "操作已變更；已封鎖安裝。"
 
@@ -838,150 +878,161 @@ msgstr ""
 msgid "The operation has changed. Review the confirmation again."
 msgstr "操作已變更。請重新檢視確認內容。"
 
-#: src/mainuan_recursos/gui.py:39
+#: src/mainuan_recursos/gui.py:45
 msgid "Mainuan Feature Updater — Demo"
 msgstr "Mainuan 功能更新程式 — 示範"
 
-#: src/mainuan_recursos/gui.py:40
+#: src/mainuan_recursos/gui.py:46
 msgid "Mainuan Feature Updater — GitHub Acceptance Test"
 msgstr "Mainuan 功能更新程式 — GitHub 驗收測試"
 
-#: src/mainuan_recursos/gui.py:44
+#: src/mainuan_recursos/gui.py:50
 msgid "Checking for news…"
 msgstr "正在檢查最新消息…"
 
-#: src/mainuan_recursos/gui.py:50
+#: src/mainuan_recursos/gui.py:56
 msgid "Check for News"
 msgstr "檢查最新消息"
 
-#: src/mainuan_recursos/gui.py:51 src/mainuan_recursos/gui.py:55
-#: src/mainuan_recursos/gui.py:56
+#: src/mainuan_recursos/gui.py:57 src/mainuan_recursos/gui.py:67
+#: src/mainuan_recursos/gui.py:68
 msgid "News History"
 msgstr "消息歷史紀錄"
 
-#: src/mainuan_recursos/gui.py:53 src/mainuan_recursos/gui.py:60
+#: src/mainuan_recursos/gui.py:60
+msgid "Show News at Login"
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:65 src/mainuan_recursos/gui.py:72
 msgid "Technical Information"
 msgstr "技術資訊"
 
-#: src/mainuan_recursos/gui.py:59
+#: src/mainuan_recursos/gui.py:71
 msgid "Programs, packages, versions and actual status"
 msgstr "程式、套件、版本與實際狀態"
 
+#: src/mainuan_recursos/gui.py:103
+#, fuzzy, python-brace-format
+#| msgid "Could not save the history: {error}"
+msgid "Could not save the preference: {error}"
+msgstr "無法儲存歷史紀錄：{error}"
+
 #. Translators: title of an auxiliary window opened in demonstration mode.
-#: src/mainuan_recursos/gui.py:92
+#: src/mainuan_recursos/gui.py:108
 #, python-brace-format
 msgid "{title} — Demo"
 msgstr "{title} — 示範"
 
-#: src/mainuan_recursos/gui.py:119
+#: src/mainuan_recursos/gui.py:135
 #, python-brace-format
 msgid "Release: {id} • {version}"
 msgstr "發行版本：{id} • {version}"
 
-#: src/mainuan_recursos/gui.py:120
+#: src/mainuan_recursos/gui.py:136
 #, python-brace-format
 msgid "Official article: {url}"
 msgstr "官方文章：{url}"
 
-#: src/mainuan_recursos/gui.py:121
+#: src/mainuan_recursos/gui.py:137
 msgid "not checked"
 msgstr "未檢查"
 
-#: src/mainuan_recursos/gui.py:126 src/mainuan_recursos/gui.py:351
+#: src/mainuan_recursos/gui.py:142 src/mainuan_recursos/gui.py:404
 msgid "not installed"
 msgstr "未安裝"
 
-#: src/mainuan_recursos/gui.py:127
+#: src/mainuan_recursos/gui.py:143
 msgid "unavailable"
 msgstr "無法使用"
 
-#: src/mainuan_recursos/gui.py:129
+#: src/mainuan_recursos/gui.py:145
 msgid "packages not checked"
 msgstr "套件未檢查"
 
-#: src/mainuan_recursos/gui.py:130
+#: src/mainuan_recursos/gui.py:146
 #, python-brace-format
 msgid "Package: {name}"
 msgstr "套件：{name}"
 
-#: src/mainuan_recursos/gui.py:131
+#: src/mainuan_recursos/gui.py:147
 #, python-brace-format
 msgid "Minimum version: {version}"
 msgstr "最低版本：{version}"
 
-#: src/mainuan_recursos/gui.py:132
+#: src/mainuan_recursos/gui.py:148
 #, python-brace-format
 msgid "Installed: {version}"
 msgstr "已安裝：{version}"
 
-#: src/mainuan_recursos/gui.py:133
+#: src/mainuan_recursos/gui.py:149
 #, python-brace-format
 msgid "Available: {version}"
 msgstr "可用：{version}"
 
-#: src/mainuan_recursos/gui.py:134
+#: src/mainuan_recursos/gui.py:150
 #, python-brace-format
 msgid "Architecture: {architecture}"
 msgstr "架構：{architecture}"
 
-#: src/mainuan_recursos/gui.py:135
+#: src/mainuan_recursos/gui.py:151
 #, python-brace-format
 msgid "Status: {status}"
 msgstr "狀態：{status}"
 
-#: src/mainuan_recursos/gui.py:137
+#: src/mainuan_recursos/gui.py:153
 #, python-brace-format
 msgid "Approved SHA-256: {sha256}"
 msgstr "核准的 SHA-256：{sha256}"
 
-#: src/mainuan_recursos/gui.py:139
+#: src/mainuan_recursos/gui.py:155
 msgid ""
 "The complete operation, including dependencies, will be shown when "
 "confirming the installation."
 msgstr "確認安裝時會顯示完整的操作內容，包括相依套件。"
 
-#: src/mainuan_recursos/gui.py:141
+#: src/mainuan_recursos/gui.py:157
 msgid ""
 "Demo: authorization and installation are simulated; no package will be "
 "changed."
 msgstr "示範：授權與安裝皆為模擬；不會變更任何套件。"
 
-#: src/mainuan_recursos/gui.py:143
+#: src/mainuan_recursos/gui.py:159
 msgid ""
-"Official GitHub channel: packages.txt and message.txt from the same commit."
-msgstr "官方 GitHub 通道：來自同一個提交的 packages.txt 與 message.txt。"
+"Official GitHub channel: announcements.json, read from a single commit and "
+"published explicitly."
+msgstr ""
 
-#: src/mainuan_recursos/gui.py:144
+#: src/mainuan_recursos/gui.py:160
 msgid ""
 "Packages from stable releases, with IDs, versions and SHA-256 recorded "
 "during the query."
 msgstr "來自穩定發行版本的套件，查詢時已記錄 ID、版本與 SHA-256。"
 
-#: src/mainuan_recursos/gui.py:145
+#: src/mainuan_recursos/gui.py:161
 msgid ""
 "The download starts only after choosing to install; unannounced changes are "
 "blocked."
 msgstr "只有在選擇安裝後才會開始下載；未公告的變更會被封鎖。"
 
-#: src/mainuan_recursos/gui.py:146
+#: src/mainuan_recursos/gui.py:162
 msgid "HTTPS and SHA-256 are not equivalent to an APT repository signature."
 msgstr "HTTPS 與 SHA-256 並不等同於 APT 軟體庫簽章。"
 
-#: src/mainuan_recursos/gui.py:147
+#: src/mainuan_recursos/gui.py:163
 msgid "PackageKit/PolicyKit may ask for authorization for an untrusted source."
 msgstr "PackageKit/PolicyKit 可能會要求對不受信任的來源進行授權。"
 
-#: src/mainuan_recursos/gui.py:149
+#: src/mainuan_recursos/gui.py:165
 msgid ""
 "GitHub acceptance test: official source and artifact pinned by IDs and "
 "SHA-256."
 msgstr "GitHub 驗收測試：官方來源與構件以 ID 及 SHA-256 固定。"
 
-#: src/mainuan_recursos/gui.py:150
+#: src/mainuan_recursos/gui.py:166
 msgid "The download starts only after choosing to install."
 msgstr "只有在選擇安裝後才會開始下載。"
 
-#: src/mainuan_recursos/gui.py:151
+#: src/mainuan_recursos/gui.py:167
 msgid ""
 "Local file without an APT repository signature. PackageKit/PolicyKit may ask "
 "for authorization for an untrusted source."
@@ -989,26 +1040,30 @@ msgstr ""
 "本機檔案沒有 APT 軟體庫簽章。PackageKit/PolicyKit 可能會要求對不受信任的來源"
 "進行授權。"
 
-#: src/mainuan_recursos/gui.py:152
+#: src/mainuan_recursos/gui.py:168
 msgid ""
 "The trial only allows the Driver Manager application; changes to other "
 "packages are blocked."
 msgstr "此試驗僅允許驅動程式管理員應用程式；其他套件的變更會被封鎖。"
 
-#: src/mainuan_recursos/gui.py:174
+#: src/mainuan_recursos/gui.py:193
 msgid "Querying the official Mainuan news…"
 msgstr "正在查詢 Mainuan 官方最新消息…"
 
-#: src/mainuan_recursos/gui.py:218
+#: src/mainuan_recursos/gui.py:246
 #, python-brace-format
 msgid "Could not check for news. {error}"
 msgstr "無法檢查最新消息。{error}"
 
-#: src/mainuan_recursos/gui.py:246
+#: src/mainuan_recursos/gui.py:297
 msgid "No news has been published yet. Come back soon!"
 msgstr "尚未發布任何消息。請稍後再來看看！"
 
-#: src/mainuan_recursos/gui.py:252
+#: src/mainuan_recursos/gui.py:299
+msgid "No news is published right now. Earlier news is in the history."
+msgstr ""
+
+#: src/mainuan_recursos/gui.py:305
 msgid ""
 "No news published.\n"
 "Come back soon to discover the next Mainuan features."
@@ -1016,119 +1071,119 @@ msgstr ""
 "尚未發布任何消息。\n"
 "請稍後再來，探索 Mainuan 的下一批新功能。"
 
-#: src/mainuan_recursos/gui.py:260
+#: src/mainuan_recursos/gui.py:313
 msgid "We have news for you! Discover the features before installing."
 msgstr "我們為您帶來最新消息！安裝前先來探索這些功能吧。"
 
-#: src/mainuan_recursos/gui.py:262
+#: src/mainuan_recursos/gui.py:315
 #, python-brace-format
 msgid "Could not check the packages: {error}"
 msgstr "無法檢查套件：{error}"
 
-#: src/mainuan_recursos/gui.py:264
+#: src/mainuan_recursos/gui.py:317
 msgid ""
 "This release is not compatible with the version or architecture of this "
 "system."
 msgstr "此發行版本與本系統的版本或架構不相容。"
 
-#: src/mainuan_recursos/gui.py:266
+#: src/mainuan_recursos/gui.py:319
 msgid ""
 "You have already received these features through the system. Discover the "
 "news!"
 msgstr "您已透過系統收到這些功能。來探索最新消息吧！"
 
-#: src/mainuan_recursos/gui.py:268
+#: src/mainuan_recursos/gui.py:321
 msgid ""
 "Some packages are not yet available for safe installation. See the technical "
 "information in the menu."
 msgstr "部分套件尚無法安全安裝。請查看選單中的技術資訊。"
 
-#: src/mainuan_recursos/gui.py:272
+#: src/mainuan_recursos/gui.py:325
 #, python-brace-format
 msgid "{message} Cached catalog: offline query; installation unavailable."
 msgstr "{message} 快取的目錄：離線查詢；無法安裝。"
 
-#: src/mainuan_recursos/gui.py:284
+#: src/mainuan_recursos/gui.py:337
 msgctxt "news state"
 msgid "New"
 msgstr "新的"
 
-#: src/mainuan_recursos/gui.py:284
+#: src/mainuan_recursos/gui.py:337
 msgctxt "news state"
 msgid "Viewed"
 msgstr "已檢視"
 
-#: src/mainuan_recursos/gui.py:285
+#: src/mainuan_recursos/gui.py:338
 msgctxt "news state"
 msgid "Postponed"
 msgstr "已延後"
 
-#: src/mainuan_recursos/gui.py:297
+#: src/mainuan_recursos/gui.py:350
 #, python-brace-format
 msgid "Could not save the viewing in the history: {error}"
 msgstr "無法將檢視紀錄儲存至歷史紀錄：{error}"
 
-#: src/mainuan_recursos/gui.py:309
+#: src/mainuan_recursos/gui.py:362
 msgid "Could not open the default web browser."
 msgstr "無法開啟預設網頁瀏覽器。"
 
-#: src/mainuan_recursos/gui.py:313
+#: src/mainuan_recursos/gui.py:366
 msgid "Check the official catalog again before installing."
 msgstr "安裝前請再次檢查官方目錄。"
 
-#: src/mainuan_recursos/gui.py:315
+#: src/mainuan_recursos/gui.py:368
 msgid "Release incompatible with this system."
 msgstr "發行版本與本系統不相容。"
 
-#: src/mainuan_recursos/gui.py:346
+#: src/mainuan_recursos/gui.py:399
 msgid "Confirm Installation"
 msgstr "確認安裝"
 
-#: src/mainuan_recursos/gui.py:346
+#: src/mainuan_recursos/gui.py:399
 msgid "Confirm Installation — Demo"
 msgstr "確認安裝 — 示範"
 
-#: src/mainuan_recursos/gui.py:348
+#: src/mainuan_recursos/gui.py:401
 msgid ""
 "The installation needs to change other packages or review the plan. Check "
 "the operation before continuing."
 msgstr "安裝需要變更其他套件或檢視計畫。請在繼續前檢查操作內容。"
 
-#: src/mainuan_recursos/gui.py:355
+#: src/mainuan_recursos/gui.py:408
 msgid "Complete operation, including dependencies:"
 msgstr "完整操作內容，包括相依套件："
 
-#: src/mainuan_recursos/gui.py:356
+#: src/mainuan_recursos/gui.py:409
 msgid "Packages and dependencies of the operation"
 msgstr "操作的套件與相依套件"
 
-#: src/mainuan_recursos/gui.py:358
+#: src/mainuan_recursos/gui.py:411
 msgid "Authorization and installation will be simulated."
 msgstr "授權與安裝將以模擬方式進行。"
 
-#: src/mainuan_recursos/gui.py:359
+#: src/mainuan_recursos/gui.py:412
 msgid "The system will ask for authorization to install."
 msgstr "系統將要求安裝授權。"
 
-#: src/mainuan_recursos/gui.py:362
+#: src/mainuan_recursos/gui.py:415
 msgid "Cancel"
 msgstr "取消"
 
-#: src/mainuan_recursos/gui.py:373
+#: src/mainuan_recursos/gui.py:426
 msgid "Installation canceled. You can discover the news whenever you want."
 msgstr "已取消安裝。您可以隨時探索最新消息。"
 
-#: src/mainuan_recursos/gui.py:382
+#: src/mainuan_recursos/gui.py:435
 #, python-brace-format
 msgid "Could not save the history: {error}"
 msgstr "無法儲存歷史紀錄：{error}"
 
-#: src/mainuan_recursos/gui.py:398
+#: src/mainuan_recursos/gui.py:451
 #, python-brace-format
 msgid "Could not save the 24-hour postponement: {error}"
 msgstr "無法儲存 24 小時延後設定：{error}"
 
-#: src/mainuan_recursos/gui.py:405
+#: src/mainuan_recursos/gui.py:458
 msgid "Wait for the operation to finish before closing."
 msgstr "請等待操作完成後再關閉。"
 
@@ -1358,35 +1413,35 @@ msgstr "本機快取超過大小限制。"
 msgid "Old or changed catalog; the valid cache was preserved."
 msgstr "目錄過舊或已變更；已保留有效的快取。"
 
-#: src/mainuan_recursos/state.py:44
+#: src/mainuan_recursos/state.py:54
 msgid "Local state too large."
 msgstr "本機狀態過大。"
 
-#: src/mainuan_recursos/state.py:46 src/mainuan_recursos/state.py:48
-#: src/mainuan_recursos/state.py:56
+#: src/mainuan_recursos/state.py:56 src/mainuan_recursos/state.py:58
+#: src/mainuan_recursos/state.py:66
 msgid "Invalid state."
 msgstr "無效的狀態。"
 
-#: src/mainuan_recursos/state.py:51
+#: src/mainuan_recursos/state.py:61
 msgid "Invalid sequence/digest."
 msgstr "無效的序號/摘要。"
 
-#: src/mainuan_recursos/state.py:53
+#: src/mainuan_recursos/state.py:63
 msgid "Invalid release."
 msgstr "無效的發行版本。"
 
-#: src/mainuan_recursos/state.py:54
+#: src/mainuan_recursos/state.py:64
 msgid "Incomplete state."
 msgstr "狀態不完整。"
 
-#: src/mainuan_recursos/state.py:58
+#: src/mainuan_recursos/state.py:68 src/mainuan_recursos/state.py:71
 msgid "Invalid deadline."
 msgstr "無效的期限。"
 
-#: src/mainuan_recursos/state.py:61
+#: src/mainuan_recursos/state.py:74
 msgid "The local state is damaged. Preserve the file before recovering it."
 msgstr "本機狀態已損毀。請先保留該檔案再進行復原。"
 
-#: src/mainuan_recursos/state.py:91
+#: src/mainuan_recursos/state.py:104
 msgid "Old catalog or content changed without increasing the sequence."
 msgstr "目錄過舊，或內容已變更但序號未增加。"
